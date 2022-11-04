@@ -1,0 +1,351 @@
+$body-background-color:#1d1d1d;
+$secondary-color: #0B0B0B;
+$text-color : #D9D9D9;
+$task-container-background : #414141;
+$taskSectionItems-height : 60px;
+
+.homeBody {
+    background-color: $body-background-color;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.separatingVerticalLine {
+    width: 3px;
+    height: 95%;
+    background-color: $secondary-color;
+    flex-grow: 0;
+}
+
+.notesContainer {
+    height: 100%;
+    max-width: 49%;
+    flex-grow: 1;
+    
+
+
+}
+.noteTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 18;
+    height:  75px;
+    max-height:  75px;
+    font-family: 'SF PRO DISPLAY BOLD';
+    text-align: center;
+    color: $text-color;
+}
+
+.notesSection {
+    margin: 1px 13%;
+    height: 400px;
+    textarea {
+        font-family: 'SF PRO DISPLAY REGULAR';
+        text-align: center;
+        color: $text-color;
+        border: none;
+        font-size: 15px;
+        line-height: 2.044;
+        padding: 4px 0px;
+        background: none;
+        width: 100%;
+        height: 400px;
+        background-image: url('../NotesContainer/NotesEmptyLines.png');
+        background-position: top 27px left 0px;
+        background-size: 400px 400px;
+        resize: none;
+        overflow: hidden;
+    }
+    textarea:focus{
+        outline: none;
+    }
+}
+
+.tasksContainer {
+    // background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100%;
+    max-width: 49%;
+    flex-grow: 1;
+    overflow: hidden;
+
+    
+
+
+}
+
+.weekIndicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 18;
+    height: 75px;
+    max-height:  75px;
+    font-family: 'SF PRO DISPLAY BOLD';
+    text-align: center;
+    color: $text-color;
+}
+
+.tasksSection {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    align-items: center;
+    width: 80%;
+    position: relative;
+    top:5px;
+    
+
+}
+
+
+.taskContainer {
+    overflow: hidden;
+    background-color: $task-container-background;
+    height: $taskSectionItems-height;
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid $secondary-color;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.78));
+    margin: 10px;
+    transition-property: height;
+    transition-delay: 10ms;
+    transition-duration: 200ms;
+    transition-timing-function: ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: start;
+
+    button {
+        font-family: 'SF PRO DISPLAY REGULAR';
+        min-height: $taskSectionItems-height;
+        height: $taskSectionItems-height;
+        width: 100%;
+        background: none;
+        border:none;
+        margin: 0;
+        padding:0;
+        color: $text-color;
+        font-weight:normal;
+        font-size: 20;
+        cursor: pointer;
+        transition-delay: 0ms;
+        transition-duration: 40ms;
+        transition-property: background-color;
+        transition-timing-function: ease-in;
+    }
+    button:hover {
+        background-color: #2d2d2d;
+    }
+    
+}
+.expandedContainer {
+    flex-grow: 1;
+    visibility: 0;
+    opacity: 0;
+    border: none;
+    background-color: #2d2d2d;
+    transition-delay: 25ms;
+    transition-duration: 500ms;
+    transition-timing-function: ease-in;
+    transition-property: opacity, visibility;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: stretch;
+    p{
+        height: 70%;
+        text-align: center;
+        margin: 2% 4%;
+        color: $text-color;
+    }
+    .sliderEditButtonContainer {
+        height: 30%;
+        display:flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin: 1% 4%;
+        // overflow: hidden;
+        .progressionSlider {
+            width: 70%;
+            margin-left: 5%;
+            margin-right: 5%;
+            background-color: $secondary-color;
+            box-shadow: #D9D9D9;
+            -webkit-appearance: none;
+            outline: none;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .progressionSlider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: $text-color;
+            cursor: pointer;
+            border: 4px solid #333;
+            box-shadow: -407px 0 0 400px $text-color;
+          }
+        .editTaskButton {
+            width: 8%;
+            height: 20px;
+            min-height: 20px;
+            padding: 0px;
+            img {
+                height: 100%;
+
+            }
+        }
+        input {
+            width: 10%;
+            color:$text-color;
+            background-color: $secondary-color;
+            border: none;
+            border-radius: 2px;
+
+        }
+    }
+}
+
+.addTaskButton {
+    height: 0.9 * $taskSectionItems-height;
+    width: 0.9 * $taskSectionItems-height;
+    border-radius: 0.5 * 0.9 *$taskSectionItems-height;
+    padding: 0;
+    border: none;
+    background: none;
+    margin: 10px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: stretch;
+    filter: drop-shadow(4px 4px 2px rgba(0, 0, 0, 1));
+    img {
+        height: 100%;
+        width: 100%;
+    }
+}
+
+.createTaskModal {
+    visibility: hidden;
+    opacity: 0;
+    transition-delay: 0ms;
+    transition-duration: 200ms;
+    transition-property: opacity;
+    transition-timing-function: ease-in;
+    inset: 0px;
+    z-index: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 0px;
+    position: absolute;
+    
+}
+
+.tasksInitiationInputsContainer {
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 90px auto auto;
+    background-color: $task-container-background;
+    height: 450px;
+    width: 425px;
+    border-radius: 2px;
+    input, textarea {
+        background-color: $secondary-color;
+        border: none;
+        border-radius: 1px;
+        height: 30px;
+        color: $text-color;
+        padding: 10px;
+    }
+    form {
+        font-family: 'SF PRO DISPLAY REGULAR';
+        color: $text-color;
+        height: 93%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: stretch;
+        margin: 15px 20px;
+        h1 {
+            font-size: 24;
+            margin: 5px 0px;
+            border-bottom: 2px solid currentColor;
+        }
+        .taskNameContainer{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            label {
+                font-family: 'SF PRO DISPLAY BOLD';
+
+                margin-bottom: 7px;
+            }
+
+        }
+        .taskDescriptionContainer {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            label {
+                font-family: 'SF PRO DISPLAY BOLD';
+
+                margin-bottom: 7px;
+            }
+            textarea {
+                font-family: 'SF PRO DISPLAY REGULAR';
+                resize: none;
+                height: 100px;
+            }
+        }
+        .priority {
+            p {
+                font-family: 'SF PRO DISPLAY BOLD';
+
+                margin-top :0px;
+                margin-bottom: 10px;
+            }
+            input {   
+                height: 10px;
+            }
+
+        }
+        .buttonsContainer {
+
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            button {
+                font-family: 'SF PRO DISPLAY REGULAR';
+                align-items: center;
+                height: 25px;
+                width: 70px;
+                background-color: #D9D9D9;
+                border: none;
+            }
+            button:hover {
+                color: $text-color;
+                border: 1px solid $secondary-color;
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+        }
+
+    }
+}

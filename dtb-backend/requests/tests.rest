@@ -1,0 +1,20 @@
+POST  http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+    "username" : "username",
+    "name" : "dummy name",
+    "password" : "password"
+}
+###
+POST http://localhost:3003/api/login 
+// token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMmUyMzU1ZmQyZWY4OTU5NzExZjliOCIsImlhdCI6MTY2NDA1OTc5OCwiZXhwIjoxNjY0MDYzMzk4fQ.GEErMXBk540WcKGo0bzpebFLZlv9vQO-SkZB4kXpf24
+Content-Type: application/json
+
+{
+    "username" : "username",
+    "password" : "password"
+}
+###
+GET  http://localhost:3003/api/week/currentWeek
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMmUyMzU1ZmQyZWY4OTU5NzExZjliOCIsImlhdCI6MTY2NDA1OTc5OCwiZXhwIjoxNjY0MDYzMzk4fQ.GEErMXBk540WcKGo0bzpebFLZlv9vQO-SkZB4kXpf24
