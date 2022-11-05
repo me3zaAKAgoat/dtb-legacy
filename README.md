@@ -38,3 +38,4 @@
 - The saving system then takes the logs and refreshes the sync indicator while also making the necessary API calls when the user initiates the syncing
 - Save to the local storage then set a time period for when to update to the cloud
 
+    
