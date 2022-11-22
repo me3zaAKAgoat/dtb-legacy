@@ -1,7 +1,12 @@
+$body-background-color: #1d1d1d;
 .app {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      overflow: hidden;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	overflow: hidden;
 }
+
+// body::-webkit-scrollbar {
+// 	background-color: $body-background-color;
+// }
