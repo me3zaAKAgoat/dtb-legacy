@@ -40,9 +40,15 @@
 
 [IndexDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB)
 
-- Have a log for all the changes made that then decides what API calls need to be made to sync the client and database (changes include: task progress changes - notes changes)
-- The saving system then takes the logs and refreshes the sync indicator while also making the necessary API calls when the user initiates the syncing
-- Save to the local storage then set a time-period after which updates are automatically made to the cloud.
+- on frontend set a setInterval inside a useEffect that calls the function that decyphers the requests to be sent to the server.
+
+- set a localStorage key that represents a chain of strings of this form
+
+  - stringified object+stringified object+...
+
+  - object to stringify
+
+    { type : type of request, path : path to request ,object : object to send with request}
 
 ### Tasks
 
