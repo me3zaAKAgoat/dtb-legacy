@@ -52,7 +52,6 @@
 
 ### Tasks
 
-- update the notes component into a rich text editor.
 - thoroughly describe the automatic synchronization system.
 - work on an Auto-save feature.
 - work on a loading UI (skeleton) while the data is being fetched.
@@ -62,7 +61,6 @@
 - make a settings page.
 - make a signup page.
 - refractor spree to make code more readable and more performant.
-- fix the website's erratic behavior when the window is downsized and the user tries to scroll.
 - make a purple theme.
 - thoroughly describe the flow/usage of the app.
 - make a new proper logo.
@@ -72,6 +70,9 @@
 - rich text notes like discord parsing
 - make a valorant abilities HUD inspired HUD for week status
 - custom context menu on tasks
- - add possibility to delete tasks
+- add possibility to delete tasks
 - add a percentage next to number input field in task container
 - only render expanded container when task is clicked
+- description filled on submission does not have to be non empty
+- have a useref that stores all progresses to be used to count the global progress when needed
+- fix modal behaviour when clicked outside of form
