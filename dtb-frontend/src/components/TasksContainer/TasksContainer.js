@@ -1,8 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import TaskContainer from '../TaskContainer/TaskContainer.js';
 import plusSign from './plusCircle.png';
 import WeekServices from '../../services/week.js';
-import TaskServices from '../../services/task.js';
 import NewTaskForm from '../NewTaskForm/NewTaskForm.js';
 import EditTaskForm from '../EditTaskForm/EditTaskForm.js';
 
@@ -64,46 +63,42 @@ const TasksContainer = ({ user }) => {
 	const [tasks, setTasks] = useState([]);
 	const [formToOpen, setFormToOpen] = useState(null);
 	const [taskToEdit, setTaskToEdit] = useState(null);
+	const [globalProgress, setGlobalProgress] = useState(0);
+	const priorityMap = new Map();
+	priorityMap.set('low', 1);
+	priorityMap.set('medium', 4);
+	priorityMap.set('high', 7);
 
-	const fetchCurrentWeekData = async () => {
+	const fetchCurrentWeekTasks = async () => {
 		try {
-			const retrievedData = await WeekServices.getCurrentWeekData(user.token);
+			const retrievedData = await WeekServices.getCurrentWeekTasks(user.token);
 			setTasks(retrievedData.tasks);
-		} catch (err) {
-			console.log(err);
-		}
-	};
-
-	const fetchCurrentWeekEndDate = async () => {
-		try {
-			const retrievedData = await WeekServices.getCurrentWeekData(user.token);
-			if (retrievedData.weekDue) {
-				setWeekDue(new Date(retrievedData.weekDue));
-			}
+			setWeekDue(
+				retrievedData.weekDue === null ? null : new Date(retrievedData.weekDue)
+			);
 		} catch (err) {
 			console.log(err);
 		}
 	};
 
 	useEffect(() => {
-		fetchCurrentWeekEndDate();
-	}, [tasks]);
-	useEffect(() => {
-		fetchCurrentWeekData();
+		fetchCurrentWeekTasks();
 	}, []);
 
 	return (
 		<div className="tasksContainer">
-			<div className="weekIndicator">
-				Time Left:
-				{weekDue !== null
-					? ` ${Math.floor(
-							(new Date(weekDue) - new Date()) / (1000 * 60 * 60 * 24)
-					  )} Days ${Math.floor(
-							((new Date(weekDue) - new Date()) % (1000 * 60 * 60 * 24)) /
-								(1000 * 60 * 60)
-					  )} Hours`
-					: ' - Days - Hours'}
+			<div className="weekHUD">
+				<div className="timeLeft">
+					Time Left:
+					{weekDue !== null
+						? ` ${Math.floor(
+								(new Date(weekDue) - new Date()) / (1000 * 60 * 60 * 24)
+						  )} Days ${Math.floor(
+								((new Date(weekDue) - new Date()) % (1000 * 60 * 60 * 24)) /
+									(1000 * 60 * 60)
+						  )} Hours`
+						: ' - Days - Hours'}
+				</div>
 			</div>
 			<div className="tasksSection">
 				{tasks.map((task) => (
@@ -112,6 +107,10 @@ const TasksContainer = ({ user }) => {
 						task={task}
 						setTaskToEdit={setTaskToEdit}
 						setFormToOpen={setFormToOpen}
+						user={user}
+						globalProgress={globalProgress}
+						setGlobalProgress={setGlobalProgress}
+						tasks={tasks}
 					/>
 				))}
 				<button

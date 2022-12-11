@@ -1,28 +1,52 @@
-$body-background-color: #1d1d1d;
-$secondary-color: #0b0b0b;
-$text-color: #d9d9d9;
-$task-container-background: #414141;
+$body-background-color: #1a1a1aff;
+$secondary-color: #0b0b0bff;
+$text-color: #d9d9d9ff;
+$task-container-background: #414141ff;
+$task-container-background-focus: #2d2d2dff;
 $taskSectionItems-height: 60px;
+
+::-webkit-scrollbar-track
+{
+	border-radius: 10px;
+	background-color: rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar
+{
+	width: 7px;
+}
+
+::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	box-shadow: inset 0 0 6px rgba(0,0,0,.3);;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: $secondary-color	;
+}
+
 
 .homeBody {
 	background-color: $body-background-color;
 	flex-grow: 1;
+	max-height: 100%;
 	display: flex;
 	flex-direction: row;
-	align-items: center;
-	justify-content: space-around;
+	align-items: stretch;
+	justify-content: center;
 }
 
 .separatingVerticalLine {
-	width: 3px;
-	height: 95%;
+	max-width: 1px;
+	min-width: 1px;
+	margin: 1.5% 0%;
+	height: 96%;
 	background-color: $secondary-color;
-	flex-grow: 0;
+	flex-grow: 1;
 }
 
 .notesContainer {
 	height: 100%;
-	max-width: 49%;
+	width: 50%;
 	flex-grow: 1;
 }
 .noteTitle {
@@ -30,11 +54,24 @@ $taskSectionItems-height: 60px;
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-	font-size: 18;
+	font-size: 1.1rem;
 	height: 75px;
 	max-height: 75px;
 	font-family: 'SF PRO DISPLAY BOLD';
 	text-align: center;
+	color: $text-color;
+}
+.weekHUD {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	font-size: 1.1rem;
+	min-height: 75px;
+	max-height: 75px;
+	font-family: 'SF PRO DISPLAY BOLD';
+	text-align: left;
 	color: $text-color;
 }
 
@@ -42,51 +79,40 @@ $taskSectionItems-height: 60px;
 	margin: 1px 10%;
 	height: 400px;
 	font-family: 'SF PRO DISPLAY REGULAR';
-	text-align: center;
+	font-size: 1rem;
 	color: $text-color;
+	text-align: left;
 	border: none;
-	font-size: 15px;
 	line-height: 2.044;
-	padding: 4px 0px;
-	background: none;
+	padding: 0.4rem 1rem;
+	background: rgba(0, 0, 0, 0.1);
 	width: 80%;
 	height: 80%;
-	background-image: url('../NotesContainer/NotesEmptyLines.png');
-	background-position: top 27px left 0px;
-	background-size: 400px 400px;
+	border-radius: 0.4rem;
+
 	overflow: auto;
 	word-wrap: break-word;
 	white-space: pre-wrap;
 	word-break: break-word;
-}
-.notesTextArea:focus {
-	outline: none;
+	resize: none;
+
 }
 
+.notesTextArea:focus {
+	outline: rgba(255, 255, 255, 0.2) solid 0.12rem;
+}
 .tasksContainer {
 	// background-color: white;
+	width: 50%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: space-evenly;
-	height: 100%;
-	max-width: 49%;
+	justify-content: start;
+	overflow: auto;
 	flex-grow: 1;
 	overflow: hidden;
 }
 
-.weekIndicator {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 100%;
-	font-size: 18;
-	height: 75px;
-	max-height: 75px;
-	font-family: 'SF PRO DISPLAY BOLD';
-	text-align: center;
-	color: $text-color;
-}
 
 .tasksSection {
 	flex-grow: 1;
@@ -94,21 +120,25 @@ $taskSectionItems-height: 60px;
 	flex-direction: column;
 	justify-content: baseline;
 	align-items: center;
-	width: 80%;
+	width: 100%;
 	position: relative;
 	top: 5px;
+	max-height: 100%;
+	overflow-y: overlay;
+
 }
 
 .taskContainer {
 	overflow: hidden;
 	background-color: $task-container-background;
-	height: $taskSectionItems-height;
-	width: 100%;
+	height: $taskSectionItems-height;;
+	min-height: $taskSectionItems-height;
+	width: 80%;
 	border-radius: 4px;
 	border: 1px solid $secondary-color;
 	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.78));
 	margin: 10px;
-	transition-property: height;
+	transition-property: min-height;
 	transition-delay: 10ms;
 	transition-duration: 200ms;
 	transition-timing-function: ease-in-out;
@@ -116,6 +146,21 @@ $taskSectionItems-height: 60px;
 	flex-direction: column;
 	align-items: stretch;
 	justify-content: start;
+
+	/* Chrome, Safari, Edge, Opera */
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	appearance: none;
+	margin: 0;
+	}
+
+	/* Firefox */
+	input[type="number"] {
+	-moz-appearance: textfield;
+	appearance: none;
+	}
+
 
 	button {
 		font-family: 'SF PRO DISPLAY REGULAR';
@@ -128,15 +173,15 @@ $taskSectionItems-height: 60px;
 		padding: 0;
 		color: $text-color;
 		font-weight: normal;
-		font-size: 20;
+		font-size: 1.1rem;
 		cursor: pointer;
-		transition-delay: 0ms;
-		transition-duration: 40ms;
+		transition-delay: 15ms;
+		transition-duration: 55ms;
 		transition-property: background-color;
 		transition-timing-function: ease-in;
 	}
 	button:hover {
-		background-color: #2d2d2d;
+		background-color: $task-container-background-focus;
 	}
 }
 .expandedContainer {
@@ -144,7 +189,8 @@ $taskSectionItems-height: 60px;
 	visibility: 0;
 	opacity: 0;
 	border: none;
-	background-color: #2d2d2d;
+	height: 200px - $taskSectionItems-height;
+	background-color: $task-container-background-focus;
 	transition-delay: 25ms;
 	transition-duration: 500ms;
 	transition-timing-function: ease-in;
@@ -155,6 +201,7 @@ $taskSectionItems-height: 60px;
 	align-items: stretch;
 	p {
 		height: 70%;
+		overflow: auto;
 		text-align: center;
 		margin: 2% 4%;
 		color: $text-color;
@@ -172,7 +219,7 @@ $taskSectionItems-height: 60px;
 			margin-left: 5%;
 			margin-right: 5%;
 			background-color: $secondary-color;
-			box-shadow: #d9d9d9;
+			box-shadow: $text-color;
 			-webkit-appearance: none;
 			outline: none;
 			border-radius: 10px;
@@ -190,16 +237,17 @@ $taskSectionItems-height: 60px;
 		}
 		.editTaskButton {
 			width: 8%;
-			height: 20px;
-			min-height: 20px;
+			height: 15px;
+			min-height: 15px;
 			padding: 0px;
 			img {
 				height: 100%;
 			}
 		}
-		input {
+		input[type="number"] {
 			width: 10%;
 			color: $text-color;
+			text-align: center;
 			background-color: $secondary-color;
 			border: none;
 			border-radius: 2px;
@@ -214,7 +262,7 @@ $taskSectionItems-height: 60px;
 	padding: 0;
 	border: none;
 	background: none;
-	margin: 10px;
+	margin: 20px;
 	cursor: pointer;
 	display: flex;
 	flex-direction: row;
@@ -260,6 +308,7 @@ $taskSectionItems-height: 60px;
 		height: 30px;
 		color: $text-color;
 		padding: 10px;
+		resize: none;
 	}
 	form {
 		font-family: 'SF PRO DISPLAY REGULAR';
@@ -271,7 +320,7 @@ $taskSectionItems-height: 60px;
 		align-items: stretch;
 		margin: 15px 20px;
 		h1 {
-			font-size: 24;
+			font-size: 1.1rem;
 			margin: 5px 0px;
 			border-bottom: 2px solid currentColor;
 		}
@@ -296,7 +345,7 @@ $taskSectionItems-height: 60px;
 			}
 			textarea {
 				font-family: 'SF PRO DISPLAY REGULAR';
-				resize: none;
+				resize: noremne;
 				height: 100px;
 			}
 		}

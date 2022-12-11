@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import TaskServices from '../../services/task.js';
+import WeekServices from '../../services/week.js';
 
 const NewTaskForm = ({ tasks, setTasks, user, setFormToOpen }) => {
 	const initialRender = useRef(true);
@@ -20,7 +21,7 @@ const NewTaskForm = ({ tasks, setTasks, user, setFormToOpen }) => {
 		setPriorityField(e.target.value);
 	};
 
-	const fetchCurrentWeekId = async () => {
+	const fetchCurrentWeekTasksId = async () => {
 		try {
 			const currentWeekId = await WeekServices.getCurrentWeekId(user.token);
 			return currentWeekId === {} ? null : currentWeekId.currentWeek;
@@ -45,7 +46,8 @@ const NewTaskForm = ({ tasks, setTasks, user, setFormToOpen }) => {
 					priority: priorityField,
 					progress: 0,
 				};
-				const currentWeekId = await fetchCurrentWeekId();
+				setFormToOpen(null);
+				const currentWeekId = await fetchCurrentWeekTasksId();
 				if (!currentWeekId) {
 					const returnedTask = await WeekServices.initiateNewWeek(
 						user.token,
@@ -60,7 +62,6 @@ const NewTaskForm = ({ tasks, setTasks, user, setFormToOpen }) => {
 					);
 					setTasks(tasks.concat(returnedTask));
 				}
-				setFormToOpen(null);
 				setUsernameField('');
 				setDescriptionField('');
 				setPriorityField('');

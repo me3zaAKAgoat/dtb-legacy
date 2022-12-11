@@ -63,8 +63,15 @@
 - make a signup page.
 - refractor spree to make code more readable and more performant.
 - fix the website's erratic behavior when the window is downsized and the user tries to scroll.
-- change the size of the components (use em and rem for all things so the sizes are more responsive).
 - make a purple theme.
 - thoroughly describe the flow/usage of the app.
 - make a new proper logo.
-- handle token expiration on the front-end.
+- handle token expiration on the front-end. https://stackoverflow.com/questions/61997401/how-to-logout-user-when-token-expires-in-react-app
+- figure out how keep data stored client side (pouchDB and nedb and sessionstorage and localstorage) https://stackoverflow.com/questions/28314368/how-to-maintain-state-after-a-page-refresh-in-react-js https://rxdb.info/quickstart.html
+- read chapter 7 react router
+- rich text notes like discord parsing
+- make a valorant abilities HUD inspired HUD for week status
+- custom context menu on tasks
+ - add possibility to delete tasks
+- add a percentage next to number input field in task container
+- only render expanded container when task is clicked

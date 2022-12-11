@@ -4,6 +4,7 @@ $text-color : #D9D9D9;
 $task-container-background : #414141;
 
 .loginFormContainer {
+    font-family: 'SF PRO DISPLAY REGULAR';
     background-color: $body-background-color;
     color: $text-color;
     width: 100%;
@@ -29,9 +30,9 @@ $task-container-background : #414141;
         box-shadow: 0px 0px 20px $secondary-color;
         .signUpRedirectionButton {
             margin: 10px;
-            font-family: 'SF PRO DISPLAY REGULAR';
+            font-family: inherit;
             color: $text-color;
-            font-size: 18;
+            font-size: 1.05rem;
             height: 50px;
             width: 90px;
             background: none;
@@ -49,7 +50,7 @@ $task-container-background : #414141;
             border-radius: 3px;
             border: none;
             padding : 10px;
-            font-size: 18;
+            font-size: 1.05rem;
             height: 50px;
             width: 250px;
             margin: 15px;
@@ -67,8 +68,8 @@ $task-container-background : #414141;
             width: 100px;
             background-color: $text-color;
             border: none;
-            font-family: 'SF PRO DISPLAY REGULAR';
-            font-size: 20;
+            font-family: inherit;
+            font-size: 1.05rem;
         }
         button:hover {
             cursor: pointer;

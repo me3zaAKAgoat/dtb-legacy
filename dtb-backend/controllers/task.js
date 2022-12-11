@@ -72,7 +72,7 @@ taskRouter.put('/changeProgress', async (req, res) => {
 
 		const task = await Task.findById(req.body.id);
 
-		task.progress = req.progress;
+		task.progress = req.body.progress;
 
 		const savedTask = await task.save();
 

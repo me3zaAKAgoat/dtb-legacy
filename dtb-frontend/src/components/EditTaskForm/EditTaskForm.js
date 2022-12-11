@@ -45,6 +45,7 @@ const EditTaskForm = ({
 				priority: priorityField,
 				id: taskToEdit.id,
 			};
+			setFormToOpen(null);
 			try {
 				const returnedTask = await TaskServices.editTask(
 					user.token,
@@ -62,7 +63,6 @@ const EditTaskForm = ({
 				});
 				setTasks(newTasks);
 				setTaskToEdit(null);
-				setFormToOpen(null);
 				setNameField('');
 				setDescriptionField('');
 				setPriorityField('');
