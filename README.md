@@ -76,4 +76,5 @@
 - description filled on submission does not have to be non empty
 - have a useref that stores all progresses to be used to count the global progress when needed
 - fix modal behaviour when clicked outside of form
-
+- give descriptions for navbar items on long hover
+- make task info modals bigger

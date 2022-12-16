@@ -5,25 +5,21 @@ $task-container-background: #414141ff;
 $task-container-background-focus: #2d2d2dff;
 $taskSectionItems-height: 60px;
 
-::-webkit-scrollbar-track
-{
+::-webkit-scrollbar-track {
 	border-radius: 10px;
 	background-color: rgba(255, 255, 255, 0.05);
 }
 
-::-webkit-scrollbar
-{
+::-webkit-scrollbar {
 	width: 7px;
 }
 
-::-webkit-scrollbar-thumb
-{
+::-webkit-scrollbar-thumb {
 	border-radius: 10px;
-	box-shadow: inset 0 0 6px rgba(0,0,0,.3);;
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-	background-color: $secondary-color	;
+	box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+	background-color: $secondary-color;
 }
-
 
 .homeBody {
 	background-color: $body-background-color;
@@ -85,7 +81,7 @@ $taskSectionItems-height: 60px;
 	border: none;
 	line-height: 1.8;
 	padding: 0.4rem 1rem;
-	background: rgba(0, 0, 0, 0.1);
+	background: rgba(0, 0, 0, 0.7);
 	width: 80%;
 	height: 80%;
 	border-radius: 0.4rem;
@@ -95,7 +91,6 @@ $taskSectionItems-height: 60px;
 	white-space: pre-wrap;
 	word-break: break-word;
 	resize: none;
-
 }
 
 .notesTextArea:hover {
@@ -117,7 +112,6 @@ $taskSectionItems-height: 60px;
 	overflow: hidden;
 }
 
-
 .tasksSection {
 	flex-grow: 1;
 	display: flex;
@@ -129,13 +123,12 @@ $taskSectionItems-height: 60px;
 	top: 5px;
 	max-height: 100%;
 	overflow-y: overlay;
-
 }
 
 .taskContainer {
 	overflow: hidden;
 	background-color: $task-container-background;
-	height: $taskSectionItems-height;;
+	height: $taskSectionItems-height;
 	min-height: $taskSectionItems-height;
 	width: 80%;
 	border-radius: 4px;
@@ -154,17 +147,16 @@ $taskSectionItems-height: 60px;
 	/* Chrome, Safari, Edge, Opera */
 	input::-webkit-outer-spin-button,
 	input::-webkit-inner-spin-button {
-	-webkit-appearance: none;
-	appearance: none;
-	margin: 0;
+		-webkit-appearance: none;
+		appearance: none;
+		margin: 0;
 	}
 
 	/* Firefox */
-	input[type="number"] {
-	-moz-appearance: textfield;
-	appearance: none;
+	input[type='number'] {
+		-moz-appearance: textfield;
+		appearance: none;
 	}
-
 
 	button {
 		font-family: 'SF PRO DISPLAY REGULAR';
@@ -244,11 +236,11 @@ $taskSectionItems-height: 60px;
 			height: 10%;
 			min-height: 50%;
 			svg {
-				width: 100%	;
+				width: 100%;
 				height: 100%;
 			}
 		}
-		input[type="number"] {
+		input[type='number'] {
 			width: 10%;
 			color: $text-color;
 			text-align: center;
@@ -281,8 +273,7 @@ $taskSectionItems-height: 60px;
 		position: absolute;
 		height: 100%;
 		width: 100%;
-		filter: brightness(80%)
-
+		filter: brightness(80%);
 	}
 }
 .addTaskButton:hover {
@@ -290,7 +281,7 @@ $taskSectionItems-height: 60px;
 	height: 0.91 * $taskSectionItems-height;
 	width: 0.91 * $taskSectionItems-height;
 	svg {
-		filter: brightness(90%)
+		filter: brightness(90%);
 	}
 }
 

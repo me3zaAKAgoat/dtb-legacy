@@ -3,8 +3,8 @@ $text-color: #d9d9d9;
 
 .navigationBar {
 	height: 100%;
-	min-width: 55;
-	max-width: 55;
+	min-width: 62;
+	max-width: 62;
 	background-color: $nav-background-color;
 	display: flex;
 	flex-direction: column;
@@ -22,8 +22,8 @@ $text-color: #d9d9d9;
 }
 
 a {
-	max-height: 34px;
-	max-width: 34px;
+	max-height: 38px;
+	max-width: 38px;
 	margin: 15px 0;
 	display: flex;
 	align-items: centers;
@@ -39,7 +39,7 @@ a {
 ul {
 	display: flex;
 	flex-direction: column;
-	justify-content:flex-start;
+	justify-content: flex-start;
 	align-items: center;
 	flex-grow: 1;
 	width: 65%;
@@ -50,7 +50,7 @@ ul {
 	li {
 		margin-top: 30px;
 		margin-bottom: 10px;
-		height: 36px;
+		height: 40px;
 		width: 100%;
 		button {
 			font-family: 'SF PRO DISPLAY BOLD';
@@ -70,7 +70,7 @@ ul {
 				height: 100%;
 			}
 		}
-		button:hover{
+		button:hover {
 			filter: brightness(50%);
 		}
 		.homeButton {
@@ -85,7 +85,7 @@ ul {
 		.statisticsButton:hover {
 			height: 77%;
 		}
-		}
+	}
 }
 
 .profileButton {
@@ -96,7 +96,8 @@ ul {
 	transition-delay: 25ms;
 	transition-duration: 70ms;
 	transition-timing-function: ease-in-out;
-	transition-property: outline;}
+	transition-property: outline;
+}
 .profileButton:hover {
 	outline-offset: 2px;
 	outline: $text-color solid 1.5px;
@@ -123,7 +124,7 @@ ul {
 	background-color: $nav-background-color;
 	border: 0.1px solid #d9d9d91a;
 	border-radius: 4px;
-	padding:1.4rem;
+	padding: 1.4rem;
 	overflow: hidden;
 	opacity: 0;
 	visibility: hidden;
@@ -147,7 +148,7 @@ ul {
 		cursor: pointer;
 		z-index: 2;
 	}
-	button:hover{
+	button:hover {
 		filter: brightness(50%);
 	}
 	hr {
