@@ -50,7 +50,7 @@
 
     { type : type of request, path : path to request ,object : object to send with request}
 
-### Tasks
+## Tasks
 
 - thoroughly describe the automatic synchronization system.
 - work on an Auto-save feature.
@@ -76,3 +76,4 @@
 - description filled on submission does not have to be non empty
 - have a useref that stores all progresses to be used to count the global progress when needed
 - fix modal behaviour when clicked outside of form
+

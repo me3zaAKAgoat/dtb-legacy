@@ -274,9 +274,9 @@ $taskSectionItems-height: 60px;
 	align-items: stretch;
 	filter: drop-shadow(2px 2px 1px rgba(0, 0, 0, 1));
 	transition-delay: 5ms;
-	transition-duration: 30ms;
+	transition-duration: 40ms;
 	transition-timing-function: ease-in;
-	transition-property: background-color;
+	transition-property: background-color, height, width;
 	svg {
 		position: absolute;
 		height: 100%;
@@ -287,6 +287,8 @@ $taskSectionItems-height: 60px;
 }
 .addTaskButton:hover {
 	background-color: rgba(255, 255, 255, 0.04);
+	height: 0.91 * $taskSectionItems-height;
+	width: 0.91 * $taskSectionItems-height;
 	svg {
 		filter: brightness(90%)
 	}
