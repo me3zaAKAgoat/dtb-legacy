@@ -52,29 +52,29 @@
 
 ## Tasks
 
-- thoroughly describe the automatic synchronization system.
-- work on an Auto-save feature.
-- work on a loading UI (skeleton) while the data is being fetched.
-- add a terminate the week button.
-- make the basic layout for the statistics page.
-- rework task containers ( laggy expansion animation ).
-- make a settings page.
-- make a signup page.
-- refractor spree to make code more readable and more performant.
-- make a purple theme.
-- thoroughly describe the flow/usage of the app.
-- make a new proper logo.
-- handle token expiration on the front-end. https://stackoverflow.com/questions/61997401/how-to-logout-user-when-token-expires-in-react-app
-- figure out how keep data stored client side (pouchDB and nedb and sessionstorage and localstorage) https://stackoverflow.com/questions/28314368/how-to-maintain-state-after-a-page-refresh-in-react-js https://rxdb.info/quickstart.html
-- read chapter 7 react router
-- rich text notes like discord parsing
-- make a valorant abilities HUD inspired HUD for week status
-- custom context menu on tasks
-- add possibility to delete tasks
-- add a percentage next to number input field in task container
-- only render expanded container when task is clicked
-- description filled on submission does not have to be non empty
-- have a useref that stores all progresses to be used to count the global progress when needed
-- fix modal behaviour when clicked outside of form
-- give descriptions for navbar items on long hover
-- make task info modals bigger
+- [ ] thoroughly describe the automatic synchronization system.
+- [ ] work on an Auto-save feature.
+- [ ] work on a loading UI (skeleton) while the data is being fetched.
+- [ ] add a terminate the week button.
+- [ ] make the basic layout for the statistics page.
+- [ ] rework task containers ( laggy expansion animation ).
+- [ ] make a settings page.
+- [ ] make a signup page.
+- [ ] refractor spree to make code more readable and more performant.
+- [ ] make a purple theme.
+- [ ] thoroughly describe the flow/usage of the app.
+- [ ] make a new proper logo.
+- [ ] handle token expiration on the front-end. https://stackoverflow.com/questions/61997401/how-to-logout-user-when-token-expires-in-react-app
+- [ ] figure out how keep data stored client side (pouchDB and nedb and sessionstorage and localstorage) https://stackoverflow.com/questions/28314368/how-to-maintain-state-after-a-page-refresh-in-react-js https://rxdb.info/quickstart.html
+- [ ] read chapter 7 react router
+- [ ] rich text notes like discord parsing
+- [ ] make a valorant abilities HUD inspired HUD for week status
+- [ ] custom context menu on tasks
+- [ ] add possibility to delete tasks
+- [ ] add a percentage next to number input field in task container
+- [ ] only render expanded container when task is clicked
+- [ ] description filled on submission does not have to be non empty
+- [ ] have a useref that stores all progresses to be used to count the global progress when needed
+- [ ] fix modal behaviour when clicked outside of form
+- [ ] give descriptions for navbar items on long hover
+- [ ] make task info modals bigger

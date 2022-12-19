@@ -1,6 +1,6 @@
 import './App.scss';
 import Navbar from './components/Navbar/Navbar.js';
-import HomeBody from './components/HomeBody/HomeBody.js';
+import Home from './components/Home/Home';
 import { useState, useEffect, useRef } from 'react';
 import LoginPage from './components/LoginPage/LoginPage';
 
@@ -43,7 +43,7 @@ const App = () => {
 		return (
 			<div className="app">
 				<Navbar logOut={logOut} />
-				<HomeBody user={user} />
+				<Home user={user} />
 			</div>
 		);
 	}

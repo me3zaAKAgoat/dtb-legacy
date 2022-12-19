@@ -1,15 +1,15 @@
-import './HomeBody.scss';
+import './Home.scss';
 import TasksContainer from '../TasksContainer/TasksContainer.js';
 import NotesContainer from '../NotesContainer/NotesContainer.js';
 
-const HomeBody = ({ user }) => {
+const home = ({ user }) => {
 	return (
-		<div className="homeBody">
+		<div className="home">
 			<TasksContainer user={user} />
 			<div className="separatingVerticalLine"></div>
-			<NotesContainer user={user}/>
+			<NotesContainer user={user} />
 		</div>
 	);
 };
 
-export default HomeBody;
+export default home;
