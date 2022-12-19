@@ -78,3 +78,5 @@
 - [ ] fix modal behaviour when clicked outside of form
 - [ ] give descriptions for navbar items on long hover
 - [ ] make task info modals bigger
+- [ ] change overall font to a more flexible one (modern looking)
+- [ ] add hud of week and change time left to jst tasks

@@ -1,4 +1,4 @@
-$body-background-color: #1a1a1aff;
+$body-background-color: #1a1a1a;
 $secondary-color: #0b0b0bff;
 $text-color: #d9d9d9ff;
 $task-container-background: #414141ff;
@@ -84,7 +84,7 @@ $taskSectionItems-height: 60px;
 	background: rgba(0, 0, 0, 0.7);
 	width: 80%;
 	height: 80%;
-	border-radius: 0.4rem;
+	border-radius: 15px;
 
 	overflow: auto;
 	word-wrap: break-word;
@@ -131,7 +131,7 @@ $taskSectionItems-height: 60px;
 	height: $taskSectionItems-height;
 	min-height: $taskSectionItems-height;
 	width: 80%;
-	border-radius: 4px;
+	border-radius: 5px;
 	border: 1px solid $secondary-color;
 	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.78));
 	margin: 10px;
