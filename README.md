@@ -79,4 +79,9 @@
 - [ ] give descriptions for navbar items on long hover
 - [ ] make task info modals bigger
 - [ ] change overall font to a more flexible one (modern looking)
-- [ ] add hud of week and change time left to jst tasks
+- [ ] change time left to jst tasks title
+- [ ] add a color for thematic/visual identity
+- [ ] tasks should be fetched at home component level and not tasks container component and must be then stored in a useRef and passed to TasksContainer and updated with every successful debounce api call) ( and updated with every successful debounce api call
+      this useRef is what will allow for things like calculating time left and completion
+- [ ] figure out how to make an animated completion circle ![Heads Up Display](/READMEcontent/HUD.png)
+- [ ] add end of week button that renders a modal prompting the user to describe the week and then sends an api call to archive the ended week and create a stamp of it.
