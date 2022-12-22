@@ -70,7 +70,7 @@
 - [ ] rich text notes like discord parsing
 - [ ] make a valorant abilities HUD inspired HUD for week status
 - [ ] custom context menu on tasks
-- [ ] add possibility to delete tasks
+  - add possibility to delete tasks
 - [ ] add a percentage next to number input field in task container
 - [ ] only render expanded container when task is clicked
 - [ ] description filled on submission does not have to be non empty
@@ -81,7 +81,16 @@
 - [ ] change overall font to a more flexible one (modern looking)
 - [ ] change time left to jst tasks title
 - [ ] add a color for thematic/visual identity
-- [ ] tasks should be fetched at home component level and not tasks container component and must be then stored in a useRef and passed to TasksContainer and updated with every successful debounce api call) ( and updated with every successful debounce api call
-      this useRef is what will allow for things like calculating time left and completion
+- [ ] tasks should be fetched at home component level and not tasks container component and must be then stored in a useRef and passed to TasksContainer and updated with every successful debounce api call) ( and updated with every successful debounce api call. this useRef is what will allow for things like calculating time left and completion
+
+```js
+useEffect(() => {
+	ref.current = state;
+}, [state]);
+```
+
 - [ ] figure out how to make an animated completion circle ![Heads Up Display](/READMEcontent/HUD.png)
 - [ ] add end of week button that renders a modal prompting the user to describe the week and then sends an api call to archive the ended week and create a stamp of it.
+- [ ] learn about svgs and how to draw animations [svg circle animation](https://stackoverflow.com/questions/46142291/animating-react-native-svg-dash-length-of-a-circle)
+- [ ] sanitize the code for api calls on debounce
+- [ ] have settings open in a modal
