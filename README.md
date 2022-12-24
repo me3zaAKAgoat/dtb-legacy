@@ -94,3 +94,4 @@ useEffect(() => {
 - [ ] learn about svgs and how to draw animations [svg circle animation](https://stackoverflow.com/questions/46142291/animating-react-native-svg-dash-length-of-a-circle)
 - [ ] sanitize the code for api calls on debounce
 - [ ] have settings open in a modal
+- [ ] each task should have a colored health indicator that flickers when low
