@@ -1,10 +1,44 @@
 <h1 align="center"><strong>Digital Tasks Board</strong></h1>
 
+## To run the project in development mode
+
+1. clone the repostiory.
+
+2. Install all the dependencies using.
+
+```bash
+npm i
+```
+
+3. go into the dtb/dtb-backend directory and create the environment file.
+
+```bash
+#create a .env file in dtb/dtb-backend folder
+#copy this into it
+PORT = 3003
+MONGODB_URI = 'mongodb+srv://me3zaAKAgoat:XyzK5ynkLfBMDmjK@cluster0.i8hd6nc.mongodb.net/?retryWrites=true&w=majority'
+SECRET ='echoukri Dtb Website Key
+```
+
+4. turn on the backend server.
+
+```bash
+cd dtb-backend/
+npm run dev
+```
+
+5. run the frontend on the client
+
+```bash
+cd dtb-frontend/
+npm start
+```
+
 ## Services provided:
 
 - Good note-taking system/mind mapping system.
 - Quantifiable weekly performance tracking.
-- Statistics dashboard that has weeks with a pinned statement for each week.
+- Statistics dashboard that has weeks stamped with a note about overall emotional/mental state during that period.
 
 ## Skills I want to learn through the app:
 
@@ -12,9 +46,9 @@
 - How to make a Smoothly animated website.
 - How to implement a system where the state of the application is saved to the database as things change in real-time.
 - Write clean performant code and maintainable JS code.
-- Write readable code well documented and frequently commented code.
-- Learn how to manage git repositories, pulls, forks and merges.
-- How to make an app that uses modern techniques.
+- Write readable, well documented and frequently commented code.
+- Learn how to manage git repositories.
+- How to make an app that uses modern web dev techniques.
 - How to deploy and host a web app.
 - How to use electron to turn a web app into a desktop app.
 - Improve CSS skills.
