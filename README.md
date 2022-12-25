@@ -95,3 +95,5 @@ useEffect(() => {
 - [ ] sanitize the code for api calls on debounce
 - [ ] have settings open in a modal
 - [ ] each task should have a colored health indicator that flickers when low
+- [ ] make divs flicker on mistake of input
+- [ ] when update progress response is received tasks should be synced

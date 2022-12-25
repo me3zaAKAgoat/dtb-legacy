@@ -1,0 +1,61 @@
+$body-background-color: #1a1a1a;
+$secondary-color: #0b0b0bff;
+$text-color: #d9d9d9ff;
+$task-container-background: #414141ff;
+$task-container-background-focus: #2d2d2dff;
+$taskSectionItems-height: 60px;
+
+.percentage {
+  background: none;
+  // height: 158px;
+  // width: 158px;
+  display: grid;
+  place-items: center;
+  grid-template-areas: "inner-div";
+}
+
+.outer {
+  height: 98%;
+  width: 98%;
+  border-radius: 50%;
+  // border: 1px solid black;
+  border :none;
+  background-color: $task-container-background-focus;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* important part */
+  grid-area: inner-div;
+}
+.inner {
+  height: 69%;
+  width: 69%;
+  border-radius: 50%;
+  // border: 1px solid black;
+  border :none;
+  background: $task-container-background;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'SF PRO DISPLAY BOLD';
+  font-weight: bold;
+  /* important part */
+  grid-area: inner-div;
+  color: $text-color;
+}
+
+svg {
+  height: 99%;
+  width: 99%;
+  /* important part */
+  grid-area: inner-div;
+}
+circle {
+  fill: none;
+  stroke-linecap: round;
+  stroke: $text-color;
+  stroke-width: 12%;
+  transition: 2s 50ms cubic-bezier(0.445, 0.05, 0.55, 0.95) strokeDashoffset;
+}

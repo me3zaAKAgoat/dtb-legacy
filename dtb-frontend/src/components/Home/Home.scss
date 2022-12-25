@@ -21,10 +21,75 @@ $taskSectionItems-height: 60px;
 	background-color: $secondary-color;
 }
 
+
 .home {
-	background-color: $body-background-color;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	justify-content: center;
 	flex-grow: 1;
 	max-height: 100%;
+	background-color: $body-background-color;
+}
+
+.hudContainer {
+	background-color: $body-background-color;
+	height: 13%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.hud {
+	background-color: $task-container-background;
+	height: 60%;
+	width: 40%;
+	min-width: 400px;
+	border-radius: 10px;
+	margin: 10px 0px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
+	padding: 5px 10px;
+	border: none;
+	.completion {
+		width: 30%;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-around;
+		h3 {
+			font-size: 0.7rem;
+			color: $text-color;
+		}
+
+	}
+	.timeLeft {
+		width: 50%;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-around;
+		h3 {
+			font-size: 0.7rem;
+			color: $text-color;
+		}
+		h2 {
+			font-size: 1.1rem;
+			color: $text-color;
+			font-family: 'SF PRO DISPLAY BOLD';
+		}
+
+	}
+}
+
+.main {
+	background-color: $body-background-color;
+	max-height: 87%;
+	min-height: 87%;
+	border: none;
 	display: flex;
 	flex-direction: row;
 	align-items: stretch;
@@ -47,33 +112,33 @@ $taskSectionItems-height: 60px;
 }
 .noteTitle {
 	display: flex;
+	flex-direction: row;
 	justify-content: center;
-	align-items: center;
+	align-items: start;
 	width: 100%;
 	font-size: 1.1rem;
-	height: 75px;
-	max-height: 75px;
+	height: 30px;
 	font-family: 'SF PRO DISPLAY BOLD';
 	text-align: center;
 	color: $text-color;
+	margin: 2px 0px 10px;
 }
-.weekHUD {
+.tasksTitle {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	justify-content: center;
-	align-items: center;
+	align-items: start;
 	width: 100%;
 	font-size: 1.1rem;
-	min-height: 75px;
-	max-height: 75px;
+	height: 30px;
 	font-family: 'SF PRO DISPLAY BOLD';
-	text-align: left;
+	text-align: center;
 	color: $text-color;
+	margin: 2px 0px 10px;
 }
 
 .notesTextArea {
 	margin: 1px 10%;
-	height: 400px;
 	font-family: 'SF PRO DISPLAY REGULAR';
 	font-size: 1rem;
 	color: $text-color;
@@ -83,7 +148,7 @@ $taskSectionItems-height: 60px;
 	padding: 0.4rem 1rem;
 	background: rgba(0, 0, 0, 0.7);
 	width: 80%;
-	height: 80%;
+	height: 85%;
 	border-radius: 15px;
 
 	overflow: auto;
@@ -254,6 +319,8 @@ $taskSectionItems-height: 60px;
 .addTaskButton {
 	height: 0.9 * $taskSectionItems-height;
 	width: 0.9 * $taskSectionItems-height;
+	min-height: 0.9 * $taskSectionItems-height;
+	min-width: 0.9 * $taskSectionItems-height;
 	border-radius: 50%;
 	padding: 0;
 	border: none;

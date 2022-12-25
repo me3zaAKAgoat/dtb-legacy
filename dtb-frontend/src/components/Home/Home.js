@@ -1,15 +1,37 @@
 import './Home.scss';
 import TasksContainer from '../TasksContainer/TasksContainer.js';
 import NotesContainer from '../NotesContainer/NotesContainer.js';
+import WeekServices from '../../services/week.js';
+import Hud from '../Hud/Hud';
+import { useEffect, useState } from 'react';
 
-const home = ({ user }) => {
+const Home = ({ user }) => {
+	const [tasks, setTasks] = useState([]);
+
+	const fetchCurrentWeekTasks = async () => {
+		try {
+			const retrievedData = await WeekServices.getCurrentWeekTasks(user.token);
+			setTasks(retrievedData.tasks);
+		} catch (err) {
+			console.log(err);
+		}
+	};
+	useEffect(() => {
+		fetchCurrentWeekTasks();
+	}, []);
+
 	return (
 		<div className="home">
-			<TasksContainer user={user} />
-			<div className="separatingVerticalLine"></div>
-			<NotesContainer user={user} />
+			<div className="hudContainer">
+				<Hud className="hud" user={user} tasks={tasks} />
+			</div>
+			<div className="main">
+				<TasksContainer user={user} tasks={tasks} setTasks={setTasks} />
+				<div className="separatingVerticalLine"></div>
+				<NotesContainer user={user} />
+			</div>
 		</div>
 	);
 };
 
-export default home;
+export default Home;
