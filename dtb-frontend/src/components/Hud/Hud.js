@@ -8,11 +8,7 @@ import { useState, useEffect } from 'react';
 
 const Hud = ({ user, tasks }) => {
 	const [weekDue, setWeekDue] = useState(null);
-	const [completion, setCompletion] = useState(null);
-	const priorityMap = new Map();
-	priorityMap.set('low', 1);
-	priorityMap.set('medium', 4);
-	priorityMap.set('high', 7);
+
 
 	const fetchWeekDue = async () => {
 		try {
@@ -28,24 +24,11 @@ const Hud = ({ user, tasks }) => {
 		fetchWeekDue();
 	}, []);
 
-	useEffect(() => {
-		let total = 0;
-		let coeffTotal = 0;
-		for (const task of tasks) {
-			coeffTotal += priorityMap.get(task.priority);
-		}
-		for (const task of tasks) {
-			total += (task.progress * priorityMap.get(task.priority)) / coeffTotal;
-		}
-		setCompletion(total);
-		console.log(completion);
-	}, [tasks]);
-
 	return (
 		<div className="hud">
 			<div className="completion">
 				<h3>completion</h3>
-				<CompletionCircle sideSize={47} completion={Math.trunc(completion)} />
+				<CompletionCircle sideSize={47} tasks={tasks} />
 			</div>
 			<div className="timeLeft">
 				<h3>time left</h3>

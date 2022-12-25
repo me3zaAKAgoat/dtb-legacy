@@ -17,12 +17,31 @@ const debounce = (callback, wait) => {
 		}, wait);
 	};
 };
-const updateTaskProgress = debounce(async (token, task, progress) => {
-	await taskServices.updateProgress(token, {
-		id: task.id,
-		progress: progress,
-	});
-}, 2000);
+const updateTaskProgress = debounce(
+	async (token, task, progress, tasks, setTasks) => {
+		try {
+			await taskServices.updateProgress(token, {
+				id: task.id,
+				progress: progress,
+			});
+			setTasks(
+				tasks.map((mapTask) => {
+					if (mapTask.id === task.id) {
+						return {
+							...task,
+							progress: progress,
+						};
+					} else {
+						return mapTask;
+					}
+				})
+			);
+		} catch (err) {
+			console.log(err);
+		}
+	},
+	2000
+);
 
 const TaskContainer = ({
 	task,
@@ -32,6 +51,7 @@ const TaskContainer = ({
 	globalProgress,
 	setGlobalProgress,
 	tasks,
+	setTasks,
 }) => {
 	const [title, setTitle] = useState(task.title);
 	const [description, setDescription] = useState(task.description);
@@ -49,15 +69,7 @@ const TaskContainer = ({
 	};
 
 	useEffect(() => {
-		updateTaskProgress(
-			user.token,
-			task,
-			progress,
-			tasks,
-			setGlobalProgress,
-			globalProgress,
-			priorityMap
-		);
+		updateTaskProgress(user.token, task, progress, tasks, setTasks);
 	}, [progress]);
 
 	return (

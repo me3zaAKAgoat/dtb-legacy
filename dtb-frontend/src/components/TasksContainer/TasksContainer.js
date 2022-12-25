@@ -75,6 +75,7 @@ const TasksContainer = ({ user, tasks, setTasks }) => {
 						globalProgress={globalProgress}
 						setGlobalProgress={setGlobalProgress}
 						tasks={tasks}
+						setTasks={setTasks}
 					/>
 				))}
 				<button

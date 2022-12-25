@@ -1,12 +1,30 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './CompletionCircle.scss';
 
-const CompletionCircle = ({ sideSize, completion }) => {
+const CompletionCircle = ({ sideSize, tasks }) => {
+	const [completion, setCompletion] = useState(0);
+	const priorityMap = new Map();
+	priorityMap.set('low', 1);
+	priorityMap.set('medium', 4);
+	priorityMap.set('high', 7);
+
+	useEffect(() => {
+		let total = 0;
+		let coeffTotal = 0;
+		for (const task of tasks) {
+			coeffTotal += priorityMap.get(task.priority);
+		}
+		for (const task of tasks) {
+			total += (task.progress * priorityMap.get(task.priority)) / coeffTotal;
+		}
+		setCompletion(total);
+		console.log(completion);
+	}, [tasks]);
 	return (
 		<div className="percentage" style={{ width: sideSize, height: sideSize }}>
 			<div className="outer">
 				<div className="inner" style={{ fontSize: sideSize / 5 }}>
-					{completion}%
+					{Math.trunc(completion)}%
 				</div>
 			</div>
 

@@ -89,7 +89,7 @@ useEffect(() => {
 }, [state]);
 ```
 
-- [ ] figure out how to make an animated completion circle ![Heads Up Display](/READMEcontent/HUD.png)
+- [x] figure out how to make an animated completion circle ![Heads Up Display](/READMEcontent/HUD.png)
 - [ ] add end of week button that renders a modal prompting the user to describe the week and then sends an api call to archive the ended week and create a stamp of it.
 - [ ] learn about svgs and how to draw animations [svg circle animation](https://stackoverflow.com/questions/46142291/animating-react-native-svg-dash-length-of-a-circle)
 - [ ] sanitize the code for api calls on debounce
