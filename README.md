@@ -94,6 +94,7 @@ npm start
 - [ ] rework task containers ( laggy expansion animation ).
 - [ ] make a settings page.
 - [ ] make a signup page.
+- [ ] make a statistics page.
 - [ ] refractor spree to make code more readable and more performant.
 - [ ] make a purple theme.
 - [ ] thoroughly describe the flow/usage of the app.
@@ -102,20 +103,19 @@ npm start
 - [ ] figure out how keep data stored client side (pouchDB and nedb and sessionstorage and localstorage) https://stackoverflow.com/questions/28314368/how-to-maintain-state-after-a-page-refresh-in-react-js https://rxdb.info/quickstart.html
 - [ ] read chapter 7 react router
 - [ ] rich text notes like discord parsing
-- [ ] make a valorant abilities HUD inspired HUD for week status
+- [x] make a valorant abilities HUD inspired HUD for week status
 - [ ] custom context menu on tasks
   - add possibility to delete tasks
 - [ ] add a percentage next to number input field in task container
-- [ ] only render expanded container when task is clicked
 - [ ] description filled on submission does not have to be non empty
 - [ ] have a useref that stores all progresses to be used to count the global progress when needed
 - [ ] fix modal behaviour when clicked outside of form
 - [ ] give descriptions for navbar items on long hover
 - [ ] make task info modals bigger
 - [ ] change overall font to a more flexible one (modern looking)
-- [ ] change time left to jst tasks title
+- [x] change time left to jst tasks title
 - [ ] add a color for thematic/visual identity
-- [ ] tasks should be fetched at home component level and not tasks container component and must be then stored in a useRef and passed to TasksContainer and updated with every successful debounce api call) ( and updated with every successful debounce api call. this useRef is what will allow for things like calculating time left and completion
+- [x] tasks should be fetched at home component level and not tasks container component and passed to TasksContainer and updated with every successful debounce api call
 
 ```js
 useEffect(() => {
@@ -126,11 +126,12 @@ useEffect(() => {
 - [x] figure out how to make an animated completion circle ![Heads Up Display](/READMEcontent/HUD.png)
 - [ ] add end of week button that renders a modal prompting the user to describe the week and then sends an api call to archive the ended week and create a stamp of it.
 - [ ] learn about svgs and how to draw animations [svg circle animation](https://stackoverflow.com/questions/46142291/animating-react-native-svg-dash-length-of-a-circle)
-- [ ] sanitize the code for api calls on debounce
+- [x] sanitize the code for api calls on debounce
 - [ ] have settings open in a modal
 - [ ] each task should have a colored health indicator that flickers when low
 - [ ] make divs flicker on mistake of input
-- [ ] when update progress response is received tasks should be synced
-- [ ] fix WHY THE FUCK the user cant update two functions progresses without fucking up the state enitrely
+- [x] when update progress response is received tasks should be synced
+- [x] fix WHY THE FUCK the user cant update two functions progresses without fucking up the state enitrely
   - the usecallback function that enabels debouncing makes it so the memozoized function always has the state of the time it was initially rendered on so any changes to state made out of it will always result in older state of other tasks.
-  - so what  about giving up usecallback entirely and making the file scoped and not function scoped, well then the fuckign debounces override each other and only the latest debounce will make an api call
+  - so what about giving up usecallback entirely and making the file scoped and not function scoped, well then the fuckign debounces override each other and only the latest debounce will make an api call
+- [ ] make components that change in size be centered and not change height downwards but towrads all sides instead.
