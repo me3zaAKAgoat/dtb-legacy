@@ -20,6 +20,7 @@ const Home = ({ user }) => {
 		fetchCurrentWeekTasks();
 	}, []);
 
+	console.log(tasks, 'home');
 	return (
 		<div className="home">
 			<div className="hudContainer">

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import taskServices from '../../services/task';
 
 const taskContainerOpenStyleTransition = {
@@ -6,24 +6,75 @@ const taskContainerOpenStyleTransition = {
 	minHeight: '200px',
 };
 
-const debounce = (callback, wait) => {
-	let timeoutId = null;
+const TaskContainer = ({
+	task,
+	setTaskToEdit,
+	setFormToOpen,
+	user,
+	tasks,
+	setTasks,
+}) => {
+	const [title, setTitle] = useState(task.title);
+	const [description, setDescription] = useState(task.description);
+	const [progress, setProgress] = useState(task.progress);
+	const [open, setOpen] = useState(false);
+	const [refreshCompletion, setRefreshCompletion] = useState(0);
+	const firstRenderUE1 = useRef(true);
+	const firstRenderUE2 = useRef(true);
+	const priorityMap = new Map();
+	priorityMap.set('low', 1);
+	priorityMap.set('medium', 4);
+	priorityMap.set('high', 7);
 
-	return (...args) => {
-		clearTimeout(timeoutId);
-
-		timeoutId = setTimeout(() => {
-			callback(...args);
-		}, wait);
+	const handleProgressChange = (e) => {
+		if (e.target.valueAsNumber > 100) setProgress(100);
+		else if (0 > e.target.valueAsNumber) setProgress(0);
+		else setProgress(e.target.valueAsNumber);
 	};
-};
-const updateTaskProgress = debounce(
-	async (token, task, progress, tasks, setTasks) => {
-		try {
-			await taskServices.updateProgress(token, {
-				id: task.id,
-				progress: progress,
-			});
+
+	const debounce = useCallback((callback, wait) => {
+		let timeoutId = null;
+
+		return (...args) => {
+			clearTimeout(timeoutId);
+
+			timeoutId = setTimeout(() => {
+				callback(...args);
+			}, wait);
+		};
+	}, []);
+
+	const updateTaskProgress = useCallback(
+		debounce(async (token, task, progress, setTasks) => {
+			try {
+				console.log(
+					'attempting update_progress function',
+					`TITLE: ${task.title}`
+				);
+				await taskServices.updateProgress(token, {
+					id: task.id,
+					progress: progress,
+				});
+				setRefreshCompletion(!refreshCompletion);
+			} catch (err) {
+				console.log(err);
+			}
+		}, 2000),
+		[tasks, task]
+	);
+
+	useEffect(() => {
+		if (firstRenderUE1.current) {
+			firstRenderUE1.current = !firstRenderUE1.current;
+		} else {
+			updateTaskProgress(user.token, task, progress, setTasks);
+		}
+	}, [progress]);
+
+	useEffect(() => {
+		if (firstRenderUE2.current) {
+			firstRenderUE2.current = !firstRenderUE2.current;
+		} else {
 			setTasks(
 				tasks.map((mapTask) => {
 					if (mapTask.id === task.id) {
@@ -36,41 +87,8 @@ const updateTaskProgress = debounce(
 					}
 				})
 			);
-		} catch (err) {
-			console.log(err);
 		}
-	},
-	2000
-);
-
-const TaskContainer = ({
-	task,
-	setTaskToEdit,
-	setFormToOpen,
-	user,
-	globalProgress,
-	setGlobalProgress,
-	tasks,
-	setTasks,
-}) => {
-	const [title, setTitle] = useState(task.title);
-	const [description, setDescription] = useState(task.description);
-	const [progress, setProgress] = useState(task.progress);
-	const [open, setOpen] = useState(false);
-	const priorityMap = new Map();
-	priorityMap.set('low', 1);
-	priorityMap.set('medium', 4);
-	priorityMap.set('high', 7);
-
-	const handleProgressChange = (e) => {
-		if (e.target.value > 100) setProgress(100);
-		else if (0 > e.target.value) setProgress(0);
-		else setProgress(e.target.value);
-	};
-
-	useEffect(() => {
-		updateTaskProgress(user.token, task, progress, tasks, setTasks);
-	}, [progress]);
+	}, [refreshCompletion]);
 
 	return (
 		<div
@@ -132,9 +150,9 @@ const TaskContainer = ({
 						onChange={handleProgressChange}
 					/>
 					<input
+						type="number"
 						min={0}
 						max={100}
-						type="number"
 						value={progress}
 						onChange={handleProgressChange}
 					></input>

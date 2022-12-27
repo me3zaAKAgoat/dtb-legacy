@@ -18,7 +18,6 @@ const CompletionCircle = ({ sideSize, tasks }) => {
 			total += (task.progress * priorityMap.get(task.priority)) / coeffTotal;
 		}
 		setCompletion(total);
-		console.log(completion);
 	}, [tasks]);
 	return (
 		<div className="percentage" style={{ width: sideSize, height: sideSize }}>

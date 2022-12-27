@@ -131,3 +131,6 @@ useEffect(() => {
 - [ ] each task should have a colored health indicator that flickers when low
 - [ ] make divs flicker on mistake of input
 - [ ] when update progress response is received tasks should be synced
+- [ ] fix WHY THE FUCK the user cant update two functions progresses without fucking up the state enitrely
+  - the usecallback function that enabels debouncing makes it so the memozoized function always has the state of the time it was initially rendered on so any changes to state made out of it will always result in older state of other tasks.
+  - so what  about giving up usecallback entirely and making the file scoped and not function scoped, well then the fuckign debounces override each other and only the latest debounce will make an api call

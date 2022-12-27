@@ -9,7 +9,6 @@ import { useState, useEffect } from 'react';
 const Hud = ({ user, tasks }) => {
 	const [weekDue, setWeekDue] = useState(null);
 
-
 	const fetchWeekDue = async () => {
 		try {
 			const retrievedData = await WeekServices.getCurrentWeekTasks(user.token);
@@ -24,14 +23,16 @@ const Hud = ({ user, tasks }) => {
 		fetchWeekDue();
 	}, []);
 
+	console.log(tasks, 'hud');
+
 	return (
 		<div className="hud">
 			<div className="completion">
-				<h3>completion</h3>
+				<h3>Completion</h3>
 				<CompletionCircle sideSize={47} tasks={tasks} />
 			</div>
 			<div className="timeLeft">
-				<h3>time left</h3>
+				<h3>Time left</h3>
 				<h2>
 					{weekDue !== null
 						? ` ${Math.floor(
