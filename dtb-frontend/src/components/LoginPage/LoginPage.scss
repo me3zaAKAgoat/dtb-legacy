@@ -16,20 +16,26 @@ $task-container-background: #282828;
 	span {
 		margin-top: 35px;
 	}
-	form {
+	.formWrapper {
 		background-color: $task-container-background;
 		border-radius: 2px;
-		height: 350px;
+		height: 380px;
 		width: 400px;
 		margin: auto;
 		margin-top: 50px;
 		display: flex;
 		flex-direction: column;
-		justify-content: start;
+		justify-content: space-between;
 		align-items: center;
 		box-shadow: 0px 0px 20px $secondary-color;
+		form {
+			display: flex;
+			flex-direction: column;
+			justify-content: start;
+			align-items: center;
+		}
 		.signUpRedirectionButton {
-			margin: 10px;
+			margin: 15px 10px 20px 10px;
 			font-family: inherit;
 			color: $text-color;
 			font-size: 1.05rem;
@@ -62,7 +68,7 @@ $task-container-background: #282828;
 		button {
 			margin: 10px;
 			margin-top: 30px;
-			margin-bottom: 20px;
+			margin-bottom: 10px;
 			border-radius: 3px;
 			height: 45px;
 			width: 100px;
@@ -83,7 +89,7 @@ $task-container-background: #282828;
 			height: 30px;
 			width: 100%;
 			vertical-align: middle;
-			line-height: 30px;
+			line-height: 25px;
 		}
 	}
 }

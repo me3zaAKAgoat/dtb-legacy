@@ -51,28 +51,37 @@ const LoginPage = ({ setUser }) => {
 			<span>
 				<img src={logo} className="" />
 			</span>
-			<form onSubmit={loginHandler}>
-				<button className="signUpRedirectionButton">Sign up?</button>
-				<input
-					type="text"
-					value={usernameField}
-					onChange={(event) => {
-						setUsernameField(event.target.value);
+			<div className="formWrapper">
+				<button
+					className="signUpRedirectionButton"
+					onClick={(e) => {
+						e.preventDefault();
 					}}
-					placeholder="Username"
-				></input>
+				>
+					Sign up?
+				</button>
+				<form onSubmit={loginHandler}>
+					<input
+						type="text"
+						value={usernameField}
+						onChange={(event) => {
+							setUsernameField(event.target.value);
+						}}
+						placeholder="Username"
+					></input>
 
-				<input
-					type="password"
-					value={passwordField}
-					onChange={(event) => {
-						setPasswordFiedl(event.target.value);
-					}}
-					placeholder="Password"
-				></input>
-				<button type="submit">Login</button>
+					<input
+						type="password"
+						value={passwordField}
+						onChange={(event) => {
+							setPasswordFiedl(event.target.value);
+						}}
+						placeholder="Password"
+					></input>
+					<button type="submit">Login</button>
+				</form>
 				<LoginProcessIndicator errorMessage={errorMessage} />
-			</form>
+			</div>
 		</div>
 	);
 };

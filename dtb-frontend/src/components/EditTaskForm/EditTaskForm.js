@@ -14,7 +14,7 @@ const EditTaskForm = ({
 	const [descriptionField, setDescriptionField] = useState(
 		taskToEdit.description
 	);
-	const [priorityField, setPriorityField] = useState('');
+	const [priorityField, setPriorityField] = useState(taskToEdit.priority);
 	const [editFormSubmitted, setEditFormSubmitted] = useState(false);
 
 	const handleNameField = (e) => {
@@ -117,6 +117,7 @@ const EditTaskForm = ({
 					name="priority"
 					value="high"
 					onChange={handleRadioChange}
+					checked={priorityField === 'high'}
 				/>
 				<label htmlFor="medium">medium</label>
 				<input
@@ -124,6 +125,7 @@ const EditTaskForm = ({
 					name="priority"
 					value="medium"
 					onChange={handleRadioChange}
+					checked={priorityField === 'medium'}
 				/>
 				<label htmlFor="low">low</label>
 				<input
@@ -131,6 +133,7 @@ const EditTaskForm = ({
 					name="priority"
 					value="low"
 					onChange={handleRadioChange}
+					checked={priorityField === 'low'}
 				/>
 			</div>
 			<div className="buttonsContainer">

@@ -42,6 +42,8 @@ npm start
 
 ## Skills I want to learn through the app:
 
+🔝 [Back To Top Of Readme](https://github.com/me3zaAKAgoat/dtb#digital-tasks-board)
+
 - Learn and master ReactJS.
 - How to make a Smoothly animated website.
 - How to implement a system where the state of the application is saved to the database as things change in real-time.
@@ -62,6 +64,8 @@ npm start
 - When a week is ended the current week id of the user is turned to Null.
 
 ## The database structures:
+
+🔝 [Back To Top Of Readme](https://github.com/me3zaAKAgoat/dtb#digital-tasks-board)
 
 - Collections: Tasks, Weeks, Users.
 - Tasks belong to Weeks and Users.
@@ -129,9 +133,13 @@ useEffect(() => {
 - [x] sanitize the code for api calls on debounce
 - [ ] have settings open in a modal
 - [ ] each task should have a colored health indicator that flickers when low
-- [ ] make divs flicker on mistake of input
+- [ ] make divs flicker on validation error.
 - [x] when update progress response is received tasks should be synced
 - [x] fix WHY THE FUCK the user cant update two functions progresses without fucking up the state enitrely
   - the usecallback function that enabels debouncing makes it so the memozoized function always has the state of the time it was initially rendered on so any changes to state made out of it will always result in older state of other tasks.
   - so what about giving up usecallback entirely and making the file scoped and not function scoped, well then the fuckign debounces override each other and only the latest debounce will make an api call
 - [ ] make components that change in size be centered and not change height downwards but towrads all sides instead.
+- [ ] apply a skeleton component to every component that makes an inital fetch, so that this skeleton component only renders the wanted component after a successful fetch. (will enable moving tasks state to tasks section hopefully).
+- [ ] replace window alerts and confirms with custom modals.
+
+🔝 [Back To Top Of Readme](https://github.com/me3zaAKAgoat/dtb#digital-tasks-board)
