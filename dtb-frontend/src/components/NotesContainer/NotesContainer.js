@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import WeekServices from '../../services/week.js';
 
 const debounce = (callback, wait) => {
@@ -20,26 +20,27 @@ const updateNotes = debounce(async (token, notes) => {
 
 const NotesContainer = ({ user }) => {
 	const [notes, setNotes] = useState('');
-
+	const firstRender = useRef(true);
 	const handleNotesChange = (e) => {
 		setNotes(e.target.value);
 	};
 
-	const fetchCurrentWeekNotes = async () => {
+	const fetchCurrentWeekNotes = useCallback(async () => {
 		try {
 			const retrievedData = await WeekServices.getCurrentWeekNotes(user.token);
 			setNotes(retrievedData.notes);
 		} catch (err) {
 			console.log(err);
 		}
-	};
+	}, []);
 
 	useEffect(() => {
 		fetchCurrentWeekNotes();
 	}, []);
 
 	useEffect(() => {
-		updateNotes(user.token, notes);
+		if (firstRender.current) firstRender.current = !firstRender.current;
+		else updateNotes(user.token, notes);
 	}, [notes]);
 
 	return (

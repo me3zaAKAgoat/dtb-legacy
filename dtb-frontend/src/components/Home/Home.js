@@ -3,19 +3,20 @@ import TasksContainer from '../TasksContainer/TasksContainer.js';
 import NotesContainer from '../NotesContainer/NotesContainer.js';
 import WeekServices from '../../services/week.js';
 import Hud from '../Hud/Hud';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 const Home = ({ user }) => {
 	const [tasks, setTasks] = useState([]);
 
-	const fetchCurrentWeekTasks = async () => {
+	const fetchCurrentWeekTasks = useCallback(async () => {
 		try {
 			const retrievedData = await WeekServices.getCurrentWeekTasks(user.token);
 			setTasks(retrievedData.tasks);
 		} catch (err) {
 			console.log(err);
 		}
-	};
+	}, []);
+
 	useEffect(() => {
 		fetchCurrentWeekTasks();
 	}, []);
