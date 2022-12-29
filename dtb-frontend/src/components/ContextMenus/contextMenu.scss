@@ -1,0 +1,44 @@
+$nav-background-color: #0b0b0b;
+$text-color: #d9d9d9;
+
+.contextMenu {
+        position: absolute;
+        width: 125px;
+        height: 140px;
+        background-color: $nav-background-color;
+        border: 0.1px solid #d9d9d91a;
+        border-radius: 4px;
+        padding: 1.4rem;
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: space-evenly;
+        transition-delay: 25ms;
+        transition-duration: 70ms;
+        transition-timing-function: ease-in;
+        transition-property: opacity, visibility;
+        z-index: 1;
+        button {
+            font-family: 'SF PRO DISPLAY BOLD';
+            color: $text-color;
+            font-size: 1rem;
+            background: none;
+            border: none;
+            margin: 0;
+            padding: 0;
+            cursor: pointer;
+            z-index: 2;
+        }
+        button:hover {
+            filter: brightness(50%);
+        }
+        hr {
+            background-color: #d9d9d91a;
+            width: 70%;
+            border: 0.1px solid #d9d9d91a;
+        }
+    
+}

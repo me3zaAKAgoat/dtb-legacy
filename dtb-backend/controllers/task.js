@@ -4,6 +4,7 @@ const Week = require('../models/week.js');
 const Task = require('../models/task.js');
 const jwt = require('jsonwebtoken');
 const config = require('../utils/config.js');
+const task = require('../models/task.js');
 
 //add a task
 taskRouter.post('/addTask/:id', async (req, res) => {
@@ -11,6 +12,7 @@ taskRouter.post('/addTask/:id', async (req, res) => {
 		const token = req.token;
 		jwt.verify(token, config.SECRET);
 
+		//id is current weeks id
 		const week = await Week.findById(req.params.id);
 
 		const task = new Task({
@@ -36,6 +38,26 @@ taskRouter.post('/addTask/:id', async (req, res) => {
 		return res.status(500).json({ erro: err });
 	}
 });
+
+// //delete
+// taskRouter.delete('/deleteTask', async (req, res) => {
+// 	try {
+// 		const token = req.token;
+// 		jwt.verify(token, config.SECRET);
+
+// 		const week = await Week.findById(req.body.weekId);
+
+// 		/*on scalabaility of instance.array.pull ->
+// 		that wouldn't be very scalable. You could have collisions of instances, if more than one of the same call were fired at the same time.*/
+// 		await week.tasks.pull(req.body.taskId);
+// 		await task.findByIdAndRemove(req.body.taskId);
+
+// 		return res.status(200).json({});
+// 	} catch (err) {
+// 		console.log('task router', err);
+// 		return res.status(500).json({ erro: err });
+// 	}
+// });
 
 //edit task
 taskRouter.put('/editTask', async (req, res) => {

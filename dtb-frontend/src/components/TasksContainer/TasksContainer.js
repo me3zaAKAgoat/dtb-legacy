@@ -59,7 +59,6 @@ const FormRenderingComponent = ({
 const TasksContainer = ({ user, tasks, setTasks }) => {
 	const [formToOpen, setFormToOpen] = useState(null);
 	const [taskToEdit, setTaskToEdit] = useState(null);
-	const [globalProgress, setGlobalProgress] = useState(0);
 
 	return (
 		<div className="tasksContainer">
@@ -72,8 +71,6 @@ const TasksContainer = ({ user, tasks, setTasks }) => {
 						setTaskToEdit={setTaskToEdit}
 						setFormToOpen={setFormToOpen}
 						user={user}
-						globalProgress={globalProgress}
-						setGlobalProgress={setGlobalProgress}
 						tasks={tasks}
 						setTasks={setTasks}
 					/>

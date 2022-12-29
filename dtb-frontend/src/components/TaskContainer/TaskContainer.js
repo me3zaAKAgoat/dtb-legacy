@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback, useRef } from 'react';
+// import TaskContextMenu from '../ContextMenus/TaskContextMenu';
 import taskServices from '../../services/task';
 
 const taskContainerOpenStyleTransition = {
@@ -19,6 +20,11 @@ const TaskContainer = ({
 	const [progress, setProgress] = useState(task.progress);
 	const [open, setOpen] = useState(false);
 	const [refreshCompletion, setRefreshCompletion] = useState(0);
+	// const [contextMenu, setContextMenu] = useState({
+	// 	show: false,
+	// 	x: null,
+	// 	y: null,
+	// });
 	const firstRenderUE1 = useRef(true);
 	const firstRenderUE2 = useRef(true);
 	const priorityMap = new Map();
@@ -44,8 +50,13 @@ const TaskContainer = ({
 		};
 	}, []);
 
+	// const handleContextMenu = useCallback((e) => {
+	// 	e.preventDefault();
+	// 	setContextMenu({ show: true, x: e.pageX, y: e.pageY });
+	// }, []);
+
 	const updateTaskProgress = useCallback(
-		debounce(async (token, task, progress, setTasks) => {
+		debounce(async (token, task, progress) => {
 			try {
 				console.log(
 					'attempting update_progress function',
@@ -94,7 +105,13 @@ const TaskContainer = ({
 		<div
 			className="taskContainer"
 			style={open ? taskContainerOpenStyleTransition : {}}
+			// onContextMenu={handleContextMenu}
 		>
+			{/* <TaskContextMenu
+				contextMenu={contextMenu}
+				setContextMenu={setContextMenu}
+				id={task.id}
+			/> */}
 			<button
 				onClick={() => {
 					setOpen(!open);
