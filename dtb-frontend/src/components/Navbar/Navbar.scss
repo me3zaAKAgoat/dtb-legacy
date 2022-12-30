@@ -64,7 +64,7 @@ ul {
 			transition-delay: 25ms;
 			transition-duration: 70ms;
 			transition-timing-function: ease-in-out;
-			transition-property: filter, height;
+			transition-property: filter, height, transform;
 			text-align: center;
 			svg {
 				width: 100%;
@@ -78,12 +78,14 @@ ul {
 			height: 74%;
 		}
 		.homeButton:hover {
+			transform: translateY(-1%);
 			height: 78%;
 		}
 		.statisticsButton {
 			height: 68%;
 		}
 		.statisticsButton:hover {
+			transform: translateY(-5%);
 			height: 80%;
 		}
 		/*fix how the height changes into from center not from top*/

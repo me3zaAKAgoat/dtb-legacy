@@ -74,6 +74,9 @@ const TasksContainer = ({ user, tasks, setTasks }) => {
 					contextMenu={contextMenu}
 					setContextMenu={setContextMenu}
 					setFormToOpen={setFormToOpen}
+					user={user}
+					tasks={tasks}
+					setTasks={setTasks}
 				/>
 				{tasks.map((task) => (
 					<TaskContainer

@@ -39,25 +39,27 @@ taskRouter.post('/addTask/:id', async (req, res) => {
 	}
 });
 
-// //delete
-// taskRouter.delete('/deleteTask', async (req, res) => {
-// 	try {
-// 		const token = req.token;
-// 		jwt.verify(token, config.SECRET);
+//delete
+taskRouter.delete('/deleteTask', async (req, res) => {
+	try {
+		const token = req.token;
+		const decodedToken = jwt.verify(token, config.SECRET);
+		const user = await User.findById(decodedToken.id);
 
-// 		const week = await Week.findById(req.body.weekId);
+		const week = await Week.findById(user.currentWeek);
 
-// 		/*on scalabaility of instance.array.pull ->
-// 		that wouldn't be very scalable. You could have collisions of instances, if more than one of the same call were fired at the same time.*/
-// 		await week.tasks.pull(req.body.taskId);
-// 		await task.findByIdAndRemove(req.body.taskId);
+		/*on scalabaility of instance.array.pull ->
+		that wouldn't be very scalable. You could have collisions of instances, if more than one of the same call were fired at the same time.*/
 
-// 		return res.status(200).json({});
-// 	} catch (err) {
-// 		console.log('task router', err);
-// 		return res.status(500).json({ erro: err });
-// 	}
-// });
+		await week.tasks.pull(req.body.taskId);
+		await task.findByIdAndRemove(req.body.taskId);
+
+		return res.status(200).json({ deletedTaskId: req.body.taskId });
+	} catch (err) {
+		console.log('task router', err);
+		return res.status(500).json({ erro: err });
+	}
+});
 
 //edit task
 taskRouter.put('/editTask', async (req, res) => {

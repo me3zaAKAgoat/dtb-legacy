@@ -69,7 +69,7 @@ const TaskContainer = ({
 	const handleContextMenu = useCallback((e) => {
 		e.preventDefault();
 		setTaskToEdit(task);
-		setContextMenu({ show: true, x: e.pageX, y: e.pageY, id: null });
+		setContextMenu({ show: true, x: e.pageX, y: e.pageY, id: task.id });
 	}, []);
 
 	useEffect(() => {

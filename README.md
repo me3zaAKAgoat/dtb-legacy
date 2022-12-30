@@ -141,5 +141,6 @@ useEffect(() => {
 - [ ] make components that change in size be centered and not change height downwards but towrads all sides instead.
 - [ ] apply a skeleton component to every component that makes an inital fetch, so that this skeleton component only renders the wanted component after a successful fetch. (will enable moving tasks state to tasks section hopefully).
 - [ ] replace window alerts and confirms with custom modals.
+- [ ] figure out how to set custom context menu to base element to something other than button.
 
 🔝 [Back To Top Of Readme](https://github.com/me3zaAKAgoat/dtb#digital-tasks-board)
