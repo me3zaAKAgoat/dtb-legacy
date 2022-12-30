@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import TaskContainer from '../TaskContainer/TaskContainer.js';
 import NewTaskForm from '../NewTaskForm/NewTaskForm.js';
 import EditTaskForm from '../EditTaskForm/EditTaskForm.js';
+import TaskContextMenu from '../ContextMenus/TaskContextMenu';
 
 const FormRenderingComponent = ({
 	formToOpen,
@@ -59,11 +60,21 @@ const FormRenderingComponent = ({
 const TasksContainer = ({ user, tasks, setTasks }) => {
 	const [formToOpen, setFormToOpen] = useState(null);
 	const [taskToEdit, setTaskToEdit] = useState(null);
-
+	const [contextMenu, setContextMenu] = useState({
+		show: false,
+		x: null,
+		y: null,
+		id: null,
+	});
 	return (
 		<div className="tasksContainer">
 			<div className="tasksTitle">Tasks</div>
 			<div className="tasksSection">
+				<TaskContextMenu
+					contextMenu={contextMenu}
+					setContextMenu={setContextMenu}
+					setFormToOpen={setFormToOpen}
+				/>
 				{tasks.map((task) => (
 					<TaskContainer
 						key={task.title + task.id}
@@ -73,6 +84,8 @@ const TasksContainer = ({ user, tasks, setTasks }) => {
 						user={user}
 						tasks={tasks}
 						setTasks={setTasks}
+						contextMenu={contextMenu}
+						setContextMenu={setContextMenu}
 					/>
 				))}
 				<button

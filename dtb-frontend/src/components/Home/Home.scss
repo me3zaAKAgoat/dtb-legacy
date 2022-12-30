@@ -186,10 +186,11 @@ $taskSectionItems-height: 60px;
 	top: 5px;
 	max-height: 100%;
 	overflow-y: overlay;
+	overflow-x: hidden;
 }
 
 .taskContainer {
-	overflow: hidden;
+	overflow: visible;
 	background-color: $task-container-background;
 	height: $taskSectionItems-height;
 	min-height: $taskSectionItems-height;
