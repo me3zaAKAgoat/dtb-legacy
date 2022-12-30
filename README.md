@@ -138,9 +138,10 @@ useEffect(() => {
 - [x] fix WHY THE FUCK the user cant update two functions progresses without fucking up the state enitrely
   - the usecallback function that enabels debouncing makes it so the memozoized function always has the state of the time it was initially rendered on so any changes to state made out of it will always result in older state of other tasks.
   - so what about giving up usecallback entirely and making the file scoped and not function scoped, well then the fuckign debounces override each other and only the latest debounce will make an api call
-- [ ] make components that change in size be centered and not change height downwards but towrads all sides instead.
+- [x] make buttons that change in size be centered and not change height downwards but towrads all sides instead.
 - [ ] apply a skeleton component to every component that makes an inital fetch, so that this skeleton component only renders the wanted component after a successful fetch. (will enable moving tasks state to tasks section hopefully).
 - [ ] replace window alerts and confirms with custom modals.
 - [ ] figure out how to set custom context menu to base element to something other than button.
+- [ ] fix and rework the task containers componenets.
 
 🔝 [Back To Top Of Readme](https://github.com/me3zaAKAgoat/dtb#digital-tasks-board)

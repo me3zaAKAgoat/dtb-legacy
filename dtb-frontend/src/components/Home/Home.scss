@@ -200,10 +200,10 @@ $taskSectionItems-height: 60px;
 	border: 1px solid $secondary-color;
 	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.78));
 	margin: 10px;
-	transition-property: min-height;
 	transition-delay: 10ms;
 	transition-duration: 170ms;
 	transition-timing-function: ease-in-out;
+	transition-property: min-height;
 	display: flex;
 	flex-direction: column;
 	align-items: stretch;
@@ -246,6 +246,7 @@ $taskSectionItems-height: 60px;
 		background-color: $task-container-background-focus;
 	}
 }
+
 .expandedContainer {
 	flex-grow: 1;
 	visibility: 0;
@@ -337,7 +338,7 @@ $taskSectionItems-height: 60px;
 	transition-delay: 10ms;
 	transition-duration: 50ms;
 	transition-timing-function: ease-in;
-	transition-property: background-color, height, width, transform;
+	transition-property: background-color, height, width;
 	svg {
 		position: absolute;
 		height: 100%;
@@ -349,7 +350,7 @@ $taskSectionItems-height: 60px;
 	background-color: rgba(255, 255, 255, 0.04);
 	height: 0.93 * $taskSectionItems-height;
 	width: 0.93 * $taskSectionItems-height;
-	transform: translateY(-1%);
+	// transform: translateY(-1%);
 	svg {
 		filter: brightness(90%);
 	}
