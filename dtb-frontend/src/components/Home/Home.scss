@@ -201,8 +201,8 @@ $taskSectionItems-height: 60px;
 	border: 1px solid #3d3d3d;
 	filter: drop-shadow(0px 8px 8px rgba(0, 0, 0, 0.7));
 	margin: 10px;
-	transition-delay: 10ms;
-	transition-duration: 170ms;
+	transition-delay: 50ms;
+	transition-duration: 200ms;
 	transition-timing-function: ease-in-out;
 	transition-property: min-height;
 	display: flex;
@@ -242,9 +242,9 @@ $taskSectionItems-height: 60px;
 		transition-property: background-color;
 		transition-timing-function: ease-in;
 	}
-	button:hover {
-		background-color: $task-container-background-focus;
-	}
+}
+.taskContainer:hover {
+	background-color: $task-container-background-focus;
 }
 
 .expandedContainer {

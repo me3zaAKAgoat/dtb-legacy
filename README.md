@@ -144,7 +144,7 @@ useEffect(() => {
 - [ ] work on custom skeleton component to every component that makes an inital fetch, so that this skeleton component only renders the wanted component after a successful fetch. (will enable moving tasks state to tasks section hopefully).
 - [ ] replace window alerts and confirms with custom modals.
 - [ ] figure out how to set custom context menu to base element to something other than button.
-- [ ] fix and rework the task containers componenets.
+- [ ] fix and rework singular tasks components.
 - [ ] add a indicator of which page the user is on.
 - [ ] make function wrappers for every module that has an action that necessitates a follow up, for avoiding duplication and all the issues that stem from it.
 
