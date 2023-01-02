@@ -2,7 +2,7 @@ import { useEffect, useState, useCallback, useRef } from 'react';
 import taskServices from '../../services/task';
 
 const taskContainerOpenStyleTransition = {
-	backgroundColor: '2d2d2d',
+	backgroundColor: '454545',
 	minHeight: '200px',
 };
 

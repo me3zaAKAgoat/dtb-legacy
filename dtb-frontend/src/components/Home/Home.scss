@@ -1,8 +1,8 @@
 $body-background-color: #1a1a1a;
 $secondary-color: #0b0b0bff;
 $text-color: #d9d9d9ff;
-$task-container-background: #414141ff;
-$task-container-background-focus: #2d2d2dff;
+$task-container-background: #282828;
+$task-container-background-focus: #454545;
 $taskSectionItems-height: 60px;
 
 ::-webkit-scrollbar-track {
@@ -46,6 +46,7 @@ $taskSectionItems-height: 60px;
 	height: 60%;
 	min-width: 400px;
 	max-width: 400px;
+	border: 1px solid #393939;
 	border-radius: 10px;
 	margin: 10px 0px;
 	display: flex;
@@ -53,7 +54,6 @@ $taskSectionItems-height: 60px;
 	align-items: center;
 	justify-content: space-around;
 	padding: 5px 10px;
-	border: none;
 	.completion {
 		width: 30%;
 		display: flex;
@@ -95,10 +95,11 @@ $taskSectionItems-height: 60px;
 }
 
 .separatingVerticalLine {
-	max-width: 1.5px;
-	min-width: 1.5px;
-	margin: 4% 0%;
-	height: 85%;
+	max-width: 2px;
+	min-width: 2px;
+	margin-top: 1%;
+	margin-bottom: 4%;
+	height: 95%;
 	background-color: $secondary-color;
 	flex-grow: 1;
 }
@@ -144,7 +145,7 @@ $taskSectionItems-height: 60px;
 	border: none;
 	line-height: 1.8;
 	padding: 0.4rem 1rem;
-	background: rgba(0, 0, 0, 0.7);
+	background: rgba(0, 0, 0, 0.4);
 	width: 80%;
 	height: 85%;
 	border-radius: 15px;
@@ -190,15 +191,15 @@ $taskSectionItems-height: 60px;
 }
 
 .taskContainer {
-	overflow: visible;
+	overflow: hidden;
 	background-color: $task-container-background;
 	height: $taskSectionItems-height;
 	min-height: $taskSectionItems-height;
 	width: 80%;
 	max-width: 600px;
 	border-radius: 5px;
-	border: 1px solid $secondary-color;
-	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.78));
+	border: 1px solid #3d3d3d;
+	filter: drop-shadow(0px 8px 8px rgba(0, 0, 0, 0.7));
 	margin: 10px;
 	transition-delay: 10ms;
 	transition-duration: 170ms;
@@ -229,7 +230,6 @@ $taskSectionItems-height: 60px;
 		height: $taskSectionItems-height;
 		width: 100%;
 		background: none;
-		border-radius: 5px;
 		border: none;
 		margin: 0;
 		padding: 0;
