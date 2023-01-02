@@ -9,28 +9,29 @@ $taskSectionItems-height: 60px;
 	background: none;
 	// height: 158px;
 	// width: 158px;
-	display: grid;
-	place-items: center;
-	grid-template-areas: 'inner-div';
 }
 
 .outer {
-	height: 98%;
-	width: 98%;
+	height: 100%;
+	width: 100%;
 	border-radius: 50%;
 	// border: 1px solid black;
 	border: none;
+	// background: none;
+	overflow: hidden;
 	background-color: $task-container-background-focus;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	/* important part */
-	grid-area: inner-div;
+	display: grid;
+	place-items: center;
+	grid-template-areas: 'inner-div';
 }
 .inner {
-	height: 69%;
-	width: 69%;
+	height: 71%;
+	width: 71%;
 	border-radius: 50%;
 	// border: 1px solid black;
 	border: none;
@@ -52,11 +53,12 @@ svg {
 	/* important part */
 	grid-area: inner-div;
 }
+
 circle {
 	fill: none;
 	stroke-linecap: round;
 	stroke: $text-color;
-	stroke-width: 12%;
+	stroke-width: 13%;
 	transition: 2s 50ms ease-in-out;
 	transition-property: stroke-dashoffset;
 }

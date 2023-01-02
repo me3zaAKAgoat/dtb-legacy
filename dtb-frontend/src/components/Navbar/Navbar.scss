@@ -48,13 +48,14 @@ ul {
 	padding: 0;
 	list-style: none;
 	li {
-		margin-top: 30px;
+		margin-top: 40px;
 		margin-bottom: 10px;
 		height: 40px;
 		width: 100%;
 		button {
 			font-family: 'SF PRO DISPLAY BOLD';
 			width: 100%;
+			height: 68%;
 			padding: 0 10%;
 			color: $text-color;
 			font-size: 1.3rem;
@@ -67,6 +68,7 @@ ul {
 			transition-property: filter, height, transform;
 			text-align: center;
 			svg {
+				filter: invert(100%);
 				width: 100%;
 				height: 100%;
 			}
@@ -74,15 +76,9 @@ ul {
 		button:hover {
 			filter: brightness(50%);
 		}
-		.homeButton {
-			height: 72%;
-		}
 		.homeButton:hover {
-			transform: translateY(-1%);
-			height: 78%;
-		}
-		.statisticsButton {
-			height: 68%;
+			transform: translateY(-7%);
+			height: 85%;
 		}
 		.statisticsButton:hover {
 			transform: translateY(-5%);
