@@ -62,6 +62,11 @@ npm start
 - Weeks may be terminated before the 7-day mark is reached
 - When the app has been opened for the first time it should look for the current week hooked to the logged-in user then fetch all the tasks and load them to the UI.
 - When a week is ended the current week id of the user is turned to Null.
+- Statistics page will provide:
+  - graph showing the progress through the weeks.
+  - way to access frozen state (read-only) of older weeks.
+  - emotional/mental well-being graph pulled from stamp maker at end of week.
+  -
 
 ## The database structures:
 
@@ -91,32 +96,29 @@ npm start
 ## Tasks
 
 - [ ] thoroughly describe the automatic synchronization system.
-- [ ] work on an Auto-save feature.
 - [ ] work on a loading UI (skeleton) while the data is being fetched.
-- [ ] add a terminate the week button.
 - [ ] make the basic layout for the statistics page.
 - [ ] rework task containers ( laggy expansion animation ).
 - [ ] make a settings page.
 - [ ] make a signup page.
-- [ ] make a statistics page.
 - [ ] refractor spree to make code more readable and more performant.
 - [ ] make a purple theme.
-- [ ] thoroughly describe the flow/usage of the app.
+- [x] thoroughly describe the flow/usage of the app.
 - [ ] make a new proper logo.
 - [ ] handle token expiration on the front-end. https://stackoverflow.com/questions/61997401/how-to-logout-user-when-token-expires-in-react-app
+  - log out on every JWT error response received
 - [ ] figure out how keep data stored client side (pouchDB and nedb and sessionstorage and localstorage) https://stackoverflow.com/questions/28314368/how-to-maintain-state-after-a-page-refresh-in-react-js https://rxdb.info/quickstart.html
 - [ ] read chapter 7 react router
 - [ ] rich text notes like discord parsing
 - [x] make a valorant abilities HUD inspired HUD for week status
-- [ ] custom context menu on tasks
+- [x] custom context menu on tasks
   - add possibility to delete tasks
 - [ ] add a percentage next to number input field in task container
 - [ ] description filled on submission does not have to be non empty
-- [ ] have a useref that stores all progresses to be used to count the global progress when needed
 - [ ] fix modal behaviour when clicked outside of form
 - [ ] give descriptions for navbar items on long hover
-- [ ] make task info modals bigger
-- [ ] change overall font to a more flexible one (modern looking)
+- [x] make task info modals bigger
+- [ ] change overall font to a more flexible one (modern looking - minimalistic)
 - [x] change time left to jst tasks title
 - [ ] add a color for thematic/visual identity
 - [x] tasks should be fetched at home component level and not tasks container component and passed to TasksContainer and updated with every successful debounce api call
@@ -139,9 +141,11 @@ useEffect(() => {
   - the usecallback function that enabels debouncing makes it so the memozoized function always has the state of the time it was initially rendered on so any changes to state made out of it will always result in older state of other tasks.
   - so what about giving up usecallback entirely and making the file scoped and not function scoped, well then the fuckign debounces override each other and only the latest debounce will make an api call
 - [x] make buttons that change in size be centered and not change height downwards but towrads all sides instead.
-- [ ] apply a skeleton component to every component that makes an inital fetch, so that this skeleton component only renders the wanted component after a successful fetch. (will enable moving tasks state to tasks section hopefully).
+- [ ] work on custom skeleton component to every component that makes an inital fetch, so that this skeleton component only renders the wanted component after a successful fetch. (will enable moving tasks state to tasks section hopefully).
 - [ ] replace window alerts and confirms with custom modals.
 - [ ] figure out how to set custom context menu to base element to something other than button.
 - [ ] fix and rework the task containers componenets.
+- [ ] add a indicator of which page the user is on.
+- [ ] make function wrappers for every module that has an action that necessitates a follow up, for avoiding duplication and all the issues that stem from it.
 
 🔝 [Back To Top Of Readme](https://github.com/me3zaAKAgoat/dtb#digital-tasks-board)

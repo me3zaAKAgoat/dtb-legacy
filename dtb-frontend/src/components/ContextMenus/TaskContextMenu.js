@@ -19,11 +19,14 @@ const TaskContextMenu = ({
 	const handleDeleteButton = useCallback(
 		async (e) => {
 			e.preventDefault();
-			await services.deleteTask(user.token, {
-				taskId: contextMenu.id,
-			});
-			setContextMenu({ show: false, x: null, y: null, id: null });
-			setTasks(tasks.filter((task) => task.id !== contextMenu.id));
+			const confirmDelete = window.confirm(`This task will now be deleted.`);
+			if (confirmDelete) {
+				await services.deleteTask(user.token, {
+					taskId: contextMenu.id,
+				});
+				setTasks(tasks.filter((task) => task.id !== contextMenu.id));
+				setContextMenu({ show: false, x: null, y: null, id: null });
+			} else setContextMenu({ show: false, x: null, y: null, id: null });
 		},
 		[contextMenu]
 	);

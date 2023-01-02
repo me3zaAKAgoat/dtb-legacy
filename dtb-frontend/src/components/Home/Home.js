@@ -32,11 +32,11 @@ const Home = ({ user }) => {
 			<div className="hudContainer">
 				<Hud className="hud" user={user} tasks={tasks} />
 			</div>
-			<div className="main">
+			<main className="main">
 				<TasksContainer user={user} tasks={tasks} setTasks={setTasks} />
 				<div className="separatingVerticalLine"></div>
 				<NotesContainer user={user} />
-			</div>
+			</main>
 		</div>
 	);
 };
