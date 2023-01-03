@@ -147,5 +147,6 @@ useEffect(() => {
 - [ ] fix and rework singular tasks components.
 - [ ] add a indicator of which page the user is on.
 - [ ] make function wrappers for every module that has an action that necessitates a follow up, for avoiding duplication and all the issues that stem from it.
+- [ ] add a way the user can see the prioirty of a task.
 
 🔝 [Back To Top Of Readme](https://github.com/me3zaAKAgoat/dtb#digital-tasks-board)

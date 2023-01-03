@@ -139,12 +139,12 @@ $taskSectionItems-height: 60px;
 .notesTextArea {
 	margin: 1px 10%;
 	font-family: 'SF PRO DISPLAY REGULAR';
+	padding: 5%;
 	font-size: 1rem;
 	color: $text-color;
 	text-align: left;
 	border: none;
 	line-height: 1.8;
-	padding: 0.4rem 1rem;
 	background: rgba(0, 0, 0, 0.4);
 	width: 80%;
 	height: 85%;
@@ -199,7 +199,7 @@ $taskSectionItems-height: 60px;
 	max-width: 600px;
 	border-radius: 5px;
 	border: 1px solid #3d3d3d;
-	filter: drop-shadow(0px 8px 8px rgba(0, 0, 0, 0.7));
+	filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.7));
 	margin: 10px;
 	transition-delay: 50ms;
 	transition-duration: 200ms;
@@ -334,7 +334,7 @@ $taskSectionItems-height: 60px;
 	flex-direction: row;
 	justify-content: start;
 	align-items: stretch;
-	filter: drop-shadow(2px 2px 1px rgba(0, 0, 0, 1));
+	filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 1));
 	transition-delay: 10ms;
 	transition-duration: 50ms;
 	transition-timing-function: ease-in;
@@ -440,6 +440,7 @@ $taskSectionItems-height: 60px;
 			}
 			input {
 				height: 10px;
+				accent-color: $body-background-color;
 			}
 		}
 		.buttonsContainer {
