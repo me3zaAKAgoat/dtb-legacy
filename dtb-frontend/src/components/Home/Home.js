@@ -23,12 +23,7 @@ const Home = ({ user }) => {
 
 	console.log(tasks, 'home');
 	return (
-		<div
-			className="home"
-			onContextMenu={(e) => {
-				e.preventDefault();
-			}}
-		>
+		<div className="home">
 			<div className="hudContainer">
 				<Hud className="hud" user={user} tasks={tasks} />
 			</div>

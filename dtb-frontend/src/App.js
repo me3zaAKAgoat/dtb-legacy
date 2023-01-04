@@ -41,7 +41,12 @@ const App = () => {
 		);
 	} else {
 		return (
-			<div className="app">
+			<div
+				className="app"
+				onContextMenu={(e) => {
+					e.preventDefault();
+				}}
+			>
 				<Navbar logOut={logOut} />
 				<Home user={user} />
 			</div>
