@@ -46,9 +46,9 @@ npm start
 
 - Learn and master ReactJS.
 - How to make a Smoothly animated website.
-- How to implement a system where the state of the application is saved to the database as things change in real-time.
+- How to implement a system where the state of the application is saved to the database as things change in real time.
 - Write clean performant code and maintainable JS code.
-- Write readable, well documented and frequently commented code.
+- Write readable, well-documented and frequently commented code.
 - Learn how to manage git repositories.
 - How to make an app that uses modern web dev techniques.
 - How to deploy and host a web app.
@@ -64,9 +64,12 @@ npm start
 - When a week is ended the current week id of the user is turned to Null.
 - Statistics page will provide:
   - graph showing the progress through the weeks.
-  - way to access frozen state (read-only) of older weeks.
+  - A way to access older weeks.
   - emotional/mental well-being graph pulled from stamp maker at end of week.
-  -
+- When an end-the-week action is initiated>
+  - the user current week key should be switched to null.
+  - a modal asking for the emotinal overall satisifaction and notes about the week should show up to the user.
+    - this modal can NOT be skipped by mistake and should appear WHENEVER the app is running until the user intentionally skips it.
 
 ## The database structures:
 
@@ -148,5 +151,6 @@ useEffect(() => {
 - [ ] add a indicator of which page the user is on.
 - [ ] make function wrappers for every module that has an action that necessitates a follow up, for avoiding duplication and all the issues that stem from it.
 - [ ] add a way the user can see the prioirty of a task.
+- [ ] add keys in week schema that reflect the emotional/mental well-being of the user during that week.
 
 🔝 [Back To Top Of Readme](https://github.com/me3zaAKAgoat/dtb#digital-tasks-board)

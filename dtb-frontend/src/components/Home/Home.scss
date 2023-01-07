@@ -338,7 +338,7 @@ $taskSectionItems-height: 60px;
 	transition-delay: 10ms;
 	transition-duration: 50ms;
 	transition-timing-function: ease-in;
-	transition-property: background-color, height, width;
+	transition-property: background-color, height, width, transform;
 	svg {
 		position: absolute;
 		height: 100%;
@@ -350,7 +350,7 @@ $taskSectionItems-height: 60px;
 	background-color: rgba(255, 255, 255, 0.04);
 	height: 0.93 * $taskSectionItems-height;
 	width: 0.93 * $taskSectionItems-height;
-	// transform: translateY(-1%);
+	transform: translateY(-1%);
 	svg {
 		filter: brightness(90%);
 	}
