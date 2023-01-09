@@ -17,7 +17,7 @@ npm i
 #copy this into it
 PORT = 3003
 MONGODB_URI = 'mongodb+srv://me3zaAKAgoat:XyzK5ynkLfBMDmjK@cluster0.i8hd6nc.mongodb.net/?retryWrites=true&w=majority'
-SECRET ='echoukri Dtb Website Key
+SECRET ='echoukri Dtb Website Key'
 ```
 
 4. turn on the backend server.
