@@ -4,7 +4,6 @@ import NotesContainer from '../NotesContainer/NotesContainer.js';
 import WeekServices from '../../services/week.js';
 import Hud from '../Hud/Hud';
 import { useCallback, useEffect, useState } from 'react';
-
 const Home = ({ user }) => {
 	const [tasks, setTasks] = useState([]);
 

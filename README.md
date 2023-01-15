@@ -100,6 +100,7 @@ npm start
 
 - [ ] thoroughly describe the automatic synchronization system.
 - [ ] work on a loading UI (skeleton) while the data is being fetched.
+- [ ] add loading animation to any component thats awaiting an api calls response (login for example).
 - [ ] make the basic layout for the statistics page.
 - [ ] rework task containers ( laggy expansion animation ).
 - [ ] make a settings page.
