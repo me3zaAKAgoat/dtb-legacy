@@ -1,0 +1,18 @@
+@font-face {
+	font-family: 'SF PRO DISPLAY REGULAR';
+	src: url('../../public/assets/SFPRODISPLAYREGULAR.OTF');
+}
+
+@font-face {
+	font-family: 'SF PRO DISPLAY BOLD';
+	src: url('../../public/assets/SFPRODISPLAYBOLD.OTF');
+}
+
+body {
+	margin: 0;
+	font-family: 'SF PRO DISPLAY REGULAR', 'Segoe UI', 'Roboto', 'Oxygen',
+		'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+		sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}

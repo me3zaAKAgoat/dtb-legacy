@@ -1,0 +1,64 @@
+$body-background-color: #1a1a1a;
+$secondary-color: #0b0b0bff;
+$text-color: #cccccc;
+$task-container-background: #282828;
+$task-container-background-focus: #454545;
+$taskSectionItems-height: 60px;
+
+.percentage {
+	background: none;
+	// height: 158px;
+	// width: 158px;
+}
+
+.outer {
+	height: 100%;
+	width: 100%;
+	border-radius: 50%;
+	// border: 1px solid black;
+	border: none;
+	// background: none;
+	overflow: hidden;
+	background-color: $task-container-background-focus;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	/* important part */
+	display: grid;
+	place-items: center;
+	grid-template-areas: 'inner-div';
+}
+.inner {
+	height: 71%;
+	width: 71%;
+	border-radius: 50%;
+	// border: 1px solid black;
+	border: none;
+	background: $task-container-background;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-family: 'SF PRO DISPLAY BOLD';
+	font-weight: bold;
+	/* important part */
+	grid-area: inner-div;
+	color: $text-color;
+}
+
+svg {
+	height: 99%;
+	width: 99%;
+	/* important part */
+	grid-area: inner-div;
+}
+
+circle {
+	fill: none;
+	stroke-linecap: round;
+	stroke: $text-color;
+	stroke-width: 13%;
+	transition: 2s 50ms ease-in-out;
+	transition-property: stroke-dashoffset;
+}
