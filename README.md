@@ -2,7 +2,7 @@
 
 ## To run the project in development mode
 
-1. clone the repostiory.
+1. clone the repository.
 
 2. Install all the dependencies using.
 
@@ -10,10 +10,10 @@
 npm i
 ```
 
-3. go into the dtb/dtb-backend directory and create the environment file.
+3. go into the dtb/backend directory and create the environment file.
 
 ```bash
-#create a .env file in dtb/dtb-backend folder
+#create a .env file in dtb/backend folder
 #copy this into it
 PORT = 3003
 MONGODB_URI = 'mongodb+srv://me3zaAKAgoat:XyzK5ynkLfBMDmjK@cluster0.i8hd6nc.mongodb.net/?retryWrites=true&w=majority'
@@ -23,14 +23,14 @@ SECRET ='echoukri Dtb Website Key'
 4. turn on the backend server.
 
 ```bash
-cd dtb-backend/
+cd backend/
 npm run dev
 ```
 
 5. run the frontend on the client
 
 ```bash
-cd dtb-frontend/
+cd frontend/
 npm start
 ```
 
@@ -71,7 +71,7 @@ npm start
   - a modal asking for the emotinal overall satisifaction and notes about the week should show up to the user.
     - this modal can NOT be skipped by mistake and should appear WHENEVER the app is running until the user intentionally skips it.
 
-## The database structures:
+## The database schemas:
 
 🔝 [Back To Top Of Readme](https://github.com/me3zaAKAgoat/dtb#digital-tasks-board)
 
@@ -98,6 +98,7 @@ npm start
 
 ## Tasks
 
+- [ ] refactor how modals work and decouple the responsabilities thrown into TasksContainer component.
 - [ ] thoroughly describe the automatic synchronization system.
 - [ ] work on a loading UI (skeleton) while the data is being fetched.
 - [ ] add loading animation to any component thats awaiting an api calls response (login for example).
@@ -112,8 +113,8 @@ npm start
 - [ ] handle token expiration on the front-end. https://stackoverflow.com/questions/61997401/how-to-logout-user-when-token-expires-in-react-app
   - log out on every JWT error response received
 - [ ] figure out how keep data stored client side (pouchDB and nedb and sessionstorage and localstorage) https://stackoverflow.com/questions/28314368/how-to-maintain-state-after-a-page-refresh-in-react-js https://rxdb.info/quickstart.html
-- [ ] read chapter 7 react router
-- [ ] rich text notes like discord parsing
+- [ ] read chapter 7 react router.
+- [ ] rich text editor notes that behaves like discord text form parsing.
 - [x] make a valorant abilities HUD inspired HUD for week status
 - [x] custom context menu on tasks
   - add possibility to delete tasks
@@ -122,7 +123,7 @@ npm start
 - [ ] fix modal behaviour when clicked outside of form
 - [ ] give descriptions for navbar items on long hover
 - [x] make task info modals bigger
-- [ ] change overall font to a more flexible one (modern looking - minimalistic)
+- [ ] change overall font to a more flexible one (should modern looking - minimalistic)
 - [x] change time left to jst tasks title
 - [ ] add a color for thematic/visual identity
 - [x] tasks should be fetched at home component level and not tasks container component and passed to TasksContainer and updated with every successful debounce api call
@@ -149,9 +150,9 @@ useEffect(() => {
 - [ ] replace window alerts and confirms with custom modals.
 - [ ] figure out how to set custom context menu to base element to something other than button.
 - [ ] fix and rework singular tasks components.
-- [ ] add a indicator of which page the user is on.
-- [ ] make function wrappers for every module that has an action that necessitates a follow up, for avoiding duplication and all the issues that stem from it.
-- [ ] add a way the user can see the prioirty of a task.
+- [ ] add a visual aspect to the priority of tasks.
+- [ ] make function wrappers for every module that has an action that necessitates a follow up, to avoid duplication and all the issues that stem from it.
+- [ ] add a way the user can see the priority of a task.
 - [ ] add keys in week schema that reflect the emotional/mental well-being of the user during that week.
 
 🔝 [Back To Top Of Readme](https://github.com/me3zaAKAgoat/dtb#digital-tasks-board)
