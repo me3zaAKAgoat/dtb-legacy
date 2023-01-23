@@ -37,7 +37,7 @@ const FormRenderingComponent = ({
 
 	if (formToOpen === 'add') {
 		return (
-			<div className="createTaskModal" style={transitionProperties}>
+			<div className="taskModal" style={transitionProperties}>
 				<div className="taskFormContainer">
 					<AddTaskForm
 						tasks={tasks}
@@ -50,7 +50,7 @@ const FormRenderingComponent = ({
 		);
 	} else if (formToOpen === 'edit') {
 		return (
-			<div className="createTaskModal" style={transitionProperties}>
+			<div className="taskModal" style={transitionProperties}>
 				<div className="taskFormContainer">
 					<EditTaskForm
 						user={user}
@@ -88,8 +88,8 @@ const TasksContainer = ({ user, tasks, setTasks }) => {
 		id: null,
 	});
 	return (
-		<div className="tasksContainer">
-			<div className="tasksTitle">Tasks</div>
+		<div className="sectionContainer">
+			<div className="sectionTitle">Tasks</div>
 			<div className="tasksSection">
 				<TaskContextMenu
 					contextMenu={contextMenu}

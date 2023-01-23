@@ -34,7 +34,7 @@ const CompletionCircle = ({ sideSize, tasks }) => {
 						}}
 					/>
 				</svg>
-				<div className="inner" style={{ fontSize: sideSize / 5 }}>
+				<div className="inner" style={{ fontSize: sideSize / 4.3 }}>
 					{Math.trunc(completion)}%
 				</div>
 			</div>

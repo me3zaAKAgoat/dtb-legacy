@@ -44,8 +44,8 @@ const NotesContainer = ({ user }) => {
 	}, [notes]);
 
 	return (
-		<div className="notesContainer">
-			<div className="noteTitle">Notes</div>
+		<div className="sectionContainer">
+			<div className="sectionTitle">Notes</div>
 			<textarea
 				className="notesTextArea"
 				value={notes}

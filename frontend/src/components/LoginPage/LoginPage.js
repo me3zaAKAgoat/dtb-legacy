@@ -23,8 +23,8 @@ const LoginProcessIndicator = ({ errorMessage }) => {
 
 /*
 this is a controlled component that has a form
-as its  core, this componenet is login page as a whole
-and handles all the user business logic
+as its core, this component parents login page as a whole
+and handles all the user login business logic
 */
 const LoginPage = ({ setUser }) => {
 	const [usernameField, setUsernameField] = useState('');
