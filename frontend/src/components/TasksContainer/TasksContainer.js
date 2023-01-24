@@ -88,9 +88,9 @@ const TasksContainer = ({ user, tasks, setTasks }) => {
 		id: null,
 	});
 	return (
-		<div className="sectionContainer">
-			<div className="sectionTitle">Tasks</div>
-			<div className="tasksSection">
+		<div className="mainChildrenContainers">
+			<div className="mainChildrenTitle">Tasks</div>
+			<div className="tasksContainer">
 				<TaskContextMenu
 					contextMenu={contextMenu}
 					setContextMenu={setContextMenu}

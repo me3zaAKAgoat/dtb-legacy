@@ -59,6 +59,5 @@ circle {
 	stroke-linecap: round;
 	stroke: $text-color;
 	stroke-width: 14%;
-	transition: 2s 50ms ease-in-out;
-	transition-property: stroke-dashoffset;
+	transition: stroke-dashoffset, 2s 50ms ease-in-out;
 }

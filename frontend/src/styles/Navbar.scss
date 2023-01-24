@@ -1,5 +1,6 @@
 $nav-background-color: #0e0e0e;
 $text-color: #cccccc;
+$secondary-color: #0b0b0bff;
 
 .navigationBar {
 	height: 100%;
@@ -63,13 +64,11 @@ ul {
 			background: none;
 			border: none;
 			cursor: pointer;
-			transition-delay: 25ms;
-			transition-duration: 70ms;
-			transition-timing-function: ease-in-out;
+			transition: 70ms ease-in-out 25ms;
 			transition-property: filter, height, transform;
 			text-align: center;
 			svg {
-				filter: invert(80%);
+				filter: invert(90%);
 				width: 100%;
 				height: 100%;
 			}
@@ -99,10 +98,12 @@ ul {
 	transition-timing-function: ease-in-out;
 	transition-property: outline;
 }
+
 .profileButton:hover {
 	outline-offset: 2px;
 	outline: $text-color solid 1.5px;
 }
+
 .profileButtonActive {
 	outline-offset: 2px;
 	outline: $text-color solid 1.5px;
@@ -122,7 +123,7 @@ ul {
 	left: 65px;
 	width: 125px;
 	height: 140px;
-	background-color: $nav-background-color;
+	background-color: $secondary-color;
 	border: 0.1px solid #cccccc1a;
 	border-radius: 4px;
 	padding: 1.4rem;
@@ -133,9 +134,7 @@ ul {
 	flex-direction: column;
 	align-items: stretch;
 	justify-content: space-evenly;
-	transition-delay: 25ms;
-	transition-duration: 70ms;
-	transition-timing-function: ease-in;
+	transition: 70ms ease-in 25ms;
 	transition-property: opacity, visibility;
 	z-index: 1;
 	button {
