@@ -38,6 +38,7 @@ const Hud = ({ user, tasks }) => {
 						: ' - Days - Hours'}
 				</h2>
 			</div>
+			<button className='concludeButton'>Conclude</button>
 		</div>
 	);
 };

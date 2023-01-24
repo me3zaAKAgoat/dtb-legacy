@@ -31,11 +31,9 @@ const AddTaskForm = ({ tasks, setTasks, user, setFormToOpen }) => {
 	};
 
 	const addNewTask = async () => {
-		const fitsRequirements = [nameField, descriptionField, priorityField].every(
-			(field) => {
-				return field.length > 0;
-			}
-		);
+		const fitsRequirements = [nameField, priorityField].every((field) => {
+			return field.length > 0;
+		});
 		if (!fitsRequirements) {
 			alert('Must fill all fields');
 		} else {
