@@ -22,11 +22,11 @@ const Hud = ({ user, tasks }) => {
 	return (
 		<div className="hud">
 			<div className="completion">
-				<h3>Completion</h3>
+				<h3>Completion:</h3>
 				<CompletionCircle sideSize={47} tasks={tasks} />
 			</div>
 			<div className="timeLeft">
-				<h3>Time left</h3>
+				<h3>Time left:</h3>
 				<h2>
 					{weekDue !== null
 						? ` ${Math.floor(
@@ -38,7 +38,7 @@ const Hud = ({ user, tasks }) => {
 						: ' - Days - Hours'}
 				</h2>
 			</div>
-			<button className='concludeButton'>Conclude</button>
+			<button className="concludeButton">☑️CONCLUDE</button>
 		</div>
 	);
 };

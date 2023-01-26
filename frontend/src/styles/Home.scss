@@ -32,13 +32,14 @@ $taskSectionItems-height: 60px;
 }
 
 .hudContainer {
-	height: 13%;
+	min-height: 13%;
 	max-height: 100px;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
 	margin: 0 auto;
+	flex-grow: 1;
 }
 
 .hud {
@@ -83,17 +84,17 @@ $taskSectionItems-height: 60px;
 	}
 	.concludeButton {
 		background-color: $text-color;
-		width: 15%;
+		width: 20%;
 		height: 35px;
-		font-size: 0.9rem;
+		font-size: 0.8rem;
 		font-family: 'SF PRO DISPLAY BOLD';
 		text-align: center;
 		color: $secondary-color;
-		margin: 0% 0% 5%x;
-		border-radius: 0.3rem;
+		padding: 0% 0% 0.22rem 0%;
+		border-radius: 0.8rem;
 		border: none;
 		transition: 100ms ease-in 0ms;
-		transition-property: background-color, color, outline;
+		transition-property: background-color, color, outline, box-shadow;
 		outline: $secondary-color solid 1px;
 	}
 	.concludeButton:hover {
@@ -133,6 +134,7 @@ $taskSectionItems-height: 60px;
 	overflow: auto;
 	flex-grow: 1;
 	overflow: hidden;
+	background: radial-gradient(rgba(255, 255, 255, 0.02), $body-background-color 90%)
 }
 
 .mainChildrenTitle {
@@ -141,6 +143,7 @@ $taskSectionItems-height: 60px;
 	justify-content: center;
 	align-items: center;
 	width: 15%;
+	min-width: 60px;
 	height: 30px;
 	font-size: 1.1rem;
 	font-family: 'SF PRO DISPLAY BOLD';
