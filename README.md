@@ -111,11 +111,11 @@ npm start
   - log out on every JWT error response received
 - [ ] read chapter 7 react router.
 - [ ] add a percentage next to number input field in task container
-- [ ] fix modal behaviour when clicked outside of form
+- [x] fix modal behaviour when clicked outside of form
 - [ ] add end of week button that renders a modal prompting the user to describe the week and then sends an api call to archive the ended week and create a stamp of it.
 - [ ] work on custom skeleton component to every component that makes an inital fetch, so that this skeleton component only renders the wanted component after a successful fetch. (will enable moving tasks state to tasks section hopefully).
 - [ ] change overall font to a more flexible one (should modern looking - minimalistic)
-- [ ] use the useContext hook to avoid drilling of user state.
+- [x  ] use the useContext hook to avoid drilling of user state.
 - [ ] make function wrappers for every module that has an action that necessitates a follow up, to avoid duplication and all the issues that stem from it.
 - [ ] add an indicator at the bottom of the app that tells the user how the api calls are going.
 

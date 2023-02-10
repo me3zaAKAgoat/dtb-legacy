@@ -18,7 +18,6 @@ const FormRenderingComponent = ({
 	setFormState,
 }) => {
 	const [transitionProperties, setTransitionProperties] = useState({});
-	const [user, setUser] = useContext(UserContext);
 
 	/* 
 	a small timeout between the creation of the form and then the adding the style of the form
@@ -36,10 +35,20 @@ const FormRenderingComponent = ({
 		}
 	}, [formState?.type]);
 
+	const handleBlur = (event) => {
+		event.preventDefault();
+		setFormState(null);
+	};
+
+	// tabIndex makes it so the div has focus and blur events and the -1 makes it not accessible by keyboard
 	if (formState?.type === 'add' || formState?.type === 'edit') {
 		return (
-			<div className="taskModal" style={transitionProperties}>
-				<div className="taskFormContainer">
+			<div
+				className="taskModal"
+				style={transitionProperties}
+				onClick={handleBlur}
+			>
+				<div className="taskFormContainer" onClick={(e) => e.stopPropagation()}>
 					<TaskForm
 						tasks={tasks}
 						setTasks={setTasks}

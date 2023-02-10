@@ -5,13 +5,11 @@ import { UserContext } from '../../../App.js';
 
 const TaskForm = ({ tasks, setTasks, formState, setFormState }) => {
 	const [user, setUser] = useContext(UserContext);
-	const initialRender = useRef(true);
 	const [titleField, setTitleField] = useState(formState.title);
 	const [descriptionField, setDescriptionField] = useState(
 		formState.description
 	);
 	const [priorityField, setPriorityField] = useState(formState.priority);
-	const [submitted, setSubmitted] = useState(false);
 
 	const handleTitleField = (e) => {
 		setTitleField(e.target.value);
@@ -31,96 +29,79 @@ const TaskForm = ({ tasks, setTasks, formState, setFormState }) => {
 		setPriorityField('');
 	}, []);
 
-	const editTask = useCallback(async () => {
-		const fitsRequirements = [titleField, priorityField].every((field) => {
-			return field.length > 0;
-		});
+	const callApiMethod = async () => {
+		const areRequirementsMet =
+			titleField.length > 0 && priorityField.length > 0;
 
-		if (!fitsRequirements) {
+		if (!areRequirementsMet) {
 			alert('Must fill all fields');
 		} else {
-			const editedTask = {
-				title: titleField,
-				description: descriptionField,
-				priority: priorityField,
-				id: formState.id,
-			};
-			try {
-				const returnedTask = await TaskServices.editTask(
-					user.token,
-					editedTask
-				);
-				const newTasks = tasks.map((task) => {
-					if (task.id === formState.id) {
-						task.title = returnedTask.title;
-						task.description = returnedTask.description;
-						task.priority = returnedTask.priority;
-						return task;
-					} else {
-						return task;
-					}
-				});
-				setTasks(newTasks);
-				setFormState(null);
-				clearFormFields();
-			} catch (err) {
-				console.log(err);
-			}
-		}
-	}, [titleField, descriptionField, priorityField, user.token, formState]);
-
-	const addTask = useCallback(async () => {
-		const fitsRequirements = [titleField, priorityField].every((field) => {
-			return field.length > 0;
-		});
-		if (!fitsRequirements) {
-			alert('Must fill all fields');
-		} else {
-			try {
-				const newTask = {
+			if (formState.type === 'edit') {
+				const editedTask = {
 					title: titleField,
 					description: descriptionField,
 					priority: priorityField,
-					progress: 0,
+					id: formState.id,
 				};
-				setFormState(null);
-				const currentWeekId = (await WeekServices.getCurrentWeekId(user.token))
-					.id;
-				if (!currentWeekId) {
-					const returnedTask = await WeekServices.initiateNewWeek(
+				try {
+					const returnedTask = await TaskServices.editTask(
 						user.token,
-						newTask
+						editedTask
 					);
-					setTasks(tasks.concat(returnedTask));
-				} else {
-					const returnedTask = await TaskServices.addTask(
-						user.token,
-						currentWeekId,
-						newTask
-					);
-					setTasks(tasks.concat(returnedTask));
+					const newTasks = tasks.map((task) => {
+						if (task.id === formState.id) {
+							task.title = returnedTask.title;
+							task.description = returnedTask.description;
+							task.priority = returnedTask.priority;
+							return task;
+						} else {
+							return task;
+						}
+					});
+					setTasks(newTasks);
+				} catch (err) {
+					console.log(err);
 				}
-				clearFormFields();
-			} catch (err) {
-				console.log(err);
+			} else if (formState.type === 'add') {
+				try {
+					const newTask = {
+						title: titleField,
+						description: descriptionField,
+						priority: priorityField,
+						progress: 0,
+					};
+					const currentWeekId = (
+						await WeekServices.getCurrentWeekId(user.token)
+					).id;
+					if (!currentWeekId) {
+						const returnedTask = await WeekServices.initiateNewWeek(
+							user.token,
+							newTask
+						);
+						setTasks(tasks.concat(returnedTask));
+					} else {
+						const returnedTask = await TaskServices.addTask(
+							user.token,
+							currentWeekId,
+							newTask
+						);
+						setTasks(tasks.concat(returnedTask));
+					}
+					clearFormFields();
+				} catch (err) {
+					console.log(err);
+				}
 			}
+			setFormState(null);
+			clearFormFields();
 		}
-	}, [titleField, descriptionField, priorityField, user.token]);
-
-	useEffect(() => {
-		if (initialRender.current) {
-			initialRender.current = false;
-		} else {
-			if (formState.type === 'edit') editTask();
-			else addTask();
-		}
-	}, [submitted]);
+	};
 
 	return (
 		<form
 			onSubmit={(event) => {
 				event.preventDefault();
-				setSubmitted(!submitted);
+				callApiMethod();
 			}}
 		>
 			<h1>

@@ -119,10 +119,6 @@ const TaskContainer = ({
 	const updateTaskProgress = useCallback(
 		debounce(async (token, task, progress) => {
 			try {
-				console.log(
-					'attempting update_progress function',
-					`TITLE: ${task.title}`
-				);
 				await taskServices.updateProgress(token, {
 					id: task.id,
 					progress: progress,
