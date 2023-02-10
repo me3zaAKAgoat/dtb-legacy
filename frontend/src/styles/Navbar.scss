@@ -1,12 +1,10 @@
-$nav-background-color: #0e0e0e;
-$text-color: #cccccc;
-$secondary-color: #0b0b0bff;
+@import 'variables';
 
 .navigationBar {
 	height: 100%;
 	min-width: 59;
 	max-width: 59;
-	background-color: $nav-background-color;
+	background-color: $navbar-bg-color;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;

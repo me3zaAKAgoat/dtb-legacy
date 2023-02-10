@@ -1,7 +1,7 @@
 import './styles/App.scss';
 import Navbar from './components/Navbar/Navbar.js';
 import Home from './components/Home/Home';
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useCallback, createContext } from 'react';
 import LoginPage from './components/LoginPage/LoginPage';
 
 /*
@@ -10,6 +10,9 @@ this is the root component that is first mounted
 this component conditionally renders either the login page
 or logs the user into the homepage of the actual application
 */
+
+export const UserContext = createContext();
+
 const App = () => {
 	const [user, setUser] = useState(null);
 
@@ -47,17 +50,29 @@ const App = () => {
 		);
 	} else {
 		return (
-			<div
-				className="app"
-				onContextMenu={(e) => {
-					e.preventDefault();
-				}}
-			>
-				<Navbar logOut={logOut} />
-				<Home user={user} />
-			</div>
+			<UserContext.Provider value={[user, setUser]}>
+				<div
+					className="app"
+					onContextMenu={(e) => {
+						e.preventDefault();
+					}}
+				>
+					<Navbar logOut={logOut} />
+					<Home />
+				</div>
+			</UserContext.Provider>
 		);
 	}
 };
 
 export default App;
+
+/*
+Refactor the local storage logic into a separate utility or custom hook to improve code readability and maintainability.
+
+Add error handling in case something goes wrong while accessing the local storage data.
+
+Use a more secure method of storing sensitive information, such as JWT tokens, instead of local storage.
+
+Use a more secure method of logging out users, such as by making a request to the server to invalidate the token.
+*/

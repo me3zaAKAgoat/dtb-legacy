@@ -1,9 +1,4 @@
-$body-background-color: #1a1a1a;
-$secondary-color: #0b0b0bff;
-$text-color: #ccccccff;
-$task-container-background: #414141ff;
-$task-container-background-focus: #2d2d2dff;
-
+@import 'variables';
 
 // https://mionskowski.pl/posts/positioning-a-context-menu-using-pure-css/
 .contextMenu {
@@ -11,7 +6,7 @@ $task-container-background-focus: #2d2d2dff;
         width: 150px;
         height: 180px;
         background-color: $secondary-color;
-        border: 0.5px solid $task-container-background;
+        border: 0.5px solid $unfocused-task-container-bg;
         border-radius: 4px;
         padding: 1rem;
         overflow: hidden;
@@ -35,7 +30,7 @@ $task-container-background-focus: #2d2d2dff;
             filter: invert(40%);
         }
         hr {
-            background-color: $task-container-background;
+            background-color: $unfocused-task-container-bg;
             width: 70%;
             border: 0.1px solid #cccccc1a;
         }

@@ -98,33 +98,43 @@ npm start
 
 ## Tasks
 
-- [ ] refactor how modals work and decouple the responsabilities thrown into TasksContainer component.
+### Core
+
 - [ ] thoroughly describe the automatic synchronization system.
-- [ ] work on a loading UI (skeleton) while the data is being fetched.
-- [ ] add loading animation to any component thats awaiting an api calls response (login for example).
 - [ ] make the basic layout for the statistics page.
-- [ ] rework task containers ( laggy expansion animation ).
 - [ ] make a settings page.
 - [ ] make a signup page.
-- [ ] refractor spree to make code more readable and more performant.
-- [ ] make a purple theme.
+- [ ] rework task containers ( laggy expansion animation ).
 - [x] thoroughly describe the flow/usage of the app.
 - [ ] make a new proper logo.
 - [ ] handle token expiration on the front-end. https://stackoverflow.com/questions/61997401/how-to-logout-user-when-token-expires-in-react-app
   - log out on every JWT error response received
-- [ ] figure out how keep data stored client side (pouchDB and nedb and sessionstorage and localstorage) https://stackoverflow.com/questions/28314368/how-to-maintain-state-after-a-page-refresh-in-react-js https://rxdb.info/quickstart.html
 - [ ] read chapter 7 react router.
+- [ ] add a percentage next to number input field in task container
+- [ ] fix modal behaviour when clicked outside of form
+- [ ] add end of week button that renders a modal prompting the user to describe the week and then sends an api call to archive the ended week and create a stamp of it.
+- [ ] work on custom skeleton component to every component that makes an inital fetch, so that this skeleton component only renders the wanted component after a successful fetch. (will enable moving tasks state to tasks section hopefully).
+- [ ] change overall font to a more flexible one (should modern looking - minimalistic)
+- [ ] use the useContext hook to avoid drilling of user state.
+- [ ] make function wrappers for every module that has an action that necessitates a follow up, to avoid duplication and all the issues that stem from it.
+- [ ] add an indicator at the bottom of the app that tells the user how the api calls are going.
+
+### Secondary
+
+- [x] refactor how modals work and decouple the responsibilities thrown into TasksContainer component.
+- [ ] work on a loading UI (skeleton) while the data is being fetched.
+- [ ] add loading animation to any component thats awaiting an api calls response (login for example).
+- [ ] refractor spree to make code more readable and more performant.
+- [ ] make a purple theme.
+- [ ] figure out how keep data stored client side (pouchDB and nedb and sessionstorage and localstorage) https://stackoverflow.com/questions/28314368/how-to-maintain-state-after-a-page-refresh-in-react-js https://rxdb.info/quickstart.html
 - [ ] rich text editor notes that behaves like discord text form parsing.
-- [x] make a valorant abilities HUD inspired HUD for week status
+- [x] make a valiant abilities HUD inspired HUD for week status
 - [x] custom context menu on tasks
   - add possibility to delete tasks
-- [ ] add a percentage next to number input field in task container
-- [ ] description filled on submission does not have to be non empty
-- [ ] fix modal behaviour when clicked outside of form
+- [x] description filled on submission does not have to be non empty
 - [ ] give descriptions for navbar items on long hover
 - [x] make task info modals bigger
-- [ ] change overall font to a more flexible one (should modern looking - minimalistic)
-- [x] change time left to jst tasks title
+- [x] change time left to just tasks title
 - [ ] add a color for thematic/visual identity
 - [x] tasks should be fetched at home component level and not tasks container component and passed to TasksContainer and updated with every successful debounce api call
 
@@ -135,23 +145,19 @@ useEffect(() => {
 ```
 
 - [x] figure out how to make an animated completion circle ![Heads Up Display](/READMEcontent/HUD.png)
-- [ ] add end of week button that renders a modal prompting the user to describe the week and then sends an api call to archive the ended week and create a stamp of it.
 - [ ] learn about svgs and how to draw animations [svg circle animation](https://stackoverflow.com/questions/46142291/animating-react-native-svg-dash-length-of-a-circle)
-- [x] sanitize the code for api calls on debounce
 - [ ] have settings open in a modal
+- [x] sanitize the code for API calls on debounce
 - [ ] each task should have a colored health indicator that flickers when low
 - [ ] make divs flicker on validation error.
 - [x] when update progress response is received tasks should be synced
-- [x] fix WHY THE FUCK the user cant update two functions progresses without fucking up the state enitrely
+- [x] fix WHY THE FUCK the user cant update two tasks progresses without fucking up the state enitrely
   - the usecallback function that enabels debouncing makes it so the memozoized function always has the state of the time it was initially rendered on so any changes to state made out of it will always result in older state of other tasks.
   - so what about giving up usecallback entirely and making the file scoped and not function scoped, well then the fuckign debounces override each other and only the latest debounce will make an api call
 - [x] make buttons that change in size be centered and not change height downwards but towrads all sides instead.
-- [ ] work on custom skeleton component to every component that makes an inital fetch, so that this skeleton component only renders the wanted component after a successful fetch. (will enable moving tasks state to tasks section hopefully).
 - [ ] replace window alerts and confirms with custom modals.
 - [ ] figure out how to set custom context menu to base element to something other than button.
-- [ ] fix and rework singular tasks components.
 - [ ] add a visual aspect to the priority of tasks.
-- [ ] make function wrappers for every module that has an action that necessitates a follow up, to avoid duplication and all the issues that stem from it.
 - [ ] add a way the user can see the priority of a task.
 - [ ] add keys in week schema that reflect the emotional/mental well-being of the user during that week.
 

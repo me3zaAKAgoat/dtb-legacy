@@ -12,7 +12,7 @@ weekRouter.get('/currentWeekId', async (req, res) => {
 		const decodedToken = jwt.verify(token, config.SECRET);
 		const user = await User.findById(decodedToken.id);
 		const currentWeek = user.currentWeek;
-		res.status(200).json({ currentWeek: currentWeek });
+		res.status(200).json({ id: currentWeek });
 	} catch (err) {
 		return res.status(500).json({ error: err });
 	}

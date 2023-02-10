@@ -114,3 +114,21 @@ taskRouter.put('/changeProgress', async (req, res) => {
 });
 
 module.exports = taskRouter;
+
+/*
+Refactor the code to eliminate repetitive code and keep it more organized. For example, you can create a function to handle the common logic of handling token verification and returning errors, and use it in each route.
+
+Use a more descriptive error message instead of just 'task router' in the catch block to make it easier to diagnose errors.
+
+Use consistent naming conventions throughout the code.
+
+Use a more descriptive variable name instead of task to avoid confusion with the imported Task model.
+
+Consider using a try-catch block when calling jwt.verify to catch any potential errors that could occur when decoding the token.
+
+Consider using the findOneAndUpdate method instead of first finding the task and then saving it. This would reduce the number of queries made to the database and improve performance.
+
+Use a more descriptive HTTP status code instead of 200 for successful operations. For example, 201 for the addTask route and 204 for the deleteTask route.
+
+Consider using a logger to log messages and errors instead of using console.log statements.
+*/

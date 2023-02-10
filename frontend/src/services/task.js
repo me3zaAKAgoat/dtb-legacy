@@ -61,3 +61,11 @@ const updateProgress = async (token, progressUpdatedTask) => {
 	}
 };
 export default { addTask, deleteTask, editTask, updateProgress };
+
+/*
+Handling errors: Currently, the code only logs the error when an exception is caught, but it does not return any error information to the caller. A better approach would be to throw the error or return a rejected Promise with the error message.
+
+Reusing code: All functions have similar try-catch blocks, it can be reduced by wrapping the common parts into a helper function.
+
+Constants: The baseUrl constant can be moved to a config file to make it easier to manage and maintain.
+*/

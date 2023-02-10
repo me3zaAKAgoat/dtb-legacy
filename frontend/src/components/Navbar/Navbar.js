@@ -111,3 +111,17 @@ const Navbar = (props) => {
 };
 
 export default Navbar;
+
+/*
+
+You could make the code more readable by splitting it into smaller, more concise components.
+
+You could add a prop-types library to add type checking to your components' props.
+
+The useEffect hook in the DropdownContainer component could use a more specific dependency array to avoid unnecessary re-renders.
+
+Instead of using an inline style object to set the transition properties, you could create a CSS class and toggle it based on the state of the dropdown.
+
+You could add accessibility features to the code, such as adding a label to the profile button and making sure the dropdown is keyboard-accessible.
+
+*/

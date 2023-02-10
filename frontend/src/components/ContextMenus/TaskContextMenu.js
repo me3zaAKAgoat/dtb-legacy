@@ -1,20 +1,31 @@
 import '../../styles/ContextMenu.scss';
-import { useCallback } from 'react';
+import { useCallback, useContext } from 'react';
 import services from '../../services/task';
+import { UserContext } from '../../App';
 
 const TaskContextMenu = ({
 	contextMenu,
 	setContextMenu,
-	setFormToOpen,
-	user,
 	tasks,
 	setTasks,
+	setFormState,
 }) => {
-	const handleEditButton = useCallback((e) => {
-		e.preventDefault();
-		setFormToOpen('edit');
-		setContextMenu({ show: false, x: null, y: null, id: null });
-	}, []);
+	const [user, setUser] = useContext(UserContext);
+	const handleEditButton = useCallback(
+		(e) => {
+			e.preventDefault();
+			const task = tasks.find((object) => object.id === contextMenu.id);
+			setFormState({
+				type: 'edit',
+				title: task.title,
+				description: task.description,
+				priority: task.priority,
+				id: task.id,
+			});
+			setContextMenu({ show: false, x: null, y: null, id: null });
+		},
+		[contextMenu]
+	);
 
 	const handleDeleteButton = useCallback(
 		async (e) => {
@@ -31,12 +42,15 @@ const TaskContextMenu = ({
 		[contextMenu]
 	);
 
-	const handleDropdownBlur = useCallback((e) => {
-		e.preventDefault();
-		if (!e.currentTarget.contains(e.relatedTarget)) {
-			setContextMenu({ show: false, x: null, y: null, id: null });
-		}
-	}, []);
+	const handleDropdownBlur = useCallback(
+		(e) => {
+			e.preventDefault();
+			if (!e.currentTarget.contains(e.relatedTarget)) {
+				setContextMenu({ show: false, x: null, y: null, id: null });
+			}
+		},
+		[contextMenu]
+	);
 
 	if (contextMenu.show === false) return <></>;
 	else {

@@ -1,5 +1,6 @@
-import { useEffect, useState, useCallback, useRef } from 'react';
-import taskServices from '../../services/task';
+import { useEffect, useState, useCallback, useRef, useContext } from 'react';
+import taskServices from '../../../services/task';
+import { UserContext } from '../../../App.js';
 
 const taskContainerOpenStyleTransition = {
 	backgroundColor: '454545',
@@ -84,13 +85,12 @@ const taskContainerOpenStyleTransition = {
 
 const TaskContainer = ({
 	task,
-	setTaskToEdit,
-	setFormToOpen,
-	user,
 	tasks,
 	setTasks,
 	setContextMenu,
+	setFormState,
 }) => {
+	const [user, setUser] = useContext(UserContext);
 	const [title, setTitle] = useState(task.title);
 	const [description, setDescription] = useState(task.description);
 	const [progress, setProgress] = useState(task.progress);
@@ -143,7 +143,6 @@ const TaskContainer = ({
 
 	const handleContextMenu = useCallback((e) => {
 		e.preventDefault();
-		setTaskToEdit(task);
 		setContextMenu({ show: true, x: e.pageX, y: e.pageY, id: task.id });
 	}, []);
 
@@ -200,6 +199,7 @@ const TaskContainer = ({
 								opacity: 0,
 						  }
 				}
+				onContextMenu={handleContextMenu}
 			>
 				<p>{description}</p>
 				<div className="sliderEditButtonContainer">
@@ -207,8 +207,13 @@ const TaskContainer = ({
 						className="editTaskButton"
 						type="button"
 						onClick={() => {
-							setTaskToEdit(task);
-							setFormToOpen('edit');
+							setFormState({
+								type: 'edit',
+								title: task.title,
+								description: task.description,
+								priority: task.priority,
+								id: task.id,
+							});
 						}}
 					>
 						<svg
@@ -260,3 +265,22 @@ const TaskContainer = ({
 };
 
 export default TaskContainer;
+
+/*
+
+The component can be refactored to make it more concise and cleaner.
+
+Replace the conditional statement that defines the inline styles with a class-based CSS approach.
+
+Replace the if (!open) return <></>; statement with a conditional rendering.
+
+Move the styles object to a CSS file and import it.
+
+First, you can extract the style object to a constant style at the top of the component to make the code cleaner.
+
+Instead of setting the visibility and opacity in the style property, you can use CSS transitions to achieve the same effect with less code.
+
+Instead of using two separate onClick handlers, you can use a single function that takes in the form type to determine what to do, making the code more concise.
+
+If the open prop is false, you can return null instead of an empty fragment, as this will not be rendered in the DOM and is more idiomatic.
+*/

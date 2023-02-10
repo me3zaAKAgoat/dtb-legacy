@@ -8,7 +8,13 @@ process may have failed
 */
 const LoginProcessIndicator = ({ errorMessage }) => {
 	if (errorMessage !== null) {
-		return <div className="badLoginMessage">{errorMessage}</div>;
+		return (
+			<div className="badLoginMessage">
+				{errorMessage === undefined
+					? 'failed to connect to server'
+					: errorMessage}
+			</div>
+		);
 	} else {
 		return (
 			<div
@@ -28,29 +34,32 @@ and handles all the user login business logic
 */
 const LoginPage = ({ setUser }) => {
 	const [usernameField, setUsernameField] = useState('');
-	const [passwordField, setPasswordFiedl] = useState('');
+	const [passwordField, setPasswordField] = useState('');
 	const [errorMessage, setErrorMessage] = useState(null);
 
 	const loginHandler = async (event) => {
 		event.preventDefault();
-		try {
-			const user = await loginService.loginPost({
-				username: usernameField,
-				password: passwordField,
-			});
-			const t = new Date();
-			window.localStorage.setItem('LoggedInUserUsername', user.username);
-			window.localStorage.setItem('LoggedInUserName', user.name);
-			window.localStorage.setItem('LoggedInUserToken', user.token);
-			window.localStorage.setItem(
-				'LoggedInUserExpiryDate',
-				t.setSeconds(t.getSeconds() + user.expiresIn)
-			);
-			console.log(user);
-			setUser(user);
-		} catch (err) {
-			setErrorMessage(err.response.data.error);
-			console.log('loginHandler', errorMessage);
+		if (usernameField.length === 0 || passwordField.length === 0) {
+			setErrorMessage('Fields cannot be empty');
+		} else {
+			try {
+				const user = await loginService.loginPost({
+					username: usernameField,
+					password: passwordField,
+				});
+				const t = new Date();
+				window.localStorage.setItem('LoggedInUserUsername', user.username);
+				window.localStorage.setItem('LoggedInUserName', user.name);
+				window.localStorage.setItem('LoggedInUserToken', user.token);
+				window.localStorage.setItem(
+					'LoggedInUserExpiryDate',
+					t.setSeconds(t.getSeconds() + user.expiresIn)
+				);
+				setUser(user);
+			} catch (err) {
+				setErrorMessage(err.response.data.error);
+				console.log('loginHandler', errorMessage);
+			}
 		}
 	};
 
@@ -82,7 +91,7 @@ const LoginPage = ({ setUser }) => {
 						type="password"
 						value={passwordField}
 						onChange={(event) => {
-							setPasswordFiedl(event.target.value);
+							setPasswordField(event.target.value);
 						}}
 						placeholder="Password"
 					></input>

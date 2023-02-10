@@ -1,9 +1,4 @@
-$body-background-color: #1a1a1a;
-$secondary-color: #0b0b0bff;
-$text-color: #ccccccff;
-$task-container-background: #282828;
-$task-container-background-focus: #454545;
-$taskSectionItems-height: 60px;
+@import 'variables';
 
 ::-webkit-scrollbar-track {
 	border-radius: 10px;
@@ -28,7 +23,7 @@ $taskSectionItems-height: 60px;
 	justify-content: stretch;
 	flex-grow: 1;
 	max-height: 100%;
-	background-color: $body-background-color;
+	background-color: $body-bg-color;
 }
 
 .hudContainer {
@@ -47,7 +42,7 @@ $taskSectionItems-height: 60px;
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-around;
-	background-color: $task-container-background;
+	background-color: $unfocused-task-container-bg;
 	height: 60%;
 	min-width: 500px;
 	max-width: 500px;
@@ -86,12 +81,13 @@ $taskSectionItems-height: 60px;
 		background-color: $text-color;
 		width: 20%;
 		height: 35px;
-		font-size: 0.8rem;
+		margin: 0 2% 0 0;
+		font-size: 0.9rem;
 		font-family: 'SF PRO DISPLAY BOLD';
 		text-align: center;
 		color: $secondary-color;
 		padding: 0% 0% 0.22rem 0%;
-		border-radius: 0.8rem;
+		border-radius: 0.2rem;
 		border: none;
 		transition: 100ms ease-in 0ms;
 		transition-property: background-color, color, outline, box-shadow;
@@ -121,7 +117,7 @@ $taskSectionItems-height: 60px;
 	margin-top: 1%;
 	margin-bottom: 4%;
 	height: 95%;
-	background-color: $task-container-background;
+	background-color: $unfocused-task-container-bg;
 	flex-grow: 1;
 }
 
@@ -134,7 +130,7 @@ $taskSectionItems-height: 60px;
 	overflow: auto;
 	flex-grow: 1;
 	overflow: hidden;
-	background: radial-gradient(rgba(255, 255, 255, 0.02), $body-background-color 90%)
+	background: radial-gradient(rgba(255, 255, 255, 0.02), $body-bg-color 90%)
 }
 
 .mainChildrenTitle {
@@ -150,7 +146,7 @@ $taskSectionItems-height: 60px;
 	text-align: center;
 	color: $text-color;
 	margin: 2px 0px 10px;
-	background-color: $task-container-background;
+	background-color: $unfocused-task-container-bg;
 	border-radius: 0.35rem;
 }
 
@@ -197,20 +193,21 @@ $taskSectionItems-height: 60px;
 
 .taskContainer {
 	overflow: hidden;
-	background-color: $task-container-background;
-	height: $taskSectionItems-height;
-	min-height: $taskSectionItems-height;
+	background-color: $unfocused-task-container-bg;
+	height: $task-item-height;
+	min-height: $task-item-height;
 	width: 80%;
 	max-width: 600px;
 	border-radius: 5px;
 	border: 1px solid #3d3d3d;
 	filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.7));
 	margin: 10px;
-	transition: min-height 200ms ease-in-out 50ms;
 	display: flex;
 	flex-direction: column;
 	align-items: stretch;
 	justify-content: start;
+	transition: 200ms ease-in-out 50ms;
+	transition-property: min-height;
 
 	/* Chrome, Safari, Edge, Opera */
 	input::-webkit-outer-spin-button,
@@ -229,8 +226,8 @@ $taskSectionItems-height: 60px;
 	button {
 		font-family: 'SF PRO DISPLAY BOLD';
 		font-size: 1.05rem;
-		min-height: $taskSectionItems-height;
-		height: $taskSectionItems-height;
+		min-height: $task-item-height;
+		height: $task-item-height;
 		width: 100%;
 		background: none;
 		border: none;
@@ -239,9 +236,9 @@ $taskSectionItems-height: 60px;
 		color: $text-color;
 		cursor: pointer;
 		transition: background-color 55ms ease-in 15ms;
-	}
-	&:hover {
-		background-color: $task-container-background-focus;
+		&:hover {
+			background-color: $focused-task-container-bg;
+		}
 	}
 }
 
@@ -250,8 +247,8 @@ $taskSectionItems-height: 60px;
 	visibility: 0;
 	opacity: 0;
 	border: none;
-	height: 200px - $taskSectionItems-height;
-	background-color: $task-container-background-focus;
+	height: 200px - $task-item-height;
+	background-color: $focused-task-container-bg;
 	transition: 15ms ease-in 100ms;
 	transition-property: opacity, visibility;
 	display: flex;
@@ -316,10 +313,10 @@ $taskSectionItems-height: 60px;
 }
 
 .addTaskButton {
-	height: 0.9 * $taskSectionItems-height;
-	width: 0.9 * $taskSectionItems-height;
-	min-height: 0.9 * $taskSectionItems-height;
-	min-width: 0.9 * $taskSectionItems-height;
+	height: 0.9 * $task-item-height;
+	width: 0.9 * $task-item-height;
+	min-height: 0.9 * $task-item-height;
+	min-width: 0.9 * $task-item-height;
 	border-radius: 50%;
 	padding: 0;
 	border: none;
@@ -341,8 +338,8 @@ $taskSectionItems-height: 60px;
 
 	&:hover {
 		background-color: rgba(255, 255, 255, 0.04);
-		height: 0.93 * $taskSectionItems-height;
-		width: 0.93 * $taskSectionItems-height;
+		height: 0.93 * $task-item-height;
+		width: 0.93 * $task-item-height;
 		transform: translateY(-1%);
 		svg {
 			filter: brightness(90%);
@@ -368,7 +365,7 @@ $taskSectionItems-height: 60px;
 	left: 0;
 	right: 0;
 	margin: 90px auto auto;
-	background-color: $task-container-background;
+	background-color: $unfocused-task-container-bg;
 	height: 450px;
 	width: 425px;
 	border-radius: 4px;
@@ -431,7 +428,7 @@ $taskSectionItems-height: 60px;
 			}
 			input {
 				height: 10px;
-				accent-color: $body-background-color;
+				accent-color: $body-bg-color;
 			}
 		}
 		.buttonsContainer {
@@ -440,18 +437,48 @@ $taskSectionItems-height: 60px;
 			justify-content: space-around;
 			align-items: center;
 			button {
-				font-family: 'SF PRO DISPLAY REGULAR';
-				align-items: center;
-				height: 25px;
-				width: 70px;
-				background-color: #cccccc;
-				border: none;
-			}
+					margin: 10px;
+					margin-top: 30px;
+					margin-bottom: 10px;
+					border-radius: 2px;
+					height: 30px;
+					width: 65px;
+					font-size: 1rem;
+					background-color: $text-color;
+					font-family: 'SF PRO DISPLAY BOLD';
+					text-align: center;
+					color: $secondary-color;
+					border: none;
+					transition: 100ms ease-in 0ms;
+					transition-property: background-color, color, outline;
+					outline: $secondary-color solid 1px;
+				}
 			button:hover {
+				cursor: pointer;
 				color: $text-color;
-				border: 1px solid $secondary-color;
-				background-color: rgba(255, 255, 255, 0.1);
+				outline: $text-color solid 1px;
+			}
+			.submitButton:hover {
+				background-color: $success-color;
+			}
+			.cancelButton:hover {
+				background-color: $error-color;
 			}
 		}
 	}
 }
+
+/*
+Use CSS variables: Instead of using hard-coded color values, you could use CSS variables. This makes it easier to change the theme and make global changes to the color palette.
+
+Use mixins: You could create mixins for common styles, such as border-radius and box-shadow, to make the code more concise and easier to maintain.
+
+Consistent spacing: Ensure that there is consistent spacing between rules to make it easier to read the code.
+
+Consistent naming: Consider using a consistent naming convention for classes and mixins to make the code more readable and maintainable.
+
+Simplify styles: Remove unnecessary styles, such as the align-items and justify-content properties, if they are set to the default values.
+
+Remove vendor prefixes: Vendor prefixes, such as -webkit-, are no longer necessary as modern browsers support the latest CSS standards. You can safely remove them.
+
+*/

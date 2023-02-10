@@ -1,8 +1,10 @@
 import CompletionCircle from './PercentageCircle/CompletionCircle';
-import WeekServices from '../../services/week.js';
-import { useState, useEffect } from 'react';
+import WeekServices from '../../../services/week.js';
+import { useState, useEffect, useContext } from 'react';
+import { UserContext } from '../../../App.js';
 
-const Hud = ({ user, tasks }) => {
+const Hud = ({ tasks }) => {
+	const [user, setUser] = useContext(UserContext);
 	const [weekDue, setWeekDue] = useState(null);
 
 	const fetchWeekDue = async () => {
@@ -38,7 +40,7 @@ const Hud = ({ user, tasks }) => {
 						: ' - Days - Hours'}
 				</h2>
 			</div>
-			<button className="concludeButton">☑️CONCLUDE</button>
+			<button className="concludeButton">CONCLUDE</button>
 		</div>
 	);
 };

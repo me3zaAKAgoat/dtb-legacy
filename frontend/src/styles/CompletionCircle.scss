@@ -1,9 +1,4 @@
-$body-background-color: #1a1a1a;
-$secondary-color: #0b0b0bff;
-$text-color: #cccccc;
-$task-container-background: #282828;
-$task-container-background-focus: #454545;
-$taskSectionItems-height: 60px;
+@import 'variables';
 
 .percentage {
 	background: none;
@@ -19,7 +14,7 @@ $taskSectionItems-height: 60px;
 	border: none;
 	// background: none;
 	overflow: hidden;
-	background-color: $task-container-background-focus;
+	background-color: $focused-task-container-bg;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -35,7 +30,7 @@ $taskSectionItems-height: 60px;
 	border-radius: 50%;
 	// border: 1px solid black;
 	border: none;
-	background: $task-container-background;
+	background: $unfocused-task-container-bg;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;

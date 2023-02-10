@@ -1,72 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import TaskContainer from '../TaskContainer/TaskContainer.js';
-import AddTaskForm from '../AddTaskForm/AddTaskForm.js';
-import EditTaskForm from '../EditTaskForm/EditTaskForm.js';
-import TaskContextMenu from '../ContextMenus/TaskContextMenu';
-
-/*
-this component conditionally renders and edit task or a create task
-form.
-*/
-const FormRenderingComponent = ({
-	formToOpen,
-	setFormToOpen,
-	user,
-	taskToEdit,
-	setTaskToEdit,
-	tasks,
-	setTasks,
-}) => {
-	const [transitionProperties, setTransitionProperties] = useState({});
-
-	/* 
-	a small timeout between the creation of the form and then the adding the style of the form
-	for the transition to take effect.
-	if this dosent exist then the values visibility and opacity dont change thus no transition
-	effect occurs.
-	*/
-	useEffect(() => {
-		if (!formToOpen) {
-			setTransitionProperties({});
-		} else {
-			setTimeout(() => {
-				setTransitionProperties({ visibility: 'visible', opacity: 1 });
-			}, 1);
-		}
-	}, [formToOpen]);
-
-	if (formToOpen === 'add') {
-		return (
-			<div className="taskModal" style={transitionProperties}>
-				<div className="taskFormContainer">
-					<AddTaskForm
-						tasks={tasks}
-						setTasks={setTasks}
-						user={user}
-						setFormToOpen={setFormToOpen}
-					/>
-				</div>
-			</div>
-		);
-	} else if (formToOpen === 'edit') {
-		return (
-			<div className="taskModal" style={transitionProperties}>
-				<div className="taskFormContainer">
-					<EditTaskForm
-						user={user}
-						taskToEdit={taskToEdit}
-						setTaskToEdit={setTaskToEdit}
-						tasks={tasks}
-						setTasks={setTasks}
-						setFormToOpen={setFormToOpen}
-					/>
-				</div>
-			</div>
-		);
-	} else {
-		return <></>;
-	}
-};
+import TaskContextMenu from '../../ContextMenus/TaskContextMenu';
 
 /*
 this is component is a container for the list of tasks.
@@ -78,15 +12,14 @@ of the two prior forms is to be open.
 it is also the component that renders the context menu of tasks through the state 
 contextMenu
 */
-const TasksContainer = ({ user, tasks, setTasks }) => {
-	const [formToOpen, setFormToOpen] = useState(null);
-	const [taskToEdit, setTaskToEdit] = useState(null);
+const TasksContainer = ({ tasks, setTasks, setFormState }) => {
 	const [contextMenu, setContextMenu] = useState({
 		show: false,
 		x: null,
 		y: null,
 		id: null,
 	});
+
 	return (
 		<div className="mainChildrenContainers">
 			<div className="mainChildrenTitle">Tasks</div>
@@ -94,28 +27,31 @@ const TasksContainer = ({ user, tasks, setTasks }) => {
 				<TaskContextMenu
 					contextMenu={contextMenu}
 					setContextMenu={setContextMenu}
-					setFormToOpen={setFormToOpen}
-					user={user}
 					tasks={tasks}
 					setTasks={setTasks}
+					setFormState={setFormState}
 				/>
 				{tasks.map((task) => (
 					<TaskContainer
 						key={task.title + task.id}
 						task={task}
-						setTaskToEdit={setTaskToEdit}
-						setFormToOpen={setFormToOpen}
-						user={user}
 						tasks={tasks}
 						setTasks={setTasks}
 						contextMenu={contextMenu}
 						setContextMenu={setContextMenu}
+						setFormState={setFormState}
 					/>
 				))}
 				<button
 					className="addTaskButton"
 					onClick={() => {
-						setFormToOpen('add');
+						setFormState({
+							type: 'add',
+							title: null,
+							description: null,
+							priority: null,
+							id: null,
+						});
 					}}
 				>
 					<svg
@@ -134,17 +70,16 @@ const TasksContainer = ({ user, tasks, setTasks }) => {
 					</svg>
 				</button>
 			</div>
-			<FormRenderingComponent
-				user={user}
-				taskToEdit={taskToEdit}
-				setTaskToEdit={setTaskToEdit}
-				tasks={tasks}
-				setTasks={setTasks}
-				formToOpen={formToOpen}
-				setFormToOpen={setFormToOpen}
-			/>
 		</div>
 	);
 };
 
 export default TasksContainer;
+
+/*
+Extract the context menu into its own component: Instead of including the code for the context menu inside the TasksContainer component, extract it into a separate component and import it in the TasksContainer component. This will help to keep the code organized and make it easier to maintain.
+
+Refactor the conditional rendering of the forms: The code for rendering the add and edit forms is repetitive. You can extract the common logic into a separate function and pass the relevant form component to be rendered as a prop. This will reduce the code repetition and improve readability.
+
+Use memoization: The TasksContainer component is re-rendering every time the state changes, including the tasks array. This can lead to poor performance if the tasks array is large. You can use React.memo to memoize the component and avoid unnecessary re-renders.
+*/
