@@ -1,5 +1,6 @@
 import '../../styles/Navbar.scss';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const ProfileButton = (props) => {
 	const [open, setOpen] = useState(false);
@@ -65,6 +66,8 @@ const DropdownContainer = ({ open, logOut }) => {
 };
 
 const Navbar = (props) => {
+	const navigate = useNavigate();
+
 	return (
 		<nav className="navigationBar">
 			<a href="">
@@ -73,7 +76,12 @@ const Navbar = (props) => {
 			<div className="seperatingHorizontalLine"></div>
 			<ul>
 				<li>
-					<button className="homeButton">
+					<button
+						className="homeButton"
+						onClick={() => {
+							navigate('/home');
+						}}
+					>
 						<svg
 							width="260"
 							height="248"
@@ -89,7 +97,12 @@ const Navbar = (props) => {
 					</button>
 				</li>
 				<li>
-					<button className="StatisticsButton">
+					<button
+						className="StatisticsButton"
+						onClick={() => {
+							navigate('/statistics');
+						}}
+					>
 						<svg
 							width="260"
 							height="260"

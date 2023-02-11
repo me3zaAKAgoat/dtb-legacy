@@ -1,8 +1,10 @@
 import './styles/App.scss';
-import Navbar from './components/Navbar/Navbar.js';
-import Home from './components/Home/Home';
 import { useState, useEffect, useCallback, createContext } from 'react';
+import Navbar from './components/Navbar/Navbar';
+import Home from './components/Home/Home';
 import LoginPage from './components/LoginPage/LoginPage';
+import Statistics from './components/Statistics/Statistics';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 
 /*
 this is the root component that is first mounted
@@ -15,6 +17,7 @@ export const UserContext = createContext();
 
 const App = () => {
 	const [user, setUser] = useState(null);
+	const navigate = useNavigate();
 
 	// checks if a the user already set in local storage has had their token expire yet
 	useEffect(() => {
@@ -42,10 +45,17 @@ const App = () => {
 		setUser(null);
 	}, []);
 
-	if (user === null) {
+	useEffect(() => {
+		if (!user) navigate('/login');
+		else navigate('/home');
+	}, [user]);
+
+	if (!user) {
 		return (
 			<div className="app">
-				<LoginPage setUser={setUser} />
+				<Routes>
+					<Route path="/login" element={<LoginPage setUser={setUser} />} />
+				</Routes>
 			</div>
 		);
 	} else {
@@ -58,7 +68,10 @@ const App = () => {
 					}}
 				>
 					<Navbar logOut={logOut} />
-					<Home />
+					<Routes>
+						<Route path="/home" element={<Home />} />
+						<Route path="/statistics" element={<Statistics />} />
+					</Routes>
 				</div>
 			</UserContext.Provider>
 		);

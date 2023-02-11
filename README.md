@@ -100,6 +100,7 @@ npm start
 
 ### Core
 
+- [ ] set an active week id proprety on the user state
 - [ ] thoroughly describe the automatic synchronization system.
 - [ ] make the basic layout for the statistics page.
 - [ ] make a settings page.
@@ -115,7 +116,7 @@ npm start
 - [ ] add end of week button that renders a modal prompting the user to describe the week and then sends an api call to archive the ended week and create a stamp of it.
 - [ ] work on custom skeleton component to every component that makes an inital fetch, so that this skeleton component only renders the wanted component after a successful fetch. (will enable moving tasks state to tasks section hopefully).
 - [ ] change overall font to a more flexible one (should modern looking - minimalistic)
-- [x  ] use the useContext hook to avoid drilling of user state.
+- [x] use the useContext hook to avoid drilling of user state.
 - [ ] make function wrappers for every module that has an action that necessitates a follow up, to avoid duplication and all the issues that stem from it.
 - [ ] add an indicator at the bottom of the app that tells the user how the api calls are going.
 
@@ -124,11 +125,11 @@ npm start
 - [x] refactor how modals work and decouple the responsibilities thrown into TasksContainer component.
 - [ ] work on a loading UI (skeleton) while the data is being fetched.
 - [ ] add loading animation to any component thats awaiting an api calls response (login for example).
-- [ ] refractor spree to make code more readable and more performant.
+- [x] refractor spree to make code more readable and more performant.
 - [ ] make a purple theme.
 - [ ] figure out how keep data stored client side (pouchDB and nedb and sessionstorage and localstorage) https://stackoverflow.com/questions/28314368/how-to-maintain-state-after-a-page-refresh-in-react-js https://rxdb.info/quickstart.html
 - [ ] rich text editor notes that behaves like discord text form parsing.
-- [x] make a valiant abilities HUD inspired HUD for week status
+- [x] make a valorant abilities HUD inspired HUD for week status
 - [x] custom context menu on tasks
   - add possibility to delete tasks
 - [x] description filled on submission does not have to be non empty
@@ -152,7 +153,7 @@ useEffect(() => {
 - [ ] make divs flicker on validation error.
 - [x] when update progress response is received tasks should be synced
 - [x] fix WHY THE FUCK the user cant update two tasks progresses without fucking up the state enitrely
-  - the usecallback function that enabels debouncing makes it so the memozoized function always has the state of the time it was initially rendered on so any changes to state made out of it will always result in older state of other tasks.
+  - the usecallback function that enabels debouncing makes it so the memooized function always has the state of the time it was initially rendered on so any changes to state made out of it will always result in older state of other tasks.
   - so what about giving up usecallback entirely and making the file scoped and not function scoped, well then the fuckign debounces override each other and only the latest debounce will make an api call
 - [x] make buttons that change in size be centered and not change height downwards but towrads all sides instead.
 - [ ] replace window alerts and confirms with custom modals.

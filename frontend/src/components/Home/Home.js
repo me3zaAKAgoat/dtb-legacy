@@ -1,4 +1,5 @@
 import '../../styles/Home.scss';
+import '../../styles/App.scss';
 import TasksContainer from './TasksContainer/TasksContainer.js';
 import NotesContainer from './NotesContainer/NotesContainer.js';
 import Hud from './Hud/Hud.js';
@@ -64,27 +65,64 @@ const FormRenderingComponent = ({
 };
 
 const Home = () => {
-	const [tasks, setTasks] = useState([]);
 	const [user, setUser] = useContext(UserContext);
+	const [tasks, setTasks] = useState([]);
+	const [notes, setNotes] = useState(null);
 	const [formState, setFormState] = useState(null);
+	const [fetched, setFetched] = useState(false);
+	const [weekDue, setWeekDue] = useState(null);
 
-	const fetchCurrentWeekTasks = useCallback(async () => {
+	const fetchWeekDue = async () => {
 		try {
-			const retrievedData = await WeekServices.getCurrentWeekTasks(user.token);
+			const retrievedData = await WeekServices.getactiveWeekTasks(user.token);
+			setWeekDue(
+				retrievedData.weekDue === null ? null : new Date(retrievedData.weekDue)
+			);
+		} catch (err) {
+			console.log(err);
+		}
+	};
+
+	const fetchactiveWeekTasks = useCallback(async () => {
+		try {
+			const retrievedData = await WeekServices.getactiveWeekTasks(user.token);
 			setTasks(retrievedData.tasks);
+		} catch (err) {
+			console.log(err);
+		}
+	}, []);
+	const fetchactiveWeekNotes = useCallback(async () => {
+		try {
+			const response = await WeekServices.getactiveWeekNotes(user.token);
+			if (response.status === 204) setNotes('');
+			else {
+				setNotes(response.data.notes);
+			}
+			setFetched(true);
 		} catch (err) {
 			console.log(err);
 		}
 	}, []);
 
 	useEffect(() => {
-		fetchCurrentWeekTasks();
+		fetchactiveWeekTasks();
+		fetchactiveWeekNotes();
 	}, []);
 
+	useEffect(() => {
+		fetchWeekDue();
+	}, [tasks]);
+
 	return (
-		<div className="home">
+		<div className="basePage">
 			<div className="hudContainer">
-				<Hud className="hud" tasks={tasks} />
+				<Hud
+					className="hud"
+					tasks={tasks}
+					setTasks={setTasks}
+					setNotes={setNotes}
+					weekDue={weekDue}
+				/>
 			</div>
 			<main className="main">
 				<TasksContainer
@@ -93,7 +131,7 @@ const Home = () => {
 					setFormState={setFormState}
 				/>
 				<div className="separatingVerticalLine"></div>
-				<NotesContainer />
+				<NotesContainer notes={notes} setNotes={setNotes} fetched={fetched} />
 			</main>
 			<FormRenderingComponent
 				tasks={tasks}
@@ -108,7 +146,7 @@ const Home = () => {
 export default Home;
 
 /*
-Use the user.token argument only once in fetchCurrentWeekTasks, instead of passing it to the method each time it is called.
+Use the user.token argument only once in fetchactiveWeekTasks, instead of passing it to the method each time it is called.
 
 Use the user argument as a dependency in the useEffect hook to avoid fetching the tasks every time the component is re-rendered.
 

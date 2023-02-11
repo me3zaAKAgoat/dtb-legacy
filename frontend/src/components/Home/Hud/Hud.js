@@ -1,24 +1,24 @@
 import CompletionCircle from './PercentageCircle/CompletionCircle';
 import WeekServices from '../../../services/week.js';
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, useCallback } from 'react';
 import { UserContext } from '../../../App.js';
 
-const Hud = ({ tasks }) => {
+const Hud = ({ tasks, setTasks, setNotes, weekDue }) => {
 	const [user, setUser] = useContext(UserContext);
-	const [weekDue, setWeekDue] = useState(null);
 
-	const fetchWeekDue = async () => {
-		try {
-			const retrievedData = await WeekServices.getCurrentWeekTasks(user.token);
-			setWeekDue(
-				retrievedData.weekDue === null ? null : new Date(retrievedData.weekDue)
-			);
-		} catch (err) {
-			console.log(err);
+	const handleConclude = useCallback(async () => {
+		const userConfirms = window.confirm('You will conclude this week now');
+		if (userConfirms) {
+			try {
+				const res = await WeekServices.concludeWeek(user.token);
+				if (res.status >= 200 && res.status < 300) {
+					setTasks([]);
+					setNotes('');
+				}
+			} catch (err) {
+				console.error(err);
+			}
 		}
-	};
-	useEffect(() => {
-		fetchWeekDue();
 	}, []);
 
 	return (
@@ -40,7 +40,9 @@ const Hud = ({ tasks }) => {
 						: ' - Days - Hours'}
 				</h2>
 			</div>
-			<button className="concludeButton">CONCLUDE</button>
+			<button className="concludeButton" onClick={handleConclude}>
+				CONCLUDE
+			</button>
 		</div>
 	);
 };

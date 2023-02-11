@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import '../../styles/LoginPage.scss';
 import loginService from '../../services/login.js';
-
+import { useNavigate } from 'react-router-dom';
 /*
 this component is a rectangle div that shows the reason the login
 process may have failed 

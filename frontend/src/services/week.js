@@ -2,9 +2,9 @@ import axios from 'axios';
 
 const baseUrl = 'http://localhost:3003/api/week';
 
-const getCurrentWeekId = async (token) => {
+const getactiveWeekId = async (token) => {
 	try {
-		const response = await axios.get(`${baseUrl}/currentWeekId`, {
+		const response = await axios.get(`${baseUrl}/activeWeekId`, {
 			headers: {
 				Authorization: `Bearer ${token}`,
 			},
@@ -15,9 +15,9 @@ const getCurrentWeekId = async (token) => {
 	}
 };
 
-const getCurrentWeekTasks = async (token) => {
+const getactiveWeekTasks = async (token) => {
 	try {
-		const response = await axios.get(`${baseUrl}/currentWeekTasks`, {
+		const response = await axios.get(`${baseUrl}/activeWeekTasks`, {
 			headers: {
 				Authorization: `Bearer ${token}`,
 			},
@@ -54,23 +54,41 @@ const updateNotes = async (token, newNotes) => {
 	}
 };
 
-const getCurrentWeekNotes = async (token) => {
+const getactiveWeekNotes = async (token) => {
 	try {
-		const response = await axios.get(`${baseUrl}/currentWeekNotes`, {
+		const response = await axios.get(`${baseUrl}/activeWeekNotes`, {
 			headers: {
 				Authorization: `Bearer ${token}`,
 			},
 		});
-		return response.data;
+		return response;
+	} catch (err) {
+		console.log(err);
+	}
+};
+
+const concludeWeek = async (token) => {
+	try {
+		const response = await axios.post(
+			`${baseUrl}/concludeWeek`,
+			{},
+			{
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			}
+		);
+		return response;
 	} catch (err) {
 		console.log(err);
 	}
 };
 
 export default {
-	getCurrentWeekId,
+	getactiveWeekId,
 	initiateNewWeek,
-	getCurrentWeekTasks,
+	getactiveWeekTasks,
 	updateNotes,
-	getCurrentWeekNotes,
+	getactiveWeekNotes,
+	concludeWeek,
 };

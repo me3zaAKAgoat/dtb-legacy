@@ -173,15 +173,15 @@ const TaskContainer = ({
 		<div
 			className="taskContainer"
 			style={open ? taskContainerOpenStyleTransition : {}}
+			onContextMenu={handleContextMenu}
 		>
-			<button
+			<h1
 				onClick={() => {
 					setOpen(!open);
 				}}
-				onContextMenu={handleContextMenu}
 			>
 				{title}
-			</button>
+			</h1>
 			<div
 				className="expandedContainer"
 				style={

@@ -16,5 +16,5 @@ Content-Type: application/json
     "password" : "password"
 }
 ###
-GET  http://localhost:3003/api/week/currentWeek
+GET  http://localhost:3003/api/week/activeWeek
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMmUyMzU1ZmQyZWY4OTU5NzExZjliOCIsImlhdCI6MTY2NDA1OTc5OCwiZXhwIjoxNjY0MDYzMzk4fQ.GEErMXBk540WcKGo0bzpebFLZlv9vQO-SkZB4kXpf24

@@ -19,41 +19,29 @@ const updateNotes = debounce(async (token, notes) => {
 	});
 }, 2000);
 
-const NotesContainer = () => {
+const NotesContainer = ({ notes, setNotes, fetched }) => {
 	const [user, setUser] = useContext(UserContext);
-	const [notes, setNotes] = useState('');
 	const firstRender = useRef(true);
 
 	const handleNotesChange = (e) => {
 		setNotes(e.target.value);
 	};
 
-	const fetchCurrentWeekNotes = useCallback(async () => {
-		try {
-			const retrievedData = await WeekServices.getCurrentWeekNotes(user.token);
-			setNotes(retrievedData.notes);
-		} catch (err) {
-			console.log(err);
-		}
-	}, []);
-
 	useEffect(() => {
-		fetchCurrentWeekNotes();
-	}, []);
-
-	useEffect(() => {
-		if (firstRender.current) firstRender.current = !firstRender.current;
+		if (firstRender.current) firstRender.current = false;
 		else updateNotes(user.token, notes);
 	}, [notes]);
 
 	return (
 		<div className="mainChildrenContainers">
 			<div className="mainChildrenTitle">Notes</div>
-			<textarea
-				className="notesTextArea"
-				value={notes}
-				onChange={handleNotesChange}
-			></textarea>
+			{fetched && (
+				<textarea
+					className="notesTextArea"
+					value={notes}
+					onChange={handleNotesChange}
+				></textarea>
+			)}
 		</div>
 	);
 };
@@ -66,7 +54,7 @@ Add PropTypes for the component's props to validate the data types of the receiv
 
 Use useMemo hook for the debounce function to avoid creating a new function on each render.
 
-Use error boundaries to catch errors thrown by the fetchCurrentWeekNotes function and handle them gracefully.
+Use error boundaries to catch errors thrown by the fetchactiveWeekNotes function and handle them gracefully.
 
 Use useState with the initial value of an empty string to store the notes, instead of calling setNotes with a string literal.
 

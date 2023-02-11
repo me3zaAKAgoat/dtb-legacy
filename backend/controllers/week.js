@@ -6,27 +6,27 @@ const jwt = require('jsonwebtoken');
 const config = require('../utils/config.js');
 
 //get week id
-weekRouter.get('/currentWeekId', async (req, res) => {
+weekRouter.get('/activeWeekId', async (req, res) => {
 	const token = req.token;
 	try {
 		const decodedToken = jwt.verify(token, config.SECRET);
 		const user = await User.findById(decodedToken.id);
-		const currentWeek = user.currentWeek;
-		res.status(200).json({ id: currentWeek });
+		const activeWeek = user.activeWeek;
+		res.status(200).json({ id: activeWeek });
 	} catch (err) {
 		return res.status(500).json({ error: err });
 	}
 });
 
 //get week tasks
-weekRouter.get('/currentWeekTasks', async (req, res) => {
+weekRouter.get('/activeWeekTasks', async (req, res) => {
 	const token = req.token;
 	try {
 		const decodedToken = jwt.verify(token, config.SECRET);
 		const user = await User.findById(decodedToken.id);
-		const currentWeekId = user.currentWeek;
-		if (currentWeekId) {
-			const week = await Week.findById(currentWeekId).populate(
+		const activeWeekId = user.activeWeek;
+		if (activeWeekId) {
+			const week = await Week.findById(activeWeekId).populate(
 				'tasks',
 				'title description priority progress id'
 			);
@@ -35,28 +35,26 @@ weekRouter.get('/currentWeekTasks', async (req, res) => {
 			return res.status(200).json({ tasks: [], weekDue: null });
 		}
 	} catch (err) {
-		console.log('WeekRouter', err);
 		return res.status(500).json({ error: err });
 	}
 });
 
-weekRouter.get('/currentWeekNotes', async (req, res) => {
+weekRouter.get('/activeWeekNotes', async (req, res) => {
 	const token = req.token;
 	try {
 		const decodedToken = jwt.verify(token, config.SECRET);
 		const user = await User.findById(decodedToken.id);
-		const currentWeekId = user.currentWeek;
-		if (currentWeekId) {
-			const week = await Week.findById(currentWeekId).populate(
+		const activeWeekId = user.activeWeek;
+		if (activeWeekId) {
+			const week = await Week.findById(activeWeekId).populate(
 				'tasks',
 				'title description priority progress id'
 			);
 			return res.status(200).json({ notes: week.notes });
 		} else {
-			return res.status(200).json({ notes: week.notes });
+			return res.sendStatus(204);
 		}
 	} catch (err) {
-		console.log('WeekRouter', err);
 		return res.status(500).json({ error: err });
 	}
 });
@@ -90,7 +88,7 @@ weekRouter.post('/initiateNewWeek', async (req, res) => {
 
 		savedWeek.tasks = savedWeek.tasks.concat(savedTask._id);
 		const updatedWeek = await savedWeek.save();
-		user.currentWeek = updatedWeek._id;
+		user.activeWeek = updatedWeek._id;
 		await user.save();
 		res.status(200).json({
 			title: savedTask.title,
@@ -100,7 +98,6 @@ weekRouter.post('/initiateNewWeek', async (req, res) => {
 			id: savedTask._id,
 		});
 	} catch (err) {
-		console.log('week router', err);
 		return res.status(500).json({ erro: err });
 	}
 });
@@ -111,7 +108,7 @@ weekRouter.put('/updateNotes', async (req, res) => {
 		const decodedToken = jwt.verify(token, config.SECRET);
 		const user = await User.findById(decodedToken.id);
 
-		const week = await Week.findById(user.currentWeek);
+		const week = await Week.findById(user.activeWeek);
 
 		week.notes = req.body.text;
 
@@ -122,6 +119,22 @@ weekRouter.put('/updateNotes', async (req, res) => {
 		});
 	} catch (err) {
 		console.log('week router', err);
+		return res.status(500).json({ erro: err });
+	}
+});
+
+weekRouter.post('/concludeWeek', async (req, res) => {
+	const token = req.token;
+	try {
+		const decodedToken = jwt.verify(token, config.SECRET);
+		const user = await User.findById(decodedToken.id);
+
+		user.set('activeWeek', null);
+		await user.save();
+
+		res.sendStatus(200);
+	} catch (err) {
+		console.error(err);
 		return res.status(500).json({ erro: err });
 	}
 });

@@ -46,7 +46,7 @@ taskRouter.delete('/deleteTask', async (req, res) => {
 		const decodedToken = jwt.verify(token, config.SECRET);
 		const user = await User.findById(decodedToken.id);
 
-		const week = await Week.findById(user.currentWeek);
+		const week = await Week.findById(user.activeWeek);
 
 		/*on scalabaility of instance.array.pull ->
 		that wouldn't be very scalable. You could have collisions of instances, if more than one of the same call were fired at the same time.*/

@@ -33,7 +33,7 @@ loginRouter.post('/', async (req, res) => {
 			username: user.username,
 			name: user.name,
 			token: token,
-			currentWeek: user.currentWeek,
+			activeWeek: user.activeWeek,
 			expiresIn: tokenExpirationParam,
 		});
 	} catch (err) {
@@ -87,7 +87,7 @@ loginRouter.post('/', async (req, res) => {
       username: user.username,
       name: user.name,
       token: token,
-      currentWeek: user.currentWeek,
+      activeWeek: user.activeWeek,
       expiresIn: TOKEN_EXPIRATION_PARAM,
     });
   } catch (err) {

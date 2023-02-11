@@ -31,7 +31,7 @@ const TaskForm = ({ tasks, setTasks, formState, setFormState }) => {
 
 	const callApiMethod = async () => {
 		const areRequirementsMet =
-			titleField.length > 0 && priorityField.length > 0;
+			titleField?.length > 0 && priorityField?.length > 0;
 
 		if (!areRequirementsMet) {
 			alert('Must fill all fields');
@@ -70,10 +70,9 @@ const TaskForm = ({ tasks, setTasks, formState, setFormState }) => {
 						priority: priorityField,
 						progress: 0,
 					};
-					const currentWeekId = (
-						await WeekServices.getCurrentWeekId(user.token)
-					).id;
-					if (!currentWeekId) {
+					const activeWeekId = (await WeekServices.getactiveWeekId(user.token))
+						.id;
+					if (!activeWeekId) {
 						const returnedTask = await WeekServices.initiateNewWeek(
 							user.token,
 							newTask
@@ -82,7 +81,7 @@ const TaskForm = ({ tasks, setTasks, formState, setFormState }) => {
 					} else {
 						const returnedTask = await TaskServices.addTask(
 							user.token,
-							currentWeekId,
+							activeWeekId,
 							newTask
 						);
 						setTasks(tasks.concat(returnedTask));

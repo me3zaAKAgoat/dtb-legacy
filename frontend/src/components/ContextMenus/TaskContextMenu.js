@@ -42,22 +42,17 @@ const TaskContextMenu = ({
 		[contextMenu]
 	);
 
-	const handleDropdownBlur = useCallback(
-		(e) => {
-			e.preventDefault();
-			if (!e.currentTarget.contains(e.relatedTarget)) {
-				setContextMenu({ show: false, x: null, y: null, id: null });
-			}
-		},
-		[contextMenu]
-	);
+	const handleBlur = (e) => {
+		e.preventDefault();
+		setContextMenu({ show: false, x: null, y: null, id: null });
+	};
 
 	if (contextMenu.show === false) return <></>;
 	else {
 		return (
 			<button
 				className="contextMenu"
-				onBlur={(e) => handleDropdownBlur(e)}
+				onBlur={(e) => handleBlur(e)}
 				style={{
 					top: contextMenu.y + 'px',
 					left: contextMenu.x + 'px',
@@ -65,9 +60,22 @@ const TaskContextMenu = ({
 				tabIndex="-1"
 				autoFocus
 			>
-				<button onClick={handleEditButton}>Edit Task</button>
-				<hr></hr>
-				<button onClick={handleDeleteButton}>Delete Task</button>
+				<ul>
+					<li>
+						<div className="contextMenuChildOption" onClick={handleEditButton}>
+							Edit Task
+						</div>
+					</li>
+					<hr></hr>
+					<li>
+						<div
+							className="contextMenuChildOption"
+							onClick={handleDeleteButton}
+						>
+							Delete Task
+						</div>
+					</li>
+				</ul>
 			</button>
 		);
 	}

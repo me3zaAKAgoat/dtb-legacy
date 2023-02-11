@@ -16,16 +16,6 @@
 	background-color: $secondary-color;
 }
 
-.home {
-	display: flex;
-	flex-direction: column;
-	align-items: stretch;
-	justify-content: stretch;
-	flex-grow: 1;
-	max-height: 100%;
-	background-color: $body-bg-color;
-}
-
 .hudContainer {
 	min-height: 13%;
 	max-height: 100px;
@@ -80,14 +70,14 @@
 	.concludeButton {
 		background-color: $text-color;
 		width: 20%;
-		height: 35px;
+		height: 33px;
 		margin: 0 2% 0 0;
 		font-size: 0.9rem;
 		font-family: 'SF PRO DISPLAY BOLD';
 		text-align: center;
 		color: $secondary-color;
 		padding: 0% 0% 0.22rem 0%;
-		border-radius: 0.2rem;
+		border-radius: 0.9rem;
 		border: none;
 		transition: 100ms ease-in 0ms;
 		transition-property: background-color, color, outline, box-shadow;
@@ -215,6 +205,27 @@
 		-webkit-appearance: none;
 		appearance: none;
 		margin: 0;
+	}
+
+	h1 {
+		font-family: 'SF PRO DISPLAY BOLD';
+		font-size: 1.05rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		min-height: $task-item-height;
+		height: $task-item-height;
+		width: 100%;
+		background: none;
+		border: none;
+		margin: 0;
+		padding: 0;
+		color: $text-color;
+		cursor: pointer;
+		transition: background-color 55ms ease-in 15ms;
+		&:hover {
+			background-color: $focused-task-container-bg;
+		}
 	}
 
 	/* Firefox */
