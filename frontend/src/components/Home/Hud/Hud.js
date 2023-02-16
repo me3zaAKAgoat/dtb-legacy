@@ -3,7 +3,7 @@ import WeekServices from '../../../services/week.js';
 import { useState, useEffect, useContext, useCallback } from 'react';
 import { UserContext } from '../../../App.js';
 
-const Hud = ({ tasks, setTasks, setNotes, weekDue }) => {
+const Hud = ({ tasks, setTasks, setNotes, weekDue, setWeekDue }) => {
 	const [user, setUser] = useContext(UserContext);
 
 	const handleConclude = useCallback(async () => {
@@ -13,6 +13,7 @@ const Hud = ({ tasks, setTasks, setNotes, weekDue }) => {
 				const res = await WeekServices.concludeWeek(user.token);
 				if (res.status >= 200 && res.status < 300) {
 					setTasks([]);
+					setWeekDue(null);
 					setNotes('');
 				}
 			} catch (err) {

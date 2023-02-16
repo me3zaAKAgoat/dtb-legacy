@@ -15,7 +15,7 @@ const getactiveWeekId = async (token) => {
 	}
 };
 
-const getactiveWeekTasks = async (token) => {
+const getActiveWeekasks = async (token) => {
 	try {
 		const response = await axios.get(`${baseUrl}/activeWeekTasks`, {
 			headers: {
@@ -87,7 +87,7 @@ const concludeWeek = async (token) => {
 export default {
 	getactiveWeekId,
 	initiateNewWeek,
-	getactiveWeekTasks,
+	getActiveWeekasks,
 	updateNotes,
 	getactiveWeekNotes,
 	concludeWeek,

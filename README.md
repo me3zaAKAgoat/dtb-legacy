@@ -119,6 +119,9 @@ npm start
 - [x] use the useContext hook to avoid drilling of user state.
 - [ ] make function wrappers for every module that has an action that necessitates a follow up, to avoid duplication and all the issues that stem from it.
 - [ ] add an indicator at the bottom of the app that tells the user how the api calls are going.
+- [ ] increase responsivity of week due date state in relation to the week state
+- [ ] fix the bug with editing tasks not responsively updating the current state
+- [ ] fix a bug where some api calls are submitted when the task form is open without the button being clicked
 
 ### Secondary
 
@@ -128,7 +131,7 @@ npm start
 - [x] refractor spree to make code more readable and more performant.
 - [ ] make a purple theme.
 - [ ] figure out how keep data stored client side (pouchDB and nedb and sessionstorage and localstorage) https://stackoverflow.com/questions/28314368/how-to-maintain-state-after-a-page-refresh-in-react-js https://rxdb.info/quickstart.html
-- [ ] rich text editor notes that behaves like discord text form parsing.
+- [ ] rich markdown text editor for notes component that behaves like discord text form parsing.
 - [x] make a valorant abilities HUD inspired HUD for week status
 - [x] custom context menu on tasks
   - add possibility to delete tasks
@@ -157,7 +160,7 @@ useEffect(() => {
   - so what about giving up usecallback entirely and making the file scoped and not function scoped, well then the fuckign debounces override each other and only the latest debounce will make an api call
 - [x] make buttons that change in size be centered and not change height downwards but towrads all sides instead.
 - [ ] replace window alerts and confirms with custom modals.
-- [ ] figure out how to set custom context menu to base element to something other than button.
+- [x] figure out how to set custom context menu to base element to something other than button.
 - [ ] add a visual aspect to the priority of tasks.
 - [ ] add a way the user can see the priority of a task.
 - [ ] add keys in week schema that reflect the emotional/mental well-being of the user during that week.

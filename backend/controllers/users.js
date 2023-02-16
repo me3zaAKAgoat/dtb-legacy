@@ -40,7 +40,7 @@ usersRouter.post('/', async (req, res) => {
 		return res.status(201).json(savedUser);
 	} catch (err) {
 		console.log('usersRouter', err);
-		return res.status(500).json({ erro: err });
+		return res.status(500).json({ error: err });
 	}
 });
 

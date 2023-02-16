@@ -35,7 +35,7 @@ taskRouter.post('/addTask/:id', async (req, res) => {
 		});
 	} catch (err) {
 		console.log('task router', err);
-		return res.status(500).json({ erro: err });
+		return res.status(500).json({ error: err });
 	}
 });
 
@@ -57,7 +57,7 @@ taskRouter.delete('/deleteTask', async (req, res) => {
 		return res.status(200).json({ deletedTaskId: req.body.taskId });
 	} catch (err) {
 		console.log('task router', err);
-		return res.status(500).json({ erro: err });
+		return res.status(500).json({ error: err });
 	}
 });
 
@@ -84,7 +84,7 @@ taskRouter.put('/editTask', async (req, res) => {
 		});
 	} catch (err) {
 		console.log('task router', err);
-		return res.status(500).json({ erro: err });
+		return res.status(500).json({ error: err });
 	}
 });
 
@@ -109,7 +109,7 @@ taskRouter.put('/changeProgress', async (req, res) => {
 		});
 	} catch (err) {
 		console.log('task router', err);
-		return res.status(500).json({ erro: err });
+		return res.status(500).json({ error: err });
 	}
 });
 

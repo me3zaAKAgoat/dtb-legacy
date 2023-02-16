@@ -14,16 +14,20 @@ const ProfileButton = (props) => {
 
 	// tabIndex makes it so the div has focus and blur events and the -1 makes it not accessible by keyboard
 	return (
-		<div onBlur={(event) => handleDropdownBlur(event)} tabIndex="-1">
-			<a
-				className={open ? 'profileButtonActive' : 'profileButton'}
+		<div
+			className="profileButtonContainer"
+			onBlur={(event) => handleDropdownBlur(event)}
+			tabIndex="-1"
+		>
+			<button
+				className={open ? 'profileButton profileButtonActive' : 'profileButton'}
 				onClick={(event) => {
 					event.preventDefault();
 					setOpen(!open);
 				}}
 			>
 				<img src="/assets/profilePhoto.png" alt="user" />
-			</a>
+			</button>
 			<DropdownContainer open={open} logOut={props.logOut} />
 		</div>
 	);
@@ -54,7 +58,7 @@ const DropdownContainer = ({ open, logOut }) => {
 	}, [open]);
 	if (open) {
 		return (
-			<div className="profileDropdownContainer" style={transitionProperties}>
+			<div className="profileDropdown" style={transitionProperties}>
 				<button>Settings</button>
 				<hr></hr>
 				<button onClick={handleLogOut}>Log out</button>
@@ -70,7 +74,7 @@ const Navbar = (props) => {
 
 	return (
 		<nav className="navigationBar">
-			<a href="">
+			<a href="." className="logoImageHolder">
 				<img src="/assets/logo.png" alt="DTB" />
 			</a>
 			<div className="seperatingHorizontalLine"></div>

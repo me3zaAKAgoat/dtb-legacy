@@ -169,6 +169,15 @@ const TaskContainer = ({
 		}
 	}, [refreshCompletion]);
 
+	useEffect(() => {
+		const thisTask = tasks.find(
+			(iterationTask) => task.id === iterationTask.id
+		);
+		setTitle(thisTask.title);
+		setDescription(thisTask.description);
+		task.priority = thisTask.priority;
+	}, [tasks]);
+
 	return (
 		<div
 			className="taskContainer"

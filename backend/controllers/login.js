@@ -9,7 +9,7 @@ loginRouter.post('/', async (req, res) => {
 		const user = await User.findOne({ username: req.body.username });
 		const tokenExpirationParam = 60 * 60; //expiration of a user session
 		if (user === null) {
-			return res.status(401).json({ error: 'Username not found' });
+			return res.status(401).json({ error: 'Credentials are incorrect' });
 		}
 
 		const passwordCheck = await bcrypt.compare(
@@ -18,7 +18,7 @@ loginRouter.post('/', async (req, res) => {
 		);
 
 		if (!passwordCheck) {
-			return res.status(401).json({ error: 'Password is incorrect' });
+			return res.status(401).json({ error: 'Credentials are incorrect' });
 		}
 
 		const tokenPayload = {
@@ -38,7 +38,7 @@ loginRouter.post('/', async (req, res) => {
 		});
 	} catch (err) {
 		console.log('loginRouter', err);
-		return res.status(500).json({ erro: err });
+		return res.status(500).json({ error: err });
 	}
 });
 

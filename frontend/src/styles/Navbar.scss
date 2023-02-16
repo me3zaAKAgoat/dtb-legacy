@@ -11,6 +11,7 @@
 	align-items: center;
 	border-right: 1px solid #393939;
 }
+
 .seperatingHorizontalLine {
 	width: 70%;
 	margin: 1.5% 0%;
@@ -21,7 +22,7 @@
 	flex-grow: 1;
 }
 
-a {
+.logoImageHolder {
 	max-height: 38px;
 	max-width: 38px;
 	margin: 15px 0;
@@ -86,15 +87,36 @@ ul {
 	}
 }
 
+
+.profileButtonContainer
+{
+	margin-bottom: 10px;
+	max-height: 38px;
+	max-width: 38px;
+	margin: 15px 0;
+	display: flex;
+	align-items: centers;
+	flex-grow: 1;
+	justify-content: center;
+}
+
 .profileButton {
+	width: 100%;
+	height: 100%;
 	background-color: white;
 	height: 40px;
 	border-radius: 50%;
+	margin: 0;
+	padding: 0;
 	cursor: pointer;
 	transition-delay: 25ms;
 	transition-duration: 70ms;
 	transition-timing-function: ease-in-out;
 	transition-property: outline;
+	img {
+		width: 100%;
+		height: 100%;
+	}
 }
 
 .profileButton:hover {
@@ -115,7 +137,7 @@ ul {
 	transition-property: outline;
 }
 
-.profileDropdownContainer {
+.profileDropdown {
 	position: absolute;
 	bottom: 10px;
 	left: 65px;

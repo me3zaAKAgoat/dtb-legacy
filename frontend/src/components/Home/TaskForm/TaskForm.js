@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useCallback, useContext } from 'react';
+import { useState, useCallback, useContext } from 'react';
 import TaskServices from '../../../services/task.js';
 import WeekServices from '../../../services/week.js';
 import { UserContext } from '../../../App.js';
@@ -29,7 +29,7 @@ const TaskForm = ({ tasks, setTasks, formState, setFormState }) => {
 		setPriorityField('');
 	}, []);
 
-	const callApiMethod = async () => {
+	const requestTaskService = async () => {
 		const areRequirementsMet =
 			titleField?.length > 0 && priorityField?.length > 0;
 
@@ -48,16 +48,16 @@ const TaskForm = ({ tasks, setTasks, formState, setFormState }) => {
 						user.token,
 						editedTask
 					);
-					const newTasks = tasks.map((task) => {
-						if (task.id === formState.id) {
-							task.title = returnedTask.title;
-							task.description = returnedTask.description;
-							task.priority = returnedTask.priority;
-							return task;
-						} else {
-							return task;
-						}
-					});
+					const newTasks = tasks.map((task) =>
+						task.id === formState.id
+							? {
+									...task,
+									title: returnedTask.title,
+									description: returnedTask.description,
+									priority: returnedTask.priority,
+							  }
+							: task
+					);
 					setTasks(newTasks);
 				} catch (err) {
 					console.log(err);
@@ -100,13 +100,9 @@ const TaskForm = ({ tasks, setTasks, formState, setFormState }) => {
 		<form
 			onSubmit={(event) => {
 				event.preventDefault();
-				callApiMethod();
 			}}
 		>
-			<h1>
-				{formState.type.charAt(0).toUpperCase() + formState.type.slice(1)} the
-				task
-			</h1>
+			<h1>{formState.type === 'add' ? 'Add a new task' : 'Edit the task'}</h1>
 			<div className="taskNameContainer">
 				<label htmlFor="taskNameInput">Name</label>
 				<input
@@ -119,7 +115,7 @@ const TaskForm = ({ tasks, setTasks, formState, setFormState }) => {
 				/>
 			</div>
 			<div className="taskDescriptionContainer">
-				<label htmlFor="taskDescriptionInput">Description</label>
+				<label htmlFor="taskDescriptionInput">Description (optional)</label>
 				<textarea
 					type="textarea"
 					id="taskDescriptionInput"
@@ -156,7 +152,14 @@ const TaskForm = ({ tasks, setTasks, formState, setFormState }) => {
 				/>
 			</div>
 			<div className="buttonsContainer">
-				<button className="submitButton" type="submit">
+				<button
+					className="submitButton"
+					type="submit"
+					onClick={(e) => {
+						e.preventDefault();
+						requestTaskService();
+					}}
+				>
 					Submit
 				</button>
 				<button

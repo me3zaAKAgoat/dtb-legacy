@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import '../../styles/LoginPage.scss';
 import loginService from '../../services/login.js';
-import { useNavigate } from 'react-router-dom';
+
 /*
 this component is a rectangle div that shows the reason the login
 process may have failed 
 */
-const LoginProcessIndicator = ({ errorMessage }) => {
+const ApiCallsIndicator = ({ errorMessage }) => {
 	if (errorMessage !== null) {
 		return (
 			<div className="badLoginMessage">
@@ -97,7 +97,7 @@ const LoginPage = ({ setUser }) => {
 					></input>
 					<button type="submit">Login</button>
 				</form>
-				<LoginProcessIndicator errorMessage={errorMessage} />
+				<ApiCallsIndicator errorMessage={errorMessage} />
 			</div>
 		</div>
 	);

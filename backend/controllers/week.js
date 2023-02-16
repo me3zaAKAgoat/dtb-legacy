@@ -98,7 +98,7 @@ weekRouter.post('/initiateNewWeek', async (req, res) => {
 			id: savedTask._id,
 		});
 	} catch (err) {
-		return res.status(500).json({ erro: err });
+		return res.status(500).json({ error: err });
 	}
 });
 
@@ -108,18 +108,22 @@ weekRouter.put('/updateNotes', async (req, res) => {
 		const decodedToken = jwt.verify(token, config.SECRET);
 		const user = await User.findById(decodedToken.id);
 
-		const week = await Week.findById(user.activeWeek);
+		const activeWeek = user.activeWeek;
+		if (activeWeek) {
+			const week = await Week.findById(activeWeek);
 
-		week.notes = req.body.text;
+			week.notes = req.body.text;
 
-		week.save();
+			week.save();
 
-		res.status(200).json({
-			notes: week.notes,
-		});
+			return res.status(200).json({
+				notes: week.notes,
+			});
+		}
+		return res.status(406).json({ error: 'no current week' });
 	} catch (err) {
 		console.log('week router', err);
-		return res.status(500).json({ erro: err });
+		return res.status(500).json({ error: err });
 	}
 });
 
@@ -135,7 +139,7 @@ weekRouter.post('/concludeWeek', async (req, res) => {
 		res.sendStatus(200);
 	} catch (err) {
 		console.error(err);
-		return res.status(500).json({ erro: err });
+		return res.status(500).json({ error: err });
 	}
 });
 

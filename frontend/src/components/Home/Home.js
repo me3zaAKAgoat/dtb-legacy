@@ -1,6 +1,6 @@
 import '../../styles/Home.scss';
 import '../../styles/App.scss';
-import TasksContainer from './TasksContainer/TasksContainer.js';
+import TaskList from './TaskList/TaskList.js';
 import NotesContainer from './NotesContainer/NotesContainer.js';
 import Hud from './Hud/Hud.js';
 import WeekServices from '../../services/week.js';
@@ -34,7 +34,7 @@ const FormRenderingComponent = ({
 				setTransitionProperties({ visibility: 'visible', opacity: 1 });
 			}, 1);
 		}
-	}, [formState?.type]);
+	}, [formState]);
 
 	const handleBlur = (event) => {
 		event.preventDefault();
@@ -64,54 +64,76 @@ const FormRenderingComponent = ({
 	}
 };
 
+const ApiCallsIndicator = ({ errorMessage }) => {
+	if (errorMessage) {
+		return (
+			<div className="badApiCallMessage">
+				{errorMessage === undefined
+					? 'failed to connect to server'
+					: errorMessage}
+			</div>
+		);
+	} else if (!errorMessage) {
+		return <div className="goodApiCallMessage"></div>;
+	}
+};
+
 const Home = () => {
 	const [user, setUser] = useContext(UserContext);
 	const [tasks, setTasks] = useState([]);
 	const [notes, setNotes] = useState(null);
+	/*
+	formState is an object with the propreties
+	type : refers to the type of the api call and form to open
+	title
+	description
+	priority
+	id
+	*/
 	const [formState, setFormState] = useState(null);
 	const [fetched, setFetched] = useState(false);
 	const [weekDue, setWeekDue] = useState(null);
+	const [apiErrorMessage, setApiErrorMessage] = useState(null);
 
-	const fetchWeekDue = async () => {
+	const fetchactiveWeekTasksAndDueDate = useCallback(async () => {
 		try {
-			const retrievedData = await WeekServices.getactiveWeekTasks(user.token);
+			const retrievedData = await WeekServices.getActiveWeekasks(user.token);
+			setTasks(retrievedData.tasks);
 			setWeekDue(
 				retrievedData.weekDue === null ? null : new Date(retrievedData.weekDue)
 			);
 		} catch (err) {
 			console.log(err);
-		}
-	};
-
-	const fetchactiveWeekTasks = useCallback(async () => {
-		try {
-			const retrievedData = await WeekServices.getactiveWeekTasks(user.token);
-			setTasks(retrievedData.tasks);
-		} catch (err) {
-			console.log(err);
+			setApiErrorMessage("fetching current week's data failed");
 		}
 	}, []);
+
 	const fetchactiveWeekNotes = useCallback(async () => {
 		try {
 			const response = await WeekServices.getactiveWeekNotes(user.token);
-			if (response.status === 204) setNotes('');
+			if (response?.status === 204) setNotes('');
 			else {
-				setNotes(response.data.notes);
+				setNotes(response?.data?.notes);
 			}
 			setFetched(true);
 		} catch (err) {
 			console.log(err);
+			setApiErrorMessage("fetching current week's data failed");
 		}
 	}, []);
 
 	useEffect(() => {
-		fetchactiveWeekTasks();
+		fetchactiveWeekTasksAndDueDate();
 		fetchactiveWeekNotes();
 	}, []);
 
 	useEffect(() => {
-		fetchWeekDue();
-	}, [tasks]);
+		if (apiErrorMessage) {
+			setTimeout(() => {
+				setApiErrorMessage(null);
+			}, 5 * 1000);
+		}
+	}, [apiErrorMessage]);
 
 	return (
 		<div className="basePage">
@@ -122,10 +144,11 @@ const Home = () => {
 					setTasks={setTasks}
 					setNotes={setNotes}
 					weekDue={weekDue}
+					setWeekDue={setWeekDue}
 				/>
 			</div>
 			<main className="main">
-				<TasksContainer
+				<TaskList
 					tasks={tasks}
 					setTasks={setTasks}
 					setFormState={setFormState}
@@ -139,6 +162,7 @@ const Home = () => {
 				formState={formState}
 				setFormState={setFormState}
 			/>
+			<ApiCallsIndicator errorMessage={apiErrorMessage} />
 		</div>
 	);
 };

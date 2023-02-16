@@ -167,7 +167,7 @@
 	}
 }
 
-.tasksContainer {
+.taskList {
 	flex-grow: 1;
 	display: flex;
 	flex-direction: column;
@@ -336,7 +336,7 @@
 	cursor: pointer;
 	display: flex;
 	flex-direction: row;
-	justify-content: start;
+	justify-content: flex-start;
 	align-items: stretch;
 	filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 1));
 	transition: background-color, height, width, transform, 50ms ease-in-out 10ms;
@@ -403,7 +403,7 @@
 		align-items: stretch;
 		margin: 15px 20px;
 		h1 {
-			font-size: 1.1rem;
+			font-size: 1.6rem;
 			margin: 5px 0px;
 			border-bottom: 2px solid currentColor;
 		}
@@ -479,6 +479,32 @@
 			}
 		}
 	}
+}
+
+.badApiCallMessage {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	bottom: 0px;
+	background-color: $error-color;
+	font-family: 'SF PRO DISPLAY BOLD';
+	font-size: 14px;
+	color: #cccccc;
+	height: 20px;
+	width: 100%;
+	vertical-align: middle;
+	line-height: 25px;
+	opacity: 1;
+}
+.goodApiCallMessage {
+	opacity: 0;
+	position: absolute;
+	bottom: 0px;
+	background-color: $success-color;
+	height: 500px;
+	transition: 500ms ease-in 500ms;
+	transition-property: height, opacity;
 }
 
 /*

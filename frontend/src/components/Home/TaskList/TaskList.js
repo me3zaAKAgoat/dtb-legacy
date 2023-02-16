@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import TaskContainer from '../TaskContainer/TaskContainer.js';
 import TaskContextMenu from '../../ContextMenus/TaskContextMenu';
 
@@ -12,7 +12,7 @@ of the two prior forms is to be open.
 it is also the component that renders the context menu of tasks through the state 
 contextMenu
 */
-const TasksContainer = ({ tasks, setTasks, setFormState }) => {
+const TaskList = ({ tasks, setTasks, setFormState }) => {
 	const [contextMenu, setContextMenu] = useState({
 		show: false,
 		x: null,
@@ -20,10 +20,11 @@ const TasksContainer = ({ tasks, setTasks, setFormState }) => {
 		id: null,
 	});
 
+
 	return (
 		<div className="mainChildrenContainers">
 			<div className="mainChildrenTitle">Tasks</div>
-			<div className="tasksContainer">
+			<div className="taskList">
 				<TaskContextMenu
 					contextMenu={contextMenu}
 					setContextMenu={setContextMenu}
@@ -74,7 +75,7 @@ const TasksContainer = ({ tasks, setTasks, setFormState }) => {
 	);
 };
 
-export default TasksContainer;
+export default TaskList;
 
 /*
 Extract the context menu into its own component: Instead of including the code for the context menu inside the TasksContainer component, extract it into a separate component and import it in the TasksContainer component. This will help to keep the code organized and make it easier to maintain.
