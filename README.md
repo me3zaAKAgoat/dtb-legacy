@@ -100,6 +100,13 @@ npm start
 
 ### Core
 
+- [ ] add a retry button for every component's failure to load the data it needs (similar to twitter)
+- [ ] issue where if loading notes fails the debounce posts empty string to server and the database clears of the actual data that should be preserved
+- [ ] settings should include : theme, week length
+- [ ] make a wrapper function that updates the state after successful api requests.
+- [ ] add a current week proprety to the whole app (state/proprety of user state).
+- [ ] correct adding a new task to handle initiation of a new week or otherwise on the backend rather than the frontend.
+- [ ] make a custom useLocalStorage hook to increase readiblity and maintainability the user log in logic.
 - [ ] set an active week id proprety on the user state
 - [ ] thoroughly describe the automatic synchronization system.
 - [ ] make the basic layout for the statistics page.

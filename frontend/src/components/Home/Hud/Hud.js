@@ -1,7 +1,7 @@
 import CompletionCircle from './PercentageCircle/CompletionCircle';
-import WeekServices from '../../../services/week.js';
-import { useState, useEffect, useContext, useCallback } from 'react';
-import { UserContext } from '../../../App.js';
+import WeekServices from 'services/week';
+import { useContext, useCallback } from 'react';
+import { UserContext } from 'App';
 
 const Hud = ({ tasks, setTasks, setNotes, weekDue, setWeekDue }) => {
 	const [user, setUser] = useContext(UserContext);
@@ -42,7 +42,7 @@ const Hud = ({ tasks, setTasks, setNotes, weekDue, setWeekDue }) => {
 				</h2>
 			</div>
 			<button className="concludeButton" onClick={handleConclude}>
-				CONCLUDE
+				Conclude
 			</button>
 		</div>
 	);

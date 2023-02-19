@@ -11,25 +11,25 @@ const TaskForm = ({ tasks, setTasks, formState, setFormState }) => {
 	);
 	const [priorityField, setPriorityField] = useState(formState.priority);
 
-	const handleTitleField = (e) => {
+	const handleTitleChange = (e) => {
 		setTitleField(e.target.value);
 	};
 
-	const handleDescriptionField = (e) => {
+	const handleDescriptionChange = (e) => {
 		setDescriptionField(e.target.value);
 	};
 
-	const handlePriorityField = (e) => {
+	const handlePriorityChange = (e) => {
 		setPriorityField(e.target.value);
 	};
 
-	const clearFormFields = useCallback(() => {
+	const clearForm = useCallback(() => {
 		setTitleField('');
 		setDescriptionField('');
 		setPriorityField('');
 	}, []);
 
-	const requestTaskService = async () => {
+	const postForm = async () => {
 		const areRequirementsMet =
 			titleField?.length > 0 && priorityField?.length > 0;
 
@@ -70,7 +70,7 @@ const TaskForm = ({ tasks, setTasks, formState, setFormState }) => {
 						priority: priorityField,
 						progress: 0,
 					};
-					const activeWeekId = (await WeekServices.getactiveWeekId(user.token))
+					const activeWeekId = (await WeekServices.getActiveWeekId(user.token))
 						.id;
 					if (!activeWeekId) {
 						const returnedTask = await WeekServices.initiateNewWeek(
@@ -86,13 +86,12 @@ const TaskForm = ({ tasks, setTasks, formState, setFormState }) => {
 						);
 						setTasks(tasks.concat(returnedTask));
 					}
-					clearFormFields();
 				} catch (err) {
 					console.log(err);
 				}
 			}
 			setFormState(null);
-			clearFormFields();
+			clearForm();
 		}
 	};
 
@@ -110,7 +109,7 @@ const TaskForm = ({ tasks, setTasks, formState, setFormState }) => {
 					id="taskNameInput"
 					value={titleField ?? ''}
 					placeholder="Type your task's title"
-					onChange={handleTitleField}
+					onChange={handleTitleChange}
 					autoComplete="off"
 				/>
 			</div>
@@ -121,7 +120,7 @@ const TaskForm = ({ tasks, setTasks, formState, setFormState }) => {
 					id="taskDescriptionInput"
 					value={descriptionField ?? ''}
 					placeholder="Type your task's description"
-					onChange={handleDescriptionField}
+					onChange={handleDescriptionChange}
 				/>
 			</div>
 			<div className="priority">
@@ -131,7 +130,7 @@ const TaskForm = ({ tasks, setTasks, formState, setFormState }) => {
 					type="radio"
 					name="priority"
 					value="high"
-					onChange={handlePriorityField}
+					onChange={handlePriorityChange}
 					checked={priorityField === 'high'}
 				/>
 				<label htmlFor="medium">medium</label>
@@ -139,7 +138,7 @@ const TaskForm = ({ tasks, setTasks, formState, setFormState }) => {
 					type="radio"
 					name="priority"
 					value="medium"
-					onChange={handlePriorityField}
+					onChange={handlePriorityChange}
 					checked={priorityField === 'medium'}
 				/>
 				<label htmlFor="low">low</label>
@@ -147,7 +146,7 @@ const TaskForm = ({ tasks, setTasks, formState, setFormState }) => {
 					type="radio"
 					name="priority"
 					value="low"
-					onChange={handlePriorityField}
+					onChange={handlePriorityChange}
 					checked={priorityField === 'low'}
 				/>
 			</div>
@@ -157,7 +156,7 @@ const TaskForm = ({ tasks, setTasks, formState, setFormState }) => {
 					type="submit"
 					onClick={(e) => {
 						e.preventDefault();
-						requestTaskService();
+						postForm();
 					}}
 				>
 					Submit
@@ -167,7 +166,7 @@ const TaskForm = ({ tasks, setTasks, formState, setFormState }) => {
 					type="button"
 					onClick={() => {
 						setFormState(null);
-						clearFormFields();
+						clearForm();
 					}}
 				>
 					Cancel
@@ -178,17 +177,3 @@ const TaskForm = ({ tasks, setTasks, formState, setFormState }) => {
 };
 
 export default TaskForm;
-
-/*
-To improve the code, the following suggestions can be made:
-
-Instead of using editFormSubmitted state, use useState hook for form inputs and update the task in the useEffect hook when any of the inputs change.
-
-Add a disabled attribute to the submit button when all fields are not filled, to prevent unnecessary API requests.
-
-Refactor the logic for checking if all required fields are filled to a separate function.
-
-Consider adding error handling for the API request in editTask function.
-
-Use the onClick event of the submit button to trigger the editTask function instead of onSubmit.
-*/

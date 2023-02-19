@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const baseUrl = 'http://localhost:3003/api/week';
 
-const getactiveWeekId = async (token) => {
+const getActiveWeekId = async (token) => {
 	try {
 		const response = await axios.get(`${baseUrl}/activeWeekId`, {
 			headers: {
@@ -54,7 +54,7 @@ const updateNotes = async (token, newNotes) => {
 	}
 };
 
-const getactiveWeekNotes = async (token) => {
+const getActiveWeekNotes = async (token) => {
 	try {
 		const response = await axios.get(`${baseUrl}/activeWeekNotes`, {
 			headers: {
@@ -85,10 +85,10 @@ const concludeWeek = async (token) => {
 };
 
 export default {
-	getactiveWeekId,
+	getActiveWeekId,
 	initiateNewWeek,
 	getActiveWeekasks,
 	updateNotes,
-	getactiveWeekNotes,
+	getActiveWeekNotes,
 	concludeWeek,
 };

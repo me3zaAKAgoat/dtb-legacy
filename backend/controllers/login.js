@@ -38,7 +38,7 @@ loginRouter.post('/', async (req, res) => {
 		});
 	} catch (err) {
 		console.log('loginRouter', err);
-		return res.status(500).json({ error: err });
+		return res.status(500).json({ error: 'server error' });
 	}
 });
 

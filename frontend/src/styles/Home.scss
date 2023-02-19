@@ -2,7 +2,7 @@
 
 ::-webkit-scrollbar-track {
 	border-radius: 10px;
-	background-color: rgba(255, 255, 255, 0.05);
+	background-color: $light-gray-lighter;
 }
 
 ::-webkit-scrollbar {
@@ -11,9 +11,9 @@
 
 ::-webkit-scrollbar-thumb {
 	border-radius: 10px;
-	box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-	background-color: $secondary-color;
+	box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.8);
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.8);
+	background-color: $text-color;
 }
 
 .hudContainer {
@@ -32,7 +32,7 @@
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-around;
-	background-color: $unfocused-task-container-bg;
+	background-color: $light-gray-darker;
 	height: 60%;
 	min-width: 500px;
 	max-width: 500px;
@@ -40,54 +40,55 @@
 	border-radius: 10px;
 	margin: 10px 0px;
 	padding: 5px 10px;
-	.completion {
-		width: 30%;
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		justify-content: space-around;
-		h3 {
-			font-size: 0.7rem;
-			color: $text-color;
-		}
-	}
-	.timeLeft {
-		width: 50%;
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		justify-content: space-around;
-		h3 {
-			font-size: 0.7rem;
-			color: $text-color;
-		}
-		h2 {
-			font-size: 1.1rem;
-			color: $text-color;
-			font-family: 'SF PRO DISPLAY BOLD';
-		}
-	}
-	.concludeButton {
-		background-color: $text-color;
-		width: 20%;
-		height: 33px;
-		margin: 0 2% 0 0;
-		font-size: 0.9rem;
-		font-family: 'SF PRO DISPLAY BOLD';
-		text-align: center;
-		color: $secondary-color;
-		padding: 0% 0% 0.22rem 0%;
-		border-radius: 0.9rem;
-		border: none;
-		transition: 100ms ease-in 0ms;
-		transition-property: background-color, color, outline, box-shadow;
-		outline: $secondary-color solid 1px;
-	}
-	.concludeButton:hover {
-		cursor: pointer;
+}
+
+.completion {
+	width: 30%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
+	h3 {
+		font-size: 0.7rem;
 		color: $text-color;
-		background-color: $secondary-color;
-		outline: $text-color solid 1px;
+	}
+}
+
+.timeLeft {
+	width: 50%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
+	h3 {
+		font-size: 0.7rem;
+		color: $text-color;
+	}
+	h2 {
+		font-size: 1.1rem;
+		color: $text-color;
+		font-family: 'SF PRO DISPLAY BOLD';
+	}
+}
+
+.concludeButton {
+	background-color: $text-color;
+	width: 20%;
+	height: 33px;
+	margin: 0 2% 0 0;
+	font-size: 1.05rem;
+	font-family: 'SF PRO DISPLAY BOLD';
+	text-align: center;
+	cursor: pointer;
+	color: $secondary-color;
+	padding: 0% 0% 0.22rem 0%;
+	border-radius: 0.1rem;
+	border: none;
+	transition: 150ms ease-in 20ms;
+	transition-property: filter, text-shadow;
+	&:hover{
+		filter: brightness(120%);
+		text-shadow : 0px 0px 25px $secondary-color;
 	}
 }
 
@@ -107,7 +108,7 @@
 	margin-top: 1%;
 	margin-bottom: 4%;
 	height: 95%;
-	background-color: $unfocused-task-container-bg;
+	background-color: $light-gray-lighter;
 	flex-grow: 1;
 }
 
@@ -136,21 +137,21 @@
 	text-align: center;
 	color: $text-color;
 	margin: 2px 0px 10px;
-	background-color: $unfocused-task-container-bg;
+	background-color: $light-gray-darker;
 	border-radius: 0.35rem;
 }
 
 .notesTextArea {
-	font-family: 'SF PRO DISPLAY REGULAR';
+	font-family: 'SF PRO DISPLAY BOLD';
 	font-size: 1rem;
 	text-align: left;
 	color: $text-color;
 	line-height: 1.8;
 	margin: 1px 10%;
-	padding: 2%;
+	padding: 2% 4%;
 	width: 80%;
 	height: 85%;
-	background-color: rgba(0, 0, 0, 0.3);
+	background-color: $light-gray-darker;
 	border: none;
 	border-radius: 15px;
 	outline: rgba(255, 255, 255, 0.2) solid 0.05rem;
@@ -183,14 +184,14 @@
 
 .taskContainer {
 	overflow: hidden;
-	background-color: $unfocused-task-container-bg;
+	background-color: $light-gray-darker;
 	height: $task-item-height;
 	min-height: $task-item-height;
 	width: 80%;
 	max-width: 600px;
 	border-radius: 5px;
 	border: 1px solid #3d3d3d;
-	filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.7));
+	filter: drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.7));
 	margin: 10px;
 	display: flex;
 	flex-direction: column;
@@ -224,7 +225,7 @@
 		cursor: pointer;
 		transition: background-color 55ms ease-in 15ms;
 		&:hover {
-			background-color: $focused-task-container-bg;
+			background-color: $light-gray-lighter;
 		}
 	}
 
@@ -233,24 +234,11 @@
 		-moz-appearance: textfield;
 		appearance: none;
 	}
+}
 
-	button {
-		font-family: 'SF PRO DISPLAY BOLD';
-		font-size: 1.05rem;
-		min-height: $task-item-height;
-		height: $task-item-height;
-		width: 100%;
-		background: none;
-		border: none;
-		margin: 0;
-		padding: 0;
-		color: $text-color;
-		cursor: pointer;
-		transition: background-color 55ms ease-in 15ms;
-		&:hover {
-			background-color: $focused-task-container-bg;
-		}
-	}
+.openTaskContainerStyle {
+	background-color: $light-gray-lighter;
+	min-height: 200px;
 }
 
 .expandedContainer {
@@ -259,7 +247,7 @@
 	opacity: 0;
 	border: none;
 	height: 200px - $task-item-height;
-	background-color: $focused-task-container-bg;
+	background-color: $light-gray-lighter;
 	transition: 15ms ease-in 100ms;
 	transition-property: opacity, visibility;
 	display: flex;
@@ -274,53 +262,69 @@
 		margin: 2% 4%;
 		color: $text-color;
 	}
-	.sliderEditButtonContainer {
-		height: 30%;
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		align-items: center;
-		margin: 1% 4%;
-		// overflow: hidden;
-		.progressionSlider {
-			width: 70%;
-			margin-left: 5%;
-			margin-right: 5%;
-			background-color: $secondary-color;
-			box-shadow: $text-color;
-			-webkit-appearance: none;
-			outline: none;
-			border-radius: 10px;
-			overflow: hidden;
-		}
-		.progressionSlider::-webkit-slider-thumb {
-			-webkit-appearance: none;
-			width: 15px;
-			height: 15px;
-			border-radius: 50%;
-			background: $text-color;
-			cursor: pointer;
-			border: 4px solid #333;
-			box-shadow: -407px 0 0 400px $text-color;
-		}
-		.editTaskButton {
-			width: 10%;
-			height: 10%;
-			min-height: 50%;
-			svg {
-				width: 100%;
-				height: 100%;
-			}
-		}
-		input[type='number'] {
-			width: 10%;
-			color: $text-color;
-			text-align: center;
-			background-color: $secondary-color;
-			border: none;
-			border-radius: 2px;
+}
+
+.sliderEditButtonContainer {
+	height: 30%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	margin: 1% 4%;
+}
+
+// overflow: hidden;
+.progressionSlider {
+	width: 70%;
+	margin-left: 5%;
+	margin-right: 5%;
+	background-color: $secondary-color;
+	box-shadow: $text-color;
+	-webkit-appearance: none;
+	outline: none;
+	border-radius: 10px;
+	overflow: hidden;
+	&::-webkit-slider-thumb {
+		-webkit-appearance: none;
+		width: 15px;
+		height: 15px;
+		border-radius: 50%;
+		background: $text-color;
+		cursor: pointer;
+		border: 4px solid #333;
+		box-shadow: -407px 0 0 400px $text-color;
+	}
+}
+
+.editTaskButton {
+	background: none;
+	cursor: pointer;
+	border: none;
+	width: 10%;
+	height: 60%;
+	min-height: 50%;
+	svg {
+		width: 100%;
+		height: 100%;
+		transition: 100ms ease-in-out 50ms;
+		transition-property: filter, height, width, transform;
+	}
+	&:hover {
+		svg	{
+			filter: brightness(150%);
+			transform: translateX(-10%) translateY(-10%);
+			height: 120%;
+			width: 120%;
 		}
 	}
+}
+.progressionInput {
+	width: 10%;
+	color: $text-color;
+	text-align: center;
+	background-color: $secondary-color;
+	border: none;
+	border-radius: 2px;
 }
 
 .addTaskButton {
@@ -378,7 +382,7 @@
 	left: 0;
 	right: 0;
 	margin: 90px auto auto;
-	background-color: $unfocused-task-container-bg;
+	background-color: $light-gray-darker;
 	height: 450px;
 	width: 425px;
 	border-radius: 4px;
@@ -450,32 +454,37 @@
 			justify-content: space-around;
 			align-items: center;
 			button {
-					margin: 10px;
-					margin-top: 30px;
-					margin-bottom: 10px;
-					border-radius: 2px;
-					height: 30px;
-					width: 65px;
-					font-size: 1rem;
-					background-color: $text-color;
-					font-family: 'SF PRO DISPLAY BOLD';
-					text-align: center;
-					color: $secondary-color;
-					border: none;
-					transition: 100ms ease-in 0ms;
-					transition-property: background-color, color, outline;
-					outline: $secondary-color solid 1px;
+				margin: 10px;
+				margin-top: 30px;
+				margin-bottom: 10px;
+				border-radius: 2px;
+				height: 30px;
+				width: 65px;
+				font-size: 1rem;
+				background-color: $text-color;
+				font-family: 'SF PRO DISPLAY BOLD';
+				text-align: center;
+				color: $secondary-color;
+				border: none;
+				transition: 100ms ease-in 0ms;
+				transition-property: background-color, color, outline;
+				&:hover {
+					cursor: pointer;
+					color: $text-color;
+					outline: $text-color solid 1px;
 				}
-			button:hover {
-				cursor: pointer;
-				color: $text-color;
-				outline: $text-color solid 1px;
 			}
-			.submitButton:hover {
-				background-color: $success-color;
+			.submitButton {
+				outline: $success-color solid 2px;
+				&:hover {
+					background-color: $success-color;
+				}
 			}
-			.cancelButton:hover {
-				background-color: $error-color;
+			.cancelButton {
+				outline: $error-color solid 2px;
+				&:hover {
+					background-color: $error-color;
+				}
 			}
 		}
 	}
@@ -506,18 +515,3 @@
 	transition: 500ms ease-in 500ms;
 	transition-property: height, opacity;
 }
-
-/*
-Use CSS variables: Instead of using hard-coded color values, you could use CSS variables. This makes it easier to change the theme and make global changes to the color palette.
-
-Use mixins: You could create mixins for common styles, such as border-radius and box-shadow, to make the code more concise and easier to maintain.
-
-Consistent spacing: Ensure that there is consistent spacing between rules to make it easier to read the code.
-
-Consistent naming: Consider using a consistent naming convention for classes and mixins to make the code more readable and maintainable.
-
-Simplify styles: Remove unnecessary styles, such as the align-items and justify-content properties, if they are set to the default values.
-
-Remove vendor prefixes: Vendor prefixes, such as -webkit-, are no longer necessary as modern browsers support the latest CSS standards. You can safely remove them.
-
-*/

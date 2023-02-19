@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import '../../../../styles/CompletionCircle.scss';
+import 'styles/CompletionCircle.scss';
 
 const CompletionCircle = ({ sideSize, tasks }) => {
 	const [completion, setCompletion] = useState(0);

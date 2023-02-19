@@ -1,4 +1,4 @@
-import '../../styles/Navbar.scss';
+import 'styles/Navbar.scss';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -77,15 +77,10 @@ const Navbar = (props) => {
 			<a href="." className="logoImageHolder">
 				<img src="/assets/logo.png" alt="DTB" />
 			</a>
-			<div className="seperatingHorizontalLine"></div>
+			<div className="separatingHorizontalLine"></div>
 			<ul>
 				<li>
-					<button
-						className="homeButton"
-						onClick={() => {
-							navigate('/home');
-						}}
-					>
+					<a className="homeButton" href="./board">
 						<svg
 							width="260"
 							height="248"
@@ -98,15 +93,10 @@ const Navbar = (props) => {
 								fill="#0D0D0D"
 							/>
 						</svg>
-					</button>
+					</a>
 				</li>
 				<li>
-					<button
-						className="StatisticsButton"
-						onClick={() => {
-							navigate('/statistics');
-						}}
-					>
+					<a className="statisticsButton" href="./statistics">
 						<svg
 							width="260"
 							height="260"
@@ -119,7 +109,7 @@ const Navbar = (props) => {
 								fill="#0D0D0D"
 							/>
 						</svg>
-					</button>
+					</a>
 				</li>
 			</ul>
 			<ProfileButton logOut={props.logOut} />

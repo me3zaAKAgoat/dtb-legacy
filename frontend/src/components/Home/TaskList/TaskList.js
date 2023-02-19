@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import TaskContainer from '../TaskContainer/TaskContainer.js';
-import TaskContextMenu from '../../ContextMenus/TaskContextMenu';
+import TaskContainer from 'components/Home/TaskContainer/TaskContainer.js';
+import TaskContextMenu from 'components/ContextMenus/TaskContextMenu';
 
 /*
 this is component is a container for the list of tasks.
@@ -19,7 +19,6 @@ const TaskList = ({ tasks, setTasks, setFormState }) => {
 		y: null,
 		id: null,
 	});
-
 
 	return (
 		<div className="mainChildrenContainers">
@@ -76,11 +75,3 @@ const TaskList = ({ tasks, setTasks, setFormState }) => {
 };
 
 export default TaskList;
-
-/*
-Extract the context menu into its own component: Instead of including the code for the context menu inside the TasksContainer component, extract it into a separate component and import it in the TasksContainer component. This will help to keep the code organized and make it easier to maintain.
-
-Refactor the conditional rendering of the forms: The code for rendering the add and edit forms is repetitive. You can extract the common logic into a separate function and pass the relevant form component to be rendered as a prop. This will reduce the code repetition and improve readability.
-
-Use memoization: The TasksContainer component is re-rendering every time the state changes, including the tasks array. This can lead to poor performance if the tasks array is large. You can use React.memo to memoize the component and avoid unnecessary re-renders.
-*/

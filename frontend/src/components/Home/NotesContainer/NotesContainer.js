@@ -1,67 +1,58 @@
-import { useState, useEffect, useRef, useCallback, useContext } from 'react';
-import WeekServices from '../../../services/week.js';
-import { UserContext } from '../../../App.js';
+import { useEffect, useRef, useCallback, useContext } from 'react';
+import WeekServices from 'services/week';
+import { UserContext } from 'App';
+import { useDebounce } from 'utils/useDebounce';
 
-const debounce = (callback, wait) => {
-	let timeoutId = null;
-
-	return (...args) => {
-		clearTimeout(timeoutId);
-
-		timeoutId = setTimeout(() => {
-			callback(...args);
-		}, wait);
-	};
-};
-const updateNotes = debounce(async (token, notes) => {
-	await WeekServices.updateNotes(token, {
-		text: notes,
-	});
-}, 2000);
-
-const NotesContainer = ({ notes, setNotes, fetched }) => {
+const NotesContainer = ({ notes, setNotes, setApiErrorMessage }) => {
 	const [user, setUser] = useContext(UserContext);
+	const debouncedNotes = useDebounce(notes, 2000);
 	const firstRender = useRef(true);
 
-	const handleNotesChange = (e) => {
+	useEffect(() => {
+		const saveNotes = async () => {
+			try {
+				await WeekServices.updateNotes(user.token, {
+					text: notes,
+				});
+			} catch (error) {
+				console.error(error);
+			}
+		};
+
+		if (firstRender.current) firstRender.current = false;
+		else saveNotes();
+	}, [debouncedNotes]);
+
+	const handleNotesChange = useCallback((e) => {
 		setNotes(e.target.value);
-	};
+	});
 
 	useEffect(() => {
-		if (firstRender.current) firstRender.current = false;
-		else updateNotes(user.token, notes);
-	}, [notes]);
+		const fetchActiveWeekNotes = async () => {
+			try {
+				const response = await WeekServices.getActiveWeekNotes(user.token);
+				if (response?.status === 204) setNotes('');
+				else {
+					setNotes(response?.data?.notes);
+				}
+			} catch (err) {
+				console.log(err);
+				setApiErrorMessage("fetching current week's data failed");
+			}
+		};
+		fetchActiveWeekNotes();
+	}, [user]);
 
 	return (
 		<div className="mainChildrenContainers">
 			<div className="mainChildrenTitle">Notes</div>
-			{fetched && (
-				<textarea
-					className="notesTextArea"
-					value={notes}
-					onChange={handleNotesChange}
-				></textarea>
-			)}
+			<textarea
+				className="notesTextArea"
+				value={notes}
+				onChange={handleNotesChange}
+			></textarea>
 		</div>
 	);
 };
 
 export default NotesContainer;
-
-/*
-
-Add PropTypes for the component's props to validate the data types of the received props.
-
-Use useMemo hook for the debounce function to avoid creating a new function on each render.
-
-Use error boundaries to catch errors thrown by the fetchactiveWeekNotes function and handle them gracefully.
-
-Use useState with the initial value of an empty string to store the notes, instead of calling setNotes with a string literal.
-
-Use the useEffect hook with an empty dependency array to fetch the current week notes only once, instead of on every render.
-
-Use the useEffect hook to handle the cleanup logic for the debounce function's timeout.
-
-Remove the use of the useRef hook for the firstRender, as it is not necessary.
-
-*/

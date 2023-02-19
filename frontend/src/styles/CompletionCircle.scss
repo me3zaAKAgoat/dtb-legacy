@@ -14,7 +14,7 @@
 	border: none;
 	// background: none;
 	overflow: hidden;
-	background-color: $focused-task-container-bg;
+	background-color: $light-gray-lighter;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -30,7 +30,7 @@
 	border-radius: 50%;
 	// border: 1px solid black;
 	border: none;
-	background: $unfocused-task-container-bg;
+	background: $light-gray-darker;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;

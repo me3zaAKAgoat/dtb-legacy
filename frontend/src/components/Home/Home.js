@@ -1,23 +1,18 @@
-import '../../styles/Home.scss';
-import '../../styles/App.scss';
-import TaskList from './TaskList/TaskList.js';
-import NotesContainer from './NotesContainer/NotesContainer.js';
-import Hud from './Hud/Hud.js';
-import WeekServices from '../../services/week.js';
+import 'styles/Home.scss';
+import 'styles/App.scss';
+import TaskList from 'components/Home/TaskList/TaskList.js';
+import NotesContainer from 'components/Home/NotesContainer/NotesContainer.js';
+import Hud from 'components/Home/Hud/Hud.js';
+import WeekServices from 'services/week.js';
 import { useCallback, useContext, useEffect, useState } from 'react';
-import { UserContext } from '../../App';
-import TaskForm from './TaskForm/TaskForm';
+import { UserContext } from 'App';
+import TaskForm from 'components/Home/TaskForm/TaskForm';
 
 /*
 this component conditionally renders and edit task or a create task
 form.
 */
-const FormRenderingComponent = ({
-	tasks,
-	setTasks,
-	formState,
-	setFormState,
-}) => {
+const ModalPortal = ({ tasks, setTasks, formState, setFormState }) => {
 	const [transitionProperties, setTransitionProperties] = useState({});
 
 	/* 
@@ -64,7 +59,7 @@ const FormRenderingComponent = ({
 	}
 };
 
-const ApiCallsIndicator = ({ errorMessage }) => {
+const ErrorBar = ({ errorMessage }) => {
 	if (errorMessage) {
 		return (
 			<div className="badApiCallMessage">
@@ -91,11 +86,10 @@ const Home = () => {
 	id
 	*/
 	const [formState, setFormState] = useState(null);
-	const [fetched, setFetched] = useState(false);
 	const [weekDue, setWeekDue] = useState(null);
 	const [apiErrorMessage, setApiErrorMessage] = useState(null);
 
-	const fetchactiveWeekTasksAndDueDate = useCallback(async () => {
+	const fetchActiveWeekTasksAndDueDate = useCallback(async () => {
 		try {
 			const retrievedData = await WeekServices.getActiveWeekasks(user.token);
 			setTasks(retrievedData.tasks);
@@ -106,25 +100,10 @@ const Home = () => {
 			console.log(err);
 			setApiErrorMessage("fetching current week's data failed");
 		}
-	}, []);
-
-	const fetchactiveWeekNotes = useCallback(async () => {
-		try {
-			const response = await WeekServices.getactiveWeekNotes(user.token);
-			if (response?.status === 204) setNotes('');
-			else {
-				setNotes(response?.data?.notes);
-			}
-			setFetched(true);
-		} catch (err) {
-			console.log(err);
-			setApiErrorMessage("fetching current week's data failed");
-		}
-	}, []);
+	}, [user]);
 
 	useEffect(() => {
-		fetchactiveWeekTasksAndDueDate();
-		fetchactiveWeekNotes();
+		fetchActiveWeekTasksAndDueDate();
 	}, []);
 
 	useEffect(() => {
@@ -154,25 +133,21 @@ const Home = () => {
 					setFormState={setFormState}
 				/>
 				<div className="separatingVerticalLine"></div>
-				<NotesContainer notes={notes} setNotes={setNotes} fetched={fetched} />
+				<NotesContainer
+					notes={notes}
+					setNotes={setNotes}
+					setApiErrorMessage={setApiErrorMessage}
+				/>
 			</main>
-			<FormRenderingComponent
+			<ModalPortal
 				tasks={tasks}
 				setTasks={setTasks}
 				formState={formState}
 				setFormState={setFormState}
 			/>
-			<ApiCallsIndicator errorMessage={apiErrorMessage} />
+			<ErrorBar errorMessage={apiErrorMessage} />
 		</div>
 	);
 };
 
 export default Home;
-
-/*
-Use the user.token argument only once in fetchactiveWeekTasks, instead of passing it to the method each time it is called.
-
-Use the user argument as a dependency in the useEffect hook to avoid fetching the tasks every time the component is re-rendered.
-
-Implement error handling for the API call, for example, by displaying an error message to the user when the call fails.
-*/

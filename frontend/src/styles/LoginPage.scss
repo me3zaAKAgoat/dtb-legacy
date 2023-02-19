@@ -14,7 +14,7 @@
 		margin-top: 35px;
 	}
 	.formWrapper {
-		background-color: $unfocused-task-container-bg;
+		background-color: $light-gray-darker;
 		border-radius: 4px;
 		border: 1px solid #3d3d3d;
 		height: 380px;
@@ -66,27 +66,23 @@
 			outline: none;
 		}
 		button[type="submit"] {
-			margin: 10px;
-			margin-top: 40px;
-			margin-bottom: 10px;
-			border-radius: 1rem;
+			margin: 40px 10px 10px 10px;
 			height: 40px;
 			width: 90px;
-			font-size: 1.05rem;
 			background-color: $text-color;
+			font-size: 1.05rem;
 			font-family: 'SF PRO DISPLAY BOLD';
+			cursor: pointer;
 			text-align: center;
 			color: $secondary-color;
+			padding: 0% 0% 0.22rem 0%;
+			border-radius: 0.1rem;
 			border: none;
 			transition: 100ms ease-in 0ms;
-			transition-property: background-color, color, outline;
-			outline: $body-bg-color solid 1px;
+			transition-property: filter;
 		}
 		button[type="submit"]:hover {
-			cursor: pointer;
-			color: $text-color;
-			background-color: $body-bg-color;
-			outline: $text-color solid 1px;
+			filter: brightness(110%);
 		}
 		.badLoginMessage {
 			background-color: #d62626;

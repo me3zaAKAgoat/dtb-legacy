@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import '../../styles/LoginPage.scss';
 import loginService from '../../services/login.js';
-
+import { useNavigate } from 'react-router-dom';
 /*
 this component is a rectangle div that shows the reason the login
 process may have failed 
 */
 const ApiCallsIndicator = ({ errorMessage }) => {
-	if (errorMessage !== null) {
+	if (errorMessage) {
 		return (
 			<div className="badLoginMessage">
 				{errorMessage === undefined
@@ -36,6 +36,7 @@ const LoginPage = ({ setUser }) => {
 	const [usernameField, setUsernameField] = useState('');
 	const [passwordField, setPasswordField] = useState('');
 	const [errorMessage, setErrorMessage] = useState(null);
+	const navigate = useNavigate();
 
 	const loginHandler = async (event) => {
 		event.preventDefault();
@@ -56,9 +57,10 @@ const LoginPage = ({ setUser }) => {
 					t.setSeconds(t.getSeconds() + user.expiresIn)
 				);
 				setUser(user);
+				navigate('/board');
 			} catch (err) {
-				setErrorMessage(err.response.data.error);
-				console.log('loginHandler', errorMessage);
+				console.log(err);
+				setErrorMessage(err?.response?.data?.error);
 			}
 		}
 	};
