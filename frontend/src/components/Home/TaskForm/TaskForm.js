@@ -124,7 +124,7 @@ const TaskForm = ({ tasks, setTasks, formState, setFormState }) => {
 				/>
 			</div>
 			<div className="priority">
-				<p>Set the priority</p>
+				<p>Priority</p>
 				<label htmlFor="high">high</label>
 				<input
 					type="radio"
@@ -152,7 +152,7 @@ const TaskForm = ({ tasks, setTasks, formState, setFormState }) => {
 			</div>
 			<div className="buttonsContainer">
 				<button
-					className="submitButton"
+					className="baseButton submitButton"
 					type="submit"
 					onClick={(e) => {
 						e.preventDefault();
@@ -162,7 +162,7 @@ const TaskForm = ({ tasks, setTasks, formState, setFormState }) => {
 					Submit
 				</button>
 				<button
-					className="cancelButton"
+					className="baseButton cancelButton"
 					type="button"
 					onClick={() => {
 						setFormState(null);

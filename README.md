@@ -16,7 +16,6 @@ npm i
 #create a .env file in dtb/backend folder
 #copy this into it
 PORT = 3003
-MONGODB_URI = 'mongodb+srv://me3zaAKAgoat:XyzK5ynkLfBMDmjK@cluster0.i8hd6nc.mongodb.net/?retryWrites=true&w=majority'
 SECRET ='echoukri Dtb Website Key'
 ```
 
@@ -100,6 +99,7 @@ npm start
 
 ### Core
 
+- [ ] remove debounce from note text area and add a save button on the top right corner of the text area that animates on click
 - [ ] add a retry button for every component's failure to load the data it needs (similar to twitter)
 - [ ] issue where if loading notes fails the debounce posts empty string to server and the database clears of the actual data that should be preserved
 - [ ] settings should include : theme, week length

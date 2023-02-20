@@ -1,4 +1,6 @@
 @import 'variables';
+@import 'buttons';
+
 
 ::-webkit-scrollbar-track {
 	border-radius: 10px;
@@ -18,7 +20,7 @@
 
 .hudContainer {
 	min-height: 13%;
-	max-height: 100px;
+	max-height: 50px;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -34,10 +36,11 @@
 	justify-content: space-around;
 	background-color: $light-gray-darker;
 	height: 60%;
+	max-height: 70px;
 	min-width: 500px;
 	max-width: 500px;
 	border: 1px solid #393939;
-	border-radius: 10px;
+	border-radius: 4px;
 	margin: 10px 0px;
 	padding: 5px 10px;
 }
@@ -47,9 +50,9 @@
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	justify-content: space-around;
-	h3 {
-		font-size: 0.7rem;
+	justify-content: space-evenly;
+	h2 {
+		font-size: 0.75rem;
 		color: $text-color;
 	}
 }
@@ -59,36 +62,16 @@
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	justify-content: space-around;
-	h3 {
-		font-size: 0.7rem;
+	justify-content: space-evenly;
+	h2 {
+		font-size: 0.75rem;
 		color: $text-color;
 	}
-	h2 {
+	h3 {
 		font-size: 1.1rem;
 		color: $text-color;
-		font-family: 'SF PRO DISPLAY BOLD';
-	}
-}
-
-.concludeButton {
-	background-color: $text-color;
-	width: 20%;
-	height: 33px;
-	margin: 0 2% 0 0;
-	font-size: 1.05rem;
-	font-family: 'SF PRO DISPLAY BOLD';
-	text-align: center;
-	cursor: pointer;
-	color: $secondary-color;
-	padding: 0% 0% 0.22rem 0%;
-	border-radius: 0.1rem;
-	border: none;
-	transition: 150ms ease-in 20ms;
-	transition-property: filter, text-shadow;
-	&:hover{
-		filter: brightness(120%);
-		text-shadow : 0px 0px 25px $secondary-color;
+		font-family: 'SF PRO DISPLAY';
+		font-weight: bold;
 	}
 }
 
@@ -133,16 +116,18 @@
 	min-width: 60px;
 	height: 30px;
 	font-size: 1.1rem;
-	font-family: 'SF PRO DISPLAY BOLD';
+	font-family: 'SF PRO BLACK';
+	font-weight: lighter;
 	text-align: center;
 	color: $text-color;
 	margin: 2px 0px 10px;
 	background-color: $light-gray-darker;
-	border-radius: 0.35rem;
+	border-radius: 4px;
 }
 
 .notesTextArea {
-	font-family: 'SF PRO DISPLAY BOLD';
+	font-family: 'SF PRO TEXT';
+	font-weight: normal;
 	font-size: 1rem;
 	text-align: left;
 	color: $text-color;
@@ -153,7 +138,7 @@
 	height: 85%;
 	background-color: $light-gray-darker;
 	border: none;
-	border-radius: 15px;
+	border-radius: 4px;
 	outline: rgba(255, 255, 255, 0.2) solid 0.05rem;
 	transition: outline 50ms ease-in-out 0ms;
 
@@ -189,7 +174,7 @@
 	min-height: $task-item-height;
 	width: 80%;
 	max-width: 600px;
-	border-radius: 5px;
+	border-radius: 4px;
 	border: 1px solid #3d3d3d;
 	filter: drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.7));
 	margin: 10px;
@@ -209,7 +194,8 @@
 	}
 
 	h1 {
-		font-family: 'SF PRO DISPLAY BOLD';
+		font-family: 'SF PRO DISPLAY';
+		font-weight: bold;
 		font-size: 1.05rem;
 		display: flex;
 		justify-content: center;
@@ -243,8 +229,6 @@
 
 .expandedContainer {
 	flex-grow: 1;
-	visibility: 0;
-	opacity: 0;
 	border: none;
 	height: 200px - $task-item-height;
 	background-color: $light-gray-lighter;
@@ -369,7 +353,7 @@
 	inset: 0px;
 	z-index: 0;
 	background-color: rgba(0, 0, 0, 0.8);
-	border-radius: 0px;
+	border-radius: 4px;
 	position: absolute;
 }
 
@@ -398,7 +382,6 @@
 		resize: none;
 	}
 	form {
-		font-family: 'SF PRO DISPLAY REGULAR';
 		color: $text-color;
 		height: 93%;
 		display: flex;
@@ -407,6 +390,7 @@
 		align-items: stretch;
 		margin: 15px 20px;
 		h1 {
+			font-family: 'SF PRO BLACK';
 			font-size: 1.6rem;
 			margin: 5px 0px;
 			border-bottom: 2px solid currentColor;
@@ -416,8 +400,8 @@
 			flex-direction: column;
 			justify-content: space-between;
 			label {
-				font-family: 'SF PRO DISPLAY BOLD';
-
+				font-family: 'SF PRO DISPLAY';
+				font-weight: bold;
 				margin-bottom: 7px;
 			}
 		}
@@ -426,20 +410,21 @@
 			flex-direction: column;
 			justify-content: space-between;
 			label {
-				font-family: 'SF PRO DISPLAY BOLD';
-
+				font-family: 'SF PRO DISPLAY';
+				font-weight: bold;
 				margin-bottom: 7px;
 			}
 			textarea {
-				font-family: 'SF PRO DISPLAY REGULAR';
+				font-family: 'SF PRO TEXT';
 				resize: noremne;
 				height: 100px;
 			}
 		}
 		.priority {
 			p {
-				font-family: 'SF PRO DISPLAY BOLD';
-
+				font-family: 'SF PRO DISPLAY';
+				font-weight: bold;
+				
 				margin-top: 0px;
 				margin-bottom: 10px;
 			}
@@ -447,41 +432,25 @@
 				height: 10px;
 				accent-color: $body-bg-color;
 			}
+			label {
+				font-weight: normal;
+			}
 		}
 		.buttonsContainer {
 			display: flex;
 			flex-direction: row;
 			justify-content: space-around;
 			align-items: center;
-			button {
-				margin: 10px;
-				margin-top: 30px;
-				margin-bottom: 10px;
-				border-radius: 2px;
-				height: 30px;
-				width: 65px;
-				font-size: 1rem;
-				background-color: $text-color;
-				font-family: 'SF PRO DISPLAY BOLD';
-				text-align: center;
-				color: $secondary-color;
-				border: none;
-				transition: 100ms ease-in 0ms;
-				transition-property: background-color, color, outline;
-				&:hover {
-					cursor: pointer;
-					color: $text-color;
-					outline: $text-color solid 1px;
-				}
-			}
 			.submitButton {
-				outline: $success-color solid 2px;
+				font-family: 'SF PRO DISPLAY';
+				font-weight: bold;
 				&:hover {
 					background-color: $success-color;
 				}
 			}
 			.cancelButton {
-				outline: $error-color solid 2px;
+				font-family: 'SF PRO DISPLAY';
+				font-weight: bold;
 				&:hover {
 					background-color: $error-color;
 				}
@@ -497,7 +466,8 @@
 	position: absolute;
 	bottom: 0px;
 	background-color: $error-color;
-	font-family: 'SF PRO DISPLAY BOLD';
+	font-family: 'SF PRO DISPLAY';
+	font-weight: bold;
 	font-size: 14px;
 	color: #cccccc;
 	height: 20px;

@@ -61,7 +61,8 @@ ul {
 	display: inline-block;
 	width: 80%;
 	height: 80%;
-	font-family: 'SF PRO DISPLAY BOLD';
+	font-family: 'SF PRO DISPLAY';
+	font-weight: bold;
 	background: none;
 	border: none;
 	cursor: pointer;
@@ -112,13 +113,9 @@ ul {
 		width: 100%;
 		height: 100%;
 	}
-	&:hover {
-		outline-offset: 2px;
-		outline: $text-color solid 1.5px;
-	}
 }
 
-.profileButtonActive {
+.profileButtonActive, .profileButton:hover {
 	outline-offset: 2px;
 	outline: $text-color solid 1.5px;
 }
@@ -129,8 +126,8 @@ ul {
 	left: 65px;
 	width: 125px;
 	height: 140px;
-	background-color: $secondary-color;
-	border: 0.1px solid #cccccc1a;
+	background-color: $light-gray-darker;
+	border: 0.1px solid $light-gray-lighter;
 	border-radius: 4px;
 	padding: 1.4rem;
 	overflow: hidden;
@@ -144,7 +141,8 @@ ul {
 	transition-property: opacity, visibility;
 	z-index: 1;
 	button {
-		font-family: 'SF PRO DISPLAY BOLD';
+		font-family: 'SF PRO DISPLAY';
+		font-weight: bold;
 		color: $text-color;
 		font-size: 1rem;
 		background: none;
@@ -158,8 +156,8 @@ ul {
 		filter: invert(70%);
 	}
 	hr {
-		background-color: #cccccc1a;
+		background-color: $light-gray-lighter;
 		width: 70%;
-		border: 0.1px solid #cccccc1a;
+		border: 0.1px solid $light-gray-lighter;
 	}
 }

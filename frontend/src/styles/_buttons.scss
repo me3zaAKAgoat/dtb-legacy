@@ -1,0 +1,22 @@
+.baseButton {
+	background-color: $text-color;
+	width: 20%;
+	height: 33px;
+	margin: 0 2% 0 0;
+	font-size: 1.05rem;
+	font-family: 'SF PRO BLACK';
+	font-weight: lighter;
+	text-align: center;
+	cursor: pointer;
+	color: $secondary-color;
+	filter: brightness(90%);
+	padding: 0% 0% 0.22rem 0%;
+	border-radius: 0.1rem;
+	border: none;
+	transition: 200ms ease-in-out 40ms;
+	transition-property: filter, text-shadow;
+	&:hover{
+		filter: brightness(120%);
+		text-shadow : 0px 0px 25px $secondary-color;
+	}
+}

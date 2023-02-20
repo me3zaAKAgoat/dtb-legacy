@@ -97,7 +97,9 @@ const LoginPage = ({ setUser }) => {
 						}}
 						placeholder="Password"
 					></input>
-					<button type="submit">Login</button>
+					<button className="baseButton" type="submit">
+						Login
+					</button>
 				</form>
 				<ApiCallsIndicator errorMessage={errorMessage} />
 			</div>

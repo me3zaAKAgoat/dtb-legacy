@@ -108,21 +108,7 @@ const TaskContainer = ({
 			>
 				{title}
 			</h1>
-			<div
-				className="expandedContainer"
-				style={
-					isTaskOpen
-						? {
-								visibility: 1,
-								opacity: 1,
-						  }
-						: {
-								visibility: 0,
-								opacity: 0,
-						  }
-				}
-				onContextMenu={handleContextMenu}
-			>
+			<div className="expandedContainer" onContextMenu={handleContextMenu}>
 				<p>{description}</p>
 				<div className="sliderEditButtonContainer">
 					<button

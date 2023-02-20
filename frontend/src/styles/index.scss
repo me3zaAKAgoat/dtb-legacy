@@ -1,16 +1,21 @@
 @font-face {
-	font-family: 'SF PRO DISPLAY REGULAR';
-	src: url('fonts/SFPRODISPLAYREGULAR.OTF');
+	font-family: 'SF PRO DISPLAY';
+	src: url('./fonts/SF-Pro-Display-Medium.otf');
 }
 
 @font-face {
-	font-family: 'SF PRO DISPLAY BOLD';
-	src: url('fonts/SFPRODISPLAYBOLD.OTF');
+	font-family: 'SF PRO TEXT';
+	src: url('./fonts/SF-Pro-Text-Regular.otf');
+}
+
+@font-face {
+	font-family: 'SF PRO BLACK';
+	src: url('./fonts/SF-Pro-Display-Black.otf');
 }
 
 body {
 	margin: 0;
-	font-family: 'SF PRO DISPLAY REGULAR', 'Segoe UI', 'Roboto', 'Oxygen',
+	font-family: 'SF PRO DISPLAY', 'Segoe UI', 'Roboto', 'Oxygen',
 		'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
 		sans-serif;
 	-webkit-font-smoothing: antialiased;

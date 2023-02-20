@@ -7,8 +7,8 @@
         height: 180px;
         z-index: 1;
         overflow: hidden;
-        background-color: $secondary-color;
-        border: 0.5px solid $light-gray-darker;
+        background-color: $light-gray-darker;
+        border: 1px solid $light-gray-lighter;
         border-radius: 4px;
         padding: 1rem;
         outline: none;
@@ -29,7 +29,8 @@
             }
         }
         .contextMenuChildOption {
-            font-family: 'SF PRO DISPLAY BOLD';
+            font-family: 'SF PRO DISPLAY';
+            font-weight: bold;
             color: $text-color;
             font-size: 1rem;
             background: none;
@@ -43,7 +44,7 @@
             }
         }
         hr {
-            background-color: $light-gray-darker;
+            background-color: $light-gray-lighter;
             width: 70%;
             border: 0.1px solid #cccccc1a;
         }

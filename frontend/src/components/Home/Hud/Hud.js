@@ -25,12 +25,12 @@ const Hud = ({ tasks, setTasks, setNotes, weekDue, setWeekDue }) => {
 	return (
 		<div className="hud">
 			<div className="completion">
-				<h3>Completion:</h3>
+				<h2>Completion:</h2>
 				<CompletionCircle sideSize={47} tasks={tasks} />
 			</div>
 			<div className="timeLeft">
-				<h3>Time left:</h3>
-				<h2>
+				<h2>Time left:</h2>
+				<h3>
 					{weekDue !== null
 						? ` ${Math.floor(
 								(new Date(weekDue) - new Date()) / (1000 * 60 * 60 * 24)
@@ -39,9 +39,9 @@ const Hud = ({ tasks, setTasks, setNotes, weekDue, setWeekDue }) => {
 									(1000 * 60 * 60)
 						  )} Hours`
 						: ' - Days - Hours'}
-				</h2>
+				</h3>
 			</div>
-			<button className="concludeButton" onClick={handleConclude}>
+			<button className="baseButton" onClick={handleConclude}>
 				Conclude
 			</button>
 		</div>
