@@ -9,7 +9,7 @@
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
-	border-right: 2px solid $light-gray-lighter;
+	border-right: 2px solid $light-gray-normal;
 }
 
 .separatingHorizontalLine {
@@ -127,7 +127,7 @@ ul {
 	width: 125px;
 	height: 140px;
 	background-color: $light-gray-darker;
-	border: 0.1px solid $light-gray-lighter;
+	border: 0.1px solid $light-gray-normal;
 	border-radius: 4px;
 	padding: 1.4rem;
 	overflow: hidden;
@@ -156,8 +156,8 @@ ul {
 		filter: invert(70%);
 	}
 	hr {
-		background-color: $light-gray-lighter;
+		background-color: $light-gray-normal;
 		width: 70%;
-		border: 0.1px solid $light-gray-lighter;
+		border: 0.1px solid $light-gray-normal;
 	}
 }

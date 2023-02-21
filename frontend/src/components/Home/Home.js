@@ -60,17 +60,16 @@ const ModalPortal = ({ tasks, setTasks, formState, setFormState }) => {
 };
 
 const ErrorBar = ({ errorMessage }) => {
-	if (errorMessage) {
-		return (
-			<div className="badApiCallMessage">
-				{errorMessage === undefined
-					? 'failed to connect to server'
-					: errorMessage}
-			</div>
-		);
-	} else if (!errorMessage) {
-		return <div className="goodApiCallMessage"></div>;
-	}
+	// fix the FUCKIGN TRANSITION OF THIS COMPONENT
+	return (
+		<div
+			className={errorMessage === null ? 'errorBarPortal' : 'badServerResponse'}
+		>
+			{errorMessage === undefined
+				? 'failed to connect to server'
+				: errorMessage}
+		</div>
+	);
 };
 
 const Home = () => {
@@ -97,7 +96,6 @@ const Home = () => {
 				retrievedData.weekDue === null ? null : new Date(retrievedData.weekDue)
 			);
 		} catch (err) {
-			console.log(err);
 			setApiErrorMessage("fetching current week's data failed");
 		}
 	}, [user]);

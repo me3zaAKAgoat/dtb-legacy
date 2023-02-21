@@ -47,6 +47,7 @@ const NotesContainer = ({ notes, setNotes, setApiErrorMessage }) => {
 		<div className="mainChildrenContainers">
 			<div className="mainChildrenTitle">Notes</div>
 			<textarea
+				spellCheck="false"
 				className="notesTextArea"
 				value={notes}
 				onChange={handleNotesChange}

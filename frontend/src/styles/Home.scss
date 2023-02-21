@@ -4,7 +4,7 @@
 
 ::-webkit-scrollbar-track {
 	border-radius: 10px;
-	background-color: $light-gray-lighter;
+	background-color: $light-gray-normal;
 }
 
 ::-webkit-scrollbar {
@@ -25,7 +25,7 @@
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-	margin: 0 auto;
+	margin: 0 auto 10px;
 	flex-grow: 1;
 }
 
@@ -90,8 +90,8 @@
 	min-width: 1px;
 	margin-top: 1%;
 	margin-bottom: 4%;
-	height: 95%;
-	background-color: $light-gray-lighter;
+	height: 93%;
+	background-color: $light-gray-normal;
 	flex-grow: 1;
 }
 
@@ -133,24 +133,24 @@
 	color: $text-color;
 	line-height: 1.8;
 	margin: 1px 10%;
-	padding: 2% 4%;
+	padding: 2% 2%;
 	width: 80%;
 	height: 85%;
 	background-color: $light-gray-darker;
 	border: none;
 	border-radius: 4px;
-	outline: rgba(255, 255, 255, 0.2) solid 0.05rem;
+	outline: $light-gray-normal solid 0.05rem;
 	transition: outline 50ms ease-in-out 0ms;
+	&:hover,
+	&:focus {
+		outline: $light-gray-normal solid 0.13rem;
+	}
 
 	overflow: auto;
 	word-wrap: break-word;
 	white-space: pre-wrap;
 	word-break: break-word;
 	resize: none;
-	&:hover,
-	&:focus {
-		outline: rgba(255, 255, 255, 0.2) solid 0.13rem;
-	}
 }
 
 .taskList {
@@ -175,7 +175,7 @@
 	width: 80%;
 	max-width: 600px;
 	border-radius: 4px;
-	border: 1px solid #3d3d3d;
+	border: 1px solid $light-gray-normal;
 	filter: drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.7));
 	margin: 10px;
 	display: flex;
@@ -211,7 +211,7 @@
 		cursor: pointer;
 		transition: background-color 55ms ease-in 15ms;
 		&:hover {
-			background-color: $light-gray-lighter;
+			background-color: $light-gray-normal;
 		}
 	}
 
@@ -223,7 +223,7 @@
 }
 
 .openTaskContainerStyle {
-	background-color: $light-gray-lighter;
+	background-color: $light-gray-normal;
 	min-height: 200px;
 }
 
@@ -231,7 +231,7 @@
 	flex-grow: 1;
 	border: none;
 	height: 200px - $task-item-height;
-	background-color: $light-gray-lighter;
+	background-color: $light-gray-normal;
 	transition: 15ms ease-in 100ms;
 	transition-property: opacity, visibility;
 	display: flex;
@@ -367,8 +367,9 @@
 	right: 0;
 	margin: 90px auto auto;
 	background-color: $light-gray-darker;
-	height: 450px;
-	width: 425px;
+	height: 70%;
+	width: 34%;
+	min-width: 400px;
 	border-radius: 4px;
 	border: 1px solid rgb(109, 109, 109);
 	input,
@@ -398,7 +399,6 @@
 		.taskNameContainer {
 			display: flex;
 			flex-direction: column;
-			justify-content: space-between;
 			label {
 				font-family: 'SF PRO DISPLAY';
 				font-weight: bold;
@@ -459,7 +459,7 @@
 	}
 }
 
-.badApiCallMessage {
+.badServerResponse {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -469,19 +469,27 @@
 	font-family: 'SF PRO DISPLAY';
 	font-weight: bold;
 	font-size: 14px;
-	color: #cccccc;
-	height: 20px;
+	color: $text-color;
 	width: 100%;
 	vertical-align: middle;
 	line-height: 25px;
+
+	max-height: 20px;
 	opacity: 1;
+	visibility: visible;
 }
-.goodApiCallMessage {
-	opacity: 0;
+.errorBarPortal {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	position: absolute;
 	bottom: 0px;
-	background-color: $success-color;
-	height: 500px;
+	width: 100%;
+
+	max-height: 0px;
+	opacity: 0;
+	visibility: hidden;
+
 	transition: 500ms ease-in 500ms;
-	transition-property: height, opacity;
+	transition-property: max-height, visibility, opacity;
 }
