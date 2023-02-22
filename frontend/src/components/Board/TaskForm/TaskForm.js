@@ -114,7 +114,7 @@ const TaskForm = ({ tasks, setTasks, formState, setFormState }) => {
 		>
 			<h1>{formState.type === 'add' ? 'Add a new task' : 'Edit the task'}</h1>
 			<div className="taskNameContainer">
-				<label htmlFor="taskNameInput">Name</label>
+				<label htmlFor="taskNameInput">Title</label>
 				<input
 					type="text"
 					id="taskNameInput"

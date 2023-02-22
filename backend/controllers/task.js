@@ -51,7 +51,7 @@ taskRouter.delete('/deleteTask', async (req, res) => {
 		that wouldn't be very scalable. You could have collisions of instances, if more than one of the same call were fired at the same time.*/
 
 		await week.tasks.pull(req.body.taskId);
-		await task.findByIdAndRemove(req.body.taskId);
+		await Task.findByIdAndRemove(req.body.taskId);
 
 		return res.status(200).json({ deletedTaskId: req.body.taskId });
 	} catch (err) {

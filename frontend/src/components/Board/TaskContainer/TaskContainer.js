@@ -107,6 +107,7 @@ const TaskContainer = ({
 				onClick={() => {
 					setIsTaskOpen(!isTaskOpen);
 				}}
+				role="button"
 			>
 				{title}
 			</h1>
