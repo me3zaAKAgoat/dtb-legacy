@@ -1,6 +1,5 @@
 import 'styles/Navbar.scss';
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const ProfileButton = (props) => {
 	const [open, setOpen] = useState(false);
@@ -41,10 +40,7 @@ const DropdownContainer = ({ open, logOut }) => {
 		const userConfirms = window.confirm(
 			'You will log out from this session now'
 		);
-		if (userConfirms) {
-			logOut();
-		} else {
-		}
+		if (userConfirms) logOut();
 	};
 
 	useEffect(() => {
@@ -70,12 +66,10 @@ const DropdownContainer = ({ open, logOut }) => {
 };
 
 const Navbar = (props) => {
-	const navigate = useNavigate();
-
 	return (
 		<nav className="navigationBar">
 			<a href="." className="logoImageHolder">
-				<img src="/assets/logo.png" alt="DTB" />
+				<img src="/assets/logo.png" alt="logo" />
 			</a>
 			<div className="separatingHorizontalLine"></div>
 			<ul>

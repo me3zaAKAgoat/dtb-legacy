@@ -54,8 +54,8 @@ const TaskContextMenu = ({
 				className="contextMenu"
 				onBlur={(e) => handleBlur(e)}
 				style={{
-					top: contextMenu.y + 'px',
-					left: contextMenu.x + 'px',
+					top: `${contextMenu.y}px`,
+					left: `${contextMenu.x}px`,
 				}}
 				tabIndex="-1"
 				autoFocus

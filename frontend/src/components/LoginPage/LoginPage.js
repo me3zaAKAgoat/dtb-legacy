@@ -48,13 +48,13 @@ const LoginPage = ({ setUser }) => {
 					username: usernameField,
 					password: passwordField,
 				});
-				const t = new Date();
+				const currentTime = new Date();
 				window.localStorage.setItem('LoggedInUserUsername', user.username);
 				window.localStorage.setItem('LoggedInUserName', user.name);
 				window.localStorage.setItem('LoggedInUserToken', user.token);
 				window.localStorage.setItem(
 					'LoggedInUserExpiryDate',
-					t.setSeconds(t.getSeconds() + user.expiresIn)
+					currentTime.setSeconds(currentTime.getSeconds() + user.expiresIn)
 				);
 				setUser(user);
 				navigate('/board');
@@ -68,7 +68,7 @@ const LoginPage = ({ setUser }) => {
 	return (
 		<div className="loginPage">
 			<span>
-				<img src="/assets/logo.png" className="" />
+				<img src="/assets/logo.png" alt="logo" />
 			</span>
 			<div className="formWrapper">
 				<button

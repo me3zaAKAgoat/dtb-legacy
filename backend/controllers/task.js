@@ -4,7 +4,6 @@ const Week = require('../models/week.js');
 const Task = require('../models/task.js');
 const jwt = require('jsonwebtoken');
 const config = require('../utils/config.js');
-const task = require('../models/task.js');
 
 //add a task
 taskRouter.post('/addTask/:id', async (req, res) => {

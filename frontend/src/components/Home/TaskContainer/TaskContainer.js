@@ -1,11 +1,4 @@
-import {
-	useEffect,
-	useState,
-	useCallback,
-	useRef,
-	useContext,
-	useMemo,
-} from 'react';
+import { useEffect, useState, useCallback, useRef, useContext } from 'react';
 import taskServices from 'services/task';
 import { UserContext } from 'App';
 import { useDebounce } from 'utils/useDebounce';
@@ -59,7 +52,7 @@ const TaskContainer = ({
 	const handleProgressChange = useCallback((e) => {
 		if (hasOnlyDigits(e.target.value)) {
 			if (e.target.value > 100) setProgress(100);
-			else if (0 > e.target.value) setProgress(0);
+			else if (e.target.value < 0) setProgress(0);
 			else setProgress(Number(e.target.value));
 		}
 	}, []);

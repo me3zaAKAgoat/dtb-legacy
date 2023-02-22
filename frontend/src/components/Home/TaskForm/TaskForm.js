@@ -30,11 +30,11 @@ const TaskForm = ({ tasks, setTasks, formState, setFormState }) => {
 	}, []);
 
 	const editTask = useCallback(
-		async (titleField, descriptionField, priorityField) => {
+		async (editedTitle, editedDescription, editedPriority) => {
 			const editedTask = {
-				title: titleField,
-				description: descriptionField,
-				priority: priorityField,
+				title: editedTitle,
+				description: editedDescription,
+				priority: editedPriority,
 				id: formState.id,
 			};
 			try {
@@ -58,12 +58,12 @@ const TaskForm = ({ tasks, setTasks, formState, setFormState }) => {
 	);
 
 	const addTask = useCallback(
-		async (titleField, descriptionField, priorityField) => {
+		async (newTitle, newDescription, newPriority) => {
 			try {
 				const newTask = {
-					title: titleField,
-					description: descriptionField,
-					priority: priorityField,
+					title: newTitle,
+					description: newDescription,
+					priority: newPriority,
 					progress: 0,
 				};
 				const activeWeekId = (await WeekServices.getActiveWeekId(user.token))
@@ -89,7 +89,7 @@ const TaskForm = ({ tasks, setTasks, formState, setFormState }) => {
 		[user]
 	);
 
-	const postForm = async () => {
+	const postForm = () => {
 		const areRequirementsMet =
 			titleField?.length > 0 && priorityField?.length > 0;
 

@@ -116,7 +116,6 @@ const Home = () => {
 		<div className="basePage">
 			<div className="hudContainer">
 				<Hud
-					className="hud"
 					tasks={tasks}
 					setTasks={setTasks}
 					setNotes={setNotes}

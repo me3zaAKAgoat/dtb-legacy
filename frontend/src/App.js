@@ -20,6 +20,16 @@ const App = () => {
 	const navigate = useNavigate();
 	const location = useLocation();
 
+	// clear local storage + component cleanup
+	const logOut = useCallback(() => {
+		window.localStorage.removeItem('LoggedInUserUsername');
+		window.localStorage.removeItem('LoggedInUserName');
+		window.localStorage.removeItem('LoggedInUserToken');
+		window.localStorage.removeItem('LoggedInUserExpiryDate');
+		setUser(null);
+		navigate('/login');
+	}, []);
+
 	// checks if a the user already set in local storage has had their token expire yet
 	useEffect(() => {
 		const LoggedInUser = {
@@ -39,15 +49,6 @@ const App = () => {
 		} else if (new Date() > LoggedInUser.expiryDate) {
 			logOut(); // log out expired user
 		} else navigate('/login');
-	}, []);
-
-	const logOut = useCallback(() => {
-		window.localStorage.removeItem('LoggedInUserUsername');
-		window.localStorage.removeItem('LoggedInUserName');
-		window.localStorage.removeItem('LoggedInUserToken');
-		window.localStorage.removeItem('LoggedInUserExpiryDate');
-		setUser(null);
-		navigate('/login');
 	}, []);
 
 	return (
