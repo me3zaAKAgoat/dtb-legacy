@@ -74,7 +74,7 @@
 	}
 }
 
-.main {
+.boardMain {
 	min-height: 87%;
 	border: none;
 	display: flex;
@@ -222,6 +222,17 @@
 	}
 }
 
+// .progressBar {
+// 	height: 10px;
+// 	background-color: #eee;
+// 	margin-bottom: 10px;
+// }
+
+// .progressBarFill {
+// 	height: 100%;
+// 	background-color: #007bff;
+// }
+
 .openTaskContainerStyle {
 	background-color: $light-gray-normal;
 	min-height: 200px;
@@ -232,8 +243,6 @@
 	border: none;
 	height: 200px - $task-item-height;
 	background-color: $light-gray-normal;
-	transition: 15ms ease-in 100ms;
-	transition-property: opacity, visibility;
 	display: flex;
 	flex-direction: column;
 	justify-content: start;

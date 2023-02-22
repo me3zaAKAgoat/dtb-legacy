@@ -124,7 +124,7 @@ const Home = () => {
 					setWeekDue={setWeekDue}
 				/>
 			</div>
-			<main className="main">
+			<main className="boardMain">
 				<TaskList
 					tasks={tasks}
 					setTasks={setTasks}

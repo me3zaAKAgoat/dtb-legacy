@@ -10,6 +10,33 @@ import taskServices from 'services/task';
 import { UserContext } from 'App';
 import { useDebounce } from 'utils/useDebounce';
 
+const MiniProgressIndicator = ({ isTaskOpen, progress }) => {
+	const isFirstRender = useRef(true);
+	const [showMiniProgress, setShowMiniProgress] = useState(!isTaskOpen);
+	useEffect(() => {
+		if (isFirstRender.current) isFirstRender.current = !isFirstRender.current;
+		else if (!isFirstRender.current && !showMiniProgress) {
+			setTimeout(() => {
+				setShowMiniProgress(!showMiniProgress);
+			}, 200);
+		} else if (!isFirstRender.current && showMiniProgress) {
+			setShowMiniProgress(!showMiniProgress);
+		}
+	}, [isTaskOpen]);
+
+	console.log(showMiniProgress);
+	if (showMiniProgress)
+		return (
+			<div className="progressBar">
+				<div
+					className="progressBarFill"
+					style={{ width: `${progress}%` }}
+				></div>
+			</div>
+		);
+	else return <></>;
+};
+
 const TaskContainer = ({
 	task,
 	tasks,
@@ -22,15 +49,8 @@ const TaskContainer = ({
 	const [description, setDescription] = useState(task.description);
 	const [progress, setProgress] = useState(task.progress);
 	const [isTaskOpen, setIsTaskOpen] = useState(false);
-	const [refreshCompletionFlag, setRefreshCompletionFlag] = useState(0);
-	const isFirstRenderUseEffect1 = useRef(true);
-	const isFirstRenderUseEffect2 = useRef(true);
+	const isFirstRender = useRef(true);
 	const debouncedProgress = useDebounce(progress, 2000);
-
-	const priorityValueMap = new Map();
-	priorityValueMap.set('low', 1);
-	priorityValueMap.set('medium', 4);
-	priorityValueMap.set('high', 7);
 
 	const hasOnlyDigits = useCallback((value) => {
 		return /^-?\d+$/.test(value);
@@ -49,6 +69,7 @@ const TaskContainer = ({
 		setContextMenu({ show: true, x: e.pageX, y: e.pageY, id: task.id });
 	}, []);
 
+	// progress debounce
 	useEffect(() => {
 		const saveProgress = async () => {
 			try {
@@ -56,43 +77,31 @@ const TaskContainer = ({
 					id: task.id,
 					progress: progress,
 				});
-				setRefreshCompletionFlag(!refreshCompletionFlag);
+				setTasks(
+					tasks.map((mapTask) => {
+						if (mapTask.id === task.id) {
+							return {
+								...task,
+								progress: progress,
+							};
+						} else {
+							return mapTask;
+						}
+					})
+				);
 			} catch (err) {
 				console.log(err);
 			}
 		};
-		if (isFirstRenderUseEffect1.current)
-			isFirstRenderUseEffect1.current = false;
+		if (isFirstRender.current) isFirstRender.current = false;
 		else saveProgress();
 	}, [debouncedProgress]);
 
+	//task edit
 	useEffect(() => {
-		if (isFirstRenderUseEffect2.current) {
-			isFirstRenderUseEffect2.current = !isFirstRenderUseEffect2.current;
-		} else {
-			setTasks(
-				tasks.map((mapTask) => {
-					if (mapTask.id === task.id) {
-						return {
-							...task,
-							progress: progress,
-						};
-					} else {
-						return mapTask;
-					}
-				})
-			);
-		}
-	}, [refreshCompletionFlag]);
-
-	useEffect(() => {
-		const thisTask = tasks.find(
-			(iterationTask) => task.id === iterationTask.id
-		);
-		setTitle(thisTask.title);
-		setDescription(thisTask.description);
-		task.priority = thisTask.priority;
-	}, [tasks]);
+		setTitle(task.title);
+		setDescription(task.description);
+	}, [task]);
 
 	return (
 		<div
@@ -108,6 +117,7 @@ const TaskContainer = ({
 			>
 				{title}
 			</h1>
+			{/* <MiniProgressIndicator isTaskOpen={isTaskOpen} progress={progress} /> */}
 			<div className="expandedContainer" onContextMenu={handleContextMenu}>
 				<p>{description}</p>
 				<div className="sliderEditButtonContainer">

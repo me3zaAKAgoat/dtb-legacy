@@ -29,6 +29,66 @@ const TaskForm = ({ tasks, setTasks, formState, setFormState }) => {
 		setPriorityField('');
 	}, []);
 
+	const editTask = useCallback(
+		async (titleField, descriptionField, priorityField) => {
+			const editedTask = {
+				title: titleField,
+				description: descriptionField,
+				priority: priorityField,
+				id: formState.id,
+			};
+			try {
+				await TaskServices.editTask(user.token, editedTask);
+				const newTasks = tasks.map((task) =>
+					task.id === formState.id
+						? {
+								...task,
+								title: editedTask.title,
+								description: editedTask.description,
+								priority: editedTask.priority,
+						  }
+						: task
+				);
+				setTasks(newTasks);
+			} catch (err) {
+				console.log(err);
+			}
+		},
+		[formState, user]
+	);
+
+	const addTask = useCallback(
+		async (titleField, descriptionField, priorityField) => {
+			try {
+				const newTask = {
+					title: titleField,
+					description: descriptionField,
+					priority: priorityField,
+					progress: 0,
+				};
+				const activeWeekId = (await WeekServices.getActiveWeekId(user.token))
+					.id;
+				if (!activeWeekId) {
+					const returnedTask = await WeekServices.initiateNewWeek(
+						user.token,
+						newTask
+					);
+					setTasks(tasks.concat(returnedTask));
+				} else {
+					const returnedTask = await TaskServices.addTask(
+						user.token,
+						activeWeekId,
+						newTask
+					);
+					setTasks(tasks.concat(returnedTask));
+				}
+			} catch (err) {
+				console.log(err);
+			}
+		},
+		[user]
+	);
+
 	const postForm = async () => {
 		const areRequirementsMet =
 			titleField?.length > 0 && priorityField?.length > 0;
@@ -37,58 +97,9 @@ const TaskForm = ({ tasks, setTasks, formState, setFormState }) => {
 			alert('Must fill all fields');
 		} else {
 			if (formState.type === 'edit') {
-				const editedTask = {
-					title: titleField,
-					description: descriptionField,
-					priority: priorityField,
-					id: formState.id,
-				};
-				try {
-					const returnedTask = await TaskServices.editTask(
-						user.token,
-						editedTask
-					);
-					const newTasks = tasks.map((task) =>
-						task.id === formState.id
-							? {
-									...task,
-									title: returnedTask.title,
-									description: returnedTask.description,
-									priority: returnedTask.priority,
-							  }
-							: task
-					);
-					setTasks(newTasks);
-				} catch (err) {
-					console.log(err);
-				}
+				editTask(titleField, descriptionField, priorityField);
 			} else if (formState.type === 'add') {
-				try {
-					const newTask = {
-						title: titleField,
-						description: descriptionField,
-						priority: priorityField,
-						progress: 0,
-					};
-					const activeWeekId = (await WeekServices.getActiveWeekId(user.token))
-						.id;
-					if (!activeWeekId) {
-						const returnedTask = await WeekServices.initiateNewWeek(
-							user.token,
-							newTask
-						);
-						setTasks(tasks.concat(returnedTask));
-					} else {
-						const returnedTask = await TaskServices.addTask(
-							user.token,
-							activeWeekId,
-							newTask
-						);
-						setTasks(tasks.concat(returnedTask));
-					}
-				} catch (err) {
-					console.log(err);
-				}
+				addTask(titleField, descriptionField, priorityField);
 			}
 			setFormState(null);
 			clearForm();

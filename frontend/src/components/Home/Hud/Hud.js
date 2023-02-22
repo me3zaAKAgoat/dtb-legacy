@@ -1,4 +1,4 @@
-import CompletionCircle from './PercentageCircle/CompletionCircle';
+import CompletionCircle from './CompletionCircle/CompletionCircle';
 import WeekServices from 'services/week';
 import { useContext, useCallback } from 'react';
 import { UserContext } from 'App';
@@ -26,7 +26,7 @@ const Hud = ({ tasks, setTasks, setNotes, weekDue, setWeekDue }) => {
 		<div className="hud">
 			<div className="completion">
 				<h2>Completion:</h2>
-				<CompletionCircle sideSize={47} tasks={tasks} />
+				<CompletionCircle containerSquareSideLength={47} tasks={tasks} />
 			</div>
 			<div className="timeLeft">
 				<h2>Time left:</h2>
