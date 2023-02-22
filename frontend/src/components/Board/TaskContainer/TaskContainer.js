@@ -2,6 +2,7 @@ import { useEffect, useState, useCallback, useRef, useContext } from 'react';
 import taskServices from 'services/task';
 import { UserContext } from 'App';
 import { useDebounce } from 'utils/useDebounce';
+import { capitalize } from 'utils/stringUtils';
 
 const MiniProgressIndicator = ({ isTaskOpen, progress }) => {
 	const isFirstRender = useRef(true);
@@ -109,7 +110,7 @@ const TaskContainer = ({
 				}}
 				role="button"
 			>
-				{title}
+				{capitalize(title)}
 			</h1>
 			{/* <MiniProgressIndicator isTaskOpen={isTaskOpen} progress={progress} /> */}
 			<div className="expandedContainer" onContextMenu={handleContextMenu}>

@@ -136,7 +136,7 @@ const TaskForm = ({ tasks, setTasks, formState, setFormState }) => {
 			</div>
 			<div className="priority">
 				<p>Priority</p>
-				<label htmlFor="high">high</label>
+				<label htmlFor="high">High</label>
 				<input
 					type="radio"
 					name="priority"
@@ -144,7 +144,7 @@ const TaskForm = ({ tasks, setTasks, formState, setFormState }) => {
 					onChange={handlePriorityChange}
 					checked={priorityField === 'high'}
 				/>
-				<label htmlFor="medium">medium</label>
+				<label htmlFor="medium">Medium</label>
 				<input
 					type="radio"
 					name="priority"
@@ -152,7 +152,7 @@ const TaskForm = ({ tasks, setTasks, formState, setFormState }) => {
 					onChange={handlePriorityChange}
 					checked={priorityField === 'medium'}
 				/>
-				<label htmlFor="low">low</label>
+				<label htmlFor="low">Low</label>
 				<input
 					type="radio"
 					name="priority"
