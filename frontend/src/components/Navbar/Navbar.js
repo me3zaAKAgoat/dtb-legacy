@@ -1,5 +1,6 @@
 import 'styles/Navbar.scss';
 import { useState, useEffect } from 'react';
+import Logo from 'components/Logo/Logo';
 
 const ProfileButton = (props) => {
 	const [open, setOpen] = useState(false);
@@ -69,7 +70,7 @@ const Navbar = (props) => {
 	return (
 		<nav className="navigationBar">
 			<a href="." className="logoImageHolder">
-				<img src="/assets/logo.png" alt="logo" />
+				<Logo />
 			</a>
 			<div className="separatingHorizontalLine"></div>
 			<ul>

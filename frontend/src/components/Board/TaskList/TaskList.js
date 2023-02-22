@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import TaskContainer from 'components/Home/TaskContainer/TaskContainer.js';
+import TaskContainer from 'components/Board/TaskContainer/TaskContainer.js';
 import TaskContextMenu from 'components/ContextMenus/TaskContextMenu';
 
 /*

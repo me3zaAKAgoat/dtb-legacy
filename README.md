@@ -99,33 +99,32 @@ npm start
 
 ### Core
 
-- [ ] remove debounce from note text area and add a save button on the top right corner of the text area that animates on click
+- [ ] remove debounce from note text area and add an svg save button on the top right corner of the text area that animates on click
 - [ ] add a retry button for every component's failure to load the data it needs (similar to twitter)
 - [ ] issue where if loading notes fails the debounce posts empty string to server and the database clears of the actual data that should be preserved
 - [ ] settings should include : theme, week length
 - [ ] make a wrapper function that updates the state after successful api requests.
 - [ ] add a current week proprety to the whole app (state/proprety of user state).
-- [ ] correct adding a new task to handle initiation of a new week or otherwise on the backend rather than the frontend.
+- [ ] correct adding a new task to handle initiation of a new week on the backend instead of the frontend.
 - [ ] make a custom useLocalStorage hook to increase readiblity and maintainability the user log in logic.
-- [ ] set an active week id proprety on the user state
 - [ ] thoroughly describe the automatic synchronization system.
 - [ ] make the basic layout for the statistics page.
 - [ ] make a settings page.
 - [ ] make a signup page.
-- [ ] rework task containers ( laggy expansion animation ).
+- [x] rework task containers ( laggy expansion animation ).
 - [x] thoroughly describe the flow/usage of the app.
-- [ ] make a new proper logo.
+- [x] make a new proper logo.
 - [ ] handle token expiration on the front-end. https://stackoverflow.com/questions/61997401/how-to-logout-user-when-token-expires-in-react-app
   - log out on every JWT error response received
-- [ ] read chapter 7 react router.
+- [x] read chapter 7 react router.
 - [ ] add a percentage next to number input field in task container
 - [x] fix modal behaviour when clicked outside of form
 - [ ] add end of week button that renders a modal prompting the user to describe the week and then sends an api call to archive the ended week and create a stamp of it.
 - [ ] work on custom skeleton component to every component that makes an inital fetch, so that this skeleton component only renders the wanted component after a successful fetch. (will enable moving tasks state to tasks section hopefully).
-- [ ] change overall font to a more flexible one (should modern looking - minimalistic)
+- [x] change overall font to a more flexible one (should modern looking - minimalistic)
 - [x] use the useContext hook to avoid drilling of user state.
 - [ ] make function wrappers for every module that has an action that necessitates a follow up, to avoid duplication and all the issues that stem from it.
-- [ ] add an indicator at the bottom of the app that tells the user how the api calls are going.
+- [x] add an indicator at the bottom of the app that tells the user how the api calls are going.
 - [ ] increase responsivity of week due date state in relation to the week state
 - [ ] fix the bug with editing tasks not responsively updating the current state
 - [ ] fix a bug where some api calls are submitted when the task form is open without the button being clicked

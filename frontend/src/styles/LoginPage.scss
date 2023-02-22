@@ -10,11 +10,15 @@
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
-	span {
+	.logoContainer {
 		margin-top: 35px;
+		svg {
+			width: 92%;
+			height: 92%;
+		}
 	}
 	.formWrapper {
-		background-color: $light-gray-darker;
+		background-color: $secondary-color-one;
 		border-radius: 4px;
 		border: 1px solid #3d3d3d;
 		height: 380px;

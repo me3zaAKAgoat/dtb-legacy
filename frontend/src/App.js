@@ -1,7 +1,7 @@
 import './styles/App.scss';
 import { useState, useEffect, useCallback, createContext } from 'react';
 import Navbar from './components/Navbar/Navbar';
-import Home from './components/Home/Home';
+import Board from './components/Board/Board';
 import LoginPage from './components/LoginPage/LoginPage';
 import Statistics from './components/Statistics/Statistics';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
@@ -63,7 +63,7 @@ const App = () => {
 				<Routes>
 					{user ? (
 						<>
-							<Route path="/board" element={<Home />} />
+							<Route path="/board" element={<Board />} />
 							<Route path="/statistics" element={<Statistics />} />
 						</>
 					) : (

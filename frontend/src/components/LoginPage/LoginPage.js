@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import '../../styles/LoginPage.scss';
-import loginService from '../../services/login.js';
+import 'styles/LoginPage.scss';
+import Logo from 'components/Logo/Logo';
+import loginService from 'services/login.js';
 import { useNavigate } from 'react-router-dom';
 /*
 this component is a rectangle div that shows the reason the login
@@ -67,9 +68,9 @@ const LoginPage = ({ setUser }) => {
 
 	return (
 		<div className="loginPage">
-			<span>
-				<img src="/assets/logo.png" alt="logo" />
-			</span>
+			<div className="logoContainer">
+				<Logo />
+			</div>
 			<div className="formWrapper">
 				<button
 					className="signUpRedirectionButton"

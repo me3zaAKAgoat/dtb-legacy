@@ -9,7 +9,7 @@
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
-	border-right: 2px solid $light-gray-normal;
+	border-right: 2px solid $secondary-color-two;
 }
 
 .separatingHorizontalLine {
@@ -17,8 +17,7 @@
 	margin: 1.5% 0%;
 	max-height: 1px;
 	min-height: 1px;
-	background-color: $text-color;
-	filter: brightness(50%);
+	background-color: $secondary-color-three;
 	flex-grow: 1;
 }
 
@@ -126,8 +125,8 @@ ul {
 	left: 65px;
 	width: 125px;
 	height: 140px;
-	background-color: $light-gray-darker;
-	border: 0.1px solid $light-gray-normal;
+	background-color: $secondary-color-one;
+	border: 0.1px solid $secondary-color-two;
 	border-radius: 4px;
 	padding: 1.4rem;
 	overflow: hidden;
@@ -156,8 +155,8 @@ ul {
 		filter: invert(70%);
 	}
 	hr {
-		background-color: $light-gray-normal;
+		background-color: $secondary-color-two;
 		width: 70%;
-		border: 0.1px solid $light-gray-normal;
+		border: 0.1px solid $secondary-color-two;
 	}
 }

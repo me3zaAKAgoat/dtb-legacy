@@ -3,7 +3,7 @@
 
 ::-webkit-scrollbar-track {
 	border-radius: 10px;
-	background-color: $light-gray-normal;
+	background-color: $secondary-color-two;
 }
 
 ::-webkit-scrollbar {
@@ -33,7 +33,7 @@
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-around;
-	background-color: $light-gray-darker;
+	background-color: $secondary-color-one;
 	height: 60%;
 	max-height: 70px;
 	min-width: 500px;
@@ -90,7 +90,7 @@
 	margin-top: 1%;
 	margin-bottom: 4%;
 	height: 93%;
-	background-color: $light-gray-normal;
+	background-color: $secondary-color-two;
 	flex-grow: 1;
 }
 
@@ -121,7 +121,7 @@
 	text-align: center;
 	color: $text-color;
 	margin: 2px 0px 10px;
-	background-color: $light-gray-darker;
+	background-color: $secondary-color-one;
 	border-radius: 4px;
 }
 
@@ -136,14 +136,14 @@
 	padding: 2% 2%;
 	width: 80%;
 	height: 85%;
-	background-color: $light-gray-darker;
+	background-color: $secondary-color-one;
 	border: none;
 	border-radius: 4px;
-	outline: $light-gray-normal solid 0.05rem;
+	outline: $secondary-color-two solid 0.05rem;
 	transition: outline 50ms ease-in-out 0ms;
 	&:hover,
 	&:focus {
-		outline: $light-gray-normal solid 0.13rem;
+		outline: $secondary-color-two solid 0.13rem;
 	}
 
 	overflow: auto;
@@ -169,13 +169,13 @@
 
 .taskContainer {
 	overflow: hidden;
-	background-color: $light-gray-darker;
+	background-color: $secondary-color-one;
 	height: $task-item-height;
 	min-height: $task-item-height;
 	width: 80%;
 	max-width: 600px;
 	border-radius: 4px;
-	border: 1px solid $light-gray-normal;
+	border: 1px solid $secondary-color-two;
 	filter: drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.7));
 	margin: 10px;
 	display: flex;
@@ -211,7 +211,7 @@
 		cursor: pointer;
 		transition: background-color 55ms ease-in 15ms;
 		&:hover {
-			background-color: $light-gray-normal;
+			background-color: $secondary-color-two;
 		}
 	}
 
@@ -234,7 +234,7 @@
 // }
 
 .openTaskContainerStyle {
-	background-color: $light-gray-normal;
+	background-color: $secondary-color-two;
 	min-height: 200px;
 }
 
@@ -242,7 +242,7 @@
 	flex-grow: 1;
 	border: none;
 	height: 200px - $task-item-height;
-	background-color: $light-gray-normal;
+	background-color: $secondary-color-two;
 	display: flex;
 	flex-direction: column;
 	justify-content: start;
@@ -375,7 +375,7 @@
 	left: 0;
 	right: 0;
 	margin: 90px auto auto;
-	background-color: $light-gray-darker;
+	background-color: $secondary-color-one;
 	height: 70%;
 	width: 34%;
 	min-width: 400px;

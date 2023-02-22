@@ -1,12 +1,12 @@
-import 'styles/Home.scss';
+import 'styles/Board.scss';
 import 'styles/App.scss';
-import TaskList from 'components/Home/TaskList/TaskList.js';
-import NotesContainer from 'components/Home/NotesContainer/NotesContainer.js';
-import Hud from 'components/Home/Hud/Hud.js';
+import TaskList from 'components/Board/TaskList/TaskList.js';
+import NotesContainer from 'components/Board/NotesContainer/NotesContainer.js';
+import Hud from 'components/Board/Hud/Hud.js';
 import WeekServices from 'services/week.js';
 import { useCallback, useContext, useEffect, useState } from 'react';
 import { UserContext } from 'App';
-import TaskForm from 'components/Home/TaskForm/TaskForm';
+import TaskForm from 'components/Board/TaskForm/TaskForm';
 
 /*
 this component conditionally renders and edit task or a create task
@@ -72,7 +72,7 @@ const ErrorBar = ({ errorMessage }) => {
 	);
 };
 
-const Home = () => {
+const Board = () => {
 	const [user, setUser] = useContext(UserContext);
 	const [tasks, setTasks] = useState([]);
 	const [notes, setNotes] = useState(null);
@@ -147,4 +147,4 @@ const Home = () => {
 	);
 };
 
-export default Home;
+export default Board;

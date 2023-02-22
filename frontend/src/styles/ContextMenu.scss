@@ -7,8 +7,8 @@
         height: 180px;
         z-index: 1;
         overflow: hidden;
-        background-color: $light-gray-darker;
-        border: 1px solid $light-gray-lighter;
+        background-color: $secondary-color-one;
+        border: 1px solid $secondary-color-three;
         border-radius: 4px;
         padding: 1rem;
         outline: none;
@@ -44,7 +44,7 @@
             }
         }
         hr {
-            background-color: $light-gray-lighter;
+            background-color: $secondary-color-three;
             width: 70%;
             border: 0.1px solid #cccccc1a;
         }
