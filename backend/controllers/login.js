@@ -7,7 +7,7 @@ const bcrypt = require('bcrypt');
 loginRouter.post('/', async (req, res) => {
 	try {
 		const user = await User.findOne({ username: req.body.username });
-		const tokenExpirationParam = 20; //expiration of a user session
+		const tokenExpirationParam = config.TOKEN_EXPIRATION; //expiration of a user session
 		if (user === null) {
 			return res.status(401).json({ error: 'Credentials are incorrect' });
 		}
