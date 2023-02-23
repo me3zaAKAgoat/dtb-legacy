@@ -1,17 +1,17 @@
 import { useEffect, useRef, useCallback, useContext } from 'react';
 import WeekServices from 'services/week';
-import { UserContext } from 'App';
+import { UserContext, useUser } from 'utils/useUser';
 import { useDebounce } from 'utils/useDebounce';
 
 const NotesContainer = ({ notes, setNotes, setApiErrorMessage }) => {
-	const [user, setUser] = useContext(UserContext);
+	const { user, logOut } = useContext(UserContext);
 	const debouncedNotes = useDebounce(notes, 2000);
 	const firstRender = useRef(true);
 
 	useEffect(() => {
 		const saveNotes = async () => {
 			try {
-				await WeekServices.updateNotes(user.token, {
+				await WeekServices(logOut).updateNotes(user.token, {
 					text: notes,
 				});
 			} catch (error) {
@@ -30,7 +30,7 @@ const NotesContainer = ({ notes, setNotes, setApiErrorMessage }) => {
 	useEffect(() => {
 		const fetchActiveWeekNotes = async () => {
 			try {
-				const response = await WeekServices.getActiveWeekNotes(user.token);
+				const response = await WeekServices(logOut).getActiveWeekNotes(user.token);
 				if (response?.status === 204) setNotes('');
 				else {
 					setNotes(response?.data?.notes);

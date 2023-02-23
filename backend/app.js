@@ -14,8 +14,18 @@ app.use(middleware.requestLogger);
 
 app.use('/api/users', usersRouter);
 app.use('/api/login', loginRouter);
-app.use('/api/week', middleware.tokenExtractor, weekRouter);
-app.use('/api/task', middleware.tokenExtractor, taskRouter);
+app.use(
+	'/api/week',
+	middleware.tokenExtractor,
+	middleware.checkTokenExpiration,
+	weekRouter
+);
+app.use(
+	'/api/task',
+	middleware.tokenExtractor,
+	middleware.checkTokenExpiration,
+	taskRouter
+);
 
 app.use(middleware.unknownEndpoint);
 app.use(middleware.errorHandler);

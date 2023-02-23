@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import 'styles/LoginPage.scss';
 import Logo from 'components/Logo/Logo';
 import loginService from 'services/login.js';
 import { useNavigate } from 'react-router-dom';
+import { UserContext, useUser } from 'utils/useUser';
 /*
 this component is a rectangle div that shows the reason the login
 process may have failed 
@@ -33,10 +34,11 @@ this is a controlled component that has a form
 as its core, this component parents login page as a whole
 and handles all the user login business logic
 */
-const LoginPage = ({ setUser }) => {
+const LoginPage = ({}) => {
 	const [usernameField, setUsernameField] = useState('');
 	const [passwordField, setPasswordField] = useState('');
 	const [errorMessage, setErrorMessage] = useState(null);
+	const { user, setUser, logOut } = useContext(UserContext);
 	const navigate = useNavigate();
 
 	const loginHandler = async (event) => {
@@ -58,6 +60,7 @@ const LoginPage = ({ setUser }) => {
 					currentTime.setSeconds(currentTime.getSeconds() + user.expiresIn)
 				);
 				setUser(user);
+				console.log(user);
 				navigate('/board');
 			} catch (err) {
 				console.log(err);

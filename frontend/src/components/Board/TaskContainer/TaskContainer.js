@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback, useRef, useContext } from 'react';
-import taskServices from 'services/task';
-import { UserContext } from 'App';
+import TaskServices from 'services/task';
+import { UserContext, useUser } from 'utils/useUser';
 import { useDebounce } from 'utils/useDebounce';
 import { capitalize } from 'utils/stringUtils';
 
@@ -38,7 +38,7 @@ const TaskContainer = ({
 	setContextMenu,
 	setFormState,
 }) => {
-	const [user, setUser] = useContext(UserContext);
+	const { user, logOut } = useContext(UserContext);
 	const [title, setTitle] = useState(task.title);
 	const [description, setDescription] = useState(task.description);
 	const [progress, setProgress] = useState(task.progress);
@@ -67,7 +67,7 @@ const TaskContainer = ({
 	useEffect(() => {
 		const saveProgress = async () => {
 			try {
-				await taskServices.updateProgress(user.token, {
+				await TaskServices(logOut).updateProgress(user.token, {
 					id: task.id,
 					progress: progress,
 				});

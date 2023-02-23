@@ -5,7 +5,7 @@ import NotesContainer from 'components/Board/NotesContainer/NotesContainer.js';
 import Hud from 'components/Board/Hud/Hud.js';
 import WeekServices from 'services/week.js';
 import { useCallback, useContext, useEffect, useState } from 'react';
-import { UserContext } from 'App';
+import { UserContext, useUser } from 'utils/useUser';
 import TaskForm from 'components/Board/TaskForm/TaskForm';
 
 /*
@@ -73,7 +73,7 @@ const ErrorBar = ({ errorMessage }) => {
 };
 
 const Board = () => {
-	const [user, setUser] = useContext(UserContext);
+	const { user, logOut } = useContext(UserContext);
 	const [tasks, setTasks] = useState([]);
 	const [notes, setNotes] = useState(null);
 	/*
@@ -90,7 +90,9 @@ const Board = () => {
 
 	const fetchActiveWeekTasksAndDueDate = useCallback(async () => {
 		try {
-			const retrievedData = await WeekServices.getActiveWeekasks(user.token);
+			const retrievedData = await WeekServices(logOut).getActiveWeekTasks(
+				user.token
+			);
 			setTasks(retrievedData.tasks);
 			setWeekDue(
 				retrievedData.weekDue === null ? null : new Date(retrievedData.weekDue)

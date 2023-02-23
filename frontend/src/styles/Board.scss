@@ -44,6 +44,10 @@
 	padding: 5px 10px;
 }
 
+.concludeButton {
+	font-family: 'SF PRO BLACK';
+}
+
 .completion {
 	width: 30%;
 	display: flex;
@@ -51,6 +55,7 @@
 	align-items: center;
 	justify-content: space-evenly;
 	h2 {
+		font-family: 'SF PRO TEXT';
 		font-size: 0.75rem;
 		color: $text-color;
 	}
@@ -63,6 +68,7 @@
 	align-items: center;
 	justify-content: space-evenly;
 	h2 {
+		font-family: 'SF PRO TEXT';
 		font-size: 0.75rem;
 		color: $text-color;
 	}

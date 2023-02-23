@@ -1,10 +1,10 @@
 import { useState, useCallback, useContext } from 'react';
-import TaskServices from '../../../services/task.js';
-import WeekServices from '../../../services/week.js';
-import { UserContext } from '../../../App.js';
+import TaskServices from 'services/task.js';
+import WeekServices from 'services/week.js';
+import { UserContext, useUser } from 'utils/useUser';
 
 const TaskForm = ({ tasks, setTasks, formState, setFormState }) => {
-	const [user, setUser] = useContext(UserContext);
+	const { user, logOut } = useContext(UserContext);
 	const [titleField, setTitleField] = useState(formState.title);
 	const [descriptionField, setDescriptionField] = useState(
 		formState.description
@@ -38,7 +38,7 @@ const TaskForm = ({ tasks, setTasks, formState, setFormState }) => {
 				id: formState.id,
 			};
 			try {
-				await TaskServices.editTask(user.token, editedTask);
+				await TaskServices(logOut).editTask(user.token, editedTask);
 				const newTasks = tasks.map((task) =>
 					task.id === formState.id
 						? {
@@ -66,16 +66,16 @@ const TaskForm = ({ tasks, setTasks, formState, setFormState }) => {
 					priority: newPriority,
 					progress: 0,
 				};
-				const activeWeekId = (await WeekServices.getActiveWeekId(user.token))
+				const activeWeekId = (await WeekServices(logOut).getActiveWeekId(user.token))
 					.id;
 				if (!activeWeekId) {
-					const returnedTask = await WeekServices.initiateNewWeek(
+					const returnedTask = await WeekServices(logOut).initiateNewWeek(
 						user.token,
 						newTask
 					);
 					setTasks(tasks.concat(returnedTask));
 				} else {
-					const returnedTask = await TaskServices.addTask(
+					const returnedTask = await TaskServices(logOut).addTask(
 						user.token,
 						activeWeekId,
 						newTask

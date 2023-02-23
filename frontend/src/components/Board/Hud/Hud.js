@@ -1,16 +1,16 @@
 import CompletionCircle from './CompletionCircle/CompletionCircle';
 import WeekServices from 'services/week';
 import { useContext, useCallback } from 'react';
-import { UserContext } from 'App';
+import { UserContext, useUser } from 'utils/useUser';
 
 const Hud = ({ tasks, setTasks, setNotes, weekDue, setWeekDue }) => {
-	const [user, setUser] = useContext(UserContext);
+	const { user, logOut } = useContext(UserContext);
 
 	const handleConclude = useCallback(async () => {
 		const userConfirms = window.confirm('You will conclude this week now');
 		if (userConfirms) {
 			try {
-				const res = await WeekServices.concludeWeek(user.token);
+				const res = await WeekServices(logOut).concludeWeek(user.token);
 				if (res.status >= 200 && res.status < 300) {
 					setTasks([]);
 					setWeekDue(null);
@@ -41,7 +41,7 @@ const Hud = ({ tasks, setTasks, setNotes, weekDue, setWeekDue }) => {
 						: ' - Days - Hours'}
 				</h3>
 			</div>
-			<button className="baseButton" onClick={handleConclude}>
+			<button className="baseButton concludeButton" onClick={handleConclude}>
 				Conclude
 			</button>
 		</div>

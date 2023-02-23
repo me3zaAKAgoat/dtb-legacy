@@ -1,7 +1,7 @@
 import '../../styles/ContextMenu.scss';
 import { useCallback, useContext } from 'react';
 import services from '../../services/task';
-import { UserContext } from '../../App';
+import { UserContext, useUser } from 'utils/useUser';
 
 const TaskContextMenu = ({
 	contextMenu,
@@ -10,7 +10,7 @@ const TaskContextMenu = ({
 	setTasks,
 	setFormState,
 }) => {
-	const [user, setUser] = useContext(UserContext);
+	const { user, logOut } = useContext(UserContext);
 	const handleEditButton = useCallback(
 		(e) => {
 			e.preventDefault();

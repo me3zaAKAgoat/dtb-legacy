@@ -1,6 +1,8 @@
 import 'styles/Navbar.scss';
 import { useState, useEffect } from 'react';
 import Logo from 'components/Logo/Logo';
+import { useContext } from 'react';
+import { UserContext } from 'utils/useUser';
 
 const ProfileButton = (props) => {
 	const [open, setOpen] = useState(false);
@@ -28,12 +30,13 @@ const ProfileButton = (props) => {
 			>
 				<img src="/assets/profilePhoto.png" alt="user" />
 			</button>
-			<DropdownContainer open={open} logOut={props.logOut} />
+			<DropdownContainer open={open} />
 		</div>
 	);
 };
 
-const DropdownContainer = ({ open, logOut }) => {
+const DropdownContainer = ({ open }) => {
+	const { user, logOut } = useContext(UserContext);
 	const [transitionProperties, setTransitionProperties] = useState({});
 
 	const handleLogOut = (event) => {
@@ -66,7 +69,7 @@ const DropdownContainer = ({ open, logOut }) => {
 	}
 };
 
-const Navbar = (props) => {
+const Navbar = ({}) => {
 	return (
 		<nav className="navigationBar">
 			<a href="." className="logoImageHolder">
@@ -107,7 +110,7 @@ const Navbar = (props) => {
 					</a>
 				</li>
 			</ul>
-			<ProfileButton logOut={props.logOut} />
+			<ProfileButton />
 		</nav>
 	);
 };
