@@ -18,8 +18,8 @@
 }
 
 .hudContainer {
-	min-height: 13%;
-	max-height: 50px;
+	height: 13%;
+	min-height: 80px;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -36,6 +36,7 @@
 	background-color: $secondary-color-one;
 	height: 60%;
 	max-height: 70px;
+	min-height: 50px;
 	min-width: 500px;
 	max-width: 500px;
 	border: 1px solid #393939;
@@ -349,7 +350,7 @@
 		width: 100%;
 		filter: brightness(80%);
 	}
-	
+
 	&:hover {
 		background-color: rgba(255, 255, 255, 0.04);
 		svg {
@@ -381,7 +382,9 @@
 	background-color: $secondary-color-one;
 	height: 70%;
 	width: 34%;
-	min-width: 400px;
+	min-width: 350px;
+	max-width: 475px;
+	max-height: 500px;
 	border-radius: 4px;
 	border: 1px solid rgb(109, 109, 109);
 	input,
@@ -411,14 +414,14 @@
 		.taskNameContainer {
 			display: flex;
 			flex-direction: column;
-			input {
-				font-family: 'SF PRO TEXT';
-
-			}
 			label {
 				font-family: 'SF PRO DISPLAY';
 				font-weight: bold;
 				margin-bottom: 7px;
+			}
+			input {
+				font-family: 'SF PRO TEXT';
+				border: none;
 			}
 		}
 		.taskDescriptionContainer {
@@ -431,6 +434,7 @@
 				margin-bottom: 7px;
 			}
 			textarea {
+				border: none;
 				font-family: 'SF PRO TEXT';
 				resize: noremne;
 				height: 100px;
