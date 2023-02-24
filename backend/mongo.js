@@ -9,17 +9,16 @@ mongoose
 	.connect(process.env.MONGODB_URI)
 	.then(console.log('connected to', process.env.MONGODB_URI));
 
-Week.deleteMany({}).then((result) => console.log('weeks', result));
-Task.deleteMany({}).then((result) => console.log('tasks', result));
+// Week.deleteMany({}).then((result) => console.log('weeks', result));
+// Task.deleteMany({}).then((result) => console.log('tasks', result));
 
-// Week.find({}).then((result) => console.log('weeks', result));
+Week.find({}).then((result) => console.log('weeks', result));
 // Task.find({}).then((result) => console.log('tasks', result));
-// User.find({}).then((result) => console.log('users', result));
 
-const setactiveWeekToNull = async () => {
-	const user = await User.findOne({});
-	user.set('activeWeek', null);
-	await user.save();
-};
-setactiveWeekToNull();
-User.findOne({}).then((result) => console.log(result));
+// const setactiveWeekToNull = async () => {
+// 	const user = await User.findOne({});
+// 	user.set('activeWeek', null);
+// 	await user.save();
+// };
+// setactiveWeekToNull();
+// User.deleteMany({}).then((result) => console.log(result));

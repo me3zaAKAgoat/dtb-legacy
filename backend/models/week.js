@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const weekSchema = mongoose.Schema({
 	startDate: Date,
 	endDate: Date,
-	notes: String,
+	notes: { type: String, default: '' },
 	user: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'User',

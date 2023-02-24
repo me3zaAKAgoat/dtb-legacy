@@ -1,10 +1,11 @@
 import CompletionCircle from './CompletionCircle/CompletionCircle';
 import WeekServices from 'services/week';
-import { useContext, useCallback } from 'react';
-import { UserContext, useUser } from 'utils/useUser';
+import { useContext, useState, useCallback, useEffect } from 'react';
+import { UserContext } from 'utils/useUser';
 
-const Hud = ({ tasks, setTasks, setNotes, weekDue, setWeekDue }) => {
+const Hud = ({ tasks, setTasks, setApiErrorMessage }) => {
 	const { user, logOut } = useContext(UserContext);
+	const [weekDue, setWeekDue] = useState(null);
 
 	const handleConclude = useCallback(async () => {
 		const userConfirms = window.confirm('You will conclude this week now');
@@ -14,13 +15,34 @@ const Hud = ({ tasks, setTasks, setNotes, weekDue, setWeekDue }) => {
 				if (res.status >= 200 && res.status < 300) {
 					setTasks([]);
 					setWeekDue(null);
-					setNotes('');
 				}
 			} catch (err) {
 				console.error(err);
 			}
 		}
 	}, []);
+
+	const fetchActiveWeekDue = useCallback(async () => {
+		try {
+			const retrievedData = await WeekServices(logOut).getActiveWeekTasks(
+				user.token
+			);
+			setWeekDue(
+				retrievedData.weekDue === null ? null : new Date(retrievedData.weekDue)
+			);
+		} catch (err) {
+			setApiErrorMessage("fetching current week's data failed");
+		}
+	}, [user]);
+
+	useEffect(() => {
+		fetchActiveWeekDue();
+	}, []);
+
+	useEffect(() => {
+		if (!tasks.length) setWeekDue(null);
+		else fetchActiveWeekDue();
+	}, [tasks]);
 
 	return (
 		<div className="hud">

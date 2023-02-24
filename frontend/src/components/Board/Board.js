@@ -75,7 +75,6 @@ const ErrorBar = ({ errorMessage }) => {
 const Board = () => {
 	const { user, logOut } = useContext(UserContext);
 	const [tasks, setTasks] = useState([]);
-	const [notes, setNotes] = useState(null);
 	/*
 	formState is an object with the propreties
 	type : refers to the type of the api call and form to open
@@ -85,25 +84,21 @@ const Board = () => {
 	id
 	*/
 	const [formState, setFormState] = useState(null);
-	const [weekDue, setWeekDue] = useState(null);
 	const [apiErrorMessage, setApiErrorMessage] = useState(null);
 
-	const fetchActiveWeekTasksAndDueDate = useCallback(async () => {
+	const fetchActiveWeekTasks = useCallback(async () => {
 		try {
 			const retrievedData = await WeekServices(logOut).getActiveWeekTasks(
 				user.token
 			);
 			setTasks(retrievedData.tasks);
-			setWeekDue(
-				retrievedData.weekDue === null ? null : new Date(retrievedData.weekDue)
-			);
 		} catch (err) {
 			setApiErrorMessage("fetching current week's data failed");
 		}
 	}, [user]);
 
 	useEffect(() => {
-		fetchActiveWeekTasksAndDueDate();
+		fetchActiveWeekTasks();
 	}, []);
 
 	useEffect(() => {
@@ -120,9 +115,7 @@ const Board = () => {
 				<Hud
 					tasks={tasks}
 					setTasks={setTasks}
-					setNotes={setNotes}
-					weekDue={weekDue}
-					setWeekDue={setWeekDue}
+					setApiErrorMessage={setApiErrorMessage}
 				/>
 			</div>
 			<main className="boardMain">
@@ -132,11 +125,7 @@ const Board = () => {
 					setFormState={setFormState}
 				/>
 				<div className="separatingVerticalLine"></div>
-				<NotesContainer
-					notes={notes}
-					setNotes={setNotes}
-					setApiErrorMessage={setApiErrorMessage}
-				/>
+				<NotesContainer setApiErrorMessage={setApiErrorMessage} />
 			</main>
 			<ModalPortal
 				tasks={tasks}
