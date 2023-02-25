@@ -87,7 +87,7 @@ const api = (logOut) => ({
 					},
 				}
 			);
-			return response.data;
+			return response;
 		} catch (err) {
 			handleTokenError(err, logOut); // pass logOut function to handleTokenError
 		}
