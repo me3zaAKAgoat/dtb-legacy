@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react';
 import 'styles/LoginPage.scss';
-import Logo from 'components/Logo/Logo';
+import Logo from 'components/miscellaneous/Logo/Logo';
 import loginService from 'services/login.js';
 import { useNavigate } from 'react-router-dom';
 import { UserContext, useUser } from 'utils/useUser';

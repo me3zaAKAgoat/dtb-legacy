@@ -102,7 +102,7 @@ npm start
 - [ ] remove debounce from note text area and add an svg save button on the top right corner of the text area that animates on click
 - [ ] add a retry button for every component's failure to load the data it needs (similar to twitter)
 - [ ] issue where if loading notes fails the debounce posts empty string to server and the database clears of the actual data that should be preserved
-- [ ] settings should include : theme, week length
+- [ ] settings should include : theme, week length, username, user profile picture
 - [ ] make a wrapper function that updates the state after successful api requests.
 - [ ] add a current week proprety to the whole app (state/proprety of user state).
 - [ ] correct adding a new task to handle initiation of a new week on the backend instead of the frontend.

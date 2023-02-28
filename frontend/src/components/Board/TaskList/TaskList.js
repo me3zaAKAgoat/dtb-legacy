@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import TaskContainer from 'components/Board/TaskContainer/TaskContainer.js';
-import TaskContextMenu from 'components/ContextMenus/TaskContextMenu';
+import TaskContextMenu from 'components/miscellaneous/ContextMenus/TaskContextMenu';
 
 /*
 this is component is a container for the list of tasks.

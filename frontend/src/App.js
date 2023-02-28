@@ -1,9 +1,9 @@
-import './styles/App.scss';
+import 'styles/App.scss';
 import { createContext } from 'react';
-import Navbar from './components/Navbar/Navbar';
-import Board from './components/Board/Board';
-import LoginPage from './components/LoginPage/LoginPage';
-import Statistics from './components/Statistics/Statistics';
+import Navbar from 'components/miscellaneous/Navbar/Navbar';
+import Board from 'components/Board/Board';
+import LoginPage from 'components/LoginPage/LoginPage';
+import Statistics from 'components/Statistics/Statistics';
 import { Route, Routes } from 'react-router-dom';
 import { UserContext, useUser } from 'utils/useUser';
 

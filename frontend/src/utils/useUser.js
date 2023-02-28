@@ -9,12 +9,16 @@ export const useUser = () => {
 	const location = useLocation();
 
 	const logOut = useCallback(() => {
-		window.localStorage.removeItem('LoggedInUserUsername');
-		window.localStorage.removeItem('LoggedInUserName');
-		window.localStorage.removeItem('LoggedInUserToken');
-		window.localStorage.removeItem('LoggedInUserExpiryDate');
-		setUser(null);
-		navigate('/login');
+		try {
+			window.localStorage.removeItem('LoggedInUserUsername');
+			window.localStorage.removeItem('LoggedInUserName');
+			window.localStorage.removeItem('LoggedInUserToken');
+			window.localStorage.removeItem('LoggedInUserExpiryDate');
+			setUser(null);
+			navigate('/login');
+		} catch (error) {
+			console.error('Error while logging out:', error);
+		}
 	}, []);
 
 	useEffect(() => {
@@ -24,18 +28,31 @@ export const useUser = () => {
 			token: window.localStorage.getItem('LoggedInUserToken'),
 			expiryDate: window.localStorage.getItem('LoggedInUserExpiryDate'),
 		};
-		if (
-			LoggedInUser.username !== null &&
-			new Date() < LoggedInUser.expiryDate
-		) {
-			setUser(LoggedInUser); // log in existing user
-			if (location.pathname === '/') {
-				navigate('/board');
+		try {
+			if (
+				LoggedInUser.username &&
+				LoggedInUser.expiryDate &&
+				new Date() < LoggedInUser.expiryDate
+			) {
+				console.log(
+					LoggedInUser.expiryDate,
+					'\n',
+					new Date(),
+					'\n',
+					Date(LoggedInUser.expiryDate)
+				);
+				setUser(LoggedInUser); // log in existing user
+				if (location.pathname === '/') {
+					navigate('/board');
+				}
+			} else {
+				logOut(); // log out expired user
 			}
-		} else if (new Date() > LoggedInUser.expiryDate) {
-			logOut(); // log out expired user
+		} catch (error) {
+			console.error('Error while checking logged in user:', error);
+			logOut();
 		}
-	}, [logOut]);
+	}, []);
 
 	return { user, setUser, logOut };
 };

@@ -1,6 +1,6 @@
 import 'styles/Navbar.scss';
 import { useState, useEffect } from 'react';
-import Logo from 'components/Logo/Logo';
+import Logo from 'components/miscellaneous/Logo/Logo';
 import { useContext } from 'react';
 import { UserContext } from 'utils/useUser';
 

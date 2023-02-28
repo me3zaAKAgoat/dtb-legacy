@@ -9,7 +9,7 @@
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
-	border-right: 2px solid $gray-2;
+	border-right: 2px solid $gray-3;
 }
 
 .separatingHorizontalLine {
@@ -79,7 +79,6 @@ ul {
 }
 
 
-
 .profileButtonContainer
 {
 	max-height: 38px;
@@ -133,7 +132,7 @@ ul {
 	width: 125px;
 	height: 140px;
 	background-color: $gray-1;
-	border: 0.1px solid $gray-2;
+	border: 0.1px solid $gray-3;
 	border-radius: 4px;
 	padding: 1.4rem;
 	overflow: hidden;
@@ -162,8 +161,8 @@ ul {
 		filter: invert(70%);
 	}
 	hr {
-		background-color: $gray-2;
+		background-color: $gray-3;
 		width: 70%;
-		border: 0.1px solid $gray-2;
+		border: 0.1px solid $gray-3;
 	}
 }

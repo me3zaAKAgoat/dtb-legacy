@@ -1,7 +1,7 @@
-import '../../styles/ContextMenu.scss';
+import 'styles/ContextMenu.scss';
 import { useCallback, useContext } from 'react';
-import services from '../../services/task';
-import { UserContext, useUser } from 'utils/useUser';
+import services from 'services/task';
+import { UserContext } from 'utils/useUser';
 
 const TaskContextMenu = ({
 	contextMenu,
