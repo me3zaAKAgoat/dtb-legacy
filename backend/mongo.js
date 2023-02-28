@@ -12,7 +12,7 @@ mongoose
 // Week.deleteMany({}).then((result) => console.log('weeks', result));
 // Task.deleteMany({}).then((result) => console.log('tasks', result));
 
-Week.find({}).then((result) => console.log('weeks', result));
+// Week.find({}).then((result) => console.log('weeks', result));
 // Task.find({}).then((result) => console.log('tasks', result));
 
 // const setactiveWeekToNull = async () => {

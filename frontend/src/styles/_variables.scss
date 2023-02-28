@@ -1,11 +1,9 @@
-$navbar-bg-color: #0e0e0e;
-// $body-bg-color: #1e1e1e;
-$body-bg-color: #0f0f0f;
-$secondary-color: #0e0e0e;
-$text-color: #dddddd;
-$secondary-color-one: #181818;
-$secondary-color-two: #303030;
-$secondary-color-three: #4a4a4a;
-$task-item-height: 60px;
-$success-color: #2ea225;
-$error-color: #c01717;
+$secondary-color: #111111; // used for navbar background
+$background-color: #111111; // used for page background
+$text-color: #dddddd; // used for text color
+$success-color: #2eb82e; // used for success states
+$error-color: #c01717; // used for error states
+$gray-1: #1a1a1a; // used for various secondary elements
+$gray-2: #303030; // used for various secondary elements
+$gray-3: #4a4a4a; // used for various secondary elements
+$task-height: 60px; // used for the height of task items

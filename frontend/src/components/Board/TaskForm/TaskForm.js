@@ -66,8 +66,9 @@ const TaskForm = ({ tasks, setTasks, formState, setFormState }) => {
 					priority: newPriority,
 					progress: 0,
 				};
-				const activeWeekId = (await WeekServices(logOut).getActiveWeekId(user.token))
-					.id;
+				const activeWeekId = (
+					await WeekServices(logOut).getActiveWeekId(user.token)
+				).id;
 				if (!activeWeekId) {
 					const returnedTask = await WeekServices(logOut).initiateNewWeek(
 						user.token,
@@ -134,32 +135,40 @@ const TaskForm = ({ tasks, setTasks, formState, setFormState }) => {
 					onChange={handleDescriptionChange}
 				/>
 			</div>
-			<div className="priority">
-				<p>Priority</p>
-				<label htmlFor="high">High</label>
-				<input
-					type="radio"
-					name="priority"
-					value="high"
-					onChange={handlePriorityChange}
-					checked={priorityField === 'high'}
-				/>
-				<label htmlFor="medium">Medium</label>
-				<input
-					type="radio"
-					name="priority"
-					value="medium"
-					onChange={handlePriorityChange}
-					checked={priorityField === 'medium'}
-				/>
-				<label htmlFor="low">Low</label>
-				<input
-					type="radio"
-					name="priority"
-					value="low"
-					onChange={handlePriorityChange}
-					checked={priorityField === 'low'}
-				/>
+			<div className="priorityContainer">
+				<label>Priority</label>
+				<div className="inputOptions">
+					<div className="highOption">
+						<label htmlFor="high">High</label>
+						<input
+							type="radio"
+							name="priority"
+							value="high"
+							onChange={handlePriorityChange}
+							checked={priorityField === 'high'}
+						/>
+					</div>
+					<div className="mediumOption">
+						<label htmlFor="medium">Medium</label>
+						<input
+							type="radio"
+							name="priority"
+							value="medium"
+							onChange={handlePriorityChange}
+							checked={priorityField === 'medium'}
+						/>
+					</div>
+					<div className="lowOption">
+						<label htmlFor="low">Low</label>
+						<input
+							type="radio"
+							name="priority"
+							value="low"
+							onChange={handlePriorityChange}
+							checked={priorityField === 'low'}
+						/>
+					</div>
+				</div>
 			</div>
 			<div className="buttonsContainer">
 				<button

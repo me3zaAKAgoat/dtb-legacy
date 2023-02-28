@@ -4,12 +4,12 @@
 	height: 100%;
 	min-width: 59px;
 	max-width: 59px;
-	background-color: $body-bg-color;
+	background-color: $background-color;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
-	border-right: 2px solid $secondary-color-two;
+	border-right: 2px solid $gray-2;
 }
 
 .separatingHorizontalLine {
@@ -17,23 +17,19 @@
 	margin: 1.5% 0%;
 	max-height: 1px;
 	min-height: 1px;
-	background-color: $secondary-color-three;
+	background-color: $gray-3;
 	flex-grow: 1;
 }
 
 .logoImageHolder {
-	max-height: 38px;
-	max-width: 38px;
+	max-height: 42px;
+	max-width: 42px;
 	margin: 15px 0;
 	display: flex;
-	align-items: centers;
+	align-items: center;
 
 	flex-grow: 1;
 	justify-content: center;
-	img {
-		width: 100%;
-		height: 100%;
-	}
 }
 
 ul {
@@ -86,12 +82,14 @@ ul {
 
 .profileButtonContainer
 {
-	margin-bottom: 10px;
 	max-height: 38px;
-	max-width: 38px;
+	min-width: 38px;
+	min-height: 38px;
+	max-height: 38px;
 	margin: 15px 0;
 	display: flex;
-	align-items: centers;
+	align-items: center;
+
 	flex-grow: 1;
 	justify-content: center;
 }
@@ -99,10 +97,11 @@ ul {
 .profileButton {
 	width: 100%;
 	height: 100%;
-	background-color: white;
+	background-color: $secondary-color;
 	border-radius: 50%;
 	margin: 0;
 	padding: 0;
+	border: 1px solid $gray-3;
 	cursor: pointer;
 	transition-delay: 25ms;
 	transition-duration: 70ms;
@@ -111,6 +110,14 @@ ul {
 	img {
 		width: 100%;
 		height: 100%;
+		max-width: 42px;
+		max-height: 42px;
+		border-radius: 50%;
+		filter: blur(100%);
+
+	  
+		object-fit: cover;
+		object-position: center right;
 	}
 }
 
@@ -125,8 +132,8 @@ ul {
 	left: 65px;
 	width: 125px;
 	height: 140px;
-	background-color: $secondary-color-one;
-	border: 0.1px solid $secondary-color-two;
+	background-color: $gray-1;
+	border: 0.1px solid $gray-2;
 	border-radius: 4px;
 	padding: 1.4rem;
 	overflow: hidden;
@@ -155,8 +162,8 @@ ul {
 		filter: invert(70%);
 	}
 	hr {
-		background-color: $secondary-color-two;
+		background-color: $gray-2;
 		width: 70%;
-		border: 0.1px solid $secondary-color-two;
+		border: 0.1px solid $gray-2;
 	}
 }
