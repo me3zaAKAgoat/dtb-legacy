@@ -422,6 +422,7 @@
 			input {
 				font-family: 'SF PRO TEXT';
 				border: none;
+				background-color: $background-color;
 			}
 		}
 		.taskDescriptionContainer {
@@ -438,6 +439,7 @@
 				font-family: 'SF PRO TEXT';
 				resize: noremne;
 				height: 100px;
+				background-color: $background-color;
 			}
 		}
 		.priorityContainer {
