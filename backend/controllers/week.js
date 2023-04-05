@@ -59,48 +59,7 @@ weekRouter.get('/activeWeekNotes', async (req, res) => {
 	}
 });
 
-//initiate a new week
-weekRouter.post('/initiateNewWeek', async (req, res) => {
-	const token = req.token;
-	try {
-		const decodedToken = jwt.verify(token, config.SECRET);
-		const user = await User.findById(decodedToken.id);
 
-		const currentDate = new Date();
-		const endDate = new Date(currentDate);
-		endDate.setDate(endDate.getDate() + 7);
-		const week = new Week({
-			startDate: currentDate,
-			endDate: endDate,
-			user: user._id,
-			tasks: [],
-		});
-		const savedWeek = await week.save();
-
-		const task = new Task({
-			title: req.body.title,
-			description: req.body.description,
-			priority: req.body.priority,
-			progress: req.body.progress,
-			week: savedWeek._id,
-		});
-		const savedTask = await task.save();
-
-		savedWeek.tasks = savedWeek.tasks.concat(savedTask._id);
-		const updatedWeek = await savedWeek.save();
-		user.activeWeek = updatedWeek._id;
-		await user.save();
-		res.status(200).json({
-			title: savedTask.title,
-			description: savedTask.description,
-			priority: savedTask.priority,
-			progress: savedTask.progress,
-			id: savedTask._id,
-		});
-	} catch (err) {
-		return res.status(500).json({ error: err });
-	}
-});
 
 weekRouter.put('/updateNotes', async (req, res) => {
 	const token = req.token;

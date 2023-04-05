@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import 'styles/CompletionCircle.scss';
 
-const CompletionCircle = ({ containerSquareSideLength, tasks }) => {
+const CompletionCircle = ({ size, tasks }) => {
 	const [completion, setCompletion] = useState(0);
 	const priorityValue = {
 		low: 1,
@@ -32,8 +32,8 @@ const CompletionCircle = ({ containerSquareSideLength, tasks }) => {
 		<div
 			className="percentage"
 			style={{
-				width: containerSquareSideLength,
-				height: containerSquareSideLength,
+				width: size,
+				height: size,
 			}}
 		>
 			<div className="outer">
@@ -41,20 +41,15 @@ const CompletionCircle = ({ containerSquareSideLength, tasks }) => {
 					<circle
 						cx="50%"
 						cy="50%"
-						r={containerSquareSideLength / 1.09}
+						r={size / 1.09}
 						style={{
-							strokeDasharray: ((2 * containerSquareSideLength) / 1.09) * 3.14,
+							strokeDasharray: ((2 * size) / 1.09) * 3.14,
 							strokeDashoffset:
-								((2 * containerSquareSideLength) / 1.09) *
-								3.14 *
-								(1 - completion / 100),
+								((2 * size) / 1.09) * 3.14 * (1 - completion / 100),
 						}}
 					/>
 				</svg>
-				<div
-					className="inner"
-					style={{ fontSize: containerSquareSideLength / 4.3 }}
-				>
+				<div className="inner" style={{ fontSize: size / 4.3 }}>
 					{Math.trunc(completion)}%
 				</div>
 			</div>

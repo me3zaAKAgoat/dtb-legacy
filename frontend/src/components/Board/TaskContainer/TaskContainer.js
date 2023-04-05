@@ -7,18 +7,20 @@ import { capitalize } from 'utils/stringUtils';
 const MiniProgressIndicator = ({ isTaskOpen, progress }) => {
 	const isFirstRender = useRef(true);
 	const [showMiniProgress, setShowMiniProgress] = useState(!isTaskOpen);
+
 	useEffect(() => {
 		if (isFirstRender.current) isFirstRender.current = !isFirstRender.current;
-		else if (!isFirstRender.current && !showMiniProgress) {
-			setTimeout(() => {
+		else {
+			if (!showMiniProgress) {
+				setTimeout(() => {
+					setShowMiniProgress(!showMiniProgress);
+				}, 200);
+			} else if (showMiniProgress) {
 				setShowMiniProgress(!showMiniProgress);
-			}, 200);
-		} else if (!isFirstRender.current && showMiniProgress) {
-			setShowMiniProgress(!showMiniProgress);
+			}
 		}
 	}, [isTaskOpen]);
 
-	console.log(showMiniProgress);
 	if (showMiniProgress)
 		return (
 			<div className="progressBar">
@@ -112,9 +114,9 @@ const TaskContainer = ({
 			>
 				{capitalize(title)}
 			</h1>
-			{/* <MiniProgressIndicator isTaskOpen={isTaskOpen} progress={progress} /> */}
+			<MiniProgressIndicator isTaskOpen={isTaskOpen} progress={progress} />
 			<div className="expandedContainer" onContextMenu={handleContextMenu}>
-				<p>{description}</p>
+				<pre>{description}</pre>
 				<div className="sliderEditButtonContainer">
 					<button
 						className="editTaskButton"

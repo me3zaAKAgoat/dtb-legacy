@@ -13,7 +13,7 @@
 - Learn and master ReactJS.
 - How to make a Smoothly animated website.
 - How to implement a system where the state of the application is saved to the database as things change in real time.
-- Write clean performant code and maintainable JS code.
+- Write clean, performant and maintainable JS code.
 - Write readable, well-documented and frequently commented code.
 - Learn how to manage git repositories.
 - How to make an app that uses modern web dev techniques.
@@ -66,16 +66,20 @@
 
 ### Core
 
+- [ ] make a start a new week button homepage when no week is available (make fetch current week return some indicator that there's no week)
+- [ ] work on user adminsitration
+  - [ ] make a sign up process.
+  - [ ] setup a cdn of some sort for profile pictures of users.
+  - [ ] figure out how to implement settings (theme, week length, username)
+- [ ] make an abstraction layer for modals (seperate component that hosts modals)
 - [ ] **move all business logic to the backend, make all the frontend ONLY visual, 0 business in frontend**
 - [ ] remove debounce from note text area and add an svg save button on the top right corner of the text area that animates on click
 - [ ] add a retry button for every component's failure to load the data it needs (similar to twitter)
-- [ ] issue where if loading notes fails the debounce posts empty string to server and the database clears of the actual data that should be preserved
-- [ ] settings should include : theme, week length, username, user profile picture
+- [x] issue where if loading notes fails the debounce posts empty string to server and the database clears of the actual data that should be preserved
+- [ ] settings should enable the user to change the following things : theme, week length, username, user profile picture
 - [ ] make a wrapper function that updates the state after successful api requests.
-- [ ] correct adding a new task to handle initiation of a new week on the backend instead of the frontend.
+- [x] correct adding a new task to handle initiation of a new week on the backend instead of the frontend.
 - [ ] make the basic layout for the statistics page.
-- [ ] make a settings page.
-- [ ] make a signup page.
 - [ ] add a percentage next to number input field in task container
 - [ ] add end of week button that renders a modal prompting the user to describe the week and then sends an api call to archive the ended week and create a stamp of it.
 - [ ] work on custom skeleton component to every component that makes an inital fetch, so that this skeleton component only renders the wanted component after a successful fetch. (will enable moving tasks state to tasks section hopefully).
@@ -97,5 +101,7 @@
 - [ ] each task should have a colored health indicator that flickers when low
 - [ ] add a way the user can see the priority of a task.
 - [ ] add keys in week schema that reflect the emotional/mental well-being of the user during that week.
+- [ ] loading animation on debounces
+- [ ] prevent user from being able to input any notes if a week isn't initiatied
 
-🔝 [Back To Top Of Readme](https://github.com/me3zaAKAgoat/dtb#digital-tasks-board)
+  🔝 [Back To Top Of Readme](https://github.com/me3zaAKAgoat/dtb#digital-tasks-board)

@@ -66,23 +66,11 @@ const TaskForm = ({ tasks, setTasks, formState, setFormState }) => {
 					priority: newPriority,
 					progress: 0,
 				};
-				const activeWeekId = (
-					await WeekServices(logOut).getActiveWeekId(user.token)
-				).id;
-				if (!activeWeekId) {
-					const returnedTask = await WeekServices(logOut).initiateNewWeek(
-						user.token,
-						newTask
-					);
-					setTasks(tasks.concat(returnedTask));
-				} else {
-					const returnedTask = await TaskServices(logOut).addTask(
-						user.token,
-						activeWeekId,
-						newTask
-					);
-					setTasks(tasks.concat(returnedTask));
-				}
+				const returnedTask = await TaskServices(logOut).addTask(
+					user.token,
+					newTask
+				);
+				setTasks(tasks.concat(returnedTask));
 			} catch (err) {
 				console.log(err);
 			}

@@ -37,19 +37,6 @@ const api = (logOut) => ({
 		}
 	},
 
-	initiateNewWeek: async (token, newTask) => {
-		try {
-			const response = await axios.post(`${baseUrl}/initiateNewWeek`, newTask, {
-				headers: {
-					Authorization: `Bearer ${token}`,
-				},
-			});
-			return response.data;
-		} catch (err) {
-			handleTokenError(err, logOut); // pass logOut function to handleTokenError
-		}
-	},
-
 	updateNotes: async (token, newNotes) => {
 		try {
 			const response = await axios.put(`${baseUrl}/updateNotes`, newNotes, {

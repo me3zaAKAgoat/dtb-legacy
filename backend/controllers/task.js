@@ -6,32 +6,66 @@ const jwt = require('jsonwebtoken');
 const config = require('../utils/config.js');
 
 //add a task
-taskRouter.post('/addTask/:id', async (req, res) => {
+taskRouter.post('/addTask', async (req, res) => {
+	const token = req.token;
 	try {
-		const token = req.token;
-		jwt.verify(token, config.SECRET);
+		const decodedToken = jwt.verify(token, config.SECRET);
+		const user = await User.findById(decodedToken.id);
 
-		//id is current weeks id
-		const week = await Week.findById(req.params.id);
+		const activeWeek = user.activeWeek;
+		if (activeWeek) {
+			//id is current weeks id
+			const week = await Week.findById(activeWeek);
 
-		const task = new Task({
-			title: req.body.title,
-			description: req.body.description,
-			priority: req.body.priority,
-			progress: req.body.progress,
-			week: week._id,
-		});
-		const savedTask = await task.save();
+			const task = new Task({
+				title: req.body.title,
+				description: req.body.description,
+				priority: req.body.priority,
+				progress: req.body.progress,
+				week: week._id,
+			});
+			const savedTask = await task.save();
 
-		week.tasks = week.tasks.concat(savedTask._id);
-		await week.save();
-		return res.status(200).json({
-			title: savedTask.title,
-			description: savedTask.description,
-			priority: savedTask.priority,
-			progress: savedTask.progress,
-			id: savedTask._id,
-		});
+			week.tasks = week.tasks.concat(savedTask._id);
+			await week.save();
+			return res.status(200).json({
+				title: savedTask.title,
+				description: savedTask.description,
+				priority: savedTask.priority,
+				progress: savedTask.progress,
+				id: savedTask._id,
+			});
+		} else {
+			const currentDate = new Date();
+			const endDate = new Date(currentDate);
+			endDate.setDate(endDate.getDate() + 7);
+			const week = new Week({
+				startDate: currentDate,
+				endDate: endDate,
+				user: user._id,
+				tasks: [],
+			});
+			const savedWeek = await week.save();
+			const task = new Task({
+				title: req.body.title,
+				description: req.body.description,
+				priority: req.body.priority,
+				progress: req.body.progress,
+				week: savedWeek._id,
+			});
+			const savedTask = await task.save();
+			savedWeek.tasks = savedWeek.tasks.concat(savedTask._id);
+			const updatedWeek = await savedWeek.save();
+			user.activeWeek = updatedWeek._id;
+			await user.save();
+			res.status(200).json({
+				title: savedTask.title,
+				description: savedTask.description,
+				priority: savedTask.priority,
+				progress: savedTask.progress,
+				id: savedTask._id,
+			});
+		}
 	} catch (err) {
 		console.log('task router', err);
 		return res.status(500).json({ error: err });

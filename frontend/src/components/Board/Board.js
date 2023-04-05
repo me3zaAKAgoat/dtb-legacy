@@ -75,15 +75,13 @@ const ErrorBar = ({ errorMessage }) => {
 const Board = () => {
 	const { user, logOut } = useContext(UserContext);
 	const [tasks, setTasks] = useState([]);
-	/*
-	formState is an object with the propreties
-	type : refers to the type of the api call and form to open
-	title
-	description
-	priority
-	id
-	*/
-	const [formState, setFormState] = useState(null);
+	const [formState, setFormState] = useState({
+		type: null,
+		title: null,
+		description: null,
+		priority: null,
+		id: null,
+	});
 	const [apiErrorMessage, setApiErrorMessage] = useState(null);
 
 	const fetchActiveWeekTasks = useCallback(async () => {
@@ -100,14 +98,6 @@ const Board = () => {
 	useEffect(() => {
 		fetchActiveWeekTasks();
 	}, []);
-
-	useEffect(() => {
-		if (apiErrorMessage) {
-			setTimeout(() => {
-				setApiErrorMessage(null);
-			}, 5 * 1000);
-		}
-	}, [apiErrorMessage]);
 
 	return (
 		<div className="basePage">

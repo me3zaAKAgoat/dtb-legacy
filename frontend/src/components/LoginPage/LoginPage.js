@@ -20,9 +20,10 @@ const ApiCallsIndicator = ({ errorMessage }) => {
 	} else {
 		return (
 			<div
+				className="badLoginMessage"
 				style={{
-					height: '30px',
-					width: '100%',
+					opacity: 0,
+					visibility: 'hidden',
 				}}
 			></div>
 		);

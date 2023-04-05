@@ -11,17 +11,13 @@ const handleTokenError = (err, logOut) => {
 };
 
 const api = (logOut) => ({
-	addTask: async (token, weekId, newTask) => {
+	addTask: async (token, newTask) => {
 		try {
-			const response = await axios.post(
-				`${baseUrl}/addTask/${weekId}`,
-				newTask,
-				{
-					headers: {
-						Authorization: `Bearer ${token}`,
-					},
-				}
-			);
+			const response = await axios.post(`${baseUrl}/addTask`, newTask, {
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			});
 			return response.data;
 		} catch (err) {
 			handleTokenError(err, logOut); // pass logOut function to handleTokenError

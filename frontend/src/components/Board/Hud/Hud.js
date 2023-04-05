@@ -48,7 +48,7 @@ const Hud = ({ tasks, setTasks, setApiErrorMessage }) => {
 		<div className="hud">
 			<div className="completion">
 				<h2>Completion:</h2>
-				<CompletionCircle containerSquareSideLength={47} tasks={tasks} />
+				<CompletionCircle size={47} tasks={tasks} />
 			</div>
 			<div className="timeLeft">
 				<h2>Time left:</h2>

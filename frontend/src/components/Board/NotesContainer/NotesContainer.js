@@ -4,7 +4,7 @@ import { UserContext } from 'utils/useUser';
 import { useDebounce } from 'utils/useDebounce';
 
 const NotesContainer = ({ setApiErrorMessage }) => {
-	const [notes, setNotes] = useState(null);
+	const [notes, setNotes] = useState('');
 	const { user, logOut } = useContext(UserContext);
 	const debouncedNotes = useDebounce(notes, 2000);
 	const isFirstRender = useRef(true);
@@ -21,9 +21,7 @@ const NotesContainer = ({ setApiErrorMessage }) => {
 		};
 
 		if (isFirstRender.current) isFirstRender.current = false;
-		else {
-			if (debouncedNotes !== null) saveNotes();
-		}
+		else saveNotes();
 	}, [debouncedNotes]);
 
 	const handleNotesChange = useCallback((e) => {
@@ -36,9 +34,10 @@ const NotesContainer = ({ setApiErrorMessage }) => {
 				const response = await WeekServices(logOut).getActiveWeekNotes(
 					user.token
 				);
-				if (response?.status === 204) setNotes('');
-				else {
-					setNotes(response?.data?.notes);
+				if (response?.status === 204) {
+					setNotes('');
+				} else {
+					setNotes(response?.notes);
 				}
 			} catch (err) {
 				console.log(err);
@@ -52,9 +51,9 @@ const NotesContainer = ({ setApiErrorMessage }) => {
 		<div className="mainChildrenContainers">
 			<div className="mainChildrenTitle">Notes</div>
 			<textarea
-				spellCheck="false"
 				className="notesTextArea"
-				value={notes === null ? '' : notes}
+				spellCheck="false"
+				value={notes}
 				onChange={handleNotesChange}
 			></textarea>
 		</div>

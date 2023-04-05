@@ -32,7 +32,7 @@ const TaskContextMenu = ({
 			e.preventDefault();
 			const confirmDelete = window.confirm(`This task will now be deleted.`);
 			if (confirmDelete) {
-				await services.deleteTask(user.token, {
+				await services(logOut).deleteTask(user.token, {
 					taskId: contextMenu.id,
 				});
 				setTasks(tasks.filter((task) => task.id !== contextMenu.id));

@@ -1,18 +1,10 @@
 @import 'variables';
 
-.percentage {
-	background: none;
-	// height: 158px;
-	// width: 158px;
-}
-
 .outer {
 	height: 100%;
 	width: 100%;
 	border-radius: 50%;
-	// border: 1px solid black;
 	border: none;
-	// background: none;
 	overflow: hidden;
 	background-color: $gray-3;
 	display: flex;
