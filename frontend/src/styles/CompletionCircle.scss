@@ -3,6 +3,8 @@
 .outer {
 	height: 100%;
 	width: 100%;
+	padding: 0;
+	margin: 0;
 	border-radius: 50%;
 	border: none;
 	overflow: hidden;
@@ -20,7 +22,6 @@
 	height: 71%;
 	width: 71%;
 	border-radius: 50%;
-	// border: 1px solid black;
 	border: none;
 	background: $gray-1;
 	display: flex;
@@ -31,12 +32,12 @@
 	font-weight: bold;
 	/* important part */
 	grid-area: inner-div;
-	color: $text-color;
+	color: $highlight-color;
 }
 
 svg {
-	height: 99%;
-	width: 99%;
+	width: 100%;
+	height: 100%;
 	/* important part */
 	grid-area: inner-div;
 }
@@ -44,7 +45,7 @@ svg {
 circle {
 	fill: none;
 	stroke-linecap: round;
-	stroke: $text-color;
-	stroke-width: 14%;
+	stroke: $highlight-color;
+	stroke-width: 12%;
 	transition: stroke-dashoffset, 2s 50ms ease-in-out;
 }

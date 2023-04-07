@@ -1,6 +1,7 @@
 const Logo = ({ color }) => {
 	return (
 		<svg
+			className="siteLogo"
 			width="79"
 			height="79"
 			viewBox="0 0 79 79"

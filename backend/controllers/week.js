@@ -1,7 +1,6 @@
 const weekRouter = require('express').Router();
 const User = require('../models/user.js');
 const Week = require('../models/week.js');
-const Task = require('../models/task.js');
 const jwt = require('jsonwebtoken');
 const config = require('../utils/config.js');
 
@@ -11,8 +10,7 @@ weekRouter.get('/activeWeekId', async (req, res) => {
 	try {
 		const decodedToken = jwt.verify(token, config.SECRET);
 		const user = await User.findById(decodedToken.id);
-		const activeWeek = user.activeWeek;
-		res.status(200).json({ id: activeWeek });
+		res.status(200).json({ id: user.activeWeek });
 	} catch (err) {
 		return res.status(500).json({ error: err });
 	}
@@ -58,8 +56,6 @@ weekRouter.get('/activeWeekNotes', async (req, res) => {
 		return res.status(500).json({ error: err });
 	}
 });
-
-
 
 weekRouter.put('/updateNotes', async (req, res) => {
 	const token = req.token;

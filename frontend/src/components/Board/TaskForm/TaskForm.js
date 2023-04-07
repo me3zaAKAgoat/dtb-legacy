@@ -3,7 +3,13 @@ import TaskServices from 'services/task.js';
 import WeekServices from 'services/week.js';
 import { UserContext, useUser } from 'utils/useUser';
 
-const TaskForm = ({ tasks, setTasks, formState, setFormState }) => {
+const TaskForm = ({
+	tasks,
+	setTasks,
+	formState,
+	setFormState,
+	setDisplayBoard,
+}) => {
 	const { user, logOut } = useContext(UserContext);
 	const [titleField, setTitleField] = useState(formState.title);
 	const [descriptionField, setDescriptionField] = useState(
@@ -89,6 +95,7 @@ const TaskForm = ({ tasks, setTasks, formState, setFormState }) => {
 				editTask(titleField, descriptionField, priorityField);
 			} else if (formState.type === 'add') {
 				addTask(titleField, descriptionField, priorityField);
+				setDisplayBoard(true);
 			}
 			setFormState(null);
 			clearForm();

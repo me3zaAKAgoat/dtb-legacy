@@ -41,11 +41,11 @@ const CompletionCircle = ({ size, tasks }) => {
 					<circle
 						cx="50%"
 						cy="50%"
-						r={size / 1.09}
+						r={size / 1.15}
 						style={{
-							strokeDasharray: ((2 * size) / 1.09) * 3.14,
+							strokeDasharray: ((2 * size) / 1.15) * 3.14,
 							strokeDashoffset:
-								((2 * size) / 1.09) * 3.14 * (1 - completion / 100),
+								((2 * size) / 1.15) * 3.14 * (1 - completion / 100),
 						}}
 					/>
 				</svg>

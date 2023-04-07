@@ -11,12 +11,10 @@ const MiniProgressIndicator = ({ isTaskOpen, progress }) => {
 	useEffect(() => {
 		if (isFirstRender.current) isFirstRender.current = !isFirstRender.current;
 		else {
-			if (!showMiniProgress) {
-				setTimeout(() => {
-					setShowMiniProgress(!showMiniProgress);
-				}, 200);
-			} else if (showMiniProgress) {
-				setShowMiniProgress(!showMiniProgress);
+			if (isTaskOpen) {
+				setShowMiniProgress(false);
+			} else {
+				setShowMiniProgress(true);
 			}
 		}
 	}, [isTaskOpen]);
@@ -106,16 +104,38 @@ const TaskContainer = ({
 			}
 			onContextMenu={handleContextMenu}
 		>
-			<h1
+			<div
+				className="collapsedContainer"
 				onClick={() => {
 					setIsTaskOpen(!isTaskOpen);
 				}}
 				role="button"
 			>
-				{capitalize(title)}
-			</h1>
-			<MiniProgressIndicator isTaskOpen={isTaskOpen} progress={progress} />
-			<div className="expandedContainer" onContextMenu={handleContextMenu}>
+				<svg
+					className="collapseExpandIcon"
+					width="52"
+					height="29"
+					viewBox="0 0 52 29"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+					style={
+						isTaskOpen
+							? { transform: 'rotate(0)' }
+							: { transform: 'rotate(-90deg)' }
+					}
+				>
+					<path
+						d="M47.3478 0H24.5147H3.95373C0.435303 0 -1.32391 4.25143 1.16831 6.74369L20.1533 25.7285C23.1952 28.7705 28.143 28.7705 31.185 25.7285L38.4051 18.5084L50.1699 6.74369C52.6254 4.25143 50.8662 0 47.3478 0Z"
+						fill="white"
+					/>
+				</svg>
+				<h1>{title}</h1>
+			</div>
+			<div
+				className="expandedContainer"
+				style={{ height: 0 }}
+				onContextMenu={handleContextMenu}
+			>
 				<pre>{description}</pre>
 				<div className="sliderEditButtonContainer">
 					<button
@@ -164,6 +184,7 @@ const TaskContainer = ({
 					></input>
 				</div>
 			</div>
+			<MiniProgressIndicator isTaskOpen={isTaskOpen} progress={progress} />
 		</div>
 	);
 };

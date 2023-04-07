@@ -3,7 +3,7 @@ import WeekServices from 'services/week';
 import { useContext, useState, useCallback, useEffect } from 'react';
 import { UserContext } from 'utils/useUser';
 
-const Hud = ({ tasks, setTasks, setApiErrorMessage }) => {
+const Hud = ({ tasks, setTasks, setApiErrorMessage, setDisplayBoard }) => {
 	const { user, logOut } = useContext(UserContext);
 	const [weekDue, setWeekDue] = useState(null);
 
@@ -15,6 +15,7 @@ const Hud = ({ tasks, setTasks, setApiErrorMessage }) => {
 				if (res.status >= 200 && res.status < 300) {
 					setTasks([]);
 					setWeekDue(null);
+					setDisplayBoard(false);
 				}
 			} catch (err) {
 				console.error(err);
@@ -48,7 +49,7 @@ const Hud = ({ tasks, setTasks, setApiErrorMessage }) => {
 		<div className="hud">
 			<div className="completion">
 				<h2>Completion:</h2>
-				<CompletionCircle size={47} tasks={tasks} />
+				<CompletionCircle size={49} tasks={tasks} />
 			</div>
 			<div className="timeLeft">
 				<h2>Time left:</h2>

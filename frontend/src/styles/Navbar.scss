@@ -122,7 +122,7 @@ ul {
 
 .profileButtonActive, .profileButton:hover {
 	outline-offset: 2px;
-	outline: $text-color solid 1.5px;
+	outline: $highlight-color solid 1.5px;
 }
 
 .profileDropdown {
@@ -148,7 +148,7 @@ ul {
 	button {
 		font-family: 'SF PRO DISPLAY';
 		font-weight: bold;
-		color: $text-color;
+		color: $highlight-color;
 		font-size: 1rem;
 		background: none;
 		border: none;

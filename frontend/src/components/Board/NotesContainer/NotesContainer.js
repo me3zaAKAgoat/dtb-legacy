@@ -41,7 +41,7 @@ const NotesContainer = ({ setApiErrorMessage }) => {
 				}
 			} catch (err) {
 				console.log(err);
-				setApiErrorMessage("fetching current week's data failed");
+				setApiErrorMessage("fetching current board's data failed");
 			}
 		};
 		fetchActiveWeekNotes();

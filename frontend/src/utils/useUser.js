@@ -34,13 +34,6 @@ export const useUser = () => {
 				LoggedInUser.expiryDate &&
 				new Date() < LoggedInUser.expiryDate
 			) {
-				console.log(
-					LoggedInUser.expiryDate,
-					'\n',
-					new Date(),
-					'\n',
-					Date(LoggedInUser.expiryDate)
-				);
 				setUser(LoggedInUser); // log in existing user
 				if (location.pathname === '/') {
 					navigate('/board');

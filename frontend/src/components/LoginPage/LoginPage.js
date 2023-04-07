@@ -61,7 +61,6 @@ const LoginPage = ({}) => {
 					currentTime.setSeconds(currentTime.getSeconds() + user.expiresIn)
 				);
 				setUser(user);
-				console.log(user);
 				navigate('/board');
 			} catch (err) {
 				console.log(err);
