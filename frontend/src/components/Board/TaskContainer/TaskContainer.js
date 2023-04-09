@@ -136,7 +136,10 @@ const TaskContainer = ({
 				style={{ height: 0 }}
 				onContextMenu={handleContextMenu}
 			>
-				<pre>{description}</pre>
+				<pre>
+					<h4>Description:</h4>
+					{description}
+				</pre>
 				<div className="sliderEditButtonContainer">
 					<button
 						className="editTaskButton"
