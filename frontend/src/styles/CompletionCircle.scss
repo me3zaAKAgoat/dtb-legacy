@@ -2,7 +2,7 @@
 
 .outer {
 	height: 100%;
-	width: 100%;
+	aspect-ratio: 1 / 1;
 	padding: 0;
 	margin: 0;
 	border-radius: 50%;
@@ -30,6 +30,8 @@
 	align-items: center;
 	font-family: 'SF PRO DISPLAY';
 	font-weight: bold;
+	font-size: 130%;
+	word-wrap: break-word;
 	/* important part */
 	grid-area: inner-div;
 	color: $highlight-color;
@@ -41,6 +43,8 @@ svg {
 	/* important part */
 	grid-area: inner-div;
 }
+
+
 
 circle {
 	fill: none;

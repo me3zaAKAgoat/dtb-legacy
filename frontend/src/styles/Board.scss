@@ -33,67 +33,70 @@
 	justify-content: space-around;
 	background-color: $gray-1;
 	height: 72%;
-	max-height: 100px;
+	max-height: 75px;
 	width: 40%;
+	max-width: 600px;
 	min-width: 450px;
-	border: 1px solid $gray-2;
-	border-radius: 2px;
+	border: 1px solid $gray-3;
+	border-radius: $border-rad;
 	margin: 10px 0px;
 	font-size: 0.5rem;
-}
-
-.completion {
-	width: 30%;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: center;
-	height: 100%;
-	h2 {
-		font-family: 'SF PRO TEXT';
-		font-size: 0.75rem;
-		color: $highlight-color;
-		margin-right: 4px;
+	.completion {
+		width: 30%;
+		max-height: 100%;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		height: 100%;
+		h2 {
+			font-family: 'SF PRO TEXT';
+			font-size: 0.75rem;
+			color: $highlight-color;
+			margin-right: 4px;
+		}
+		.percentage {
+			height: 80%;
+			margin-left: 4px;
+		}
+		margin-left: 3%;
 	}
-	.percentage {
-		margin-left: 4px;
+	
+	.timeLeft {
+		width: 50%;
+		min-width: 184px;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		margin-left: 3%;
+		margin-right: 3%;
+		height: 100%;
+		h2 {
+			font-family: 'SF PRO TEXT';
+			font-size: 0.75rem;
+			color: $highlight-color;
+			margin-right: 4px;
+		}
+		h3 {
+			font-size: 1rem;
+			color: $highlight-color;
+			margin-left: 4px;
+			font-weight: bold;
+		}
 	}
-	margin-left: 3%;
-}
-
-.timeLeft {
-	width: 50%;
-	min-width: 184px;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: center;
-	margin-left: 3%;
-	margin-right: 3%;
-	height: 100%;
-	h2 {
-		font-family: 'SF PRO TEXT';
-		font-size: 0.75rem;
-		color: $highlight-color;
-		margin-right: 4px;
-	}
-	h3 {
+	
+	.concludeButton {
+		font-family: 'SF PRO BLACK';
+		min-height: 35px;
+		min-width: 90px;
+		width: 9%;
+		height: 35%;
 		font-size: 1rem;
-		color: $highlight-color;
-		margin-left: 4px;
-		font-weight: bold;
+		margin-right: 3%;
 	}
 }
 
-.concludeButton {
-	font-family: 'SF PRO BLACK';
-	min-height: 35px;
-	min-width: 90px;
-	width: 9%;
-	height: 35%;
-	font-size: 1rem;
-	margin-right: 3%;
-}
 
 .boardMain {
 	height : 87%;
@@ -105,7 +108,7 @@
 	flex-grow: 1;
 }
 
-.noBoardNav {
+.homepage {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -198,8 +201,7 @@
 	color: $highlight-color;
 	margin: 2px 0px 10px;
 	background-color: $gray-1;
-	border-radius: 2px;
-	// border: 0.5px solid $gray-3;
+	border-radius: $border-rad;
 }
 
 .notesTextArea {
@@ -215,12 +217,12 @@
 	height: 85%;
 	background-color: $gray-1;
 	border : none;
-	border-radius: 2px;
-	outline: solid 0.02rem $gray-2;
+	border-radius: $border-rad;
+	outline: solid 0.02rem $gray-3;
 	transition: outline 50ms ease-in-out 0ms;
 	&:hover,
 	&:focus {
-		outline: solid 0.15rem $gray-2 ;
+		outline: solid 0.15rem $gray-3;
 	}
 
 	overflow: auto;
@@ -231,11 +233,11 @@
 }
 
 .taskList {
-	flex-grow: 1;
 	display: flex;
 	flex-direction: column;
 	justify-content: baseline;
 	align-items: center;
+	height: 87%;
 	width: 100%;
 	position: relative;
 	top: 5px;
@@ -249,10 +251,10 @@
 	background-color: $gray-1;
 	height: $task-height;
 	min-height: $task-height;
-	width: 80%;
-	max-width: 600px;
-	border-radius: 2px;
-	border: 1px solid $gray-2;
+	width: 90%;
+	max-width: 900px;
+	border-radius: $border-rad;
+	border: 1px solid $gray-3;
 	margin: 10px;
 	display: flex;
 	flex-direction: column;
@@ -302,7 +304,6 @@
 			justify-content: center;
 			font-family: 'SF PRO TEXT';
 			font-weight: bold;
-			letter-spacing: 0.4;
 			align-items: center;
 			color: $highlight-color;
 			margin: 0 auto 0;
@@ -332,13 +333,13 @@
 
 .openTaskContainerStyle {
 	background-color: $gray-3;
-	min-height: 200px;
+	min-height: 225px;
 }
 
 .expandedContainer {
 	flex-grow: 1;
 	border: none;
-	height: 200px - $task-height;
+	height: 225px - $task-height;
 	background-color: $gray-3;
 	display: flex;
 	flex-direction: column;
@@ -347,13 +348,17 @@
 	pre {
 		font-family: 'SF PRO TEXT';
 		height: 70%;
-		
-		padding: 2% 7%;
-		justify-content: left;
-		margin: 0% 4%;
+		text-align: left;
 		color: $highlight-color;
-		background-color: $gray-1;
-		border-radius: 2px;
+		
+		padding: 2%;
+		margin-left: 4%;
+		margin-right: 4%;
+		margin-top: 1%;
+		margin-bottom: 0;
+		background-color: rgba(0, 0, 0, 0.4);
+		border-radius: $border-rad;
+		border: solid 0.1rem $highlight-color;
 
 		overflow: auto;
 		word-wrap: break-word;
@@ -362,6 +367,9 @@
 		resize: none;
 		
 		h4 {
+			font-family: 'SF PRO DISPLAY';
+			font-size: 0.9rem;
+			font-weight: bold;
 			margin: 0;
 		}
 	}
@@ -397,6 +405,22 @@
 		border: 4px solid #333;
 		box-shadow: -407px 0 0 400px $highlight-color;
 	}
+	
+	&::-moz-range-thumb {
+		-webkit-appearance: none;
+		width: 15px;
+		height: 15px;
+		border-radius: 50%;
+		background: $highlight-color;
+		cursor: pointer;
+		border: 4px solid #333;
+		box-shadow: -407px 0 0 400px $highlight-color;
+	}
+	
+	&::-moz-range-progress {
+		background: $highlight-color;
+		height: 100%;
+	}
 }
 
 .editTaskButton {
@@ -427,7 +451,7 @@
 	text-align: center;
 	background-color: $background-color;
 	border: none;
-	border-radius: 2px;
+	border-radius: $border-rad;
 }
 
 .addTaskButton {
@@ -469,7 +493,7 @@
 	inset: 0px;
 	z-index: 0;
 	background-color: rgba(0, 0, 0, 0.8);
-	border-radius: 2px;
+	border-radius: $border-rad;
 	position: absolute;
 }
 
@@ -488,13 +512,13 @@
 	min-width: 410px;
 	max-width: 475px;
 	max-height: 500px;
-	border-radius: 2px;
+	border-radius: $border-rad;
 	border: 1px solid rgb(109, 109, 109);
 	input,
 	textarea {
 		background-color: $secondary-color;
 		border: none;
-		border-radius: 2px;
+		border-radius: $border-rad;
 		height: 30px;
 		color: $highlight-color;
 		padding: 10px;

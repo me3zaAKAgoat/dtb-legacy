@@ -66,7 +66,6 @@
 
 ### Core
 
-- [ ] make a start a new week button homepage when no week is available (make fetch current week return some indicator that there's no week)
 - [ ] work on user adminsitration
   - [ ] make a sign up process.
   - [ ] setup a cdn of some sort for profile pictures of users.
@@ -75,10 +74,8 @@
 - [ ] **move all business logic to the backend, make all the frontend ONLY visual, 0 business in frontend**
 - [ ] remove debounce from note text area and add an svg save button on the top right corner of the text area that animates on click
 - [ ] add a retry button for every component's failure to load the data it needs (similar to twitter)
-- [x] issue where if loading notes fails the debounce posts empty string to server and the database clears of the actual data that should be preserved
 - [ ] settings should enable the user to change the following things : theme, week length, username, user profile picture
 - [ ] make a wrapper function that updates the state after successful api requests.
-- [x] correct adding a new task to handle initiation of a new week on the backend instead of the frontend.
 - [ ] make the basic layout for the statistics page.
 - [ ] add a percentage next to number input field in task container
 - [ ] add end of week button that renders a modal prompting the user to describe the week and then sends an api call to archive the ended week and create a stamp of it.

@@ -113,6 +113,7 @@ const Board = () => {
 			return retrievedData.id;
 		} catch (err) {
 			setApiErrorMessage('checking existence of a running board failed');
+			return null;
 		}
 	}, [user]);
 
@@ -160,7 +161,7 @@ const Board = () => {
 	else if (displayBoard === false) {
 		return (
 			<div className="basePage">
-				<div className="noBoardNav">
+				<div className="homepage">
 					<div className="navigationItems">
 						<div
 							onClick={() => {
@@ -260,6 +261,7 @@ const Board = () => {
 					setFormState={setFormState}
 					setDisplayBoard={setDisplayBoard}
 				/>
+				<ErrorBar errorMessage={apiErrorMessage} />
 			</div>
 		);
 	} else {

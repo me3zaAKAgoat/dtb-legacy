@@ -2,7 +2,6 @@ import { useEffect, useState, useCallback, useRef, useContext } from 'react';
 import TaskServices from 'services/task';
 import { UserContext, useUser } from 'utils/useUser';
 import { useDebounce } from 'utils/useDebounce';
-import { capitalize } from 'utils/stringUtils';
 
 const MiniProgressIndicator = ({ isTaskOpen, progress }) => {
 	const isFirstRender = useRef(true);
@@ -61,6 +60,10 @@ const TaskContainer = ({
 	const handleContextMenu = useCallback((e) => {
 		e.preventDefault();
 		setContextMenu({ show: true, x: e.pageX, y: e.pageY, id: task.id });
+	}, []);
+
+	const capitalize = useCallback((sentence) => {
+		if (sentence) return sentence.charAt(0).toUpperCase() + sentence.slice(1);
 	}, []);
 
 	// progress debounce
@@ -129,7 +132,7 @@ const TaskContainer = ({
 						fill="white"
 					/>
 				</svg>
-				<h1>{title}</h1>
+				<h1>{capitalize(title)}</h1>
 			</div>
 			<div
 				className="expandedContainer"
@@ -138,7 +141,7 @@ const TaskContainer = ({
 			>
 				<pre>
 					<h4>Description:</h4>
-					{description}
+					{capitalize(description)}
 				</pre>
 				<div className="sliderEditButtonContainer">
 					<button

@@ -79,6 +79,7 @@ const LoginPage = ({}) => {
 					className="signUpRedirectionButton"
 					onClick={(e) => {
 						e.preventDefault();
+						navigate('/signup');
 					}}
 				>
 					Sign up?

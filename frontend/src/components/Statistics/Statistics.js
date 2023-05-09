@@ -1,7 +1,12 @@
+import { useEffect } from 'react';
 import '../../styles/App.scss';
 
 const Statistics = () => {
-	return <div className="basePage"></div>;
+
+	useEffect(()=>{}, [])
+	return <div className="basePage">
+
+	</div>;
 };
 
 export default Statistics;
