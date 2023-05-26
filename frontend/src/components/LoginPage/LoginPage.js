@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import 'styles/LoginPage.scss';
 import Logo from 'components/miscellaneous/Logo/Logo';
 import loginService from 'services/login.js';
@@ -69,6 +69,9 @@ const LoginPage = ({}) => {
 		}
 	};
 
+	useEffect(() => {
+		logOut();
+	}, []);
 	return (
 		<div className="loginPage">
 			<div className="logoContainer">
