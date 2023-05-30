@@ -11,6 +11,19 @@ const handleTokenError = (err, logOut) => {
 };
 
 const api = (logOut) => ({
+	getLastMonthWeeks: async (token) => {
+		try {
+			const response = await axios.get(`${baseUrl}/getLastMonthWeeks`, {
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			});
+			return response.data;
+		} catch (err) {
+			handleTokenError(err, logOut);
+		}
+	},
+
 	getActiveWeekId: async (token) => {
 		try {
 			const response = await axios.get(`${baseUrl}/activeWeekId`, {

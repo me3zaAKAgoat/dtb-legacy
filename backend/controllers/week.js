@@ -3,6 +3,7 @@ const User = require('../models/user.js');
 const Week = require('../models/week.js');
 const jwt = require('jsonwebtoken');
 const config = require('../utils/config.js');
+const week = require('../models/week.js');
 
 //get week id
 weekRouter.get('/activeWeekId', async (req, res) => {
@@ -57,6 +58,23 @@ weekRouter.get('/activeWeekNotes', async (req, res) => {
 	}
 });
 
+weekRouter.get('/getLastMonthWeeks', async (req, res) => {
+	const token = req.token;
+	try {
+		const decodedToken = jwt.verify(token, config.SECRET);
+		const user = await User.findById(decodedToken.id);
+		const fourWeeksAgo = new Date();
+		fourWeeksAgo.setDate(fourWeeksAgo.getDate() - 28);
+		const weeks = await week
+			.find({ endDate: { $gte: fourWeeksAgo } })
+			.populate('tasks', 'progress priority');
+
+		return res.status(200).json({ weeks: weeks });
+	} catch (err) {
+		return res.status(500).json({ error: err });
+	}
+});
+
 weekRouter.put('/updateNotes', async (req, res) => {
 	const token = req.token;
 	try {
@@ -77,7 +95,6 @@ weekRouter.put('/updateNotes', async (req, res) => {
 		}
 		return res.status(406).json({ error: 'no current week' });
 	} catch (err) {
-		console.log('week router', err);
 		return res.status(500).json({ error: err });
 	}
 });
@@ -93,7 +110,6 @@ weekRouter.post('/concludeWeek', async (req, res) => {
 
 		res.sendStatus(200);
 	} catch (err) {
-		console.error(err);
 		return res.status(500).json({ error: err });
 	}
 });

@@ -1,0 +1,12 @@
+.statisticsPage {
+	display: flex;
+	flex-direction: column;
+	flex-direction: center;
+	justify-content: center;
+
+	width: 100%;
+	height: 100%;
+	canvas {
+		width: 95%;
+	}
+}

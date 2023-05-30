@@ -1,31 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import 'styles/CompletionCircle.scss';
+import calcTotal from 'utils/calcTotal.js';
 
 const CompletionCircle = ({ tasks }) => {
 	const [completion, setCompletion] = useState(0);
-	const priorityValue = {
-		low: 1,
-		medium: 4,
-		high: 7,
-	};
 
 	useEffect(() => {
-		if (tasks.length === 0) {
-			setCompletion(0);
-			return;
-		}
-
-		const coeffTotal = tasks.reduce(
-			(accumulator, task) => accumulator + priorityValue[task.priority],
-			0
-		);
-		const total =
-			tasks.reduce(
-				(accumulator, task) =>
-					accumulator + task.progress * priorityValue[task.priority],
-				0
-			) / coeffTotal;
-		setCompletion(total);
+		setCompletion(calcTotal(tasks));
 	}, [tasks]);
 
 	return (
@@ -42,7 +23,7 @@ const CompletionCircle = ({ tasks }) => {
 						}}
 					/>
 				</svg>
-				<div className="inner">{Math.trunc(completion)}%</div>
+				<div className="inner">{completion}%</div>
 			</div>
 		</div>
 	);
