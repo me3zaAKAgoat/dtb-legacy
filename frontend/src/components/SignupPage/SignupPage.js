@@ -1,13 +1,10 @@
+import Logo from 'components/miscellaneous/Logo/Logo';
+import 'styles/SignupPage.scss';
+
 const SignupPage = () => {
 	return (
 		<div className="basePage">
-			<form>
-				<input></input>
-				<input></input>
-				<input></input>
-				<input></input>
-				<input></input>
-			</form>
+			<h1>Email medkrix1@gmail.com for an account</h1>
 		</div>
 	);
 };

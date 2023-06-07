@@ -32,8 +32,8 @@ loginRouter.post('/', async (req, res) => {
 		return res.status(200).json({
 			username: user.username,
 			name: user.name,
+			id: user.userId,
 			token: token,
-			activeWeek: user.activeWeek,
 			expiresIn: tokenExpirationParam,
 		});
 	} catch (err) {

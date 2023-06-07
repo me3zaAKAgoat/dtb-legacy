@@ -12,6 +12,7 @@ export const useUser = () => {
 		try {
 			window.localStorage.removeItem('LoggedInUserUsername');
 			window.localStorage.removeItem('LoggedInUserName');
+			window.localStorage.removeItem('LoggedInUserId');
 			window.localStorage.removeItem('LoggedInUserToken');
 			window.localStorage.removeItem('LoggedInUserExpiryDate');
 			setUser(null);
@@ -25,6 +26,7 @@ export const useUser = () => {
 		const LoggedInUser = {
 			username: window.localStorage.getItem('LoggedInUserUsername'),
 			name: window.localStorage.getItem('LoggedInUserName'),
+			id: window.localStorage.getItem('LoggedInUserId'),
 			token: window.localStorage.getItem('LoggedInUserToken'),
 			expiryDate: window.localStorage.getItem('LoggedInUserExpiryDate'),
 		};

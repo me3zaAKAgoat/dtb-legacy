@@ -42,8 +42,10 @@ const TaskList = ({ tasks, setTasks, setFormState }) => {
 						setFormState={setFormState}
 					/>
 				))}
+			</div>
+			<div className="addTaskContainer">
 				<button
-					className="addTaskButton"
+					className="svgButton addTaskButton"
 					onClick={() => {
 						setFormState({
 							type: 'add',

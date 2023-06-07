@@ -9,6 +9,7 @@ import calcTotal from 'utils/calcTotal.js';
 const Statistics = () => {
 	const { user, logOut } = useContext(UserContext);
 	const [stats, setStats] = useState({ labels: [], data: [] });
+
 	useEffect(() => {
 		const newStats = { labels: [], data: [] };
 		WeekServices(logOut)
@@ -21,6 +22,7 @@ const Statistics = () => {
 				setStats(newStats);
 			});
 	}, []);
+
 	return (
 		<div className="basePage">
 			<div className="statisticsPage">

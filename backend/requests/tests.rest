@@ -1,10 +1,10 @@
-POST  http://localhost:3003/api/users
+POST  http://localhost:3003/admin/newUser
 Content-Type: application/json
 
 {
-    "username" : "username",
-    "name" : "dummy name",
-    "password" : "password"
+    "username" : "me3za",
+    "name" : "me3za",
+    "password" : "me3za"
 }
 ###
 POST http://localhost:3003/api/login 

@@ -47,11 +47,11 @@ const ModalPortal = ({
 	if (formState?.type === 'add' || formState?.type === 'edit') {
 		return (
 			<div
-				className="taskModal"
+				className="baseModal"
 				style={transitionProperties}
 				onClick={handleBlur}
 			>
-				<div className="taskFormContainer" onClick={(e) => e.stopPropagation()}>
+				<div className="formContainer" onClick={(e) => e.stopPropagation()}>
 					<TaskForm
 						tasks={tasks}
 						setTasks={setTasks}

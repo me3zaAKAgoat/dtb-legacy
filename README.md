@@ -66,6 +66,7 @@
 
 ### Core
 
+- set backend root directory as a config env (for deployement)
 - [ ] work on user adminsitration
   - [ ] make a sign up process.
   - [ ] setup a cdn of some sort for profile pictures of users.
@@ -84,6 +85,7 @@
 
 ### Secondary
 
+- [ ] make modals into a seperate module
 - [ ] work on a loading UI (skeleton) while the data is being fetched.
 - [ ] add a visual aspect to the priority of tasks.
 - [ ] have settings open in a modal

@@ -1,4 +1,5 @@
 @import 'variables';
+@import 'buttons';
 
 .navigationBar {
 	height: 100%;
@@ -96,8 +97,7 @@ ul {
 }
 
 .profileButton {
-	width: 100%;
-	height: 100%;
+	height: 105%;
 	background-color: $secondary-color;
 	border-radius: 50%;
 	margin: 0;
@@ -108,11 +108,9 @@ ul {
 	transition-duration: 70ms;
 	transition-timing-function: ease-in-out;
 	transition-property: outline;
+	aspect-ratio: 1 / 1;
 	img {
-		width: 100%;
-		height: 100%;
-		max-width: 42px;
-		max-height: 42px;
+		height: 100%;		
 		border-radius: 50%;
 		filter: blur(100%);
 
@@ -167,4 +165,194 @@ ul {
 		width: 70%;
 		border: 0.1px solid $gray-3;
 	}
+}
+
+.fullScreenFormContainer {
+	z-index: 1;
+	text-align: left;
+	background-color: $gray-1;
+	height: 100%;
+	width: 100%;
+	color: $highlight-color;
+	input,
+	textarea {
+		background-color: $secondary-color;
+		border: none;
+		border-radius: $border-rad;
+		height: 30px;
+		color: $highlight-color;
+		padding: 10px;
+		resize: none;
+	}
+	h1 {
+		align-self: flex-start;
+		font-family: 'SF PRO BLACK';
+		font-size: 1.6rem;
+		margin: 10px 15px;
+	}
+}
+
+.buttonsContainer {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 5%;
+	height: 40%;
+	width: 40%;
+	button {
+		font-weight: bold;
+	}
+	.submitButton {
+		&:hover {
+			background-color: $success-color;
+		}
+	}
+	.cancelButton {
+		&:hover {
+			background-color: $error-color;
+		}
+	}
+}
+
+.settingsHeader {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	height: 7%;
+	padding: 10px;
+	border-bottom: 2px solid currentColor;
+	.leaveSettingsButton {
+		align-self: flex-start;
+		margin: 5px 15px;
+		height: 100%;
+		aspect-ratio: 1 / 1;
+		svg {
+			width: 100%;
+		}
+	}
+}
+
+.formsContainer {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	height: 93%;
+	width: 100%;
+	.userDataForms {
+		height: 100%;
+		width: 70%;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: baseline;
+		overflow: scroll;
+		padding-top: 3%;
+		padding-left: 3%;
+		form {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: baseline;
+			background-color: $gray-3;
+			width: 60%;
+			padding: 5%;
+			margin-bottom: 5%;
+			border-radius: 6px;
+		}
+		.oldPassword, .newPassword, .username {
+			width: 90%;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 5%;
+			input {
+				align-self: flex-end;
+				width: 40%;
+			}
+		}
+	}
+	.avatarForm {
+		height: 100%;
+		width: 30%;
+	}
+}
+
+.fileInput {
+	height: 100%;
+	width: 60%;
+	margin: 0 auto 0;
+	display: flex;
+	flex-direction: column;
+	.avatarInput {
+		margin-right: 10%;
+		margin-top: 20%;
+		position: relative;
+		img {
+			width: 100%;
+			position: absolute;
+			border-radius: 50%;
+			aspect-ratio: 1 / 1;
+			object-fit: cover;
+			transition-delay: 25ms;
+			transition-duration: 100ms;
+			transition-timing-function: ease-in-out;
+			transition-property: filter;
+		}
+		display: flex;
+		justify-content: center; /* horizontal alignment */
+		align-items: center; /* vertical alignment */
+		border-radius: 50%;
+		aspect-ratio: 1 / 1;
+		outline: $highlight-color solid 1.5px;
+		transition-delay: 25ms;
+		transition-duration: 100ms;
+		transition-timing-function: ease-in-out;
+		transition-property: outline;
+		h2 {
+			position: absolute;
+			visibility: hidden;
+			font-size: 10;
+			position: fixed;
+			z-index: 1;
+		}
+		&:hover {
+			outline: $highlight-color solid 2px;
+			img {
+				filter: brightness(30%);
+			}
+			h2 {
+				visibility: visible;
+			}
+		}
+	}
+	input {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		opacity: 0%;
+		border-radius: 50%;
+		cursor: pointer;
+		z-index: 2;
+	}
+}
+
+.cropperModal {
+	transition: opacity 200ms ease-in 0ms;
+	inset: 0px;
+	z-index: 10;
+	background-color: rgba(0, 0, 0, 0.8);
+	border-radius: $border-rad;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
 }

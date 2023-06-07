@@ -56,6 +56,7 @@ const LoginPage = ({}) => {
 				window.localStorage.setItem('LoggedInUserUsername', user.username);
 				window.localStorage.setItem('LoggedInUserName', user.name);
 				window.localStorage.setItem('LoggedInUserToken', user.token);
+				window.localStorage.setItem('LoggedInUserId', user.id);
 				window.localStorage.setItem(
 					'LoggedInUserExpiryDate',
 					currentTime.setSeconds(currentTime.getSeconds() + user.expiresIn)
@@ -73,43 +74,45 @@ const LoginPage = ({}) => {
 		logOut();
 	}, []);
 	return (
-		<div className="loginPage">
-			<div className="logoContainer">
-				<Logo />
-			</div>
-			<div className="formWrapper">
-				<button
-					className="signUpRedirectionButton"
-					onClick={(e) => {
-						e.preventDefault();
-						navigate('/signup');
-					}}
-				>
-					Sign up?
-				</button>
-				<form onSubmit={loginHandler}>
-					<input
-						type="text"
-						value={usernameField}
-						onChange={(event) => {
-							setUsernameField(event.target.value);
+		<div className="basePage">
+			<div className="loginPage">
+				<div className="logoContainer">
+					<Logo />
+				</div>
+				<div className="formWrapper">
+					<button
+						className="signUpRedirectionButton"
+						onClick={(e) => {
+							e.preventDefault();
+							navigate('/signup');
 						}}
-						placeholder="Username"
-					></input>
-
-					<input
-						type="password"
-						value={passwordField}
-						onChange={(event) => {
-							setPasswordField(event.target.value);
-						}}
-						placeholder="Password"
-					></input>
-					<button className="baseButton" type="submit">
-						Login
+					>
+						Sign up?
 					</button>
-				</form>
-				<ApiCallsIndicator errorMessage={errorMessage} />
+					<form onSubmit={loginHandler}>
+						<input
+							type="text"
+							value={usernameField}
+							onChange={(event) => {
+								setUsernameField(event.target.value);
+							}}
+							placeholder="Username"
+						></input>
+
+						<input
+							type="password"
+							value={passwordField}
+							onChange={(event) => {
+								setPasswordField(event.target.value);
+							}}
+							placeholder="Password"
+						></input>
+						<button className="baseButton" type="submit">
+							Login
+						</button>
+					</form>
+					<ApiCallsIndicator errorMessage={errorMessage} />
+				</div>
 			</div>
 		</div>
 	);

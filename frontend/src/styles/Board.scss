@@ -85,10 +85,10 @@
 	
 	.concludeButton {
 		font-family: 'SF PRO BLACK';
-		min-height: 35px;
-		min-width: 90px;
-		width: 9%;
-		height: 35%;
+		// min-height: 35px;
+		// min-width: 90px;
+		width: 20%;
+		height: 50%;
 		font-size: 1rem;
 		margin-right: 3%;
 	}
@@ -236,12 +236,13 @@
 	align-items: center;
 	height: 87%;
 	width: 100%;
-	position: relative;
 	top: 5px;
 	max-height: 100%;
 	overflow-y: overlay;
 	overflow-x: hidden;
 }
+
+
 
 .taskContainer {
 	overflow: hidden;
@@ -304,7 +305,6 @@
 			align-items: center;
 			color: $highlight-color;
 			margin: 0 auto 0;
-			position: relative;
 		}
 
 	}
@@ -451,52 +451,54 @@
 	border-radius: $border-rad;
 }
 
-.addTaskButton {
-	height: 0.9 * $task-height;
-	width: 0.9 * $task-height;
-	min-height: 0.9 * $task-height;
-	min-width: 0.9 * $task-height;
+.addTaskContainer {
+	width: 100%;
+	height: 20%;
+}
+
+.svgButton {
 	border-radius: 50%;
 	padding: 0;
 	border: none;
 	background: none;
-	margin: 10px auto 30px;
 	cursor: pointer;
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-start;
-	align-items: stretch;
 	filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 1));
-	transition: background-color, 50ms ease-in-out 10ms;
 	svg {
-		position: absolute;
 		height: 100%;
 		width: 100%;
 		filter: brightness(80%);
+		transition: filter, 150ms ease-in-out 50ms;
 	}
 
 	&:hover {
 		background-color: rgba(255, 255, 255, 0.04);
 		svg {
-			filter: brightness(90%);
+			filter: brightness(150%);
 		}
 	}
 }
 
-.taskModal {
+.addTaskButton {
+	height: 0.9 * $task-height;
+	width: 0.9 * $task-height;
+	min-height: 0.9 * $task-height;
+	min-width: 0.9 * $task-height;
+	margin: 10px auto 30px;
+}
+
+.baseModal {
 	visibility: hidden;
 	opacity: 0;
 	transition: opacity 200ms ease-in 0ms;
 	inset: 0px;
-	z-index: 0;
+	z-index: 10;
 	background-color: rgba(0, 0, 0, 0.8);
 	border-radius: $border-rad;
 	position: absolute;
 }
 
-.taskFormContainer {
+.formContainer {
 	z-index: 1;
-	position: absolute;
 	text-align: left;
 	top: 0;
 	bottom: 0;
@@ -509,7 +511,7 @@
 	min-width: 410px;
 	max-width: 475px;
 	max-height: 500px;
-	border-radius: $border-rad;
+	border-radius: 1px;
 	border: 1px solid rgb(109, 109, 109);
 	input,
 	textarea {
