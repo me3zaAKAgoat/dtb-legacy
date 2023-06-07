@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = 'http://localhost:3003/api/task';
+const baseUrl = '/api/task';
 
 const handleTokenError = (err, logOut) => {
 	if (err?.response && err?.response?.status === 401) {

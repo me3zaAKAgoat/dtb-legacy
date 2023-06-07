@@ -15,8 +15,12 @@ const Statistics = () => {
 		WeekServices(logOut)
 			.getLastMonthWeeks(user.token)
 			.then((res) => {
-				res.weeks.forEach((week) => {
-					newStats.labels.push(week.endDate.substring(0, 10));
+				const orderedWeeks = res.weeks.sort(
+					(a, b) => new Date(a.startDate) - new Date(b.startDate)
+				);
+
+				orderedWeeks.forEach((week) => {
+					newStats.labels.push(week.startDate.substring(0, 10));
 					newStats.data.push(calcTotal(week.tasks));
 				});
 				setStats(newStats);

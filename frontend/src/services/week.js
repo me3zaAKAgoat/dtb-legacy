@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = 'http://localhost:3003/api/week';
+const baseUrl = '/api/week';
 
 const handleTokenError = (err, logOut) => {
 	if (err?.response && err?.response?.status === 401) {

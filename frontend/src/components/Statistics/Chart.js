@@ -9,7 +9,7 @@ const themeColor = 'rgba(242, 85, 0, 0.8)';
 const LineChart = ({ labels, yData }) => {
 	const createGradient = () => {
 		const ctx = document.createElement('canvas').getContext('2d');
-		const gradient = ctx.createLinearGradient(0, 0, 0, 600);
+		const gradient = ctx.createLinearGradient(0, 0, 0, 800);
 		gradient.addColorStop(0, themeColor);
 		gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
 		return gradient;
@@ -63,7 +63,6 @@ const LineChart = ({ labels, yData }) => {
 			</div>
 		);
 	} else {
-		console.log(labels, yData);
 		return (
 			<Line
 				data={data}

@@ -37,11 +37,11 @@ app.use(
 	taskRouter
 );
 
-// app.use(express.static('build'));
+app.use(express.static('build'));
 
-// app.get('*', (req, res) => {
-// 	res.sendFile('/home/me3za/dtb/backend/build/index.html');
-// });
+app.get('*', (req, res) => {
+	res.sendFile('/home/me3za/dtb/backend/build/index.html');
+});
 
 app.use(middleware.unknownEndpoint);
 app.use(middleware.errorHandler);
