@@ -66,7 +66,7 @@ weekRouter.get('/getLastMonthWeeks', async (req, res) => {
 		const fourWeeksAgo = new Date();
 		fourWeeksAgo.setDate(fourWeeksAgo.getDate() - 28);
 		const weeks = await week
-			.find({ endDate: { $gte: fourWeeksAgo } })
+			.find({ user: user._id, endDate: { $gte: fourWeeksAgo } })
 			.populate('tasks', 'progress priority');
 
 		return res.status(200).json({ weeks: weeks });

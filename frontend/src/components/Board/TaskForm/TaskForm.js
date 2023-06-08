@@ -85,12 +85,9 @@ const TaskForm = ({
 	);
 
 	const postForm = () => {
-		const areRequirementsMet =
-			titleField?.length > 0 && priorityField?.length > 0;
-
-		if (!areRequirementsMet) {
-			alert('Must fill all fields');
-		} else {
+		if (!titleField?.length) alert('Type in a title please');
+		else if (!priorityField?.length) alert('Select a priority please');
+		else {
 			if (formState.type === 'edit') {
 				editTask(titleField, descriptionField, priorityField);
 			} else if (formState.type === 'add') {

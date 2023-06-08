@@ -6,6 +6,7 @@ const bcrypt = require('bcrypt');
 const multer = require('multer');
 const fs = require('fs');
 const sharp = require('sharp');
+const path = require('path');
 
 usersRouter.post('/newUser', async (req, res) => {
 	try {
@@ -71,7 +72,7 @@ usersRouter.post('/updateAvatar', upload.single('avatar'), async (req, res) => {
 
 		const compressedImage = await compressImage(uploadedFile);
 		await fs.promises.writeFile(
-			`/home/me3za/dtb/avatars/${user.userId}.jpeg`,
+			path.join(__dirname, `../avatars/${user.userId}.jpeg`),
 			compressedImage
 		);
 

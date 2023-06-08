@@ -1,6 +1,0 @@
-- setup route to accept profile pictures
-- make sure in client that the uploaded pictures size is not more than 4mbs
-- extremely compress picture down to 2kb maximum
-- setup a directory to store profile pictures in the backend
-- give every processes image a random id that is not in the directory already
-- set the id as a field in the user mongodb document

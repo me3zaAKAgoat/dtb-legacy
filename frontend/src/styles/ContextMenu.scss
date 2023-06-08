@@ -3,6 +3,7 @@
 // https://mionskowski.pl/posts/positioning-a-context-menu-using-pure-css/
 .contextMenu {
         position: fixed;
+		z-index: 30;
         width: 150px;
         height: 180px;
         overflow: hidden;

@@ -9,12 +9,13 @@ const taskRouter = require('./controllers/task.js');
 const adminRouter = require('./controllers/admin.js');
 const PPRouter = require('./controllers/profilePictures.js');
 const middleware = require('./utils/middleware.js');
+const path = require('path');
 
 app.use(cors());
 app.use(express.json());
 app.use(middleware.requestLogger);
 
-app.use('/profile-picture', PPRouter);
+app.use('/api/avatar', PPRouter);
 app.use('/admin', adminRouter);
 app.use(
 	'/api/users',
@@ -40,7 +41,7 @@ app.use(
 app.use(express.static('build'));
 
 app.get('*', (req, res) => {
-	res.sendFile('/home/me3za/dtb/backend/build/index.html');
+	res.sendFile(path.join(__dirname, 'build/index.html'));
 });
 
 app.use(middleware.unknownEndpoint);
