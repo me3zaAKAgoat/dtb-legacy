@@ -66,8 +66,11 @@
 
 ### Core
 
-- [ ] fallback for when there are no statistics in the last month
+- [ ] push error bar to the highest order component possible and use a usecontext to avoid prop drilling
 - [ ] add loading animation to any component thats awaiting an api calls response (login for example).
+  - relative top right scss
+  - useContext for loading
+- [ ] fallback for when there are no statistics in the last month
 - [ ] make routers for updating the username and the password
 - [ ] work on user adminsitration
   - [ ] make a sign up process.

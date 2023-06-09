@@ -122,9 +122,8 @@ const DropdownContainer = ({ open, setOpen, setSettingsOpen, logOut }) => {
 	}
 };
 
-const Navbar = ({}) => {
+const Navbar = ({ settingsOpen, setSettingsOpen }) => {
 	const { user, logOut } = useContext(UserContext);
-	const [settingsOpen, setSettingsOpen] = useState(false);
 
 	return (
 		<nav className="navigationBar">

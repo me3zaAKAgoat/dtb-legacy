@@ -5,9 +5,11 @@ import NotesContainer from 'components/Board/NotesContainer/NotesContainer.js';
 import Hud from 'components/Board/Hud/Hud.js';
 import WeekServices from 'services/week.js';
 import { useCallback, useContext, useEffect, useState } from 'react';
-import { UserContext, useUser } from 'utils/useUser';
-import { useNavigate, useNavigationType } from 'react-router-dom';
+import { UserContext } from 'utils/useUser';
+import { useNavigate } from 'react-router-dom';
 import TaskForm from 'components/Board/TaskForm/TaskForm';
+import DebounceLoading from 'components/miscellaneous/DebounceLoad/DebounceLoad';
+import { isDebouncingContext, useIsDebouncing } from 'utils/useDebounce';
 
 /*
 this component conditionally renders and edit task or a create task
@@ -80,7 +82,7 @@ const ErrorBar = ({ errorMessage }) => {
 	);
 };
 
-const Board = () => {
+const Board = ({ setSettingsOpen }) => {
 	const { user, logOut } = useContext(UserContext);
 	const [tasks, setTasks] = useState([]);
 	const [formState, setFormState] = useState({
@@ -92,6 +94,7 @@ const Board = () => {
 	});
 	const [apiErrorMessage, setApiErrorMessage] = useState(null);
 	const [displayBoard, setDisplayBoard] = useState(null);
+	const { isDebouncing, setIsDebouncing } = useContext(isDebouncingContext);
 	const navigate = useNavigate();
 
 	const fetchActiveWeekTasks = useCallback(async () => {
@@ -132,6 +135,9 @@ const Board = () => {
 		return (
 			<div className="basePage">
 				<div className="hudContainer">
+					<DebounceLoading
+						isDebouncing={isDebouncing}
+					></DebounceLoading>
 					<Hud
 						tasks={tasks}
 						setTasks={setTasks}
@@ -250,7 +256,13 @@ const Board = () => {
 									fill="white"
 								/>
 							</svg>
-							<a>Head to settings</a>
+							<a
+								onClick={() => {
+									setSettingsOpen(true);
+								}}
+							>
+								Head to settings
+							</a>
 						</div>
 					</div>
 				</div>

@@ -164,10 +164,9 @@
 .separatingVerticalLine {
 	max-width: 3px;
 	min-width: 3px;
-	margin-top: 1%;
-	margin-bottom: 4%;
+	margin: auto;
 	border-radius: 20px;
-	height: 93%;
+	height: 84%;
 	background-color: $gray-3;
 	flex-grow: 1;
 }
@@ -187,10 +186,9 @@
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	width: 15%;
-	min-width: 60px;
-	max-width: 90px;
-	height: 30px;
+	max-height: 22px;
+	min-height: 22px;
+	padding: 5px 15px;
 	font-size: 1.1rem;
 	font-family: 'SF PRO BLACK';
 	font-weight: lighter;
@@ -208,7 +206,7 @@
 	text-align: left;
 	color: $highlight-color;
 	line-height: 1.8;
-	margin: 1px 10%;
+	margin: 0px 10%;
 	padding: 2% 2%;
 	width: 80%;
 	height: 85%;
@@ -253,7 +251,7 @@
 	max-width: 900px;
 	border-radius: $border-rad;
 	border: 1px solid $gray-3;
-	margin: 10px;
+	margin: 0 10px 20px 10px;
 	display: flex;
 	flex-direction: column;
 	align-items: stretch;
@@ -453,7 +451,7 @@
 
 .addTaskContainer {
 	width: 100%;
-	height: 20%;
+	height: 16%;
 }
 
 .svgButton {
@@ -646,4 +644,14 @@
 
 	transition: 500ms ease-in 500ms;
 	transition-property: max-height, visibility, opacity;
+}
+
+.debounceAnimation {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 10%;
+	margin-left: -10%;
+	z-index: 0;
 }

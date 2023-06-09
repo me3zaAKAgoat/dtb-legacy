@@ -2,10 +2,12 @@ import { useEffect, useState, useRef, useCallback, useContext } from 'react';
 import WeekServices from 'services/week';
 import { UserContext } from 'utils/useUser';
 import { useDebounce } from 'utils/useDebounce';
+import { isDebouncingContext, useIsDebouncing } from 'utils/useDebounce';
 
 const NotesContainer = ({ setApiErrorMessage }) => {
 	const [notes, setNotes] = useState('');
 	const { user, logOut } = useContext(UserContext);
+	const { isDebouncing, setIsDebouncing } = useContext(isDebouncingContext);
 	const debouncedNotes = useDebounce(notes, 2000);
 	const isFirstRender = useRef(true);
 
@@ -21,10 +23,14 @@ const NotesContainer = ({ setApiErrorMessage }) => {
 		};
 
 		if (isFirstRender.current) isFirstRender.current = false;
-		else saveNotes();
+		else {
+			saveNotes();
+			setIsDebouncing(false);
+		}
 	}, [debouncedNotes]);
 
 	const handleNotesChange = useCallback((e) => {
+		setIsDebouncing(true);
 		setNotes(e.target.value);
 	});
 

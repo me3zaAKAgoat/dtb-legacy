@@ -1,0 +1,1 @@
+cp -r /home/me3za/dtb/backend /home/me3za/productiondtb && cd /home/me3za/dtb/frontend && npm run build && cp -r /home/me3za/dtb/frontend/build /home/me3za/productiondtb/backend && cd /home/me3za/productiondtb && git add . && git commit -m "production" && git push

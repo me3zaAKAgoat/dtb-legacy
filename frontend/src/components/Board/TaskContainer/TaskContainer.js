@@ -2,6 +2,7 @@ import { useEffect, useState, useCallback, useRef, useContext } from 'react';
 import TaskServices from 'services/task';
 import { UserContext, useUser } from 'utils/useUser';
 import { useDebounce } from 'utils/useDebounce';
+import { isDebouncingContext, useIsDebouncing } from 'utils/useDebounce';
 
 const MiniProgressIndicator = ({ isTaskOpen, progress }) => {
 	const isFirstRender = useRef(true);
@@ -38,6 +39,7 @@ const TaskContainer = ({
 	setFormState,
 }) => {
 	const { user, logOut } = useContext(UserContext);
+	const { isDebouncing, setIsDebouncing } = useContext(isDebouncingContext);
 	const [title, setTitle] = useState(task.title);
 	const [description, setDescription] = useState(task.description);
 	const [progress, setProgress] = useState(task.progress);
@@ -53,7 +55,10 @@ const TaskContainer = ({
 		if (hasOnlyDigits(e.target.value)) {
 			if (e.target.value > 100) setProgress(100);
 			else if (e.target.value < 0) setProgress(0);
-			else setProgress(Number(e.target.value));
+			else {
+				setIsDebouncing(true);
+				setProgress(Number(e.target.value));
+			}
 		}
 	}, []);
 
@@ -86,6 +91,7 @@ const TaskContainer = ({
 						}
 					})
 				);
+				setIsDebouncing(false);
 			} catch (err) {
 				console.log(err);
 			}
@@ -177,6 +183,7 @@ const TaskContainer = ({
 						className="progressionSlider"
 						min={0}
 						max={100}
+						step={10}
 						value={progress}
 						onChange={handleProgressChange}
 					/>
