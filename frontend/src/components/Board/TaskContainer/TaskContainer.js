@@ -57,6 +57,7 @@ const TaskContainer = ({
 			else if (e.target.value < 0) setProgress(0);
 			else {
 				setIsDebouncing(true);
+				console.log(true);
 				setProgress(Number(e.target.value));
 			}
 		}
@@ -92,6 +93,7 @@ const TaskContainer = ({
 					})
 				);
 				setIsDebouncing(false);
+				console.log(false);
 			} catch (err) {
 				console.log(err);
 			}

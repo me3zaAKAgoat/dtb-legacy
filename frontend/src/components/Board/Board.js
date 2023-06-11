@@ -9,7 +9,8 @@ import { UserContext } from 'utils/useUser';
 import { useNavigate } from 'react-router-dom';
 import TaskForm from 'components/Board/TaskForm/TaskForm';
 import DebounceLoading from 'components/miscellaneous/DebounceLoad/DebounceLoad';
-import { isDebouncingContext, useIsDebouncing } from 'utils/useDebounce';
+import { isDebouncingContext } from 'utils/useDebounce';
+import { sortedTasks } from 'utils/taskUtil';
 
 /*
 this component conditionally renders and edit task or a create task
@@ -102,9 +103,9 @@ const Board = ({ setSettingsOpen }) => {
 			const retrievedData = await WeekServices(logOut).getActiveWeekTasks(
 				user.token
 			);
-			setTasks(retrievedData.tasks);
+			setTasks(sortedTasks(retrievedData.tasks));
 		} catch (err) {
-			setApiErrorMessage("fetching current board's data failed");
+			setApiErrorMessage("Fetching current board's data failed.");
 		}
 	}, [user]);
 
@@ -115,7 +116,7 @@ const Board = ({ setSettingsOpen }) => {
 			);
 			return retrievedData.id;
 		} catch (err) {
-			setApiErrorMessage('checking existence of a running board failed');
+			setApiErrorMessage('Checking existence of a running board failed.');
 			return null;
 		}
 	}, [user]);
@@ -135,9 +136,7 @@ const Board = ({ setSettingsOpen }) => {
 		return (
 			<div className="basePage">
 				<div className="hudContainer">
-					<DebounceLoading
-						isDebouncing={isDebouncing}
-					></DebounceLoading>
+					<DebounceLoading isDebouncing={isDebouncing}></DebounceLoading>
 					<Hud
 						tasks={tasks}
 						setTasks={setTasks}

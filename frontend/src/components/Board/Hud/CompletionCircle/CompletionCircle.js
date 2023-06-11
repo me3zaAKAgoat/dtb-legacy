@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import 'styles/CompletionCircle.scss';
-import calcTotal from 'utils/calcTotal.js';
+import { calcTotal } from 'utils/taskUtil.js';
 
 const CompletionCircle = ({ tasks }) => {
 	const [completion, setCompletion] = useState(0);

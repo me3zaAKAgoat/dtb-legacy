@@ -2,9 +2,9 @@ POST  http://localhost:3003/admin/newUser
 Content-Type: application/json
 
 {
-    "username" : "hippa",
-    "name" : "Hiba El Hadi",
-    "password" : "kL68%y1%CF10"
+    "username" : "Nabeats",
+    "name" : "Nabil",
+    "password" : "Iw14^9&9To#A"
 }
 ###
 POST http://localhost:3003/api/login 

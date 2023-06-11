@@ -67,22 +67,16 @@
 ### Core
 
 - [ ] push error bar to the highest order component possible and use a usecontext to avoid prop drilling
-- [ ] add loading animation to any component thats awaiting an api calls response (login for example).
-  - relative top right scss
-  - useContext for loading
+- [ ] update the avatar of users immediately after an avatar update call has successfully returned
 - [ ] fallback for when there are no statistics in the last month
 - [ ] make routers for updating the username and the password
 - [ ] work on user adminsitration
   - [ ] make a sign up process.
-  - [x] setup a cdn of some sort for profile pictures of users.
   - [ ] figure out how to implement settings (theme, week length, username)
-- [ ] make a friendly tutorial
 - [ ] make an abstraction layer for modals (seperate component that hosts modals)
-- [x] **move all business logic to the backend, make all the frontend ONLY visual, 0 business in frontend**
 - [ ] remove debounce from note text area and add an svg save button on the top right corner of the text area that animates on click
 - [ ] add a retry button for every component's failure to load the data it needs (similar to twitter)
 - [ ] make a wrapper function that updates the state after successful api requests.
-- [x] make the basic layout for the statistics page.
 - [ ] add a percentage next to number input field in task container
 - [ ] add end of week button that renders a modal prompting the user to describe the week and then sends an api call to archive the ended week and create a stamp of it.
 - [ ] work on custom skeleton component to every component that makes an inital fetch, so that this skeleton component only renders the wanted component after a successful fetch. (will enable moving tasks state to tasks section hopefully).
@@ -90,13 +84,11 @@
 
 ### Secondary
 
-- [x] settings page scrolling out
 - [ ] fix ssl
-- [x] add which specific field has an issue
+- [ ] make a friendly tutorial
 - [ ] make modals into a seperate module
 - [ ] work on a loading UI (skeleton) while the data is being fetched.
 - [ ] add a visual aspect to the priority of tasks.
-- [ ] have settings open in a modal
 - [ ] make divs flicker on validation error.
 - [ ] replace window alerts and confirms with custom modals.
 - [ ] figure out how keep data stored client side (pouchDB and nedb and sessionstorage and localstorage) https://stackoverflow.com/questions/28314368/how-to-maintain-state-after-a-page-refresh-in-react-js https://rxdb.info/quickstart.html

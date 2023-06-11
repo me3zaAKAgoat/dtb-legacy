@@ -4,7 +4,7 @@ const priorityValue = {
 	high: 7,
 };
 
-const calcTotal = (tasks) => {
+export const calcTotal = (tasks) => {
 	if (tasks.length === 0) return 0;
 
 	const coeffTotal = tasks.reduce(
@@ -20,4 +20,8 @@ const calcTotal = (tasks) => {
 	);
 };
 
-export default calcTotal;
+export const sortedTasks = (tasks) => {
+	return tasks.sort(
+		(a, b) => priorityValue[b.priority] - priorityValue[a.priority]
+	);
+};

@@ -1,7 +1,7 @@
 import { useState, useCallback, useContext } from 'react';
 import TaskServices from 'services/task.js';
-import WeekServices from 'services/week.js';
-import { UserContext, useUser } from 'utils/useUser';
+import { UserContext } from 'utils/useUser';
+import { sortedTasks } from 'utils/taskUtil';
 
 const TaskForm = ({
 	tasks,
@@ -45,7 +45,7 @@ const TaskForm = ({
 			};
 			try {
 				await TaskServices(logOut).editTask(user.token, editedTask);
-				const newTasks = tasks.map((task) =>
+				const editedTasks = tasks.map((task) =>
 					task.id === formState.id
 						? {
 								...task,
@@ -55,7 +55,7 @@ const TaskForm = ({
 						  }
 						: task
 				);
-				setTasks(newTasks);
+				setTasks(sortedTasks(editedTasks));
 			} catch (err) {
 				console.log(err);
 			}
@@ -76,7 +76,7 @@ const TaskForm = ({
 					user.token,
 					newTask
 				);
-				setTasks(tasks.concat(returnedTask));
+				setTasks(sortedTasks(tasks.concat(returnedTask)));
 			} catch (err) {
 				console.log(err);
 			}

@@ -53,7 +53,15 @@ const Hud = ({ tasks, setTasks, setApiErrorMessage, setDisplayBoard }) => {
 			</div>
 			<div className="timeLeft">
 				<h2>Time left:</h2>
-				<h3>
+				<h3
+					className={
+						weekDue
+							? (new Date(weekDue) - new Date()) / (1000 * 60 * 60 * 24) < 1
+								? 'flickerTimeLeft'
+								: ''
+							: ''
+					}
+				>
 					{weekDue !== null
 						? ` ${Math.floor(
 								(new Date(weekDue) - new Date()) / (1000 * 60 * 60 * 24)

@@ -72,21 +72,27 @@
 		h2 {
 			font-family: 'SF PRO TEXT';
 			font-size: 0.75rem;
-			color: $highlight-color;
 			margin-right: 4px;
 		}
 		h3 {
 			font-size: 1rem;
-			color: $highlight-color;
 			margin-left: 4px;
 			font-weight: bold;
 		}
 	}
 	
+	@keyframes blinker {
+		50% {
+		  opacity: 0.4;
+		}
+	  }
+	
+	.flickerTimeLeft {
+		animation: blinker 1.5s linear infinite;
+	}
+
 	.concludeButton {
 		font-family: 'SF PRO BLACK';
-		// min-height: 35px;
-		// min-width: 90px;
 		width: 20%;
 		height: 50%;
 		font-size: 1rem;

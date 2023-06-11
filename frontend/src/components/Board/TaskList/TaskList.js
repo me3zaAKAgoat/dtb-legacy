@@ -12,6 +12,7 @@ of the two prior forms is to be open.
 it is also the component that renders the context menu of tasks through the state 
 contextMenu
 */
+
 const TaskList = ({ tasks, setTasks, setFormState }) => {
 	const [contextMenu, setContextMenu] = useState({
 		show: false,

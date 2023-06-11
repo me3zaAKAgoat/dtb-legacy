@@ -4,7 +4,7 @@ import 'styles/Statistics.scss';
 import WeekServices from 'services/week.js';
 import LineChart from './Chart';
 import { UserContext } from 'utils/useUser';
-import calcTotal from 'utils/calcTotal.js';
+import { calcTotal } from 'utils/taskUtil.js';
 
 const Statistics = () => {
 	const { user, logOut } = useContext(UserContext);

@@ -1,5 +1,5 @@
 import 'styles/Navbar.scss';
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import { useContext } from 'react';
 import { UserContext } from 'utils/useUser';
 import Cropper from 'react-cropper';
@@ -43,10 +43,7 @@ const AvatarUpload = () => {
 	return (
 		<div className="fileInput">
 			<div className="avatarInput">
-				<img
-					src={newAvatarUrl ?? `/api/avatar/${user.id}.jpeg`}
-					alt="user"
-				></img>
+				<img src={`/api/avatar/${user.id}.jpeg`} alt="user"></img>
 				<h2>CHANGE AVATAR</h2>
 				<input
 					type="file"
@@ -182,16 +179,6 @@ const SettingsModal = ({ setSettingsOpen }) => {
 							>
 								Save Changes
 							</button>
-							<button
-								className="baseButton cancelButton"
-								type="button"
-								onClick={() => {
-									setSettingsOpen(false);
-									clearForm();
-								}}
-							>
-								Cancel
-							</button>
 						</div>
 					</form>
 					<form
@@ -232,16 +219,6 @@ const SettingsModal = ({ setSettingsOpen }) => {
 								}}
 							>
 								Save Changes
-							</button>
-							<button
-								className="baseButton cancelButton"
-								type="button"
-								onClick={() => {
-									setSettingsOpen(false);
-									clearForm();
-								}}
-							>
-								Cancel
 							</button>
 						</div>
 					</form>
