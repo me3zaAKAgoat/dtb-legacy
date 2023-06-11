@@ -1,5 +1,5 @@
 import 'styles/App.scss';
-import Navbar from 'components/miscellaneous/Navbar/Navbar';
+import Navbar from 'components/Miscellaneous/Navbar/Navbar';
 import Board from 'components/Board/Board';
 import LoginPage from 'components/LoginPage/LoginPage';
 import Statistics from 'components/Statistics/Statistics';

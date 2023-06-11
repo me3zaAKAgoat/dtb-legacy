@@ -1,9 +1,9 @@
 import 'styles/Navbar.scss';
 import { useState, useEffect, useCallback, useRef } from 'react';
-import Logo from 'components/miscellaneous/Logo/Logo';
+import Logo from 'components/Miscellaneous/Logo/Logo';
 import { useContext } from 'react';
 import { UserContext } from 'utils/useUser';
-import SettingsModal from 'components/miscellaneous/Settings/Settings';
+import SettingsModal from 'components/Miscellaneous/Settings/Settings';
 
 const ModalPortal = ({ settingsOpen, setSettingsOpen }) => {
 	const [transitionProperties, setTransitionProperties] = useState({});

@@ -75,35 +75,49 @@ const AvatarUpload = () => {
 const SettingsModal = ({ setSettingsOpen }) => {
 	const { user, logOut } = useContext(UserContext);
 	const [usernameField, setUsernameField] = useState();
-	const [oldPasswordField, setOldPasswordField] = useState();
+	const [currentPasswordField, setCurrentPasswordField] = useState();
 	const [newPasswordField, setNewPasswordField] = useState();
 
 	const handleUsernameField = (e) => {
 		setUsernameField(e.target.value);
 	};
 
-	const handleOPasswordField = (e) => {
-		setOldPasswordField(e.target.value);
+	const handleCurrentPasswordField = (e) => {
+		setCurrentPasswordField(e.target.value);
 	};
 
-	const handleNPasswordField = (e) => {
-		setOldPasswordField(e.target.value);
+	const handleNewPasswordField = (e) => {
+		setNewPasswordField(e.target.value);
 	};
 
 	const clearForm = useCallback(() => {
 		setUsernameField('');
-		setOldPasswordField('');
+		setCurrentPasswordField('');
 		setNewPasswordField('');
 	}, []);
 
-	const postForm = () => {
-		const areRequirementsMet = usernameField?.length > 0;
+	const postUsername = async (data) => {
+		const areRequirementsMet = usernameField?.length > 4;
 
 		if (!areRequirementsMet) {
-			alert('Must fill all fields');
+			alert('Username too short');
 		} else {
-			// post request
+			const res = await usersServices(logOut).updateUsername(user.token, data);
+			user.username = res.username;
 			clearForm();
+			setSettingsOpen(false);
+		}
+	};
+
+	const postPassword = async (data) => {
+		const areRequirementsMet = newPasswordField?.length > 4;
+
+		if (!areRequirementsMet) {
+			alert('Password too short');
+		} else {
+			await usersServices(logOut).updatePassword(user.token, data);
+			clearForm();
+			setSettingsOpen(false);
 		}
 	};
 
@@ -174,7 +188,7 @@ const SettingsModal = ({ setSettingsOpen }) => {
 								type="submit"
 								onClick={(e) => {
 									e.preventDefault();
-									// postForm();
+									postUsername({ username: usernameField });
 								}}
 							>
 								Save Changes
@@ -192,9 +206,9 @@ const SettingsModal = ({ setSettingsOpen }) => {
 							<input
 								type="password"
 								id="oldPasswordInput"
-								value={oldPasswordField ?? ''}
+								value={currentPasswordField ?? ''}
 								placeholder=""
-								onChange={handleOPasswordField}
+								onChange={handleCurrentPasswordField}
 								autoComplete="off"
 							/>
 						</div>
@@ -205,7 +219,7 @@ const SettingsModal = ({ setSettingsOpen }) => {
 								id="newPasswordInput"
 								value={newPasswordField ?? ''}
 								placeholder=""
-								onChange={handleNPasswordField}
+								onChange={handleNewPasswordField}
 								autoComplete="off"
 							/>
 						</div>
@@ -215,7 +229,10 @@ const SettingsModal = ({ setSettingsOpen }) => {
 								type="submit"
 								onClick={(e) => {
 									e.preventDefault();
-									// postForm();
+									postPassword({
+										currentPassword: currentPasswordField,
+										newPassword: newPasswordField,
+									});
 								}}
 							>
 								Save Changes

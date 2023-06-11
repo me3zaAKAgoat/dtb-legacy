@@ -1,4 +1,4 @@
-import Logo from 'components/miscellaneous/Logo/Logo';
+import Logo from 'components/Miscellaneous/Logo/Logo';
 import 'styles/SignupPage.scss';
 
 const SignupPage = () => {

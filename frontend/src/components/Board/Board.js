@@ -8,7 +8,7 @@ import { useCallback, useContext, useEffect, useState } from 'react';
 import { UserContext } from 'utils/useUser';
 import { useNavigate } from 'react-router-dom';
 import TaskForm from 'components/Board/TaskForm/TaskForm';
-import DebounceLoading from 'components/miscellaneous/DebounceLoad/DebounceLoad';
+import DebounceLoading from 'components/Miscellaneous/DebounceLoad/DebounceLoad';
 import { isDebouncingContext } from 'utils/useDebounce';
 import { sortedTasks } from 'utils/taskUtil';
 

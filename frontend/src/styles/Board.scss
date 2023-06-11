@@ -83,12 +83,12 @@
 	
 	@keyframes blinker {
 		50% {
-		  opacity: 0.4;
+		  opacity: 0.7;
 		}
 	  }
 	
 	.flickerTimeLeft {
-		animation: blinker 1.5s linear infinite;
+		animation: blinker 1s linear infinite;
 	}
 
 	.concludeButton {
