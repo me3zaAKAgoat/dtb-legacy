@@ -97,7 +97,7 @@ usersRouter.post('/updatePassword', async (req, res) => {
 
 const compressImage = async (file) => {
 	try {
-		return await sharp(file.buffer).resize(100, 100).toBuffer();
+		return await sharp(file.buffer).resize(250, 250).toBuffer();
 	} catch (error) {
 		console.error('Error compressing image:', error);
 	}
