@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const { stringify } = require('uuid');
 const { v4: uuidv4 } = require('uuid');
 
 const generateUniqueUserId = () => {

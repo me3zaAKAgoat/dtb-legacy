@@ -1,8 +1,8 @@
-const PPRouter = require('express').Router();
+const avatarsRouter = require('express').Router();
 const fs = require('fs');
 const path = require('path');
 
-PPRouter.get('/:id.jpeg', async (req, res) => {
+avatarsRouter.get('/:id.jpeg', async (req, res) => {
 	const { id } = req.params;
 	console.log(req.params);
 	const filePath = path.join(__dirname, `../avatars/${id}.jpeg`);
@@ -16,4 +16,4 @@ PPRouter.get('/:id.jpeg', async (req, res) => {
 	});
 });
 
-module.exports = PPRouter;
+module.exports = avatarsRouter;

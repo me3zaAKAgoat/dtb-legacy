@@ -41,9 +41,54 @@ usersRouter.post('/newUser', async (req, res) => {
 			activeWeek: null,
 		});
 
-		const savedUser = await user.save();
+		await user.save();
 
-		return res.status(201).json(savedUser);
+		return res.status(201);
+	} catch (err) {
+		console.log('usersRouter', err);
+		return res.status(500).json({ error: err });
+	}
+});
+
+usersRouter.post('/updateUsername', async (req, res) => {
+	const token = req.token;
+	try {
+		const decodedToken = jwt.verify(token, config.SECRET);
+		const user = await User.findById(decodedToken.id);
+
+		user.username = req.body.username;
+
+		await user.save();
+
+		return res.status(201).json({ username: user.username });
+	} catch (err) {
+		console.log('usersRouter', err);
+		return res.status(500).json({ error: err });
+	}
+});
+
+usersRouter.post('/updatePassword', async (req, res) => {
+	const token = req.token;
+	try {
+		const decodedToken = jwt.verify(token, config.SECRET);
+		const user = await User.findById(decodedToken.id);
+
+		const passwordCheck = await bcrypt.compare(
+			req.body.currentPassword,
+			user.passwordHash
+		);
+
+		if (!passwordCheck)
+			return res.status(500).json({ error: 'current password is incorrect' });
+
+		const saltRounds = 10;
+		const passwordHash = await bcrypt.hash(req.body.newPassword, saltRounds);
+
+		user.passwordHash = passwordHash;
+
+		await user.save();
+
+		return res.status(201);
 	} catch (err) {
 		console.log('usersRouter', err);
 		return res.status(500).json({ error: err });

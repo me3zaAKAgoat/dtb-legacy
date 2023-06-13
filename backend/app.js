@@ -7,7 +7,7 @@ const loginRouter = require('./controllers/login.js');
 const weekRouter = require('./controllers/week.js');
 const taskRouter = require('./controllers/task.js');
 const adminRouter = require('./controllers/admin.js');
-const PPRouter = require('./controllers/profilePictures.js');
+const avatarsRouter = require('./controllers/avatars.js');
 const middleware = require('./utils/middleware.js');
 const path = require('path');
 
@@ -15,7 +15,7 @@ app.use(cors());
 app.use(express.json());
 app.use(middleware.requestLogger);
 
-app.use('/api/avatar', PPRouter);
+app.use('/api/avatar', avatarsRouter);
 app.use('/admin', adminRouter);
 app.use(
 	'/api/users',

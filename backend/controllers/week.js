@@ -63,13 +63,19 @@ weekRouter.get('/getLastMonthWeeks', async (req, res) => {
 	try {
 		const decodedToken = jwt.verify(token, config.SECRET);
 		const user = await User.findById(decodedToken.id);
-		const fourWeeksAgo = new Date();
-		fourWeeksAgo.setDate(fourWeeksAgo.getDate() - 28);
-		const weeks = await week
-			.find({ user: user._id, endDate: { $gte: fourWeeksAgo } })
-			.populate('tasks', 'progress priority');
 
-		return res.status(200).json({ weeks: weeks });
+		await week
+			.find({ user: user._id })
+			.sort({ endDate: -1 }) // Sort in descending order (latest date first)
+			.limit(4)
+			.populate('tasks', 'progress priority')
+			.exec((err, documents) => {
+				if (err) {
+					return res.status(500).json({ error: err });
+				} else {
+					return res.status(200).json({ weeks: documents.reverse() });
+				}
+			});
 	} catch (err) {
 		return res.status(500).json({ error: err });
 	}
