@@ -31,10 +31,10 @@
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-around;
-	background-color: $gray-1;
+	background: none;
 	height: 65px;
 	width: 550px;
-	border: 1px solid $gray-3;
+	border: 1px solid $gray-2;
 	border-radius: $border-rad;
 	margin: 10px 0px;
 	font-size: 0.5rem;
@@ -97,6 +97,10 @@
 		height: 50%;
 		font-size: 1rem;
 		margin-right: 3%;
+		transition: filter 80ms ease-in-out 80ms;
+		&:hover {
+			filter: brightness(120%);
+		}
 	}
 }
 
@@ -199,9 +203,9 @@
 	font-family: 'SF PRO BLACK';
 	font-weight: lighter;
 	text-align: center;
-	color: $highlight-color;
 	margin: 2px 0px 10px;
 	background-color: $gray-1;
+	border: 1px solid $gray-2;
 	border-radius: $border-rad;
 }
 
@@ -498,11 +502,12 @@
 	z-index: 10;
 	background-color: rgba(0, 0, 0, 0.8);
 	border-radius: $border-rad;
+	backdrop-filter: blur(0.5px);
 	position: absolute;
 }
 
 .formContainer {
-	z-index: 1;
+	z-index: 15;
 	text-align: left;
 	top: 0;
 	bottom: 0;

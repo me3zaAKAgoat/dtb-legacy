@@ -10,10 +10,4 @@
 	padding: 1% 1%;
 	border-radius: 4px;
 	border: none;
-	transition: 200ms ease-in-out 40ms;
-	transition-property: filter, text-shadow;
-	&:hover{
-		filter: brightness(120%);
-		text-shadow : 0px 0px 25px $secondary-color;
-	}
 }

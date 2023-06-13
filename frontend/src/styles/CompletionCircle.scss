@@ -18,12 +18,13 @@
 	place-items: center;
 	grid-template-areas: 'inner-div';
 }
+
 .inner {
 	height: 71%;
 	width: 71%;
 	border-radius: 50%;
 	border: none;
-	background: $gray-1;
+	background: $background-color;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -44,12 +45,10 @@ svg {
 	grid-area: inner-div;
 }
 
-
-
 circle {
 	fill: none;
 	stroke-linecap: round;
 	stroke: $highlight-color;
 	stroke-width: 12%;
-	transition: stroke-dashoffset, 2s 50ms ease-in-out;
+	transition: stroke-dashoffset 1s 0ms ease-in-out;
 }
