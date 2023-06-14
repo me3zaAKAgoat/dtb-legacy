@@ -56,6 +56,12 @@ usersRouter.post('/updateUsername', async (req, res) => {
 		const decodedToken = jwt.verify(token, config.SECRET);
 		const user = await User.findById(decodedToken.id);
 
+		const usernameExists = await User.find({ username: req.body.username });
+
+		if (usernameExists.length) {
+			return res.status(500).json({ error: 'username already exists' });
+		}
+
 		user.username = req.body.username;
 
 		await user.save();

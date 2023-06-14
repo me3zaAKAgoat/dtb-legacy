@@ -10,7 +10,7 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
 	// Week.find({}).then((result) => console.log('weeks', result));
 	// Task.find({}).then((result) => console.log('tasks', result));
 	const setBaseAvatar = async () => {
-		const user = await User.findOne({});
+		const user = await User.find({});
 		// user.set('avatarId', undefined, { strict: false });
 		// await user.save();
 		// const xd = await User.findOne({});
