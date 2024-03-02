@@ -81,9 +81,22 @@
 - [ ] add end of week button that renders a modal prompting the user to describe the week and then sends an api call to archive the ended week and create a stamp of it.
 - [ ] work on custom skeleton component to every component that makes an inital fetch, so that this skeleton component only renders the wanted component after a successful fetch. (will enable moving tasks state to tasks section hopefully).
 - [ ] make function wrappers for every module that has an action that necessitates a follow up, to avoid duplication and all the issues that stem from it.
+- [ ] set default priority to 1
+- [ ] give users ability to choose coefficent of priority
+- [ ] make modals look much cuter
+- [ ] implement task categories in the future
+- [ ] set recurring tasks
+- [ ] give users ability to choose week start and end
+- [ ] give more utility in the statistics page
+- [ ] fix sign up (find out how to send users emails)
 
 ### Secondary
 
+- [ ] rehaul the project to typescript
+- [ ] design new logo
+- [ ] redesign modals to look more modern
+- [ ] add ability to delete weeks
+- [ ] add accent color
 - [ ] fix ssl
 - [ ] make a friendly tutorial
 - [ ] make modals into a seperate module
@@ -101,5 +114,6 @@
 - [ ] add keys in week schema that reflect the emotional/mental well-being of the user during that week.
 - [ ] loading animation on debounces
 - [ ] prevent user from being able to input any notes if a week isn't initiatied
+- [ ] scope mini-tasks to days
 
   🔝 [Back To Top Of Readme](https://github.com/me3zaAKAgoat/dtb#digital-tasks-board)
